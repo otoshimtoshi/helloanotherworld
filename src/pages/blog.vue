@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper-page">
     <div class="markdown-body">
       <nuxt-content :document="page" />
     </div>

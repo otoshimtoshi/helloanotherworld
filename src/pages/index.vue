@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper-page">
     <div>I'm a front-end developer working in Tokyo.</div>
   </div>
 </template>

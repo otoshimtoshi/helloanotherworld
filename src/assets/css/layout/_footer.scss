@@ -38,13 +38,12 @@
   .footer-nav {
     position: relative;
     display: flex;
-    margin-left: 4rem;
-    margin-right: 4rem;
+    margin: 1.5rem 2.5rem;
     align-items: center;
-    transition: all 0.5s ease-in-out, top 0.5s ease;
-    @include mq('large', max) {
-      padding: 0 0 1rem;
+    @include mq('small', max) {
+      margin: 0.5rem;
     }
+    transition: all 0.5s ease-in-out, top 0.5s ease;
     .logo {
       display: flex;
       @include h2;
@@ -55,11 +54,14 @@
       margin-left: auto;
       display: flex;
       @include font-size-base;
-      @include mq('large', max) {
+      @include mq('medium', max) {
         display: none;
       }
       li {
         padding: 2rem;
+        @include mq('large', max) {
+          padding: 1rem;
+        }
       }
       a {
         position: relative;
@@ -86,6 +88,9 @@
     color: #444444;
     font-size: $font-size-small;
     text-align: left;
-    margin-left: 4rem;
+    margin: 0 2.5rem;
+    @include mq('small', max) {
+      margin: 0 0.5rem;
+    }
   }
 }

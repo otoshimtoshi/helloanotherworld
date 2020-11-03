@@ -6,6 +6,12 @@
   position: relative;
   width: 100%;
   height: auto;
+  .wrapper-page {
+    margin: 0 2.5rem;
+    @include mq('small', max) {
+      margin: 0 0.5rem;
+    }
+  }
 }
 //*************************************************
 // breadcrumb(パン屑リスト)

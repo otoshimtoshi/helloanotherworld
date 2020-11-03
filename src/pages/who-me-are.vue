@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper-page">
     <div>Who me are</div>
   </div>
 </template>

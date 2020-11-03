@@ -1,11 +1,7 @@
 <!-- pointerコンポーネント -->
 <template>
   <div class="pointer">
-    <div
-      class="pointer_cursor"
-      :class="{ pointer_isover: isOver }"
-      :style="transformPosition"
-    >
+    <div class="pointer_cursor" :class="{ pointer_isover: isOver }" :style="transformPosition">
       <span v-if="isHome" class="txt">Go Home</span>
       <span v-if="isMore" class="txt">Learn More</span>
     </div>
@@ -35,14 +31,7 @@ export default class extends Vue {
 
   /** マウス表示位置制御 */
   get transformPosition(): string {
-    return (
-      'transform: translate3d(' +
-      this.mouseX +
-      'px, ' +
-      this.mouseY +
-      'px, ' +
-      '0px)'
-    );
+    return 'transform: translate3d(' + this.mouseX + 'px, ' + this.mouseY + 'px, ' + '0px)';
   }
 
   /** 各種フラグの初期化 */
@@ -68,7 +57,7 @@ export default class extends Vue {
     for (let i = 0; i < this.aTagEventElement.length; i++) {
       //マウスホバー時
       this.aTagEventElement[i].addEventListener('mouseover', () => {
-        switch (this.aTagEventElement[i].id) {
+        switch (this.aTagEventElement[i].dataset.id) {
           case ElementIdCodes.GO_HOME:
             this.isHome = true;
             this.isOver = true;

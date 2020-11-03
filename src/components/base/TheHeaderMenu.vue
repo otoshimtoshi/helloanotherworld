@@ -1,7 +1,7 @@
 <!-- HeaderSVGメニューコンポーネント -->
 <template>
   <div class="header-menu-outer">
-    <a class="header-menu" href="#" @click="isClick">
+    <a class="header-menu" @click="isClick">
       <svg v-if="!isActive" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
         <circle cx="33" cy="33" r="32"></circle>
       </svg>
@@ -17,19 +17,19 @@
         <ul class="">
           <li>
             <!-- Who me are -->
-            <nuxt-link to="/who-me-are" id="LearnMore" @click.native="isClick"> Who me are </nuxt-link>
+            <nuxt-link to="/who-me-are" data-id="LearnMore" @click.native="isClick">Who me are</nuxt-link>
           </li>
           <li>
             <!-- Blog -->
-            <nuxt-link to="/blog" id="LearnMore" @click.native="isClick"> Blog </nuxt-link>
+            <nuxt-link to="/blog" data-id="LearnMore" @click.native="isClick">Blog</nuxt-link>
           </li>
           <li>
             <!-- Collection of works -->
-            <nuxt-link to="/collection" id="LearnMore" @click.native="isClick"> Collection of works </nuxt-link>
+            <nuxt-link to="/collection" data-id="LearnMore" @click.native="isClick">Collection of works</nuxt-link>
           </li>
           <li>
             <!-- Contact -->
-            <nuxt-link to="/contact" id="LearnMore" @click.native="isClick"> Contact </nuxt-link>
+            <nuxt-link to="/contact" data-id="LearnMore" @click.native="isClick">Contact</nuxt-link>
           </li>
         </ul>
         <address>Copyright©2020 HelloAnotherWorld All Rights Reserved.</address>

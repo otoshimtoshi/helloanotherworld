@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper-page">
     <div>Collection of works</div>
   </div>
 </template>

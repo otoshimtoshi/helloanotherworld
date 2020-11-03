@@ -6,12 +6,11 @@ export default {
   ssr: 'false',
   target: 'static',
   env: envSet,
-  // server: {
-  //   host: '0.0.0.0', // default: localhost,
-  //   timing: false,
-  // },
   head: {
     title: 'HelloAnotherWorld',
+    htmlAttrs: {
+      lang: 'ja',
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

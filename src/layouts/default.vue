@@ -1,4 +1,4 @@
-<template>
+<template lang="ja">
   <div id="wrapper" class="wrapper">
     <TheHeader />
     <nuxt />
