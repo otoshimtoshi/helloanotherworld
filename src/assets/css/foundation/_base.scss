@@ -1,0 +1,21 @@
+// -----------------------------------------------------------------
+// _base.scss
+// -----------------------------------------------------------------
+
+html {
+  font-size: $font-size-base;
+  @include mq('small', min) {
+    font-size: $font-size-small;
+  }
+  font-family: $family-font-base;
+}
+
+body {
+  background: $background-base-color;
+  box-sizing: border-box;
+  color: $font-base-color;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}

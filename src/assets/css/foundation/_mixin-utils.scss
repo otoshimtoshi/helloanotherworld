@@ -1,0 +1,77 @@
+// ==========================================================================
+// family-font
+// ==========================================================================
+@mixin font-base {
+  font-family: $family-font-base;
+}
+@mixin font-custom {
+  font-family: $family-font-custom;
+}
+// ==========================================================================
+// width
+// ==========================================================================
+@mixin pc-width {
+  width: $xlarge;
+  margin: 0 auto;
+}
+@mixin pc-width-min {
+  min-width: $xlarge;
+  margin: 0 auto;
+}
+@mixin tab-width-large {
+  width: $large;
+  margin: 0 auto;
+}
+@mixin tab-width-min-large {
+  min-width: $large;
+  margin: 0 auto;
+}
+@mixin tab-width {
+  width: $medium;
+  margin: 0 auto;
+}
+@mixin tab-width-min {
+  min-width: $medium;
+  margin: 0 auto;
+}
+@mixin sp-width {
+  width: $small;
+  margin: 0 auto;
+}
+@mixin sp-width-min {
+  min-width: $small;
+  margin: 0 auto;
+}
+// ==========================================================================
+// font-size
+// ==========================================================================
+@mixin font-size-base {
+  font-size: $font-size-base; //20px
+  @include mq('small', max) {
+    font-size: 16px;
+  }
+}
+@mixin h1 {
+  font-size: $font-size-h1; //40px
+  @include mq('large', max) {
+    font-size: 35px;
+  }
+  @include mq('medium', max) {
+    font-size: 33px;
+  }
+  @include mq('small', max) {
+    font-size: 31px;
+  }
+}
+@mixin h2 {
+  font-size: $font-size-h2; //35px
+  @include mq('large', max) {
+    font-size: 30px;
+  }
+  @include mq('medium', max) {
+    font-size: 28px;
+  }
+  @include mq('small', max) {
+    font-size: 26px;
+  }
+}

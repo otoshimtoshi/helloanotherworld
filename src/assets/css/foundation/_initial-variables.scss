@@ -1,0 +1,73 @@
+// ==========================================================================
+// family-font
+// ==========================================================================
+$family-font-base: 'Homenaje', sans-serif !default;
+$family-font-custom: '游ゴシック体', YuGothic, '游ゴシック', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif !default;
+
+// ==========================================================================
+// breakpoint
+// ==========================================================================
+$xsmall: 320px !default;
+$small: 480px !default;
+$medium: 780px !default;
+$large: 1024px !default;
+$xlarge: 1240px !default;
+
+// ==========================================================================
+// @media screen
+// 使い方
+// [ Input ]
+// @include mq('medium', max) {}
+// [ Output ]
+// @media screen and (max-width: medium) {}
+//
+// [ Input ]
+// @include mq('medium', max) {
+//   @include mq('small', min, true) {}
+// }
+// [ Output ]
+// @media screen and (max-width: medium) and (min-width: $small) {}
+// ==========================================================================
+@mixin mq($breakpoint: medium, $rule: min, $subtraction: false) {
+  $breakpoint: map_get($mq-breakpoints, $breakpoint);
+  @if $rule == max and $subtraction {
+    $breakpoint: $breakpoint - 1;
+  }
+  @media screen and (#{$rule}-width: $breakpoint) {
+    @content;
+  }
+}
+$mq-breakpoints: (
+  'xsmall': $xsmall,
+  'small': $small,
+  'medium': $medium,
+  'large': $large,
+  'xlarge': $xlarge,
+);
+
+// ==========================================================================
+// font-size
+// ==========================================================================
+$font-size-base: 20px !default; // baseのフォントサイズ
+$font-size-small: 16px !default; // モバイル(480px)のフォントサイズ
+$font-size-large: 30px !default; // PC(1200px)以上のフォントサイズ
+$font-size-h1: 40px !default;
+$font-size-h2: 35px !default;
+$font-size-h3: 30px !default;
+
+// ==========================================================================
+// color
+// ==========================================================================
+// font-color
+$font-base-color: #ffffff !default;
+$font-sub-color: #000000 !default;
+// background-color
+$background-base-color: #000000 !default;
+$background-sub-color: #ffffff !default;
+$background-transparent: transparent !default;
+$header-scroll-background-color: rgba(255, 255, 255, 0.3) !default; // headerのscroll後、background-color
+
+// ==========================================================================
+// box-shadow
+// ==========================================================================
+$base-box-shadow: 0 4px 10px -1px rgba(207, 92, 92, 0.1) !default;
