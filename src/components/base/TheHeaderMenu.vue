@@ -15,20 +15,20 @@
       <div class="wrapper-menu-left"></div>
       <div class="wrapper-menu-right">
         <ul class="">
+          <!-- Who me are -->
           <li>
-            <!-- Who me are -->
             <nuxt-link to="/who-me-are" data-id="LearnMore" @click.native="isClick">Who me are</nuxt-link>
           </li>
-          <li>
-            <!-- Blog -->
+          <!-- Blog -->
+          <!-- <li>
             <nuxt-link to="/blog" data-id="LearnMore" @click.native="isClick">Blog</nuxt-link>
-          </li>
+          </li> -->
+          <!-- Collection of works -->
           <li>
-            <!-- Collection of works -->
             <nuxt-link to="/collection" data-id="LearnMore" @click.native="isClick">Collection of works</nuxt-link>
           </li>
+          <!-- Contact -->
           <li>
-            <!-- Contact -->
             <nuxt-link to="/contact" data-id="LearnMore" @click.native="isClick">Contact</nuxt-link>
           </li>
         </ul>

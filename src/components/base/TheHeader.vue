@@ -3,29 +3,29 @@
   <header class="header" id="header" :style="isFixed">
     <nav class="header-nav">
       <!-- Header Logo -->
-      <div class="logo" :class="{ header_scroll_color: isScroll }">
+      <h1 class="logo" :class="{ header_scroll_color: isScroll }">
         <nuxt-link to="/" data-id="GoHome">
           <span class="stroke-black">Hello</span>
           <span class="stroke-white">Another</span>
           <span class="stroke-black">World</span>
         </nuxt-link>
-      </div>
+      </h1>
       <!-- Header Menu -->
       <ul class="header-nav-menu">
+        <!-- Who me are -->
         <li>
-          <!-- Who me are -->
           <nuxt-link to="/who-me-are" data-id="LearnMore">Who me are</nuxt-link>
         </li>
-        <li>
-          <!-- Blog -->
+        <!-- Blog -->
+        <!-- <li>
           <nuxt-link to="/blog" data-id="LearnMore">Blog</nuxt-link>
-        </li>
+        </li> -->
+        <!-- Collection of works -->
         <li>
-          <!-- Collection of works -->
           <nuxt-link to="/collection" data-id="LearnMore">Collection of works</nuxt-link>
         </li>
+        <!-- Contact -->
         <li>
-          <!-- Contact -->
           <nuxt-link to="/contact" data-id="LearnMore">Contact</nuxt-link>
         </li>
       </ul>

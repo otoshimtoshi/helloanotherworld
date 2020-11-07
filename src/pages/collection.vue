@@ -1,6 +1,10 @@
 <template>
   <div class="wrapper-page">
-    <div>Collection of works</div>
+    <h2>
+      <span>Collection of works</span>
+      <span class="ja ja-h2">作品集</span>
+    </h2>
+    <div class="wrapper-page-content"></div>
   </div>
 </template>
 

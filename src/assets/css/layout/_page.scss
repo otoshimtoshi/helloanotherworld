@@ -6,11 +6,17 @@
   position: relative;
   width: 100%;
   height: auto;
-  .wrapper-page {
-    margin: 0 2.5rem;
-    @include mq('small', max) {
-      margin: 0 0.5rem;
-    }
+}
+.wrapper-page {
+  padding: 2.5rem 2.5rem;
+  @include mq('medium', max) {
+    padding: 1rem;
+  }
+  @include mq('small', max) {
+    padding: 0.5rem;
+  }
+  .wrapper-page-content {
+    padding-top: 2.5rem;
   }
 }
 //*************************************************
@@ -29,5 +35,18 @@
     &:first-of-type::before {
       content: '';
     }
+  }
+}
+.wrap-who-me-are {
+  p {
+    margin-bottom: 1rem;
+  }
+}
+//*************************************************
+// contactページ
+//*************************************************
+.wrapper-page-content {
+  svg {
+    margin-right: 2rem;
   }
 }

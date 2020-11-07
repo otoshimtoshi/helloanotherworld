@@ -52,26 +52,26 @@
   }
 }
 @mixin h1 {
-  font-size: $font-size-h1; //40px
+  font-size: $font-size-h1; //55px
   @include mq('large', max) {
-    font-size: 35px;
+    font-size: 50px;
   }
   @include mq('medium', max) {
-    font-size: 33px;
+    font-size: 45px;
   }
   @include mq('small', max) {
-    font-size: 31px;
+    font-size: 36px;
   }
 }
 @mixin h2 {
-  font-size: $font-size-h2; //35px
+  font-size: $font-size-h2; //45px
   @include mq('large', max) {
-    font-size: 30px;
+    font-size: 40px;
   }
   @include mq('medium', max) {
-    font-size: 28px;
+    font-size: 35px;
   }
   @include mq('small', max) {
-    font-size: 26px;
+    font-size: 30px;
   }
 }

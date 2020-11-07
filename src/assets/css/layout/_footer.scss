@@ -5,11 +5,16 @@
   width: 100%;
   z-index: 500;
   bottom: 0px;
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  margin: 4rem 0;
   transition: all 0.2s ease-in-out, top 0.2s ease;
   background-color: transparent;
   mix-blend-mode: difference;
+  @include mq('medium', max) {
+    margin: 2rem 0;
+  }
+  @include mq('small', max) {
+    margin: 1rem 0;
+  }
   a {
     font-weight: bold;
     transition-property: width, height;
@@ -40,6 +45,9 @@
     display: flex;
     margin: 1.5rem 2.5rem;
     align-items: center;
+    @include mq('medium', max) {
+      margin: 1rem;
+    }
     @include mq('small', max) {
       margin: 0.5rem;
     }
@@ -89,8 +97,14 @@
     font-size: $font-size-small;
     text-align: left;
     margin: 0 2.5rem;
+    @include mq('medium', max) {
+      margin: 0 1rem;
+    }
     @include mq('small', max) {
       margin: 0 0.5rem;
+    }
+    @include mq('xsmall', max) {
+      font-size: 10px;
     }
   }
 }

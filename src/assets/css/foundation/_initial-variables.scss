@@ -51,9 +51,9 @@ $mq-breakpoints: (
 $font-size-base: 20px !default; // baseのフォントサイズ
 $font-size-small: 16px !default; // モバイル(480px)のフォントサイズ
 $font-size-large: 30px !default; // PC(1200px)以上のフォントサイズ
-$font-size-h1: 40px !default;
-$font-size-h2: 35px !default;
-$font-size-h3: 30px !default;
+$font-size-h1: 55px !default;
+$font-size-h2: 45px !default;
+$font-size-h3: 35px !default;
 
 // ==========================================================================
 // color
@@ -66,7 +66,10 @@ $background-base-color: #000000 !default;
 $background-sub-color: #ffffff !default;
 $background-transparent: transparent !default;
 $header-scroll-background-color: rgba(255, 255, 255, 0.3) !default; // headerのscroll後、background-color
-
+// border-color
+$border-base-color: rgba(0, 0, 0, 0.5) !default;
+// svg-stroke-color
+$svg-stroke-color: rgba(255, 255, 255, 0.3) !default;
 // ==========================================================================
 // box-shadow
 // ==========================================================================

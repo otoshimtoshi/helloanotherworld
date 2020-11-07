@@ -1,7 +1,13 @@
 <template>
   <div class="wrapper-page">
-    <div class="markdown-body">
-      <nuxt-content :document="page" />
+    <h2>
+      <span>Blog</span>
+      <span class="ja ja-h2">ブログ</span>
+    </h2>
+    <div class="wrapper-page-content">
+      <div class="markdown-body">
+        <nuxt-content :document="page" />
+      </div>
     </div>
   </div>
 </template>
