@@ -15,6 +15,10 @@
       <div class="wrapper-menu-left"></div>
       <div class="wrapper-menu-right">
         <ul class="">
+          <!-- TOP -->
+          <li>
+            <nuxt-link to="/" data-id="GoHome" @click.native="isClick">TOP</nuxt-link>
+          </li>
           <!-- Who me are -->
           <li>
             <nuxt-link to="/who-me-are" data-id="LearnMore" @click.native="isClick">Who me are</nuxt-link>
