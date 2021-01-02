@@ -4,22 +4,19 @@
       <span>I'm a front-end developer working in Tokyo.</span>
     </h2>
     <div class="wrapper-page-content">
-      <canvas id="myCanvas"></canvas>
+      <canvas id="myCanvas" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
-import * as THREE from 'three/build/three.module';
-import { Main } from '@/script/index/Main';
+import { defineComponent, onMounted } from '@nuxtjs/composition-api';
 
-@Component({
-  components: {},
-})
-export default class extends Vue {
-  mounted() {
-    require('@/script/index/Main');
-  }
-}
+export default defineComponent({
+  setup() {
+    onMounted(() => {
+      require('@/script/index/Main');
+    });
+  },
+});
 </script>

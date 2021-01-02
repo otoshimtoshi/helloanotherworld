@@ -6,6 +6,7 @@ export default {
   ssr: 'false',
   target: 'static',
   env: envSet,
+  components: true,
   head: {
     title: 'HelloAnotherWorld',
     htmlAttrs: {
@@ -17,20 +18,20 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'HelloAnotherWorld〜技術記事用Webサイト〜',
+        content: 'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.',
       },
       {
         hid: 'keywords',
         name: 'keywords',
-        content: 'Masatoshi Otoshi, Nuxt.js, three.js, Front End Developer',
+        content: 'Masatoshi Otoshi, JS frameworks, Vue, Nuxt, three.js, 3D modeling, machine learning, CityGML',
       },
       { hid: 'og:title', name: 'og:title', content: 'HelloAnotherWorld' },
       {
         hid: 'og:description',
         name: 'og:description',
-        content: 'Masatoshi Otoshi, Nuxt.js, three.js, Front End Developer',
+        content: 'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.',
       },
-      { hid: 'og:url', name: 'og:url', content: `${envSet.URL}` },
+      { hid: 'og:url', name: 'og:url', content: 'https://helloanotherworld.com' },
       {
         hid: 'twitter:card',
         name: 'twitter:card',
@@ -39,12 +40,12 @@ export default {
       {
         hid: 'twitter:title',
         name: 'twitter:title',
-        content: 'HelloAnotherWorld〜技術記事用Webサイト〜',
+        content: 'HelloAnotherWorld',
       },
       {
         hid: 'twitter:description',
         name: 'twitter:description',
-        content: 'HelloAnotherWorld〜技術記事用Webサイト〜',
+        content: 'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
@@ -88,7 +89,7 @@ export default {
     },
     target: 'static',
   },
-  buildModules: ['@nuxt/typescript-build'],
+  buildModules: ['@nuxtjs/composition-api', '@nuxt/typescript-build'],
   typescript: {
     typeCheck: false,
     ignoreNotFoundWarnings: true,

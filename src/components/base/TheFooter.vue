@@ -1,10 +1,14 @@
 <!-- Footerコンポーネント -->
 <template>
-  <footer class="footer" :style="isFixed">
+  <footer class="footer" :style="fixed ? '' : 'position: fixed;'">
     <nav class="footer-nav">
       <!-- Footer Logo -->
       <div class="logo">
-        <nuxt-link to="/" data-id="GoHome"> <span class="stroke-white">Hello</span><span class="stroke-black">Another</span><span class="stroke-white">World</span> </nuxt-link>
+        <nuxt-link to="/" data-id="GoHome">
+          <span class="stroke-white">Hello</span>
+          <span class="stroke-black">Another</span>
+          <span class="stroke-white">World</span>
+        </nuxt-link>
       </div>
       <ul class="footer-nav-menu">
         <!-- Who me are -->
@@ -12,9 +16,9 @@
           <nuxt-link to="/who-me-are" data-id="LearnMore">Who me are</nuxt-link>
         </li>
         <!-- Blog -->
-        <!-- <li>
+        <li>
           <nuxt-link to="/blog" data-id="LearnMore">Blog</nuxt-link>
-        </li> -->
+        </li>
         <!-- Collection of works -->
         <li>
           <nuxt-link to="/collection" data-id="LearnMore">Collection of works</nuxt-link>
@@ -30,19 +34,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
-
-@Component({
-  components: {},
-})
-export default class extends Vue {
-  get isFixed(): string {
-    if (this.$route.name !== 'blog') {
-      return 'position: fixed;';
-    }
-    return '';
-  }
-}
+import { computed, defineComponent, reactive, useContext, toRefs } from '@nuxtjs/composition-api';
+export default defineComponent({
+  setup() {
+    const { route } = useContext();
+    const state = reactive({
+      fixed: computed(() => route.value.name === 'blog'),
+    });
+    return {
+      ...toRefs(state),
+    };
+  },
+});
 </script>
-
-<style lang="scss" scoped></style>

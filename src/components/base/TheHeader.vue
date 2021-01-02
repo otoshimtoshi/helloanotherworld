@@ -1,6 +1,10 @@
 <!-- Headerコンポーネント -->
 <template>
-  <header class="header" id="header" :style="isFixed">
+  <header
+    id="header"
+    class="header"
+    :style="isScroll ? 'position: fixed;' : ''"
+  >
     <nav class="header-nav">
       <!-- Header Logo -->
       <h1 class="logo" :class="{ header_scroll_color: isScroll }">
@@ -17,12 +21,14 @@
           <nuxt-link to="/who-me-are" data-id="LearnMore">Who me are</nuxt-link>
         </li>
         <!-- Blog -->
-        <!-- <li>
+        <li>
           <nuxt-link to="/blog" data-id="LearnMore">Blog</nuxt-link>
-        </li> -->
+        </li>
         <!-- Collection of works -->
         <li>
-          <nuxt-link to="/collection" data-id="LearnMore">Collection of works</nuxt-link>
+          <nuxt-link to="/collection" data-id="LearnMore">
+            Collection of works
+          </nuxt-link>
         </li>
         <!-- Contact -->
         <li>
@@ -35,51 +41,41 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
-import TheHeaderMenu from '@/components/base/TheHeaderMenu.vue';
-
-@Component({
-  components: {
-    TheHeaderMenu,
-  },
-})
-export default class extends Vue {
-  /** スクロールフラグ */
-  private isScroll: boolean = false;
-  /** ヘッダー高さ */
-  private headerHeight: number = 0;
-
-  get isFixed(): string {
-    if (this.isScroll) {
-      return 'position: fixed;';
-    }
-    return '';
-  }
-  /**
-   * DOMのレンダリング後aタグを全て取得し取得タグのmousemove,mouseover,mouseoutイベント発火時
-   * マウス座標を取得、ポインター座標へ取得座標を反映
-   */
-  mounted() {
-    window.addEventListener('scroll', (e) => {
-      // header高さを取得
-      var height = document.getElementById('header');
-      // wrapperを取得
-      const wrapper = document.getElementById('wrapper');
-      if (height !== null && wrapper !== null) {
-        this.headerHeight = height.clientHeight;
-        wrapper.style.marginTop = this.headerHeight + 'px';
-      } else {
-        return;
-      }
-      if (window.scrollY > 50) {
-        this.isScroll = true;
-      } else {
-        wrapper.style.marginTop = 'unset';
-        this.isScroll = false;
-      }
+import {
+  defineComponent,
+  reactive,
+  toRefs,
+  onMounted,
+} from '@nuxtjs/composition-api';
+export default defineComponent({
+  setup() {
+    const state = reactive({
+      isScroll: false,
+      headerHeight: 0,
     });
-  }
-}
+    onMounted(() => {
+      window.addEventListener('scroll', () => {
+        // header高さを取得
+        var height = document.getElementById('header');
+        // wrapperを取得
+        const wrapper = document.getElementById('wrapper');
+        if (height !== null && wrapper !== null) {
+          state.headerHeight = height.clientHeight;
+          wrapper.style.marginTop = state.headerHeight + 'px';
+        } else {
+          return;
+        }
+        if (window.scrollY > 50) {
+          state.isScroll = true;
+        } else {
+          wrapper.style.marginTop = 'unset';
+          state.isScroll = false;
+        }
+      });
+    });
+    return {
+      ...toRefs(state),
+    };
+  },
+});
 </script>
-
-<style lang="scss" scoped></style>

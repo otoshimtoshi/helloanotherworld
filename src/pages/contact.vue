@@ -6,30 +6,19 @@
     </h2>
     <div class="wrapper-page-content">
       <GithubIcon />
-      <!-- <MailIcon /> -->
+      <MailIcon />
       <TwitterIcon />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
-import GithubIcon from '@/components/icons/GithubIcon.vue';
-import MailIcon from '@/components/icons/MailIcon.vue';
-import TwitterIcon from '@/components/icons/TwitterIcon.vue';
-
-@Component({
-  components: {
-    GithubIcon,
-    MailIcon,
-    TwitterIcon,
-  },
-})
-export default class extends Vue {
+import { defineComponent } from '@nuxtjs/composition-api';
+export default defineComponent({
   head() {
     return {
       title: 'Contact - HelloAnotherWorld',
     };
-  }
-}
+  },
+});
 </script>

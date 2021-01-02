@@ -6,30 +6,35 @@
     </h2>
     <div class="wrapper-page-content">
       <div class="markdown-body">
-        <nuxt-content :document="page" />
+        <nuxt-content :document="article" />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import {
+  defineComponent,
+  useContext,
+  ref,
+  onMounted,
+} from '@nuxtjs/composition-api';
 
-@Component({
-  components: {},
-})
-export default class extends Vue {
+export default defineComponent({
+  setup() {
+    const { $content } = useContext();
+    const article = ref<Object>({});
+    onMounted(async () => {
+      article.value = await $content('blog', 'index').fetch();
+    });
+    return {
+      article,
+    };
+  },
   head() {
     return {
       title: 'Blog - HelloAnotherWorld',
     };
-  }
-  async asyncData({ $content }: { $content: any }) {
-    const page = await $content('blog/index').fetch();
-
-    return {
-      page,
-    };
-  }
-}
+  },
+});
 </script>

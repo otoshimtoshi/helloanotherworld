@@ -3,11 +3,14 @@ export interface RootState<Pages> {
 }
 
 export interface Pages {
-  title: string,
-  id: string,
-  description: string,
-  path: string,
-  posted?: string | null,
-  update?: string | null,
-  color?: string | null,
+  /** 各ページのid */
+  id: string;
+  /** ブラウザに表示するtitle */
+  title?: string;
+  /** ブラウザに表示するdescription */
+  description?: string;
+  /** ブラウザに表示するurl */
+  url?: string;
+  /** ブラウザに表示するogimage */
+  ogimage?: string;
 }
