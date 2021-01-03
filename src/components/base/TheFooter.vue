@@ -1,6 +1,6 @@
 <!-- Footerコンポーネント -->
 <template>
-  <footer class="footer" :style="fixed ? '' : 'position: fixed;'">
+  <footer class="footer" :style="fixed ? 'position: relative;' : ''">
     <nav class="footer-nav">
       <!-- Footer Logo -->
       <div class="logo">

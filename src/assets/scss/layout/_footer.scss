@@ -2,13 +2,15 @@
 // TheFooter.vue
 //*************************************************
 .footer {
+  position: fixed;
   width: 100%;
   z-index: 500;
   bottom: 0px;
-  margin: 4rem 0;
+  margin: 2rem 0 1rem;
   transition: all 0.2s ease-in-out, top 0.2s ease;
   background-color: transparent;
   mix-blend-mode: difference;
+  z-index: -1;
   @include mq('medium', max) {
     margin: 2rem 0;
   }
@@ -43,7 +45,7 @@
   .footer-nav {
     position: relative;
     display: flex;
-    margin: 1.5rem 2.5rem;
+    margin: 0 2.5rem;
     align-items: center;
     @include mq('medium', max) {
       margin: 1rem;

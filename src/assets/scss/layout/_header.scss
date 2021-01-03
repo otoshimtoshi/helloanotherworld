@@ -2,6 +2,7 @@
 // TheHeader.vue
 //*************************************************
 .header {
+  position: fixed;
   width: 100%;
   z-index: 500;
   top: 0px;
@@ -207,11 +208,19 @@
       transition: transform 0.6s ease-in-out, top 0.5s ease;
       li {
         padding: 0.2em 0;
-        width: 30%;
+        width: 35%;
         left: 35%;
         position: relative;
         transition: transform 0.6s ease-in-out, top 0.5s ease;
         margin-bottom: 1em;
+        @include mq('medium', max) {
+          width: 50%;
+          left: 25%;
+        }
+        @include mq('small', max) {
+          width: 75%;
+          left: 15%;
+        }
         &::before {
           position: absolute;
           content: '';

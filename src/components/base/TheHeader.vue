@@ -1,13 +1,9 @@
 <!-- Headerコンポーネント -->
 <template>
-  <header
-    id="header"
-    class="header"
-    :style="isScroll ? 'position: fixed;' : ''"
-  >
+  <header class="header">
     <nav class="header-nav">
       <!-- Header Logo -->
-      <h1 class="logo" :class="{ header_scroll_color: isScroll }">
+      <h1 class="logo">
         <nuxt-link to="/" data-id="GoHome">
           <span class="stroke-black">Hello</span>
           <span class="stroke-white">Another</span>
@@ -41,41 +37,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  reactive,
-  toRefs,
-  onMounted,
-} from '@nuxtjs/composition-api';
+import { defineComponent } from '@nuxtjs/composition-api';
 export default defineComponent({
-  setup() {
-    const state = reactive({
-      isScroll: false,
-      headerHeight: 0,
-    });
-    onMounted(() => {
-      window.addEventListener('scroll', () => {
-        // header高さを取得
-        var height = document.getElementById('header');
-        // wrapperを取得
-        const wrapper = document.getElementById('wrapper');
-        if (height !== null && wrapper !== null) {
-          state.headerHeight = height.clientHeight;
-          wrapper.style.marginTop = state.headerHeight + 'px';
-        } else {
-          return;
-        }
-        if (window.scrollY > 50) {
-          state.isScroll = true;
-        } else {
-          wrapper.style.marginTop = 'unset';
-          state.isScroll = false;
-        }
-      });
-    });
-    return {
-      ...toRefs(state),
-    };
-  },
 });
 </script>
