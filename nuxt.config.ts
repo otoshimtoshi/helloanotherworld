@@ -1,11 +1,8 @@
-const path = require('path');
-const environment = process.env.NODE_ENV || 'development';
-const envSet = require(`./.env.${environment}`);
+import path = require('path');
 
 export default {
   ssr: 'false',
   target: 'static',
-  env: envSet,
   components: true,
   head: {
     title: 'HelloAnotherWorld',
@@ -51,33 +48,38 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
   loading: { color: '#111111' },
-  css: ['@/assets/css/main.scss'],
+  css: ['@/assets/scss/main.scss'],
   build: {
-    extend(config) {
-      if (!!config.module) {
-        config.module.rules.push(
-          {
-            test: /\.(glsl|fs|vs)$/,
-            exclude: /node_modules/,
-            use: {
-              loader: 'glslify-import-loader',
-            },
+    extend(config, { isDev, isClient }) {// eslint-disable-line
+      config.module.rules.push(
+        {
+          test: /\.(glsl|fs|vs)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'glslify-import-loader',
           },
-          {
-            test: /\.(glsl|fs|vs)$/,
-            exclude: /node_modules/,
-            use: {
-              loader: 'raw-loader',
-            },
+        },
+        {
+          test: /\.(glsl|fs|vs)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'raw-loader',
           },
-          {
-            test: /\.(glsl|fs|vs)$/,
-            exclude: /node_modules/,
-            use: {
-              loader: 'glslify-loader',
-            },
-          }
-        );
+        },
+        {
+          test: /\.(glsl|fs|vs)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'glslify-loader',
+          },
+        }
+      );
+      // isDev が true の場合、webpack を開発モードに設定します
+      if (isDev) {
+        config.mode = 'development';
+      }
+      if (isClient) {
+        config.devtool = 'source-map';
       }
     },
     resolve: {

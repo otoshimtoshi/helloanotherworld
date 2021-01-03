@@ -23,7 +23,7 @@ import {
 export default defineComponent({
   setup() {
     const { $content } = useContext();
-    const article = ref<Object>({});
+    const article = ref<unknown>({});
     onMounted(async () => {
       article.value = await $content('blog', 'index').fetch();
     });

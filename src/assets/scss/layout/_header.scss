@@ -10,25 +10,25 @@
   a {
     font-weight: bold;
     transition-property: width, height;
-    color: $font-base-color;
+    color: $font-main-color;
   }
   .stroke-black {
-    color: $font-sub-color;
-    -webkit-text-stroke: 1px $font-base-color;
+    color: $font-base-color;
+    -webkit-text-stroke: 1px $font-main-color;
     -webkit-text-stroke-width: 0.5px;
     &:hover {
-      color: $font-base-color;
-      -webkit-text-stroke: 1px $font-sub-color;
+      color: $font-main-color;
+      -webkit-text-stroke: 1px $font-base-color;
       -webkit-text-stroke-width: 0.5px;
     }
   }
   .stroke-white {
-    color: $font-base-color;
-    -webkit-text-stroke: 1px $font-sub-color;
+    color: $font-main-color;
+    -webkit-text-stroke: 1px $font-base-color;
     -webkit-text-stroke-width: thin;
     &:hover {
-      color: $font-sub-color;
-      -webkit-text-stroke: 1px $font-base-color;
+      color: $font-base-color;
+      -webkit-text-stroke: 1px $font-main-color;
       -webkit-text-stroke-width: 0.5px;
     }
   }
@@ -71,7 +71,7 @@
           left: 0;
           width: 100%;
           height: 2px;
-          background: $font-base-color;
+          background: $font-main-color;
           transform: scale(0, 1);
           transform-origin: center top;
           transition: transform 0.3s;
@@ -133,7 +133,7 @@
     width: 8rem;
     height: 8rem;
     fill: none;
-    stroke: $font-base-color;
+    stroke: $font-main-color;
     @include mq('medium', max) {
       width: 6rem;
       height: 6rem;
@@ -169,11 +169,11 @@
   @include font-size-base;
 }
 .outer-menu__close {
-  color: $font-sub-color;
+  color: $font-accent-white-color;
 }
 .wrapper-menu {
-  background: $background-sub-color;
-  color: $font-sub-color;
+  background: $background-main-color;
+  color: $font-main-color;
   position: fixed;
   top: 0;
   left: 0;
@@ -185,10 +185,11 @@
   transition: transform 2s ease, opacity 2s ease;
   .wrapper-menu-left {
     display: flex;
-    background: #444444;
+    background: $background-base-color;
     color: $font-base-color;
     width: 30%;
     height: auto;
+    filter: blur(5px);
   }
   .wrapper-menu-right {
     position: relative;
@@ -203,30 +204,49 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      text-align: left;
-      list-style: none;
       transition: transform 0.6s ease-in-out, top 0.5s ease;
       li {
-        border-bottom: solid 1px $border-base-color;
         padding: 0.2em 0;
-        width: 50%;
-        left: 25%;
+        width: 30%;
+        left: 35%;
         position: relative;
         transition: transform 0.6s ease-in-out, top 0.5s ease;
+        margin-bottom: 1em;
+        &::before {
+          position: absolute;
+          content: '';
+          top: 50%;
+          width: 100%;
+          height: 1px;
+          background-color: $font-accent-white-color;
+          z-index: 2;
+        }
         &:last-child {
           padding-bottom: 0.2em;
+          margin-bottom: unset;
         }
         a {
-          display: block;
-          color: $font-sub-color;
+          display: flex;
+          justify-content: space-between;
+          color: $font-main-color;
           text-decoration: none;
           transition: color 0.6s ease;
           transition: transform 0.6s ease-in-out, top 0.5s ease;
+          .span-left,.span-right {
+            z-index: 3;
+            background-color: $background-main-color;
+            padding: 0 .5em;
+          }
+          .span-right {
+            &.ja {
+              font-size: 18px;
+            }
+          }
         }
       }
     }
     address {
-      color: $font-sub-color;
+      color: $font-base-color;
       font-size: $font-size-small;
       text-align: center;
       width: 100%;

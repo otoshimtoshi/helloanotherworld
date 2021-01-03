@@ -18,25 +18,25 @@
   a {
     font-weight: bold;
     transition-property: width, height;
-    color: $font-base-color;
+    color: $font-main-color;
   }
   .stroke-black {
-    color: $font-sub-color;
-    -webkit-text-stroke: 1px $font-base-color;
+    color: $font-base-color;
+    -webkit-text-stroke: 1px $font-main-color;
     -webkit-text-stroke-width: 0.5px;
     &:hover {
-      color: $font-base-color;
-      -webkit-text-stroke: 1px $font-sub-color;
+      color: $font-main-color;
+      -webkit-text-stroke: 1px $font-base-color;
       -webkit-text-stroke-width: 0.5px;
     }
   }
   .stroke-white {
-    color: $font-base-color;
-    -webkit-text-stroke: 1px $font-sub-color;
+    color: $font-main-color;
+    -webkit-text-stroke: 1px $font-base-color;
     -webkit-text-stroke-width: thin;
     &:hover {
-      color: $font-sub-color;
-      -webkit-text-stroke: 1px $font-base-color;
+      color: $font-base-color;
+      -webkit-text-stroke: 1px $font-main-color;
       -webkit-text-stroke-width: 0.5px;
     }
   }
@@ -81,7 +81,7 @@
           left: 0;
           width: 100%;
           height: 2px;
-          background: $font-base-color;
+          background: $font-main-color;
           transform: scale(0, 1);
           transform-origin: center top;
           transition: transform 0.3s;

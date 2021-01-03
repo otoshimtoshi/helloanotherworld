@@ -9,72 +9,73 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import { computed, defineComponent, onMounted, reactive, toRefs,ref } from '@nuxtjs/composition-api';
 import { ElementIdCodes } from '@/script/constants/element-id-codes';
 
-@Component({
-  components: {},
-})
-export default class extends Vue {
-  /** マウスのX座標 */
-  private mouseX: number = 0;
-  /** マウスのY座標 */
-  private mouseY: number = 0;
-  /** マウスオーバーフラグ */
-  private isOver: boolean = false;
-  /** 特定のaタグホバーフラグ */
-  private isHome: boolean = false;
-  /** 特定のaタグホバーフラグ */
-  private isMore: boolean = false;
-  /** aタグ情報を格納 */
-  private aTagEventElement: any;
-
-  /** マウス表示位置制御 */
-  get transformPosition(): string {
-    return 'transform: translate3d(' + this.mouseX + 'px, ' + this.mouseY + 'px, ' + '0px)';
-  }
-
-  /** 各種フラグの初期化 */
-  initilize() {
-    this.isOver = false;
-    this.isHome = false;
-    this.isMore = false;
-  }
-
-  /**
-   * DOMのレンダリング後aタグを全て取得し取得タグのmousemove,mouseover,mouseoutイベント発火時
-   * マウス座標を取得、ポインター座標へ取得座標を反映
-   *
-   */
-  mounted() {
-    window.addEventListener('mousemove', (e) => {
-      this.mouseX = e.clientX;
-      this.mouseY = e.clientY;
+export default defineComponent({
+  setup() {
+    const state = reactive({
+      mouseX: 0,
+      mouseY: 0,
+      isOver: false,
+      isHome:false,
+      isMore:false
     });
-    if (!this.aTagEventElement) {
-      this.aTagEventElement = document.querySelectorAll('a');
+
+    /** マウス表示位置制御 */
+    const transformPosition = computed(() => {
+      return 'transform: translate3d(' + state.mouseX + 'px, ' + state.mouseY + 'px, ' + '0px)';
+    });
+
+    /** 各種フラグの初期化 */
+    const initilize = () => {
+      state.isOver = false;
+      state.isHome = false;
+      state.isMore = false;
+    };
+
+    /** aタグ情報を格納 */
+    const aTagEventElement = ref<any>();// eslint-disable-line
+
+    /**
+     * DOMのレンダリング後aタグを全て取得し取得タグのmousemove,mouseover,mouseoutイベント発火時
+     * マウス座標を取得、ポインター座標へ取得座標を反映
+     */
+    onMounted(() => {
+      window.addEventListener('mousemove', (e) => {
+        state.mouseX = e.clientX;
+        state.mouseY = e.clientY;
+      });
+    if (!aTagEventElement.value) {
+      aTagEventElement.value = document.querySelectorAll('a');
     }
-    for (let i = 0; i < this.aTagEventElement.length; i++) {
+    for (let i = 0; i < aTagEventElement.value.length; i++) {
       //マウスホバー時
-      this.aTagEventElement[i].addEventListener('mouseover', () => {
-        switch (this.aTagEventElement[i].dataset.id) {
+      aTagEventElement.value[i].addEventListener('mouseover', () => {
+        switch (aTagEventElement.value[i].dataset.id) {
           case ElementIdCodes.GO_HOME:
-            this.isHome = true;
-            this.isOver = true;
+            state.isHome = true;
+            state.isOver = true;
             break;
           case ElementIdCodes.LEARN_MORE:
-            this.isMore = true;
-            this.isOver = true;
+            state.isMore = true;
+            state.isOver = true;
             break;
           default:
-            this.isOver = true;
+            state.isOver = true;
         }
       });
       //マウスホバー解除時
-      this.aTagEventElement[i].addEventListener('mouseout', () => {
-        this.initilize();
+      aTagEventElement.value[i].addEventListener('mouseout', () => {
+        initilize();
       });
     }
-  }
-}
+    });
+
+    return {
+      ...toRefs(state),
+      transformPosition,
+    };
+  },
+});
 </script>

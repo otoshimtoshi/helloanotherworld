@@ -7,9 +7,9 @@ html {
 }
 body {
   @include font-size-base;
-  background: $background-base-color;
+  background: $background-main-color;
   box-sizing: border-box;
-  color: $font-base-color;
+  color: $font-main-color;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1;
@@ -22,7 +22,7 @@ h2 {
   @include h2;
 }
 svg {
-  fill: $font-base-color;
+  fill: $font-main-color;
 }
 span {
   &.ja {

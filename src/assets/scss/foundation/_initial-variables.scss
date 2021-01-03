@@ -52,25 +52,25 @@ $font-size-base: 20px !default; // baseのフォントサイズ
 $font-size-small: 16px !default; // モバイル(480px)のフォントサイズ
 $font-size-large: 30px !default; // PC(1200px)以上のフォントサイズ
 $font-size-h1: 55px !default;
-$font-size-h2: 45px !default;
-$font-size-h3: 35px !default;
+$font-size-h2: 35px !default;
+$font-size-h3: 30px !default;
 
 // ==========================================================================
 // color
 // ==========================================================================
 // font-color
-$font-base-color: #ffffff !default;
-$font-sub-color: #000000 !default;
+$font-main-color: #f4f4f4 !default;
+$font-base-color: #151516 !default;
+$font-accent-white-color: #929295 !default;
+$font-accent-black-color: #161615 !default;
 // background-color
-$background-base-color: #000000 !default;
-$background-sub-color: #ffffff !default;
-$background-transparent: transparent !default;
-$header-scroll-background-color: rgba(255, 255, 255, 0.3) !default; // headerのscroll後、background-color
+$background-main-color: #151516 !default;
+$background-base-color: #f4f4f4 !default;
 // border-color
-$border-base-color: rgba(0, 0, 0, 0.5) !default;
+$border-base-color: $font-base-color !default;
 // svg-stroke-color
-$svg-stroke-color: rgba(255, 255, 255, 0.3) !default;
+$svg-stroke-color: $font-main-color !default;
 // ==========================================================================
 // box-shadow
 // ==========================================================================
-$base-box-shadow: 0 4px 10px -1px rgba(207, 92, 92, 0.1) !default;
+$base-box-shadow: 0 4px 10px -1px $font-main-color !default;

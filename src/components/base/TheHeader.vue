@@ -21,9 +21,9 @@
           <nuxt-link to="/who-me-are" data-id="LearnMore">Who me are</nuxt-link>
         </li>
         <!-- Blog -->
-        <li>
+        <!-- <li>
           <nuxt-link to="/blog" data-id="LearnMore">Blog</nuxt-link>
-        </li>
+        </li> -->
         <!-- Collection of works -->
         <li>
           <nuxt-link to="/collection" data-id="LearnMore">
