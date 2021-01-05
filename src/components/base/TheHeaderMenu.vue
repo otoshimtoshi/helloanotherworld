@@ -20,17 +20,43 @@
       <span v-if="isActive" class="outer-menu outer-menu__close">Close?</span>
     </a>
     <div v-show="isActive" class="wrapper-menu">
-      <div class="wrapper-menu-left" />
+      <div class="wrapper-menu-left">
+        <transition name="fade">
+          <template v-if="isTop">
+            <p class="fade-text">HelloAnotherWorld</p>
+          </template>
+        </transition>
+        <transition name="fade">
+          <template v-if="isWhoMeAre">
+            <p class="fade-text">Who me are</p>
+          </template>
+        </transition>
+        <transition name="fade">
+          <template v-if="isBlog">
+            <p class="fade-text">Blog</p>
+          </template>
+        </transition>
+        <transition name="fade">
+          <template v-if="isCollection">
+            <p class="fade-text">Collection of works</p>
+          </template>
+        </transition>
+        <transition name="fade">
+          <template v-if="isContact">
+            <p class="fade-text">Contact</p>
+          </template>
+        </transition>
+      </div>
       <div class="wrapper-menu-right">
         <ul class="">
           <!-- TOP -->
-          <li>
+          <li @mouseover="mouseOverTop" @mouseleave="mouseLeaveTop">
             <nuxt-link to="/" data-id="GoHome" @click.native="isClick">
               <span class="span-left">TOP</span><span class="span-right">HelloAnotherWorld</span>
             </nuxt-link>
           </li>
           <!-- Who me are -->
-          <li>
+          <li @mouseover="mouseOverWhoMeAre" @mouseleave="mouseLeaveWhoMeAre">
             <nuxt-link
               to="/who-me-are"
               data-id="LearnMore"
@@ -40,13 +66,13 @@
             </nuxt-link>
           </li>
           <!-- Blog -->
-          <!-- <li>
+          <li @mouseover="mouseOverBlog" @mouseleave="mouseLeaveBlog">
             <nuxt-link to="/blog" data-id="LearnMore" @click.native="isClick">
               <span class="span-left">Blog</span><span class="span-right ja">ブログ</span>
             </nuxt-link>
-          </li> -->
+          </li>
           <!-- Collection of works -->
-          <li>
+          <li @mouseover="mouseOverCollection" @mouseleave="mouseLeaveCollection">
             <nuxt-link
               to="/collection"
               data-id="LearnMore"
@@ -56,7 +82,7 @@
             </nuxt-link>
           </li>
           <!-- Contact -->
-          <li>
+          <li @mouseover="mouseOverContact" @mouseleave="mouseLeaveContact">
             <nuxt-link
               to="/contact"
               data-id="LearnMore"
@@ -78,6 +104,11 @@ export default defineComponent({
   setup() {
     const state = reactive({
       isActive: false,
+      isTop: false,
+      isWhoMeAre: false,
+      isBlog: false,
+      isCollection: false,
+      isContact: false
     });
 
     const isClick = () => {
@@ -85,9 +116,70 @@ export default defineComponent({
         ? (state.isActive = false)
         : (state.isActive = true);
     };
+
+    /** TOP マウスオーバーイベント */
+    const mouseOverTop = () => {
+      return (state.isTop = true);
+    };
+
+    /** TOP マウスリーブイベント */
+    const mouseLeaveTop = () => {
+      return (state.isTop = false);
+    };
+
+    /** WhoMeAre マウスオーバーイベント */
+    const mouseOverWhoMeAre = () => {
+      return (state.isWhoMeAre = true);
+    };
+
+    /** WhoMeAre マウスリーブイベント */
+    const mouseLeaveWhoMeAre = () => {
+      return (state.isWhoMeAre = false);
+    };
+
+    /** Blog マウスオーバーイベント */
+    const mouseOverBlog = () => {
+      return (state.isBlog = true);
+    };
+
+    /** Blog マウスリーブイベント */
+    const mouseLeaveBlog = () => {
+      return (state.isBlog = false);
+    };
+
+    /** Collection マウスオーバーイベント */
+    const mouseOverCollection = () => {
+      return (state.isCollection = true);
+    };
+
+    /** Collection マウスリーブイベント */
+    const mouseLeaveCollection = () => {
+      return (state.isCollection = false);
+    };
+    
+    /** Contact マウスオーバーイベント */
+    const mouseOverContact = () => {
+      return (state.isContact = true);
+    };
+
+    /** Contact マウスリーブイベント */
+    const mouseLeaveContact = () => {
+      return (state.isContact = false);
+    };
+
     return {
       ...toRefs(state),
       isClick,
+      mouseOverTop,
+      mouseLeaveTop,
+      mouseOverWhoMeAre,
+      mouseLeaveWhoMeAre,
+      mouseOverBlog,
+      mouseLeaveBlog,
+      mouseOverCollection,
+      mouseLeaveCollection,
+      mouseOverContact,
+      mouseLeaveContact
     };
   },
 });

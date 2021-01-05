@@ -190,7 +190,31 @@
     color: $font-base-color;
     width: 30%;
     height: auto;
-    filter: blur(5px);
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1000px;
+      height: 180px;
+      background-color: $background-main-color;
+      transform: rotate(-25deg);
+      transform-origin: left bottom;
+      @include mq('large',max) {
+        height: 143px;
+      }
+      @include mq('medium', max) {
+        height: 110px;
+      }
+      @include mq('small', max) {
+        height: 67px;
+      }
+    }
+    .fade-text {
+      position: absolute;
+      color: $font-main-color;
+      padding: 1em;
+    }
   }
   .wrapper-menu-right {
     position: relative;
@@ -198,6 +222,26 @@
     flex-wrap: wrap;
     width: 70%;
     height: auto;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: -200px;
+      width: 1000px;
+      height: 452px;
+      background-color: $background-base-color;
+      transform: rotate(-25deg);
+      transform-origin: right bottom;
+      @include mq('large',max) {
+        height: 388px;
+      }
+      @include mq('medium', max) {
+        height: 315px;
+      }
+      @include mq('small', max) {
+        height: 226px;
+      }
+    }
     ul {
       width: 100%;
       height: auto;
