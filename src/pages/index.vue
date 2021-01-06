@@ -17,6 +17,6 @@ export default defineComponent({
     // onMounted(() => {
     //   require('@/script/index/Main');
     // });
-  },
+  }
 });
 </script>

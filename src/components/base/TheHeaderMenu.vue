@@ -52,7 +52,8 @@
           <!-- TOP -->
           <li @mouseover="mouseOverTop" @mouseleave="mouseLeaveTop">
             <nuxt-link to="/" data-id="GoHome" @click.native="isClick">
-              <span class="span-left">TOP</span><span class="span-right">HelloAnotherWorld</span>
+              <span class="span-left">TOP</span>
+              <span class="span-right">HelloAnotherWorld</span>
             </nuxt-link>
           </li>
           <!-- Who me are -->
@@ -62,23 +63,28 @@
               data-id="LearnMore"
               @click.native="isClick"
             >
-              <span class="span-left">Who me are</span><span class="span-right ja">自己紹介</span>
+              <span class="span-left">Who me are</span>
+              <span class="span-right ja">自己紹介</span>
             </nuxt-link>
           </li>
           <!-- Blog -->
-          <li @mouseover="mouseOverBlog" @mouseleave="mouseLeaveBlog">
+          <!-- <li @mouseover="mouseOverBlog" @mouseleave="mouseLeaveBlog">
             <nuxt-link to="/blog" data-id="LearnMore" @click.native="isClick">
               <span class="span-left">Blog</span><span class="span-right ja">ブログ</span>
             </nuxt-link>
-          </li>
+          </li> -->
           <!-- Collection of works -->
-          <li @mouseover="mouseOverCollection" @mouseleave="mouseLeaveCollection">
+          <li
+            @mouseover="mouseOverCollection"
+            @mouseleave="mouseLeaveCollection"
+          >
             <nuxt-link
               to="/collection"
               data-id="LearnMore"
               @click.native="isClick"
             >
-              <span class="span-left">Collection of works</span><span class="span-right ja">作品集</span>
+              <span class="span-left">Collection of works</span>
+              <span class="span-right ja">作品集</span>
             </nuxt-link>
           </li>
           <!-- Contact -->
@@ -88,7 +94,8 @@
               data-id="LearnMore"
               @click.native="isClick"
             >
-              <span class="span-left">Contact</span><span class="span-right ja">お問い合わせ</span>
+              <span class="span-left">Contact</span>
+              <span class="span-right ja">お問い合わせ</span>
             </nuxt-link>
           </li>
         </ul>
@@ -156,7 +163,7 @@ export default defineComponent({
     const mouseLeaveCollection = () => {
       return (state.isCollection = false);
     };
-    
+
     /** Contact マウスオーバーイベント */
     const mouseOverContact = () => {
       return (state.isContact = true);
@@ -181,6 +188,6 @@ export default defineComponent({
       mouseOverContact,
       mouseLeaveContact
     };
-  },
+  }
 });
 </script>

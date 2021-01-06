@@ -17,7 +17,7 @@ import {
   defineComponent,
   useContext,
   ref,
-  onMounted,
+  onMounted
 } from '@nuxtjs/composition-api';
 
 export default defineComponent({
@@ -28,13 +28,13 @@ export default defineComponent({
       article.value = await $content('blog', 'index').fetch();
     });
     return {
-      article,
+      article
     };
   },
   head() {
     return {
-      title: 'Blog - HelloAnotherWorld',
+      title: 'Blog - HelloAnotherWorld'
     };
-  },
+  }
 });
 </script>

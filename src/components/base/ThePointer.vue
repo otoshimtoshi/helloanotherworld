@@ -1,7 +1,11 @@
 <!-- pointerコンポーネント -->
 <template>
   <div class="pointer">
-    <div class="pointer_cursor" :class="{ pointer_isover: isOver }" :style="transformPosition">
+    <div
+      class="pointer_cursor"
+      :class="{ pointer_isover: isOver }"
+      :style="transformPosition"
+    >
       <span v-if="isHome" class="txt">Go Home</span>
       <span v-if="isMore" class="txt">Learn More</span>
     </div>
@@ -9,7 +13,14 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, reactive, toRefs,ref } from '@nuxtjs/composition-api';
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  reactive,
+  toRefs,
+  ref
+} from '@nuxtjs/composition-api';
 import { ElementIdCodes } from '@/script/constants/element-id-codes';
 
 export default defineComponent({
@@ -18,13 +29,20 @@ export default defineComponent({
       mouseX: 0,
       mouseY: 0,
       isOver: false,
-      isHome:false,
-      isMore:false
+      isHome: false,
+      isMore: false
     });
 
     /** マウス表示位置制御 */
     const transformPosition = computed(() => {
-      return 'transform: translate3d(' + state.mouseX + 'px, ' + state.mouseY + 'px, ' + '0px)';
+      return (
+        'transform: translate3d(' +
+        state.mouseX +
+        'px, ' +
+        state.mouseY +
+        'px, ' +
+        '0px)'
+      );
     });
 
     /** 各種フラグの初期化 */
@@ -35,7 +53,7 @@ export default defineComponent({
     };
 
     /** aタグ情報を格納 */
-    const aTagEventElement = ref<any>();// eslint-disable-line
+    const aTagEventElement = ref<any>(); // eslint-disable-line
 
     /**
      * DOMのレンダリング後aタグを全て取得し取得タグのmousemove,mouseover,mouseoutイベント発火時
@@ -46,36 +64,36 @@ export default defineComponent({
         state.mouseX = e.clientX;
         state.mouseY = e.clientY;
       });
-    if (!aTagEventElement.value) {
-      aTagEventElement.value = document.querySelectorAll('a');
-    }
-    for (let i = 0; i < aTagEventElement.value.length; i++) {
-      //マウスホバー時
-      aTagEventElement.value[i].addEventListener('mouseover', () => {
-        switch (aTagEventElement.value[i].dataset.id) {
-          case ElementIdCodes.GO_HOME:
-            state.isHome = true;
-            state.isOver = true;
-            break;
-          case ElementIdCodes.LEARN_MORE:
-            state.isMore = true;
-            state.isOver = true;
-            break;
-          default:
-            state.isOver = true;
-        }
-      });
-      //マウスホバー解除時
-      aTagEventElement.value[i].addEventListener('mouseout', () => {
-        initilize();
-      });
-    }
+      if (!aTagEventElement.value) {
+        aTagEventElement.value = document.querySelectorAll('a');
+      }
+      for (let i = 0; i < aTagEventElement.value.length; i++) {
+        //マウスホバー時
+        aTagEventElement.value[i].addEventListener('mouseover', () => {
+          switch (aTagEventElement.value[i].dataset.id) {
+            case ElementIdCodes.GO_HOME:
+              state.isHome = true;
+              state.isOver = true;
+              break;
+            case ElementIdCodes.LEARN_MORE:
+              state.isMore = true;
+              state.isOver = true;
+              break;
+            default:
+              state.isOver = true;
+          }
+        });
+        //マウスホバー解除時
+        aTagEventElement.value[i].addEventListener('mouseout', () => {
+          initilize();
+        });
+      }
     });
 
     return {
       ...toRefs(state),
-      transformPosition,
+      transformPosition
     };
-  },
+  }
 });
 </script>

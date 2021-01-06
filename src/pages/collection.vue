@@ -13,8 +13,8 @@ import { defineComponent } from '@nuxtjs/composition-api';
 export default defineComponent({
   head() {
     return {
-      title: 'Collection of works - HelloAnotherWorld',
+      title: 'Collection of works - HelloAnotherWorld'
     };
-  },
+  }
 });
 </script>

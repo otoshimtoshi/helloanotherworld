@@ -5,5 +5,5 @@ export enum ElementIdCodes {
   /** Go Home */
   GO_HOME = 'GoHome',
   /** Learn More */
-  LEARN_MORE = 'LearnMore',
+  LEARN_MORE = 'LearnMore'
 }

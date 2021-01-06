@@ -5,9 +5,27 @@
       <!-- Header Logo -->
       <h1 class="logo">
         <nuxt-link to="/" data-id="GoHome">
-          <span class="stroke-black">Hello</span>
-          <span class="stroke-white">Another</span>
-          <span class="stroke-black">World</span>
+          <template v-if="root === 'index'">
+            <span class="stroke-black">Hello</span>
+            <span class="stroke-white">Another</span>
+            <span class="stroke-black">World</span>
+          </template>
+          <template v-if="root === 'blog'">
+            <span class="stroke-black">Blog</span>
+          </template>
+          <template v-if="root === 'who-me-are'">
+            <span class="stroke-black">Who</span>
+            <span class="stroke-white">Me</span>
+            <span class="stroke-black">Are</span>
+          </template>
+          <template v-if="root === 'collection'">
+            <span class="stroke-black">Collection</span>
+            <span class="stroke-white">of</span>
+            <span class="stroke-black">Works</span>
+          </template>
+          <template v-if="root === 'contact'">
+            <span class="stroke-black">Contact</span>
+          </template>
         </nuxt-link>
       </h1>
       <!-- Header Menu -->
@@ -37,7 +55,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
+import {
+  defineComponent,
+  useContext,
+  reactive,
+  computed,
+  toRefs
+} from '@nuxtjs/composition-api';
 export default defineComponent({
+  setup() {
+    const { route } = useContext();
+    const state = reactive({
+      root: computed(() => route.value.name)
+    });
+    return {
+      ...toRefs(state)
+    };
+  }
 });
 </script>
