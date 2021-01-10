@@ -10,13 +10,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
+import { defineComponent, onMounted } from '@nuxtjs/composition-api';
 
 export default defineComponent({
   setup() {
-    // onMounted(() => {
-    //   require('@/script/index/Main');
-    // });
+    onMounted(() => {
+      require('@/script/index/Main');
+    });
   }
 });
 </script>

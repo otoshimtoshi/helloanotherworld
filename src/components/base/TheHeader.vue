@@ -28,27 +28,6 @@
           </template>
         </nuxt-link>
       </h1>
-      <!-- Header Menu -->
-      <ul class="header-nav-menu">
-        <!-- Who me are -->
-        <li>
-          <nuxt-link to="/who-me-are" data-id="LearnMore">Who me are</nuxt-link>
-        </li>
-        <!-- Blog -->
-        <!-- <li>
-          <nuxt-link to="/blog" data-id="LearnMore">Blog</nuxt-link>
-        </li> -->
-        <!-- Collection of works -->
-        <li>
-          <nuxt-link to="/collection" data-id="LearnMore">
-            Collection of works
-          </nuxt-link>
-        </li>
-        <!-- Contact -->
-        <li>
-          <nuxt-link to="/contact" data-id="LearnMore">Contact</nuxt-link>
-        </li>
-      </ul>
       <TheHeaderMenu />
     </nav>
   </header>

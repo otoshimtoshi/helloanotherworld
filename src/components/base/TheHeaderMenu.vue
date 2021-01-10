@@ -2,22 +2,8 @@
 <template>
   <div class="header-menu-outer">
     <a class="header-menu" @click="isClick">
-      <svg
-        v-if="!isActive"
-        viewBox="0 0 66 66"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle cx="33" cy="33" r="32" />
-      </svg>
-      <svg
-        v-if="isActive"
-        viewBox="0 0 66 66"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle style="stroke: #929295" cx="33" cy="33" r="32" />
-      </svg>
       <span v-if="!isActive" class="outer-menu">Menu</span>
-      <span v-if="isActive" class="outer-menu outer-menu__close">Close?</span>
+      <span v-if="isActive" class="outer-menu">Close?</span>
     </a>
     <div v-show="isActive" class="wrapper-menu">
       <div class="wrapper-menu-left">

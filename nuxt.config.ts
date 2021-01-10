@@ -7,7 +7,7 @@ export default {
   head: {
     title: 'HelloAnotherWorld',
     htmlAttrs: {
-      lang: 'ja',
+      lang: 'ja'
     },
     meta: [
       { charset: 'utf-8' },
@@ -16,70 +16,71 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.',
+          'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.'
       },
       {
         hid: 'keywords',
         name: 'keywords',
         content:
-          'Masatoshi Otoshi, JS frameworks, Vue, Nuxt, three.js, 3D modeling, machine learning, CityGML',
+          'Masatoshi Otoshi, JS frameworks, Vue, Nuxt, three.js, 3D modeling, machine learning, CityGML'
       },
       { hid: 'og:title', name: 'og:title', content: 'HelloAnotherWorld' },
       {
         hid: 'og:description',
         name: 'og:description',
         content:
-          'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.',
+          'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.'
       },
       {
         hid: 'og:url',
         name: 'og:url',
-        content: 'https://helloanotherworld.com',
+        content: 'https://helloanotherworld.com'
       },
       {
         hid: 'twitter:card',
         name: 'twitter:card',
-        content: 'summary_large_image',
+        content: 'summary_large_image'
       },
       {
         hid: 'twitter:title',
         name: 'twitter:title',
-        content: 'HelloAnotherWorld',
+        content: 'HelloAnotherWorld'
       },
       {
         hid: 'twitter:description',
         name: 'twitter:description',
         content:
-          'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.',
-      },
+          'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.'
+      }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   loading: { color: '#111111' },
   css: ['@/assets/scss/main.scss'],
   build: {
-    extend(config, { isDev, isClient }) {// eslint-disable-line
+    // eslint-disable-next-line
+    extend(config, { isDev, isClient }) {
       config.module.rules.push(
         {
           test: /\.(glsl|fs|vs)$/,
           exclude: /node_modules/,
           use: {
-            loader: 'glslify-import-loader',
-          },
+            loader: 'glslify-import-loader'
+          }
         },
         {
           test: /\.(glsl|fs|vs)$/,
           exclude: /node_modules/,
           use: {
-            loader: 'raw-loader',
-          },
+            loader: 'raw-loader'
+          }
         },
         {
           test: /\.(glsl|fs|vs)$/,
           exclude: /node_modules/,
           use: {
-            loader: 'glslify-loader',
-          },
+            loader: 'glslify-loader'
+          }
         }
       );
       // isDev が true の場合、webpack を開発モードに設定します
@@ -94,15 +95,15 @@ export default {
       extensions: ['.js', '.ts', '.vue'],
       alias: {
         '@/*': path.resolve(__dirname, 'src/*'),
-        '~/*': path.resolve(__dirname, './*'),
-      },
+        '~/*': path.resolve(__dirname, './*')
+      }
     },
-    target: 'static',
+    target: 'static'
   },
   buildModules: ['@nuxtjs/composition-api', '@nuxt/typescript-build'],
   typescript: {
     typeCheck: false,
-    ignoreNotFoundWarnings: true,
+    ignoreNotFoundWarnings: true
   },
   plugin: ['@/plugins/update.client.js'],
   modules: ['@nuxtjs/axios', '@nuxt/content', '@nuxtjs/sitemap'],
@@ -118,7 +119,7 @@ export default {
   //   },
   // },
   axios: {},
-  srcDir: 'src/',
+  srcDir: 'src/'
   // @nuxt/content カスタム設定
   // content: {
   // // デフォルト値

@@ -57,14 +57,16 @@ $font-size-h3: 30px !default;
 // color
 // ==========================================================================
 // font-color
-$font-main-color: #f4f4f4 !default;
-$font-base-color: #151516 !default;
-$font-accent-white-color: #929295 !default;
-$font-accent-black-color: #161615 !default;
+$font-main-color: #1f304c !default;
+$font-base-color: #2c456d !default;
+$font-accent-color: #7589a6 !default;
+$font-accent-white-color: #e1ecf7 !default;
+// font-transparent
+$font-main-transparent-color: rgba(31, 48, 76, 0.7) !default;
 // background-color
-$background-main-color: #151516 !default;
-$background-base-color: #f4f4f4 !default;
-$background-accent-color: #929295 !default;
+$background-main-color: #e1ecf7 !default;
+$background-base-color: #1f304c !default;
+//#E0EBF7
 // border-color
 $border-base-color: $font-base-color !default;
 // svg-stroke-color

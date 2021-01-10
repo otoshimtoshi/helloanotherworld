@@ -65,6 +65,7 @@
 }
 @mixin h2 {
   font-size: $font-size-h2; //35px
+  @include textShadow;
   @include mq('large', max) {
     font-size: 30px;
   }
@@ -74,4 +75,10 @@
   @include mq('small', max) {
     font-size: 22px;
   }
+}
+// ==========================================================================
+// text-shadow
+// ==========================================================================
+@mixin textShadow {
+  text-shadow: 1px 1px 2px $font-accent-color;
 }
