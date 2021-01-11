@@ -8,8 +8,6 @@
         <div class="item1">
           <div id="myCanvas" />
         </div>
-        <div class="item2"></div>
-        <div class="item3"></div>
       </div>
     </div>
   </div>
@@ -34,6 +32,8 @@ export default defineComponent({
       far: 1000
     });
     const scene = ref(new THREE.Scene());
+    scene.value.background = new THREE.Color().setHSL(0.6, 0, 1);
+    scene.value.fog = new THREE.Fog(scene.value.background, 1, 5000);
     const camera = ref(
       new THREE.PerspectiveCamera(
         state.fov,
@@ -42,23 +42,39 @@ export default defineComponent({
         state.far
       )
     );
-    camera.value.position.set(20, 20, 20);
-    camera.value.lookAt(new THREE.Vector3(0, 0, 0));
+    camera.value.position.set(0, 0, 50);
 
     // 三角錐
     const geometry = ref(new THREE.TetrahedronBufferGeometry(12, 0));
-    const material = ref(new THREE.MeshStandardMaterial({ color: 0xffffff }));
+    const material = ref(new THREE.MeshStandardMaterial({ color: 0xe1ecf7 }));
     // メッシュを作成
     const mesh = ref(new THREE.Mesh(geometry.value, material.value));
-    mesh.value.receiveShadow = true;
+    mesh.value.castShadow = true;
     // 3D空間にメッシュを追加
     scene.value.add(mesh.value);
-    // 平行光源
-    const light = new THREE.SpotLight(0xffffff, 1.5);
-    light.position.set(100, 1500, 200);
-    light.castShadow = true;
-    // シーンに追加
-    scene.value.add(light);
+
+    // GROUND
+    const groundGeo = new THREE.PlaneBufferGeometry(10000, 10000);
+    const groundMat = new THREE.MeshLambertMaterial({ color: 0xe1ecf7 });
+
+    const ground = new THREE.Mesh(groundGeo, groundMat);
+    ground.position.y = -25;
+    ground.rotation.x = -Math.PI / 2;
+    ground.receiveShadow = true;
+    scene.value.add(ground);
+
+    // LIGHTS
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.2);
+    hemiLight.position.set(0, 50, 0);
+    scene.value.add(hemiLight);
+
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    dirLight.position.set(0, 2, 0);
+    dirLight.position.multiplyScalar(10);
+    dirLight.castShadow = true;
+    dirLight.shadow.mapSize.width = 2048;
+    dirLight.shadow.mapSize.height = 2048;
+    scene.value.add(dirLight);
 
     const renderer = ref<THREE.WebGLRenderer>();
 
@@ -80,9 +96,11 @@ export default defineComponent({
     });
 
     const animate = () => {
-      mesh.value.rotation.x += 0.01;
-      mesh.value.rotation.y += 0.01;
       renderer.value.render(scene.value, camera.value);
+      const time = Date.now() * 0.001;
+      mesh.value.position.y = Math.sin(time) * 10;
+      mesh.value.rotation.x = time * 0.5;
+      mesh.value.rotation.z = time * 0.51;
       requestAnimationFrame(animate);
     };
 
@@ -95,24 +113,3 @@ export default defineComponent({
   }
 });
 </script>
-<style lang="scss" scoped>
-.grid {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-rows: 1fr 100px;
-  grid-template-columns: minmax(180px, 300px) 2fr;
-  .item1 {
-    grid-row: 1 / 2;
-    grid-column: 1 / 2;
-  }
-  .item2 {
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
-  }
-  .item3 {
-    grid-row: 2 / 3;
-    grid-column: 1 / 3;
-  }
-}
-</style>
