@@ -89,4 +89,7 @@
   border-radius: 20px;
   box-shadow: 1px 1px 3px rgba(31, 48, 76, 0.3),
     -1px -1px 3px rgba(255, 255, 255, 0.3);
+  @include mq('small', max) {
+    border-radius: 10px;
+  }
 }

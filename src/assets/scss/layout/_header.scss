@@ -100,28 +100,6 @@
     width: 3rem;
     height: 3rem;
   }
-  svg {
-    position: absolute;
-    width: 8rem;
-    height: 8rem;
-    fill: none;
-    stroke: $font-main-color;
-    @include mq('medium', max) {
-      width: 6rem;
-      height: 6rem;
-    }
-    @include mq('small', max) {
-      width: 3rem;
-      height: 3rem;
-    }
-    &:hover {
-      stroke-width: 2;
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
-      -webkit-animation: dash 5s linear forwards;
-      animation: dash 5s linear forwards;
-    }
-  }
 }
 @-webkit-keyframes dash {
   to {
@@ -158,6 +136,9 @@
     color: $font-base-color;
     width: 30%;
     height: auto;
+    @include mq('small', max) {
+      width: 12%;
+    }
     .fade-text {
       position: absolute;
       color: $font-accent-white-color;
@@ -173,6 +154,9 @@
     height: auto;
     justify-content: center;
     align-items: center;
+    @include mq('small', max) {
+      width: 88%;
+    }
     ul {
       width: 80%;
       height: 40%;
