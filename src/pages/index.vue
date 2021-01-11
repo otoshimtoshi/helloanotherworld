@@ -24,6 +24,7 @@ import * as THREE from 'three';
 
 export default defineComponent({
   setup() {
+    //
     const state = reactive({
       fov: 75,
       width: 300,
@@ -68,8 +69,8 @@ export default defineComponent({
     hemiLight.position.set(0, 50, 0);
     scene.value.add(hemiLight);
 
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    dirLight.position.set(0, 2, 0);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.9);
+    dirLight.position.set(-10, 28, 10);
     dirLight.position.multiplyScalar(10);
     dirLight.castShadow = true;
     dirLight.shadow.mapSize.width = 2048;

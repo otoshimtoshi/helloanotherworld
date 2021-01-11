@@ -82,6 +82,9 @@
 @mixin textShadow {
   text-shadow: 1px 1px 2px $font-accent-color;
 }
+@mixin textShadow--hover {
+  text-shadow: -1px 0px 1px $font-accent-white-color;
+}
 // ==========================================================================
 // box-shadow
 // ==========================================================================
@@ -89,6 +92,13 @@
   border-radius: 20px;
   box-shadow: 1px 1px 3px rgba(31, 48, 76, 0.3),
     -1px -1px 3px rgba(255, 255, 255, 0.3);
+  @include mq('small', max) {
+    border-radius: 10px;
+  }
+}
+@mixin boxShadow--hover {
+  border-radius: 20px;
+  box-shadow: inset 5px 5px 10px #d6e0eb, inset -5px -5px 10px #ecf8ff;
   @include mq('small', max) {
     border-radius: 10px;
   }
