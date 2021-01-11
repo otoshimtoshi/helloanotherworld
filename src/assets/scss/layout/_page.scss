@@ -58,12 +58,18 @@
   height: 100%;
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   padding: 5px 0;
+  @include mq('medium', max) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include mq('small', max) {
+    grid-template-columns: 1fr;
+  }
   .item1 {
     margin: 0 5px;
   }
 }
 #myCanvas {
-  @include canvasShadow;
+  // @include canvasShadow;
 }

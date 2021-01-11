@@ -42,7 +42,7 @@ export default defineComponent({
         state.far
       )
     );
-    camera.value.position.set(0, 0, 50);
+    camera.value.position.set(0, -10, 55);
 
     // 三角錐
     const geometry = ref(new THREE.TetrahedronBufferGeometry(12, 0));
@@ -98,7 +98,7 @@ export default defineComponent({
     const animate = () => {
       renderer.value.render(scene.value, camera.value);
       const time = Date.now() * 0.001;
-      mesh.value.position.y = Math.sin(time) * 10;
+      mesh.value.position.y = Math.sin(time) * 5;
       mesh.value.rotation.x = time * 0.5;
       mesh.value.rotation.z = time * 0.51;
       requestAnimationFrame(animate);
