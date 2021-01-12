@@ -103,6 +103,13 @@
     border-radius: 10px;
   }
 }
+@mixin cardShadow {
+  border-radius: 20px;
+  box-shadow: 5px 5px 19px #99a0a8, -5px -5px 19px #ffffff;
+  @include mq('small', max) {
+    border-radius: 10px;
+  }
+}
 @mixin canvasShadow {
   border-radius: 7px;
   box-shadow: 3px 3px 4px rgba(31, 48, 76, 0.3),

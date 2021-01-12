@@ -140,6 +140,9 @@
     color: $font-base-color;
     width: 30%;
     height: auto;
+    @include mq('medium', max) {
+      width: 25%;
+    }
     @include mq('small', max) {
       width: 12%;
     }
@@ -158,32 +161,55 @@
     height: auto;
     justify-content: center;
     align-items: center;
+    @include mq('medium', max) {
+      width: 75%;
+    }
     @include mq('small', max) {
       width: 88%;
     }
     ul {
-      width: 80%;
+      width: 50%;
       height: 40%;
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
       transition: transform 0.6s ease-in-out, top 0.5s ease;
-      @include boxShadow;
+      @include cardShadow;
+      @include mq('xlarge', max) {
+        width: 70%;
+      }
+      @include mq('large', max) {
+        width: 70%;
+      }
+      @include mq('medium', max) {
+        width: 70%;
+      }
+      @include mq('small', max) {
+        width: 80%;
+      }
       li {
         padding: 0.2em 0;
-        width: 35%;
-        left: 35%;
+        width: 50%;
+        left: 25%;
         position: relative;
         transition: transform 0.6s ease-in-out, top 0.5s ease;
         margin-bottom: 1em;
+        @include mq('xlarge', max) {
+          width: 70%;
+          left: 18%;
+        }
+        @include mq('large', max) {
+          width: 70%;
+          left: 18%;
+        }
         @include mq('medium', max) {
-          width: 50%;
-          left: 25%;
+          width: 70%;
+          left: 18%;
         }
         @include mq('small', max) {
-          width: 75%;
-          left: 15%;
+          width: 80%;
+          left: 10%;
         }
         &::before {
           position: absolute;
@@ -205,6 +231,7 @@
           text-decoration: none;
           transition: color 0.6s ease;
           transition: transform 0.6s ease-in-out, top 0.5s ease;
+          align-items: center;
           .span-left,
           .span-right {
             z-index: 3;
@@ -213,7 +240,10 @@
           }
           .span-right {
             &.ja {
-              font-size: 18px;
+              font-size: 16px;
+              @include mq('small', max) {
+                font-size: 14px;
+              }
             }
           }
         }
