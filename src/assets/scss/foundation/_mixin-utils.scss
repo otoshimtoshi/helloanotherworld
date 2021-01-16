@@ -106,6 +106,7 @@
 @mixin cardShadow {
   border-radius: 20px;
   box-shadow: 5px 5px 19px #99a0a8, -5px -5px 19px #ffffff;
+  border: 1px solid $font-accent-transparent-white-color;
   @include mq('small', max) {
     border-radius: 10px;
   }

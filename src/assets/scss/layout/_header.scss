@@ -92,6 +92,7 @@
   text-decoration: none;
   @include boxShadow;
   cursor: pointer;
+  border: 1px solid $font-accent-transparent-white-color;
   @include mq('medium', max) {
     width: 4rem;
     height: 4rem;
