@@ -70,17 +70,16 @@ export default defineComponent({
       for (let i = 0; i < aTagEventElement.value.length; i++) {
         //マウスホバー時
         aTagEventElement.value[i].addEventListener('mouseover', () => {
+          state.isOver = true;
           switch (aTagEventElement.value[i].dataset.id) {
             case ElementIdCodes.GO_HOME:
               state.isHome = true;
-              state.isOver = true;
               break;
             case ElementIdCodes.LEARN_MORE:
               state.isMore = true;
-              state.isOver = true;
               break;
             default:
-              state.isOver = true;
+              break;
           }
         });
         //マウスホバー解除時

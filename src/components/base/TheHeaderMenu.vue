@@ -1,4 +1,4 @@
-<!-- HeaderSVGメニューコンポーネント -->
+<!-- Headerメニューコンポーネント -->
 <template>
   <div class="header-menu-outer">
     <a class="header-menu" @click="isClick">
