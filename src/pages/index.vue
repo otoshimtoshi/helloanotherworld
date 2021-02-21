@@ -9,13 +9,12 @@
           <div id="myCanvas" />
         </div>
       </div>
-      <SkullObj />
+      <!-- <SkullObj src="/SkullHead.obj" /> -->
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import SkullObj from '@/components/three/SkullObj.vue';
 import {
   defineComponent,
   reactive,
@@ -25,7 +24,6 @@ import {
 import * as THREE from 'three';
 
 export default defineComponent({
-  components: { SkullObj },
   setup() {
     //
     const state = reactive({

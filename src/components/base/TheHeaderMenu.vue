@@ -37,7 +37,12 @@
         <ul class="">
           <!-- TOP -->
           <li @mouseover="mouseOverTop" @mouseleave="mouseLeaveTop">
-            <nuxt-link to="/" data-id="GoHome" @click.native="isClick">
+            <nuxt-link
+              to="/"
+              :class="root === 'index' ? 'active' : ''"
+              data-id="GoHome"
+              @click.native="isClick"
+            >
               <span class="span-left">TOP</span>
               <span class="span-right">HelloAnotherWorld</span>
             </nuxt-link>
@@ -46,6 +51,7 @@
           <li @mouseover="mouseOverWhoMeAre" @mouseleave="mouseLeaveWhoMeAre">
             <nuxt-link
               to="/who-me-are"
+              :class="root === 'who-me-are' ? 'active' : ''"
               data-id="LearnMore"
               @click.native="isClick"
             >
@@ -54,11 +60,17 @@
             </nuxt-link>
           </li>
           <!-- Blog -->
-          <!-- <li @mouseover="mouseOverBlog" @mouseleave="mouseLeaveBlog">
-            <nuxt-link to="/blog" data-id="LearnMore" @click.native="isClick">
-              <span class="span-left">Blog</span><span class="span-right ja">ブログ</span>
+          <li @mouseover="mouseOverBlog" @mouseleave="mouseLeaveBlog">
+            <nuxt-link
+              to="/blog"
+              :class="root === 'blog' ? 'active' : ''"
+              data-id="LearnMore"
+              @click.native="isClick"
+            >
+              <span class="span-left">Blog</span>
+              <span class="span-right ja">ブログ</span>
             </nuxt-link>
-          </li> -->
+          </li>
           <!-- Collection of works -->
           <li
             @mouseover="mouseOverCollection"
@@ -66,6 +78,7 @@
           >
             <nuxt-link
               to="/collection"
+              :class="root === 'collection' ? 'active' : ''"
               data-id="LearnMore"
               @click.native="isClick"
             >
@@ -77,6 +90,7 @@
           <li @mouseover="mouseOverContact" @mouseleave="mouseLeaveContact">
             <nuxt-link
               to="/contact"
+              :class="root === 'contact' ? 'active' : ''"
               data-id="LearnMore"
               @click.native="isClick"
             >
@@ -92,10 +106,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api';
+import {
+  defineComponent,
+  reactive,
+  toRefs,
+  computed,
+  useContext
+} from '@nuxtjs/composition-api';
 export default defineComponent({
   setup() {
+    const { route } = useContext();
     const state = reactive({
+      root: computed(() => route.value.name),
       isActive: false,
       isTop: false,
       isWhoMeAre: false,

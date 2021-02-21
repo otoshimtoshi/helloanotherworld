@@ -11,10 +11,16 @@ import {
 } from '@nuxtjs/composition-api';
 import * as THREE from 'three';
 import { LoadingManager } from 'three';
-import OBJLoader from 'three-obj-loader';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 
 export default defineComponent({
-  setup() {
+  props: {
+    src: {
+      type: String,
+      default: ''
+    }
+  },
+  setup(props) {
     const state = reactive({
       fov: 75,
       width: 300,
@@ -22,10 +28,20 @@ export default defineComponent({
       near: 0.1,
       far: 1000
     });
-    const manager = new LoadingManager();
-    const objLoader = new OBJLoader(manager);
-    console.log(objLoader);
+
+    function onProgress(xhr) {
+      if (xhr.lengthComputable) {
+        const percentComplete = (xhr.loaded / xhr.total) * 100;
+        console.log('model ' + Math.round(percentComplete, 2) + '% downloaded');
+      }
+    }
+    function onError(err) {
+      console.log(err);
+      throw new Error(`objLoader error ${err}`);
+    }
     const scene = ref(new THREE.Scene());
+    scene.value.background = new THREE.Color().setHSL(0.6, 0, 1);
+    scene.value.fog = new THREE.Fog(scene.value.background, 1, 5000);
     const camera = ref(
       new THREE.PerspectiveCamera(
         state.fov,
@@ -34,7 +50,10 @@ export default defineComponent({
         state.far
       )
     );
+    camera.value.position.set(0, -10, 55);
 
+    const manager = new LoadingManager();
+    const objLoader = new OBJLoader(manager);
     const renderer = ref<THREE.WebGLRenderer>();
 
     onMounted(() => {
@@ -49,15 +68,33 @@ export default defineComponent({
         state.height = element.clientWidth / 2;
       }
       renderer.value.setSize(state.width, state.height);
+      renderer.value.shadowMap.enabled = true;
+      objLoader.load(
+        props.src,
+        (obj) => {
+          scene.value.add(obj);
+        },
+        (xhr) => {
+          onProgress(xhr);
+        },
+        (err) => {
+          onError(err);
+        }
+      );
       element.appendChild(renderer.value.domElement);
+      animate();
     });
+
+    const animate = () => {
+      renderer.value.render(scene.value, camera.value);
+      requestAnimationFrame(animate);
+    };
 
     return {
       state,
       scene,
       camera,
-      renderer,
-      objLoader
+      renderer
     };
   }
 });

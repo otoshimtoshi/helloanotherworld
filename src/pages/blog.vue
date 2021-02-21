@@ -6,7 +6,7 @@
     </h2>
     <div class="wrapper-page-content">
       <div class="markdown-body">
-        <nuxt-content :document="article" />
+        <!-- <nuxt-content :document="article" /> -->
       </div>
     </div>
   </div>

@@ -58,6 +58,7 @@ export default {
   loading: { color: '#111111' },
   css: ['@/assets/scss/main.scss'],
   build: {
+    transpile: ['three'],
     // eslint-disable-next-line
     extend(config, { isDev, isClient }) {
       config.module.rules.push(

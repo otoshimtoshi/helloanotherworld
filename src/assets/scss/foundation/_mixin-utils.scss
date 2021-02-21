@@ -80,42 +80,35 @@
 // text-shadow
 // ==========================================================================
 @mixin textShadow {
-  text-shadow: 1px 1px 2px $font-accent-color, -1px -1px 2px #fff;
+  text-shadow: 1px 1px 2px $font-accent-color,
+    -1px -1px 2px $background-white-color;
 }
 @mixin textShadow--hover {
-  text-shadow: -1px 0px 1px $font-accent-white-color;
+  text-shadow: -1px -1px 1px $font-accent-white-color;
+  background: -webkit-linear-gradient(
+    right,
+    $font-main-color,
+    $font-base-color
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 // ==========================================================================
 // box-shadow
 // ==========================================================================
 @mixin boxShadow {
-  border-radius: 20px;
-  box-shadow: 1px 1px 3px rgba(31, 48, 76, 0.3),
-    -1px -1px 3px rgba(255, 255, 255, 0.3);
-  @include mq('small', max) {
-    border-radius: 10px;
-  }
+  border-radius: 0.5em;
+  box-shadow: 3px 3px 5px $background-black-color,
+    -3px -3px 5px $background-white-color;
+  border: 1px solid $font-accent-transparent-white-color;
 }
 @mixin boxShadow--hover {
-  border-radius: 20px;
-  box-shadow: inset 5px 5px 10px #d6e0eb, inset -5px -5px 10px #ecf8ff;
-  @include mq('small', max) {
-    border-radius: 10px;
-  }
-}
-@mixin cardShadow {
-  border-radius: 20px;
-  box-shadow: 5px 5px 19px #99a0a8, -5px -5px 19px #ffffff;
-  border: 1px solid $font-accent-transparent-white-color;
-  @include mq('small', max) {
-    border-radius: 10px;
-  }
+  border-radius: 0.5em;
+  box-shadow: inset 3px 3px 5px $background-black-color,
+    inset -3px -3px 5px $background-white-color;
 }
 @mixin canvasShadow {
-  border-radius: 7px;
-  box-shadow: 3px 3px 4px rgba(31, 48, 76, 0.3),
-    -3px -3px 4px rgba(255, 255, 255, 0.3);
-  @include mq('small', max) {
-    border-radius: 5px;
-  }
+  border-radius: 0.5em;
+  box-shadow: 3px 3px 5px $background-black-color,
+    -3px -3px 5px $background-white-color;
 }

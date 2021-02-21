@@ -60,14 +60,15 @@ $font-size-h3: 30px !default;
 $font-main-color: #1f304c !default;
 $font-base-color: #2c456d !default;
 $font-accent-color: #7589a6 !default;
-$font-accent-white-color: #e1ecf7 !default;
-$font-accent-transparent-white-color: rgba(255, 255, 255, 0.2) !default;
+$font-accent-white-color: #f3f7fc !default;
+$font-accent-transparent-white-color: rgba(0, 0, 0, 0.2) !default;
 // font-transparent
 $font-main-transparent-color: rgba(31, 48, 76, 0.7) !default;
 // background-color
-$background-main-color: #e1ecf7 !default;
-$background-base-color: #1f304c !default;
-//#E0EBF7
+$background-white-color: #ffffff !default;
+$background-black-color: $font-accent-color !default;
+$background-main-color: $font-accent-white-color !default;
+$background-base-color: $font-main-color !default;
 // border-color
 $border-base-color: $font-base-color !default;
 // svg-stroke-color
