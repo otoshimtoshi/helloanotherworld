@@ -46,34 +46,29 @@
 // font-size
 // ==========================================================================
 @mixin font-size-base {
-  font-size: $font-size-base; //20px
+  font-size: $font-size-base;
   @include mq('small', max) {
     font-size: 16px;
   }
 }
 @mixin h1 {
-  font-size: $font-size-h1; //55px
-  @include mq('large', max) {
-    font-size: 50px;
-  }
+  font-size: $font-size-h1;
+  @include textShadow;
   @include mq('medium', max) {
-    font-size: 40px;
+    font-size: 33px;
   }
   @include mq('small', max) {
     font-size: 30px;
   }
 }
 @mixin h2 {
-  font-size: $font-size-h2; //35px
+  font-size: $font-size-h2;
   @include textShadow;
-  @include mq('large', max) {
-    font-size: 30px;
-  }
   @include mq('medium', max) {
-    font-size: 26px;
+    font-size: 28px;
   }
   @include mq('small', max) {
-    font-size: 22px;
+    font-size: 26px;
   }
 }
 // ==========================================================================

@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper-page">
-    <h2>
+    <h1>
       <span>Blog</span>
       <span class="ja ja-h2">ブログ</span>
-    </h2>
+    </h1>
     <div class="wrapper-page-content">
       <div class="markdown-body">
         <!-- <nuxt-content :document="article" /> -->

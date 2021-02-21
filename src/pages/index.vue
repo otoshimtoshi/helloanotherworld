@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper-page">
-    <h2>
+    <h1>
       <span>I'm a front-end developer working in Tokyo.</span>
-    </h2>
+    </h1>
     <div class="wrapper-page-content">
       <div class="grid">
         <div class="item1">

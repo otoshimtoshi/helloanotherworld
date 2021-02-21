@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper-page">
-    <h2>
+    <h1>
       <span>Who me are</span>
       <span class="ja ja-h2">自己紹介</span>
-    </h2>
+    </h1>
     <div class="wrapper-page-content">
       <div class="wrap-who-me-are">
         <p>

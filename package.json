@@ -22,6 +22,7 @@
     "@nuxtjs/composition-api": "^0.17.0",
     "@nuxtjs/sitemap": "^2.4.0",
     "cross-env": "^7.0.3",
+    "date-fns": "^2.17.0",
     "gl-matrix": "^3.3.0",
     "glsl-easings": "^1.0.0",
     "glsl-inverse": "^1.0.0",

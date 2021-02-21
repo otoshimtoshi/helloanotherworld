@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper-page">
-    <h2>
+    <h1>
       <span>Collection of works</span>
       <span class="ja ja-h2">作品集</span>
-    </h2>
+    </h1>
     <div class="wrapper-page-content" />
   </div>
 </template>

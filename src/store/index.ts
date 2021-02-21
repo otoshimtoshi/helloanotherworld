@@ -1,7 +1,11 @@
-import { RootState, Pages } from '@/types';
+import { Getters, Mutations, Actions } from '@/types/store/ex-store-type';
+import { S, G, M, A } from '@/types/store';
 
-export const state = (): RootState<Pages> => ({
-  pages: [
+/**
+ * Vuexで管理されるstateのキャッシュ
+ */
+export const state = (): S => ({
+  metaInfo: [
     {
       id: 'index',
       title: 'HelloAnotherWorld',
@@ -36,11 +40,30 @@ export const state = (): RootState<Pages> => ({
   ]
 });
 
-export const getters = {
-  pages: (state: RootState<Pages>): Pages[] => {
-    return state.pages;
-  },
-  getPages: (state: RootState<Pages>) => (id: string): Pages | undefined => {
-    return state.pages.find((item) => item.id === id);
+export const getters: Getters<S, G> = {
+  getMetaInfo(state) {
+    return (id) => state.metaInfo.find((page) => page.id === id);
+  }
+};
+
+export const mutations: Mutations<S, M> = {
+  setMetaInfo(state, id) {
+    state.metaInfo = id;
+  }
+};
+
+export const actions: Actions<S, A, G, M> = {
+  /** スタッフ一覧取得関数を受け取り実行、StaffStateの形に整形してsetStaffs */
+  async fetchMetaInfo({ commit }, fetchFunc) {
+    const response = await fetchFunc();
+    const metaInfo = response.data.map((meta) => {
+      return {
+        id: meta.id,
+        title: meta.title,
+        description: meta.description,
+        url: meta.url
+      };
+    });
+    commit('setMetaInfo', metaInfo);
   }
 };

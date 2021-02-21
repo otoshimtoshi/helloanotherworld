@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper-page">
-    <h2>
+    <h1>
       <span>Contact</span>
       <span class="ja ja-h2">お問い合わせ</span>
-    </h2>
+    </h1>
     <div class="wrapper-page-content">
       <GithubIcon />
       <MailIcon />

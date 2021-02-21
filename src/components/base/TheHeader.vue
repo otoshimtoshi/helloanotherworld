@@ -3,31 +3,31 @@
   <header class="header">
     <nav class="header-nav">
       <!-- Header Logo -->
-      <h1 class="logo">
+      <span class="logo">
         <nuxt-link to="/" data-id="GoHome">
-          <template v-if="root === 'index'">
-            <span class="stroke-black">Hello</span>
-            <span class="stroke-white">Another</span>
-            <span class="stroke-black">World</span>
-          </template>
           <template v-if="root === 'blog'">
             <span class="stroke-black">Blog</span>
           </template>
-          <template v-if="root === 'who-me-are'">
+          <template v-else-if="root === 'who-me-are'">
             <span class="stroke-black">Who</span>
             <span class="stroke-white">Me</span>
             <span class="stroke-black">Are</span>
           </template>
-          <template v-if="root === 'collection'">
+          <template v-else-if="root === 'collection'">
             <span class="stroke-black">Collection</span>
             <span class="stroke-white">of</span>
             <span class="stroke-black">Works</span>
           </template>
-          <template v-if="root === 'contact'">
+          <template v-else-if="root === 'contact'">
             <span class="stroke-black">Contact</span>
           </template>
+          <template v-else>
+            <span class="stroke-black">Hello</span>
+            <span class="stroke-white">Another</span>
+            <span class="stroke-black">World</span>
+          </template>
         </nuxt-link>
-      </h1>
+      </span>
       <TheHeaderMenu />
     </nav>
   </header>
