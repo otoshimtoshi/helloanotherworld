@@ -1,9 +1,9 @@
 <template lang="ja">
   <div id="wrapper" class="wrapper">
-    <TheHeader />
+    <BaseTheHeader />
     <nuxt />
-    <TheFooter />
-    <ThePointer />
+    <BaseTheFooter />
+    <BaseThePointer />
   </div>
 </template>
 <script lang="ts">
