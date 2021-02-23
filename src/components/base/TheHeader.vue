@@ -28,7 +28,7 @@
           </template>
         </nuxt-link>
       </span>
-      <TheHeaderMenu />
+      <BaseTheHeaderMenu />
     </nav>
   </header>
 </template>
