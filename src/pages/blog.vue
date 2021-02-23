@@ -16,24 +16,29 @@
 import {
   defineComponent,
   useContext,
-  ref,
-  onMounted
+  onMounted,
+  reactive,
+  toRefs
 } from '@nuxtjs/composition-api';
 
 export default defineComponent({
   setup() {
-    const { $content } = useContext();
-    const article = ref<unknown>({});
+    const { app, $content } = useContext();
+    const state = reactive({
+      article: {},
+      metaInfo: app.store.getters.getMetaInfo('blog')
+    });
     onMounted(async () => {
-      article.value = await $content('blog', 'index').fetch();
+      state.article = await $content('blog', 'index').fetch();
     });
     return {
-      article
+      ...toRefs(state)
     };
   },
   head() {
     return {
-      title: 'Blog - HelloAnotherWorld'
+      title: this.metaInfo?.title,
+      meta: this.metaInfo?.meta
     };
   }
 });

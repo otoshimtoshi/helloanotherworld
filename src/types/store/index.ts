@@ -6,10 +6,17 @@ export interface MetaInfo {
   id: string;
   /** ブラウザに表示するtitle */
   title: string;
-  /** ブラウザに表示するdescription */
-  description: string;
-  /** ブラウザに表示するurl */
-  url: string;
+  /** Meta詳細 */
+  meta: MetaInfoDetail[];
+}
+/** Meta詳細 */
+interface MetaInfoDetail {
+  /** nuxt用hid */
+  hid: string;
+  /** meta情報 名 */
+  name: string;
+  /** meta情報 内容 */
+  content: string;
 }
 
 export interface S {
