@@ -24,11 +24,26 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
+import {
+  defineComponent,
+  useContext,
+  reactive,
+  toRefs
+} from '@nuxtjs/composition-api';
 export default defineComponent({
+  setup() {
+    const { app } = useContext();
+    const state = reactive({
+      metaInfo: app.store.getters.getMetaInfo('who-me-are')
+    });
+    return {
+      ...toRefs(state)
+    };
+  },
   head() {
     return {
-      title: 'Who me are - HelloAnotherWorld'
+      title: this.metaInfo?.title,
+      meta: this.metaInfo?.meta
     };
   }
 });
