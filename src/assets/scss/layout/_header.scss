@@ -18,21 +18,11 @@
     color: $font-accent-white-color;
     -webkit-text-stroke: 1px $font-main-color;
     -webkit-text-stroke-width: 1px;
-    &:hover {
-      color: $font-main-color;
-      -webkit-text-stroke: 1px $font-accent-white-color;
-      -webkit-text-stroke-width: 0.5px;
-    }
   }
   .stroke-white {
     color: $font-main-color;
     -webkit-text-stroke: 1px $font-accent-white-color;
     -webkit-text-stroke-width: 1px;
-    &:hover {
-      color: $font-accent-white-color;
-      -webkit-text-stroke: 1px $font-main-color;
-      -webkit-text-stroke-width: 0.5px;
-    }
   }
   .header-nav {
     position: relative;
@@ -51,6 +41,18 @@
       @include h1;
       font-size: 45px;
       transition: all 0.2s ease-in-out, top 0.2s ease;
+      &:hover {
+        .stroke-black {
+          color: $font-main-color;
+          -webkit-text-stroke: 1px $font-accent-white-color;
+          -webkit-text-stroke-width: 0.5px;
+        }
+        .stroke-white {
+          color: $font-accent-white-color;
+          -webkit-text-stroke: 1px $font-main-color;
+          -webkit-text-stroke-width: 0.5px;
+        }
+      }
     }
   }
 }
@@ -105,15 +107,6 @@
   &:hover {
     @include boxShadow--hover;
     @include textShadow--hover;
-    .outer-menu {
-      background: -webkit-linear-gradient(
-        right,
-        $font-main-color,
-        $font-base-color
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
   }
   .outer-menu {
     position: absolute;

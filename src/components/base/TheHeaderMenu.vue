@@ -39,7 +39,7 @@
           <li @mouseover="mouseOverTop" @mouseleave="mouseLeaveTop">
             <nuxt-link
               to="/"
-              :class="root === 'index' ? 'active' : ''"
+              :class="isTop ? 'active' : ''"
               data-id="GoHome"
               @click.native="isClick"
             >
@@ -51,7 +51,7 @@
           <li @mouseover="mouseOverWhoMeAre" @mouseleave="mouseLeaveWhoMeAre">
             <nuxt-link
               to="/who-me-are"
-              :class="root === 'who-me-are' ? 'active' : ''"
+              :class="isWhoMeAre ? 'active' : ''"
               data-id="LearnMore"
               @click.native="isClick"
             >
@@ -63,7 +63,7 @@
           <li @mouseover="mouseOverBlog" @mouseleave="mouseLeaveBlog">
             <nuxt-link
               to="/blog"
-              :class="root === 'blog' ? 'active' : ''"
+              :class="isBlog ? 'active' : ''"
               data-id="LearnMore"
               @click.native="isClick"
             >
@@ -78,7 +78,7 @@
           >
             <nuxt-link
               to="/collection"
-              :class="root === 'collection' ? 'active' : ''"
+              :class="isCollection ? 'active' : ''"
               data-id="LearnMore"
               @click.native="isClick"
             >
@@ -90,7 +90,7 @@
           <li @mouseover="mouseOverContact" @mouseleave="mouseLeaveContact">
             <nuxt-link
               to="/contact"
-              :class="root === 'contact' ? 'active' : ''"
+              :class="isContact ? 'active' : ''"
               data-id="LearnMore"
               @click.native="isClick"
             >
