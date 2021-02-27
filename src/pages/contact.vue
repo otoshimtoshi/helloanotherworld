@@ -5,9 +5,9 @@
       <span class="ja ja-h2">お問い合わせ</span>
     </h1>
     <div class="wrapper-page-content">
-      <GithubIcon />
-      <MailIcon />
-      <TwitterIcon />
+      <IconsGithubIcon />
+      <IconsMailIcon />
+      <IconsTwitterIcon />
     </div>
   </div>
 </template>
