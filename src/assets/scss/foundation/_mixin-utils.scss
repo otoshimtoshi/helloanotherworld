@@ -80,7 +80,6 @@
 }
 @mixin textShadow--hover {
   color: $font-accent-white-color;
-  text-shadow: 1px 1px 2px $font-accent-color, -1px -1px 2px $font-accent-color;
 }
 // ==========================================================================
 // box-shadow

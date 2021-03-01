@@ -1,4 +1,4 @@
 module.exports = {
   NODE_ENV: 'development',
-  URL: 'http://localhost:3000/',
+  URL: 'http://localhost:3000/'
 }

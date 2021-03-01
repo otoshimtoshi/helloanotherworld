@@ -14,22 +14,22 @@ import {
   useContext,
   reactive,
   toRefs
-} from '@nuxtjs/composition-api';
+} from '@nuxtjs/composition-api'
 export default defineComponent({
   setup() {
-    const { app } = useContext();
+    const { app } = useContext()
     const state = reactive({
       metaInfo: app.store.getters.getMetaInfo('collection')
-    });
+    })
     return {
       ...toRefs(state)
-    };
+    }
   },
   head() {
     return {
       title: this.metaInfo?.title,
       meta: this.metaInfo?.meta
-    };
+    }
   }
-});
+})
 </script>

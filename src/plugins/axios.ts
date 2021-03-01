@@ -1,7 +1,7 @@
-import { Plugin } from '@nuxt/types';
+import { Plugin } from '@nuxt/types'
 
 const axios: Plugin = ({ $axios }) => {
-  $axios.defaults.baseURL = process.env.NUXT_ENV_API_URL;
-};
+  $axios.defaults.baseURL = process.env.NUXT_ENV_API_URL
+}
 
-export default axios;
+export default axios

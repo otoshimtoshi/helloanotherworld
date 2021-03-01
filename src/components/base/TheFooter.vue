@@ -35,16 +35,16 @@ import {
   reactive,
   useContext,
   toRefs
-} from '@nuxtjs/composition-api';
+} from '@nuxtjs/composition-api'
 export default defineComponent({
   setup() {
-    const { route } = useContext();
+    const { route } = useContext()
     const state = reactive({
       fixed: computed(() => route.value.name === 'blog')
-    });
+    })
     return {
       ...toRefs(state)
-    };
+    }
   }
-});
+})
 </script>

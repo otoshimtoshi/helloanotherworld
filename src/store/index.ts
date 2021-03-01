@@ -1,5 +1,5 @@
-import { Getters, Mutations, Actions } from '@/types/store/ex-store-type';
-import { S, G, M, A } from '@/types/store';
+import { Getters, Mutations, Actions } from '@/types/store/ex-store-type'
+import { S, G, M, A } from '@/types/store'
 
 /**
  * Vuexで管理されるstateのキャッシュ
@@ -190,30 +190,30 @@ export const state = (): S => ({
       ]
     }
   ]
-});
+})
 
 export const getters: Getters<S, G> = {
   getMetaInfo(state) {
-    return (id) => state.metaInfo.find((page) => page.id === id);
+    return (id) => state.metaInfo.find((page) => page.id === id)
   }
-};
+}
 
 export const mutations: Mutations<S, M> = {
   setMetaInfo(state, id) {
-    state.metaInfo = id;
+    state.metaInfo = id
   }
-};
+}
 
 export const actions: Actions<S, A, G, M> = {
   async fetchMetaInfo({ commit }, fetchFunc) {
-    const response = await fetchFunc();
+    const response = await fetchFunc()
     const metaInfo = response.data.map((item) => {
       return {
         id: item.id,
         title: item.title,
         meta: item.meta
-      };
-    });
-    commit('setMetaInfo', metaInfo);
+      }
+    })
+    commit('setMetaInfo', metaInfo)
   }
-};
+}
