@@ -11,47 +11,7 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content:
-          'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.'
-      },
-      {
-        hid: 'keywords',
-        name: 'keywords',
-        content:
-          'Masatoshi Otoshi, JS frameworks, Vue, Nuxt, three.js, 3D modeling, machine learning, CityGML'
-      },
-      { hid: 'og:title', name: 'og:title', content: 'HelloAnotherWorld' },
-      {
-        hid: 'og:description',
-        name: 'og:description',
-        content:
-          'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.'
-      },
-      {
-        hid: 'og:url',
-        name: 'og:url',
-        content: 'https://helloanotherworld.com'
-      },
-      {
-        hid: 'twitter:card',
-        name: 'twitter:card',
-        content: 'summary_large_image'
-      },
-      {
-        hid: 'twitter:title',
-        name: 'twitter:title',
-        content: 'HelloAnotherWorld'
-      },
-      {
-        hid: 'twitter:description',
-        name: 'twitter:description',
-        content:
-          'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.'
-      }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
@@ -106,7 +66,13 @@ export default {
     typeCheck: false,
     ignoreNotFoundWarnings: true
   },
-  plugin: ['@/plugins/update.client.js'],
+  plugin: [
+    // '@/plugins/update.client.js',
+    '@/plugins/axios',
+    '@/plugins/scroll-magic',
+    '@/plugins/util/date',
+    '@/plugins/util/format'
+  ],
   modules: ['@nuxtjs/axios', '@nuxt/content', '@nuxtjs/sitemap'],
   sitemap: {
     hostname: 'https://helloanotherworld.com'

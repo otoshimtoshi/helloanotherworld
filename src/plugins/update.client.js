@@ -4,8 +4,8 @@ export default function ({ store }) {
     window.onNuxtReady(($nuxt) => {
       $nuxt.$on('content:update', ({ event, path }) => {
         // storeのカテゴリを更新
-        store.dispatch('fetchCategories');
-      });
-    });
+        store.dispatch('fetchCategories')
+      })
+    })
   }
 }

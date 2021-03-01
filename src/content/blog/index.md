@@ -184,10 +184,10 @@ console.log(foo(5));
 
 ```javascript
 var foo = function (bar) {
-  return bar++;
-};
+  return bar++
+}
 
-console.log(foo(5));
+console.log(foo(5))
 ```
 
 ## テーブル

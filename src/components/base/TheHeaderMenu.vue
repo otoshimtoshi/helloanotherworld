@@ -112,10 +112,10 @@ import {
   toRefs,
   computed,
   useContext
-} from '@nuxtjs/composition-api';
+} from '@nuxtjs/composition-api'
 export default defineComponent({
   setup() {
-    const { route } = useContext();
+    const { route } = useContext()
     const state = reactive({
       root: computed(() => route.value.name),
       isActive: false,
@@ -124,63 +124,61 @@ export default defineComponent({
       isBlog: false,
       isCollection: false,
       isContact: false
-    });
+    })
 
     const isClick = () => {
-      return state.isActive
-        ? (state.isActive = false)
-        : (state.isActive = true);
-    };
+      return state.isActive ? (state.isActive = false) : (state.isActive = true)
+    }
 
     /** TOP マウスオーバーイベント */
     const mouseOverTop = () => {
-      return (state.isTop = true);
-    };
+      return (state.isTop = true)
+    }
 
     /** TOP マウスリーブイベント */
     const mouseLeaveTop = () => {
-      return (state.isTop = false);
-    };
+      return (state.isTop = false)
+    }
 
     /** WhoMeAre マウスオーバーイベント */
     const mouseOverWhoMeAre = () => {
-      return (state.isWhoMeAre = true);
-    };
+      return (state.isWhoMeAre = true)
+    }
 
     /** WhoMeAre マウスリーブイベント */
     const mouseLeaveWhoMeAre = () => {
-      return (state.isWhoMeAre = false);
-    };
+      return (state.isWhoMeAre = false)
+    }
 
     /** Blog マウスオーバーイベント */
     const mouseOverBlog = () => {
-      return (state.isBlog = true);
-    };
+      return (state.isBlog = true)
+    }
 
     /** Blog マウスリーブイベント */
     const mouseLeaveBlog = () => {
-      return (state.isBlog = false);
-    };
+      return (state.isBlog = false)
+    }
 
     /** Collection マウスオーバーイベント */
     const mouseOverCollection = () => {
-      return (state.isCollection = true);
-    };
+      return (state.isCollection = true)
+    }
 
     /** Collection マウスリーブイベント */
     const mouseLeaveCollection = () => {
-      return (state.isCollection = false);
-    };
+      return (state.isCollection = false)
+    }
 
     /** Contact マウスオーバーイベント */
     const mouseOverContact = () => {
-      return (state.isContact = true);
-    };
+      return (state.isContact = true)
+    }
 
     /** Contact マウスリーブイベント */
     const mouseLeaveContact = () => {
-      return (state.isContact = false);
-    };
+      return (state.isContact = false)
+    }
 
     return {
       ...toRefs(state),
@@ -195,7 +193,7 @@ export default defineComponent({
       mouseLeaveCollection,
       mouseOverContact,
       mouseLeaveContact
-    };
+    }
   }
-});
+})
 </script>

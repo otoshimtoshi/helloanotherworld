@@ -10,11 +10,11 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from '@nuxtjs/composition-api';
+import { computed, defineComponent, PropType } from '@nuxtjs/composition-api'
 
 interface ErrorProp {
-  message: string;
-  statusCode: number;
+  message: string
+  statusCode: number
 }
 
 export default defineComponent({
@@ -30,19 +30,19 @@ export default defineComponent({
         case 404:
           return {
             main: 'Page Can Not Be Found!'
-          };
+          }
         default:
           return {
             main: 'An Error Has Occurred!'
-          };
+          }
       }
-    });
+    })
 
     return {
       message
-    };
+    }
   }
-});
+})
 </script>
 
 <style lang="scss" scoped>
