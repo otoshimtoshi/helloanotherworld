@@ -5,12 +5,11 @@
   position: fixed;
   width: 100%;
   z-index: 500;
-  bottom: 0px;
+  bottom: 0;
   margin: 2rem 0 1rem;
   transition: all 0.2s ease-in-out, top 0.2s ease;
   background-color: transparent;
   mix-blend-mode: difference;
-  z-index: -1;
   @include mq('medium', max) {
     margin: 2rem 0;
   }
@@ -53,10 +52,12 @@
     @include mq('small', max) {
       margin: 0.5rem;
     }
+
     transition: all 0.5s ease-in-out, top 0.5s ease;
     .logo {
       display: flex;
       @include h2;
+
       transition: all 0.2s ease-in-out, top 0.2s ease;
     }
     .footer-nav-menu {
@@ -95,7 +96,7 @@
     }
   }
   address {
-    color: #444444;
+    color: #444;
     font-size: $font-size-small;
     text-align: left;
     margin: 0 2.5rem;
