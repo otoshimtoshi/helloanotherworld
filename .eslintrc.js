@@ -17,9 +17,12 @@ module.exports = {
   plugins: [],
   rules: {
     quotes: ['error', 'single'],
-    'vue/max-attributes-per-line': 0,
-    'vue/singleline-html-element-content-newline': 0,
-    'vue/no-deprecated-v-on-native-modifier': 0,
-    'vue/html-self-closing': 0
+    'vue/max-attributes-per-line': 'off',
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/no-deprecated-v-on-native-modifier': 'off',
+    'vue/html-self-closing': 'off',
+    'no-empty-function': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off'
   }
 }

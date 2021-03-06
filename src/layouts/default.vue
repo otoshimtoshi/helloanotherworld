@@ -7,16 +7,21 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, useContext } from '@nuxtjs/composition-api'
+import {
+  defineComponent,
+  reactive,
+  toRefs,
+  useContext
+} from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup() {
     const { app } = useContext()
-    const state = {
+    const state = reactive({
       store: app.store.state
-    }
+    })
     return {
-      state
+      ...toRefs(state)
     }
   }
 })
