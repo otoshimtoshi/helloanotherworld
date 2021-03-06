@@ -5,9 +5,7 @@
       <span class="ja ja-h2">ブログ</span>
     </h1>
     <div class="wrapper-page-content">
-      <div class="markdown-body">
-        <!-- <nuxt-content :document="article" /> -->
-      </div>
+      <div class="markdown-body"></div>
     </div>
   </div>
 </template>
@@ -16,7 +14,6 @@
 import {
   defineComponent,
   useContext,
-  onMounted,
   reactive,
   toRefs,
   useMeta
@@ -24,7 +21,7 @@ import {
 
 export default defineComponent({
   setup() {
-    const { app, $content } = useContext()
+    const { app } = useContext()
     const state = reactive({
       article: {},
       metaInfo: app.store.getters.getMetaInfo('blog')
@@ -33,9 +30,6 @@ export default defineComponent({
       title: state.metaInfo?.title,
       meta: state.metaInfo?.meta
     }))
-    onMounted(async () => {
-      state.article = await $content('blog', 'index').fetch()
-    })
     return {
       ...toRefs(state)
     }

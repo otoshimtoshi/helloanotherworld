@@ -42,8 +42,7 @@ export default defineComponent({
       width: 300,
       height: 300,
       near: 0.1,
-      far: 1000,
-      test: app.$date.format(new Date(), 'MM月dd日（E）')
+      far: 1000
     })
     const scene = ref(new THREE.Scene())
     scene.value.background = new THREE.Color().setHSL(0.6, 0, 1)

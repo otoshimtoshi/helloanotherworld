@@ -124,9 +124,6 @@
   }
 
   h5 {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    line-height: 1.1;
     font-size: 1em;
     position: relative;
     margin-top: 1em;
@@ -151,8 +148,6 @@
   }
 
   h6 {
-    margin-top: 15px;
-    margin-bottom: 15px;
     font-size: 1em;
     color: #777;
     position: relative;
@@ -218,9 +213,6 @@
     border-radius: 3px;
     margin-top: 0;
     margin-bottom: 16px;
-    font-family: monospace, monospace;
-    font-size: 1em;
-    font: 12px Consolas, 'Liberation Mono', Menlo, Courier, monospace;
     code {
       display: inline;
       max-width: initial;
@@ -248,24 +240,6 @@
     border: 0;
   }
 
-  code {
-    padding: 0;
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
-    margin: 0;
-    font-size: 85%;
-    background-color: rgba(0, 0, 0, 0.04);
-    border-radius: 3px;
-    font-family: monospace, monospace;
-    font-size: 1em;
-    font: 12px Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-    &::before,
-    ::after {
-      letter-spacing: -0.2em;
-      content: '\00a0';
-    }
-  }
-
   kbd {
     background-color: #e7e7e7;
     background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
@@ -276,10 +250,6 @@
     color: #000;
     padding: 3px 5px;
     line-height: 10px;
-    font: 11px Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-    display: inline-block;
-    font-family: monospace, monospace;
-    font-size: 1em;
   }
 
   input {
@@ -287,8 +257,6 @@
     font: inherit;
     margin: 0;
     line-height: normal;
-    font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif,
-      'Segoe UI Emoji', 'Segoe UI Symbol';
   }
 
   input[disabled] {
@@ -304,7 +272,6 @@
   blockquote {
     margin-top: 0;
     margin-bottom: 16px;
-    margin: 0;
     padding: 0 15px;
     color: #777;
     border-left: 4px solid #ddd;
@@ -320,20 +287,6 @@
 
   dd {
     margin-left: 0;
-  }
-
-  .anchor {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    display: block;
-    padding-right: 6px;
-    padding-left: 30px;
-    margin-left: -30px;
-    &:focus {
-      outline: none;
-    }
   }
 
   ul,
@@ -388,33 +341,6 @@
     tr td :last-child {
       margin-bottom: 0;
     }
-  }
-
-  table {
-    display: block;
-    width: 100%;
-    overflow: scroll;
-    word-break: normal;
-    word-break: keep-all;
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin-top: 0;
-    margin-bottom: 16px;
-    th {
-      font-weight: bold;
-      padding: 6px 13px;
-      border: 1px solid #ddd;
-      padding: 0;
-    }
-    td {
-      padding: 6px 13px;
-      border: 1px solid #ddd;
-      padding: 0;
-    }
-    tr {
-      background-color: #fff;
-      border-top: 1px solid #ccc;
-    }
     table tr:nth-child(2n) {
       background-color: #f8f8f8;
     }
@@ -424,8 +350,6 @@
     padding: 0;
     margin-top: 0;
     margin-bottom: 16px;
-    padding: 0;
-    margin-top: 16px;
     font-size: 1em;
     font-style: italic;
     font-weight: bold;
@@ -448,6 +372,7 @@
 
   .highlight {
     margin-bottom: 16px;
+    word-break: normal;
   }
 
   .highlight pre {
@@ -457,15 +382,6 @@
     line-height: 1.45;
     background-color: #f7f7f7;
     border-radius: 3px;
-  }
-
-  .highlight pre {
-    margin-bottom: 0;
-    word-break: normal;
-  }
-
-  .highlight {
-    background: #fff;
   }
 
   .highlight .mf,
@@ -653,7 +569,6 @@
   }
 
   .octicon {
-    font: normal normal 16px octicons-anchor;
     line-height: 1;
     display: inline-block;
     text-decoration: none;
