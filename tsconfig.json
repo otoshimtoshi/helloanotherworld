@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "lib": ["esnext", "esnext.asynciterable", "dom"],
+    "target": "ES2018",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "sourceMap": true,
@@ -23,8 +23,8 @@
       "@/*": ["src/*"],
       "~/*": ["./*"]
     },
-    "types": ["@types/node", "@nuxt/types", "@nuxt/content"]
+    "types": ["@types/node", "@nuxt/types", "@nuxt/content", "@nuxtjs/date-fns"]
   },
-  "include": ["src/**/*.ts", "src/**/*.vue"],
+  "include": ["src/**/*", "src/**/*"],
   "exclude": ["node_modules"]
 }

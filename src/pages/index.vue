@@ -21,7 +21,8 @@ import {
   onMounted,
   ref,
   useContext,
-  toRefs
+  toRefs,
+  useMeta
 } from '@nuxtjs/composition-api'
 import * as THREE from 'three'
 
@@ -31,6 +32,10 @@ export default defineComponent({
     const metaState = reactive({
       metaInfo: app.store.getters.getMetaInfo('index')
     })
+    useMeta(() => ({
+      title: metaState.metaInfo?.title,
+      meta: metaState.metaInfo?.meta
+    }))
     //
     const state = reactive({
       fov: 75,
@@ -120,11 +125,7 @@ export default defineComponent({
       renderer
     }
   },
-  head() {
-    return {
-      title: this.metaInfo?.title,
-      meta: this.metaInfo?.meta
-    }
-  }
+  // @ts-ignore
+  head() {}
 })
 </script>

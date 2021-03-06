@@ -18,7 +18,8 @@ import {
   useContext,
   onMounted,
   reactive,
-  toRefs
+  toRefs,
+  useMeta
 } from '@nuxtjs/composition-api'
 
 export default defineComponent({
@@ -28,6 +29,10 @@ export default defineComponent({
       article: {},
       metaInfo: app.store.getters.getMetaInfo('blog')
     })
+    useMeta(() => ({
+      title: state.metaInfo?.title,
+      meta: state.metaInfo?.meta
+    }))
     onMounted(async () => {
       state.article = await $content('blog', 'index').fetch()
     })
@@ -35,11 +40,7 @@ export default defineComponent({
       ...toRefs(state)
     }
   },
-  head() {
-    return {
-      title: this.metaInfo?.title,
-      meta: this.metaInfo?.meta
-    }
-  }
+  // @ts-ignore
+  head() {}
 })
 </script>
