@@ -17,8 +17,7 @@
     -webkit-transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
     transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
     -webkit-transition-property: top, left, width, height;
-    transition-property: top, left, width, height;
-    transition: 0.3s;
+    transition-property: top, left, width, height, 0.3s;
     transition-timing-function: ease-out;
     position: absolute;
     width: 10px;

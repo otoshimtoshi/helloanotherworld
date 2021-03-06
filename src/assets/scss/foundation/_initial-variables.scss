@@ -2,8 +2,8 @@
 // family-font
 // ==========================================================================
 $family-font-base: 'Homenaje', sans-serif !default;
-$family-font-custom: '游ゴシック体', YuGothic, '游ゴシック', 'Yu Gothic',
-  'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif !default;
+$family-font-custom: '游ゴシック体', yugothic, '游ゴシック', 'Yu Gothic',
+  'Hiragino Kaku Gothic ProN', 'Hiragino Sans', meiryo, sans-serif !default;
 // ==========================================================================
 // breakpoint
 // ==========================================================================
@@ -64,7 +64,7 @@ $font-accent-transparent-white-color: rgba(0, 0, 0, 0.2) !default;
 // font-transparent
 $font-main-transparent-color: rgba(31, 48, 76, 0.7) !default;
 // background-color
-$background-white-color: #ffffff !default;
+$background-white-color: #fff !default;
 $background-black-color: $font-accent-color !default;
 $background-main-color: $font-accent-white-color !default;
 $background-base-color: $font-main-color !default;
