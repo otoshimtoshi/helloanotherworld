@@ -28,7 +28,8 @@ import {
   defineComponent,
   useContext,
   reactive,
-  toRefs
+  toRefs,
+  useMeta
 } from '@nuxtjs/composition-api'
 export default defineComponent({
   setup() {
@@ -36,15 +37,16 @@ export default defineComponent({
     const state = reactive({
       metaInfo: app.store.getters.getMetaInfo('who-me-are')
     })
+
+    useMeta(() => ({
+      title: state.metaInfo?.title,
+      meta: state.metaInfo?.meta
+    }))
     return {
       ...toRefs(state)
     }
   },
-  head() {
-    return {
-      title: this.metaInfo?.title,
-      meta: this.metaInfo?.meta
-    }
-  }
+  // @ts-ignore
+  head() {}
 })
 </script>
