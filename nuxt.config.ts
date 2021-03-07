@@ -16,7 +16,7 @@ const config: NuxtConfig = {
   },
   loading: { color: '#111111' },
   css: ['@/assets/scss/main.scss'],
-  plugin: ['@/plugins/util/date'],
+  plugin: [],
   components: true,
   env: {},
   srcDir: 'src/',
@@ -24,7 +24,9 @@ const config: NuxtConfig = {
     '@nuxt/typescript-build',
     '@nuxtjs/composition-api',
     '@nuxtjs/stylelint-module',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/date-fns',
+    '@nuxtjs/color-mode'
   ],
   modules: ['@nuxtjs/sitemap'],
   build: {

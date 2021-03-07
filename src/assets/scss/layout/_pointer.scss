@@ -39,14 +39,15 @@
     line-height: 1;
     text-align: center;
     padding: 4px;
-    border: 2px solid $font-main-transparent-color;
+    border: 2px solid $light-mode-main-color;
+    opacity: 0.7;
   }
   .txt {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     display: block;
     position: absolute;
-    color: $font-main-color;
+    color: $light-mode-main-color;
     top: 50%;
     left: 50%;
     white-space: nowrap;

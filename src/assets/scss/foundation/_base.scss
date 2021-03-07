@@ -10,22 +10,44 @@ html {
 body {
   @include font-size-base;
 
-  background: $background-main-color;
+  background: $light-mode-base-accent-color;
+  color: $light-mode-main-color;
   box-sizing: border-box;
-  color: $font-main-color;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1;
   letter-spacing: 0.03em;
 }
+.dark-mode body {
+  background: $dark-mode-base-accent-color;
+  color: $dark-mode-main-color;
+}
+.sepia-mode body {
+  background: $sepia-mode-base-accent-color;
+  color: $sepia-mode-main-color;
+}
+
 h1 {
   @include h1;
+
+  text-shadow: 1px 1px 2px $light-mode-main-accent-color, -1px -1px 2px $white;
+}
+.dark-mode h1 {
+  text-shadow: 1px 1px 2px $dark-mode-main-accent-color, -1px -1px 2px $white;
+}
+.sepia-mode h1 {
+  text-shadow: 1px 1px 2px $sepia-mode-main-accent-color, -1px -1px 2px $white;
 }
 h2 {
   @include h2;
+
+  text-shadow: 1px 1px 2px $light-mode-main-accent-color, -1px -1px 2px $white;
 }
-svg {
-  fill: $font-main-color;
+.dark-mode h2 {
+  text-shadow: 1px 1px 2px $dark-mode-main-accent-color, -1px -1px 2px $white;
+}
+.sepia-mode h2 {
+  text-shadow: 1px 1px 2px $sepia-mode-main-accent-color, -1px -1px 2px $white;
 }
 span {
   &.ja {

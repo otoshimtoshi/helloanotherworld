@@ -4,12 +4,17 @@
       <span>I'm a front-end developer working in Tokyo.</span>
     </h1>
     <div class="wrapper-page-content">
+      <select v-model="$colorMode.preference">
+        <option value="system">System</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="sepia">Sepia</option>
+      </select>
       <div class="grid">
         <div class="item1">
           <div id="myCanvas" />
         </div>
       </div>
-      <ThreeSkullObj src="/SkullHead.obj" />
     </div>
   </div>
 </template>

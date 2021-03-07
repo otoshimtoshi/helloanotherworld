@@ -9,6 +9,7 @@
 <script lang="ts">
 import {
   defineComponent,
+  onMounted,
   reactive,
   toRefs,
   useContext
@@ -20,6 +21,10 @@ export default defineComponent({
     const state = reactive({
       store: app.store.state
     })
+    onMounted(() => {
+      console.log(app)
+    })
+
     return {
       ...toRefs(state)
     }
