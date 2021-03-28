@@ -2,7 +2,7 @@
   <v-footer color="white" padless>
     <v-row dense>
       <v-col>
-        <v-card flat tile class="indigo lighten-1 white--text text-center">
+        <v-card flat tile class="blue-grey darken-4 white--text text-center">
           <v-card-text>
             <v-btn
               class="mx-4 white--text"

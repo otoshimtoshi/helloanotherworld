@@ -1,26 +1,22 @@
 <template>
-  <div class="wrapper-page">
-    <h1>
-      <span>Who me are</span>
-      <span class="ja ja-h2">自己紹介</span>
-    </h1>
-    <div class="wrapper-page-content">
-      <div class="wrap-who-me-are">
-        <p>
-          Hi! My name is Masatoshi Otoshi.<br />I'm a front-end developer based
+  <v-row dense>
+    <v-col>
+      <v-card flat tile class="mx-auto" max-width="600">
+        <v-card-title>Who me are</v-card-title>
+        <v-card-subtitle>自己紹介</v-card-subtitle>
+        <v-divider />
+        <v-card-text>
+          Hi ! My name is Masatoshi Otoshi.<br />I'm a front-end developer based
           in Tokyo.<br />Please contact me via DM on SNS.
-        </p>
-        <p><span class="ja">落司 聖稔(おとし まさとし)</span></p>
-        <p>
-          <span class="ja">
-            東京でフロントエンドディベロッパーとして活動しています。
-          </span>
-          <br />
-          <span class="ja">GithubやTwitterでご連絡ください。</span>
-        </p>
-      </div>
-    </div>
-  </div>
+        </v-card-text>
+        <v-divider />
+        <v-card-text>
+          落司 聖稔(おとし まさとし)<br />東京でフロントエンドディベロッパーとして活動しています。<br />GithubやTwitterでご連絡ください。
+        </v-card-text>
+        <v-divider />
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script lang="ts">

@@ -1,5 +1,5 @@
 <template>
-  <v-footer color="white" padless>
+  <v-footer class="blue-grey darken-4 white--text text-center" padless>
     <v-col class="text-center" cols="12">
       <strong>
         Copyright©{{ new Date().getFullYear() }} HelloAnotherWorld All Rights

@@ -1,15 +1,13 @@
 <template>
-  <div class="wrapper-page">
-    <h1>
-      <span>Contact</span>
-      <span class="ja ja-h2">お問い合わせ</span>
-    </h1>
-    <div class="wrapper-page-content">
-      <IconsGithubIcon />
-      <IconsMailIcon />
-      <IconsTwitterIcon />
-    </div>
-  </div>
+  <v-row dense>
+    <v-col>
+      <v-card flat tile class="mx-auto" max-width="600">
+        <v-card-title>Contact</v-card-title>
+        <v-card-subtitle>お問い合わせ</v-card-subtitle>
+        <v-divider></v-divider>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script lang="ts">
