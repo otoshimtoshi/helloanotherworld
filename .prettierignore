@@ -5,3 +5,4 @@ dist
 .prettierrc
 package-lock.json
 .editorconfig
+.types

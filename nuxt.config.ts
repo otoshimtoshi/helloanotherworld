@@ -16,19 +16,14 @@ const config: NuxtConfig = {
   },
   loading: { color: '#111111' },
   css: ['@/assets/scss/main.scss'],
-  plugin: [],
   components: true,
   env: {},
   srcDir: 'src/',
-  buildModules: [
-    '@nuxt/typescript-build',
-    '@nuxtjs/composition-api',
-    '@nuxtjs/stylelint-module',
-    '@nuxtjs/style-resources',
-    '@nuxtjs/date-fns',
-    '@nuxtjs/color-mode'
-  ],
-  modules: ['@nuxtjs/sitemap'],
+  styleResources: {
+    sass: [],
+    scss: []
+  },
+  axios: {},
   build: {
     transpile: ['three']
   },
@@ -36,14 +31,23 @@ const config: NuxtConfig = {
     typeCheck: false,
     ignoreNotFoundWarnings: true
   },
+  buildModules: [
+    '@nuxt/typescript-build',
+    '@nuxtjs/composition-api',
+    '@nuxtjs/stylelint-module',
+    '@nuxtjs/style-resources',
+    '@nuxtjs/date-fns',
+    '@nuxtjs/color-mode',
+    '@nuxtjs/vuetify'
+  ],
+  modules: ['@nuxtjs/sitemap'],
+  vuetify: {
+    customVariables: ['~/assets/scss/vuetify/variables.scss'],
+    treeShake: true
+  },
   sitemap: {
     hostname: 'https://helloanotherworld.com'
-  },
-  styleResources: {
-    sass: [],
-    scss: []
-  },
-  axios: {}
+  }
 }
 
 export default config

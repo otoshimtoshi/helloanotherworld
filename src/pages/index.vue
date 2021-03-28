@@ -8,7 +8,6 @@
         <option value="system">System</option>
         <option value="light">Light</option>
         <option value="dark">Dark</option>
-        <option value="sepia">Sepia</option>
       </select>
       <div class="grid">
         <div class="item1">

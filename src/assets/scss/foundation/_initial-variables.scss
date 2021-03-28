@@ -48,6 +48,7 @@ $mq-breakpoints: (
 // ==========================================================================
 $font-size-base: 20px !default; // baseのフォントサイズ
 $font-size-small: 16px !default; // モバイル(480px)のフォントサイズ
+$font-size-logo: 45px !default;
 $font-size-h1: 35px !default;
 $font-size-h2: 30px !default;
 $font-size-h3: 27px !default;
@@ -85,14 +86,6 @@ $dark-mode-main-color: $gray0 !default;
 $dark-mode-base-color: $gray3 !default;
 $dark-mode-main-accent-color: $black !default;
 $dark-mode-base-accent-color: $dark !default;
-
-// ==========================================================================
-// Sepia Mode
-// ==========================================================================
-$sepia-mode-main-color: $black !default;
-$sepia-mode-base-color: $dark !default;
-$sepia-mode-main-accent-color: $gray3 !default;
-$sepia-mode-base-accent-color: $sepia !default;
 
 // ==========================================================================
 // cubic-bezier

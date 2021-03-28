@@ -51,6 +51,15 @@
     font-size: 16px;
   }
 }
+@mixin logo {
+  font-size: $font-size-logo;
+  @include mq('medium', max) {
+    font-size: 40px;
+  }
+  @include mq('small', max) {
+    font-size: 35px;
+  }
+}
 @mixin h1 {
   font-size: $font-size-h1;
   @include mq('medium', max) {

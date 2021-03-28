@@ -28,32 +28,61 @@
     }
     .logo {
       display: flex;
-      @include h1;
-
       font-size: 45px;
       transition: all 0.2s ease-in-out, top 0.2s ease;
+      @include logo;
       .stroke-black {
         color: $light-mode-base-accent-color;
         -webkit-text-stroke: 1px $light-mode-main-color;
         -webkit-text-stroke-width: 1px;
-        &:hover {
-          .stroke-black {
-            color: $light-mode-main-color;
-            -webkit-text-stroke: 1px $light-mode-base-accent-color;
-            -webkit-text-stroke-width: 0.5px;
-          }
-        }
       }
       .stroke-white {
         color: $light-mode-main-color;
         -webkit-text-stroke: 1px $light-mode-base-accent-color;
         -webkit-text-stroke-width: 1px;
-        &:hover {
-          .stroke-white {
-            color: $light-mode-base-accent-color;
-            -webkit-text-stroke: 1px $light-mode-main-color;
-            -webkit-text-stroke-width: 0.5px;
-          }
+      }
+      &:hover {
+        .stroke-black {
+          color: $light-mode-main-color;
+          -webkit-text-stroke: 1px $light-mode-base-accent-color;
+          -webkit-text-stroke-width: 0.5px;
+        }
+        .stroke-white {
+          color: $light-mode-base-accent-color;
+          -webkit-text-stroke: 1px $light-mode-main-color;
+          -webkit-text-stroke-width: 0.5px;
+        }
+      }
+    }
+  }
+}
+.dark-mode .header {
+  a {
+    color: $dark-mode-main-color;
+    text-shadow: 1px 1px 2px $dark-mode-main-accent-color, -1px -1px 2px $white;
+  }
+  .header-nav {
+    .logo {
+      .stroke-black {
+        color: $dark-mode-base-accent-color;
+        -webkit-text-stroke: 1px $dark-mode-main-color;
+        -webkit-text-stroke-width: 1px;
+      }
+      .stroke-white {
+        color: $dark-mode-main-color;
+        -webkit-text-stroke: 1px $dark-mode-base-accent-color;
+        -webkit-text-stroke-width: 1px;
+      }
+      &:hover {
+        .stroke-black {
+          color: $dark-mode-main-color;
+          -webkit-text-stroke: 1px $dark-mode-base-accent-color;
+          -webkit-text-stroke-width: 0.5px;
+        }
+        .stroke-white {
+          color: $dark-mode-base-accent-color;
+          -webkit-text-stroke: 1px $dark-mode-main-color;
+          -webkit-text-stroke-width: 0.5px;
         }
       }
     }
@@ -97,7 +126,7 @@
   height: 5rem;
   text-decoration: none;
   border-radius: 0.5em;
-  box-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px $white;
+  box-shadow: 3px 3px 6px $gray3, -3px -3px 6px $white;
   border: 1px solid $gray1;
   cursor: pointer;
   @include mq('medium', max) {
@@ -111,7 +140,7 @@
   &:active,
   &:hover {
     border-radius: 0.5em;
-    box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px $white;
+    box-shadow: inset 3px 3px 6px $gray3, inset -2px -2px 6px $white;
     color: $light-mode-base-accent-color;
   }
   .outer-menu {
@@ -120,6 +149,17 @@
     left: 50%;
     transform: translate(-50%, -50%);
     @include font-size-base;
+  }
+}
+.dark-mode {
+  .header-menu {
+    box-shadow: 6px 6px 12px $gray9, -6px -6px 12px $gray5;
+    border: 1px solid $gray4;
+    &:active,
+    &:hover {
+      box-shadow: inset 6px 6px 12px $gray9, inset -6px -6px 12px $gray5;
+      color: $dark-mode-base-accent-color;
+    }
   }
 }
 
@@ -133,9 +173,8 @@
   bottom: 0;
   z-index: 750;
   display: flex;
-  @include font-size-base;
-
   transition: transform 2s ease, opacity 2s ease;
+  @include font-size-base;
   .wrapper-menu-left {
     display: flex;
     background: $light-mode-main-color;
@@ -270,4 +309,7 @@
       }
     }
   }
+}
+.dark-mode .wrapper-menu {
+  //
 }
