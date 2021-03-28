@@ -1,17 +1,5 @@
 <template>
-  <div class="wrapper-page">
-    <h1>
-      <span>I'm a front-end developer working in Tokyo.</span>
-    </h1>
-    <div class="wrapper-page-content">
-      <div class="grid">
-        <div class="item1">
-          <div id="myCanvas" />
-        </div>
-      </div>
-      <ThreeSkullObj src="/SkullHead.obj" />
-    </div>
-  </div>
+  <div id="myCanvas" />
 </template>
 
 <script lang="ts">

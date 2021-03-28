@@ -16,87 +16,8 @@
   @include mq('small', max) {
     margin: 1rem 0;
   }
-  a {
-    font-weight: bold;
-    transition-property: width, height;
-    color: $font-main-color;
-  }
-  .stroke-black {
-    color: $font-base-color;
-    -webkit-text-stroke: 1px $font-main-color;
-    -webkit-text-stroke-width: 0.5px;
-    &:hover {
-      color: $font-main-color;
-      -webkit-text-stroke: 1px $font-base-color;
-      -webkit-text-stroke-width: 0.5px;
-    }
-  }
-  .stroke-white {
-    color: $font-main-color;
-    -webkit-text-stroke: 1px $font-base-color;
-    -webkit-text-stroke-width: thin;
-    &:hover {
-      color: $font-base-color;
-      -webkit-text-stroke: 1px $font-main-color;
-      -webkit-text-stroke-width: 0.5px;
-    }
-  }
-  .footer-nav {
-    position: relative;
-    display: flex;
-    margin: 0 2.5rem;
-    align-items: center;
-    @include mq('medium', max) {
-      margin: 1rem;
-    }
-    @include mq('small', max) {
-      margin: 0.5rem;
-    }
-
-    transition: all 0.5s ease-in-out, top 0.5s ease;
-    .logo {
-      display: flex;
-      @include h2;
-
-      transition: all 0.2s ease-in-out, top 0.2s ease;
-    }
-    .footer-nav-menu {
-      justify-content: flex-end;
-      margin-left: auto;
-      display: flex;
-      @include font-size-base;
-      @include mq('medium', max) {
-        display: none;
-      }
-      li {
-        padding: 2rem;
-        @include mq('large', max) {
-          padding: 1rem;
-        }
-      }
-      a {
-        position: relative;
-        &::after {
-          content: '';
-          text-align: center;
-          position: absolute;
-          bottom: -2px;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          background: $font-main-color;
-          transform: scale(0, 1);
-          transform-origin: center top;
-          transition: transform 0.3s;
-        }
-        &:hover::after {
-          transform: scale(1, 1);
-        }
-      }
-    }
-  }
   address {
-    color: #444;
+    color: $light-mode-main-color;
     font-size: $font-size-small;
     text-align: left;
     margin: 0 2.5rem;
@@ -110,4 +31,7 @@
       font-size: 10px;
     }
   }
+}
+.dark-mode address {
+  color: $dark-mode-main-color;
 }

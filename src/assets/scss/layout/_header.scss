@@ -11,18 +11,8 @@
   a {
     font-weight: bold;
     transition-property: width, height;
-    color: $font-main-color;
-    @include textShadow;
-  }
-  .stroke-black {
-    color: $font-accent-white-color;
-    -webkit-text-stroke: 1px $font-main-color;
-    -webkit-text-stroke-width: 1px;
-  }
-  .stroke-white {
-    color: $font-main-color;
-    -webkit-text-stroke: 1px $font-accent-white-color;
-    -webkit-text-stroke-width: 1px;
+    color: $light-mode-main-color;
+    text-shadow: 1px 1px 2px $light-mode-main-accent-color, -1px -1px 2px $white;
   }
   .header-nav {
     position: relative;
@@ -38,19 +28,60 @@
     }
     .logo {
       display: flex;
-      @include h1;
-
       font-size: 45px;
       transition: all 0.2s ease-in-out, top 0.2s ease;
+      @include logo;
+      .stroke-black {
+        color: $light-mode-base-accent-color;
+        -webkit-text-stroke: 1px $light-mode-main-color;
+        -webkit-text-stroke-width: 1px;
+      }
+      .stroke-white {
+        color: $light-mode-main-color;
+        -webkit-text-stroke: 1px $light-mode-base-accent-color;
+        -webkit-text-stroke-width: 1px;
+      }
       &:hover {
         .stroke-black {
-          color: $font-main-color;
-          -webkit-text-stroke: 1px $font-accent-white-color;
+          color: $light-mode-main-color;
+          -webkit-text-stroke: 1px $light-mode-base-accent-color;
           -webkit-text-stroke-width: 0.5px;
         }
         .stroke-white {
-          color: $font-accent-white-color;
-          -webkit-text-stroke: 1px $font-main-color;
+          color: $light-mode-base-accent-color;
+          -webkit-text-stroke: 1px $light-mode-main-color;
+          -webkit-text-stroke-width: 0.5px;
+        }
+      }
+    }
+  }
+}
+.dark-mode .header {
+  a {
+    color: $dark-mode-main-color;
+    text-shadow: 1px 1px 2px $dark-mode-main-accent-color, -1px -1px 2px $white;
+  }
+  .header-nav {
+    .logo {
+      .stroke-black {
+        color: $dark-mode-base-accent-color;
+        -webkit-text-stroke: 1px $dark-mode-main-color;
+        -webkit-text-stroke-width: 1px;
+      }
+      .stroke-white {
+        color: $dark-mode-main-color;
+        -webkit-text-stroke: 1px $dark-mode-base-accent-color;
+        -webkit-text-stroke-width: 1px;
+      }
+      &:hover {
+        .stroke-black {
+          color: $dark-mode-main-color;
+          -webkit-text-stroke: 1px $dark-mode-base-accent-color;
+          -webkit-text-stroke-width: 0.5px;
+        }
+        .stroke-white {
+          color: $dark-mode-base-accent-color;
+          -webkit-text-stroke: 1px $dark-mode-main-color;
           -webkit-text-stroke-width: 0.5px;
         }
       }
@@ -94,8 +125,9 @@
   width: 5rem;
   height: 5rem;
   text-decoration: none;
-  @include boxShadow;
-
+  border-radius: 0.5em;
+  box-shadow: 3px 3px 6px $gray3, -3px -3px 6px $white;
+  border: 1px solid $gray1;
   cursor: pointer;
   @include mq('medium', max) {
     width: 4rem;
@@ -107,8 +139,9 @@
   }
   &:active,
   &:hover {
-    @include boxShadow--hover;
-    @include textShadow--hover;
+    border-radius: 0.5em;
+    box-shadow: inset 3px 3px 6px $gray3, inset -2px -2px 6px $white;
+    color: $light-mode-base-accent-color;
   }
   .outer-menu {
     position: absolute;
@@ -118,10 +151,21 @@
     @include font-size-base;
   }
 }
+.dark-mode {
+  .header-menu {
+    box-shadow: 6px 6px 12px $gray9, -6px -6px 12px $gray5;
+    border: 1px solid $gray4;
+    &:active,
+    &:hover {
+      box-shadow: inset 6px 6px 12px $gray9, inset -6px -6px 12px $gray5;
+      color: $dark-mode-base-accent-color;
+    }
+  }
+}
 
 .wrapper-menu {
-  background: $background-main-color;
-  color: $font-main-color;
+  background: $light-mode-base-accent-color;
+  color: $light-mode-main-color;
   position: fixed;
   top: 0;
   left: 0;
@@ -129,13 +173,12 @@
   bottom: 0;
   z-index: 750;
   display: flex;
-  @include font-size-base;
-
   transition: transform 2s ease, opacity 2s ease;
+  @include font-size-base;
   .wrapper-menu-left {
     display: flex;
-    background: $background-base-color;
-    color: $font-base-color;
+    background: $light-mode-main-color;
+    color: $light-mode-base-color;
     width: 30%;
     height: auto;
     @include mq('medium', max) {
@@ -146,9 +189,10 @@
     }
     .fade-text {
       position: absolute;
-      color: $font-accent-white-color;
+      color: $light-mode-base-accent-color;
       padding: 1em;
-      @include textShadow;
+      text-shadow: 1px 1px 2px $light-mode-main-accent-color,
+        -1px -1px 2px $white;
     }
   }
   .wrapper-menu-right {
@@ -173,7 +217,9 @@
       flex-direction: column;
       justify-content: center;
       transition: transform 0.6s ease-in-out, top 0.5s ease;
-      @include boxShadow;
+      border-radius: 0.5em;
+      box-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px $white;
+      border: 1px solid $gray1;
       @include mq('xlarge', max) {
         width: 70%;
       }
@@ -216,17 +262,19 @@
         a {
           display: flex;
           justify-content: space-between;
-          color: $font-main-color;
+          color: $light-mode-main-color;
           text-decoration: none;
           transition: color 0.6s ease;
           transition: transform 0.6s ease-in-out, top 0.5s ease;
           align-items: center;
-          @include boxShadow;
-
+          border-radius: 0.5em;
+          box-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px $white;
+          border: 1px solid $gray1;
           padding: 0.4em 0;
           &:hover {
-            @include boxShadow--hover;
-            @include textShadow--hover;
+            border-radius: 0.5em;
+            box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px $white;
+            color: $light-mode-base-accent-color;
           }
           .span-left,
           .span-right {
@@ -241,14 +289,15 @@
             }
           }
           &.active {
-            @include boxShadow--hover;
-            @include textShadow--hover;
+            border-radius: 0.5em;
+            box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px $white;
+            color: $light-mode-base-accent-color;
           }
         }
       }
     }
     address {
-      color: $font-base-color;
+      color: $light-mode-base-color;
       font-size: $font-size-small;
       text-align: center;
       width: 100%;
@@ -260,4 +309,7 @@
       }
     }
   }
+}
+.dark-mode .wrapper-menu {
+  //
 }

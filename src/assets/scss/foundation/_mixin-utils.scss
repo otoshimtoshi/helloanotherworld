@@ -51,9 +51,17 @@
     font-size: 16px;
   }
 }
+@mixin logo {
+  font-size: $font-size-logo;
+  @include mq('medium', max) {
+    font-size: 40px;
+  }
+  @include mq('small', max) {
+    font-size: 35px;
+  }
+}
 @mixin h1 {
   font-size: $font-size-h1;
-  @include textShadow;
   @include mq('medium', max) {
     font-size: 33px;
   }
@@ -63,40 +71,10 @@
 }
 @mixin h2 {
   font-size: $font-size-h2;
-  @include textShadow;
   @include mq('medium', max) {
     font-size: 28px;
   }
   @include mq('small', max) {
     font-size: 26px;
   }
-}
-// ==========================================================================
-// text-shadow
-// ==========================================================================
-@mixin textShadow {
-  text-shadow: 1px 1px 2px $font-accent-color,
-    -1px -1px 2px $background-white-color;
-}
-@mixin textShadow--hover {
-  color: $font-accent-white-color;
-}
-// ==========================================================================
-// box-shadow
-// ==========================================================================
-@mixin boxShadow {
-  border-radius: 0.5em;
-  box-shadow: 3px 3px 5px $background-black-color,
-    -3px -3px 5px $background-white-color;
-  border: 1px solid $font-accent-transparent-white-color;
-}
-@mixin boxShadow--hover {
-  border-radius: 0.5em;
-  box-shadow: inset 3px 3px 5px $background-black-color,
-    inset -3px -3px 5px $background-white-color;
-}
-@mixin canvasShadow {
-  border-radius: 0.5em;
-  box-shadow: 3px 3px 5px $background-black-color,
-    -3px -3px 5px $background-white-color;
 }

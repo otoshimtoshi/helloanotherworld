@@ -48,34 +48,45 @@ $mq-breakpoints: (
 // ==========================================================================
 $font-size-base: 20px !default; // baseのフォントサイズ
 $font-size-small: 16px !default; // モバイル(480px)のフォントサイズ
+$font-size-logo: 45px !default;
 $font-size-h1: 35px !default;
 $font-size-h2: 30px !default;
 $font-size-h3: 27px !default;
 
 // ==========================================================================
-// color
+// Shades of grey
 // ==========================================================================
-// font-color
-$font-main-color: #1f304c !default;
-$font-base-color: #2c456d !default;
-$font-accent-color: #7589a6 !default;
-$font-accent-white-color: #f3f7fc !default;
-$font-accent-transparent-white-color: rgba(0, 0, 0, 0.2) !default;
-// font-transparent
-$font-main-transparent-color: rgba(31, 48, 76, 0.7) !default;
-// background-color
-$background-white-color: #fff !default;
-$background-black-color: $font-accent-color !default;
-$background-main-color: $font-accent-white-color !default;
-$background-base-color: $font-main-color !default;
-// border-color
-$border-base-color: $font-base-color !default;
-// svg-stroke-color
-$svg-stroke-color: $font-main-color !default;
+$gray0: #ecf2fa;
+$gray1: #dae2ec;
+$gray2: #bfccdb;
+$gray3: #9caec5;
+$gray4: #7c91aa;
+$gray5: #637994;
+$gray6: #526986;
+$gray7: #405772;
+$gray8: #3a4f69;
+$gray9: #2e435e;
+$white: #f3f7fc;
+$sepia: #fffaef;
+$dark: #091a28;
+$black: #04101a;
+
 // ==========================================================================
-// box-shadow
+// Light Mode
 // ==========================================================================
-$base-box-shadow: 0 4px 10px -1px $font-main-color !default;
+$light-mode-main-color: $black !default;
+$light-mode-base-color: $dark !default;
+$light-mode-main-accent-color: $gray3 !default;
+$light-mode-base-accent-color: $gray0 !default;
+
+// ==========================================================================
+// Dark Mode
+// ==========================================================================
+$dark-mode-main-color: $gray0 !default;
+$dark-mode-base-color: $gray3 !default;
+$dark-mode-main-accent-color: $black !default;
+$dark-mode-base-accent-color: $dark !default;
+
 // ==========================================================================
 // cubic-bezier
 // ==========================================================================

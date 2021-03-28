@@ -1,13 +1,13 @@
 <template>
-  <div class="wrapper-page">
-    <h1>
-      <span>Blog</span>
-      <span class="ja ja-h2">ブログ</span>
-    </h1>
-    <div class="wrapper-page-content">
-      <div class="markdown-body"></div>
-    </div>
-  </div>
+  <v-row dense>
+    <v-col>
+      <v-card flat tile class="mx-auto" max-width="600">
+        <v-card-title>Blog</v-card-title>
+        <v-card-subtitle>ブログ</v-card-subtitle>
+        <v-divider></v-divider>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script lang="ts">
@@ -20,6 +20,7 @@ import {
 } from '@nuxtjs/composition-api'
 
 export default defineComponent({
+  layout: 'pages',
   setup() {
     const { app } = useContext()
     const state = reactive({

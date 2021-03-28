@@ -1,11 +1,13 @@
 <template>
-  <div class="wrapper-page">
-    <h1>
-      <span>Collection of works</span>
-      <span class="ja ja-h2">作品集</span>
-    </h1>
-    <div class="wrapper-page-content" />
-  </div>
+  <v-row dense>
+    <v-col>
+      <v-card flat tile class="mx-auto" max-width="600">
+        <v-card-title>Collection of works</v-card-title>
+        <v-card-subtitle>作品集</v-card-subtitle>
+        <v-divider></v-divider>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script lang="ts">
@@ -17,6 +19,7 @@ import {
   useMeta
 } from '@nuxtjs/composition-api'
 export default defineComponent({
+  layout: 'pages',
   setup() {
     const { app } = useContext()
     const state = reactive({

@@ -2,9 +2,11 @@
   <v-app>
     <BaseTheHeader />
     <v-main>
-      <nuxt />
+      <v-container>
+        <nuxt />
+      </v-container>
     </v-main>
-    <BaseTheFooter />
+    <BaseThePagesFooter />
   </v-app>
 </template>
 <script lang="ts">

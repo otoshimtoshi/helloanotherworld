@@ -1,55 +1,62 @@
-<!-- Headerコンポーネント -->
 <template>
-  <header class="header">
-    <nav class="header-nav">
-      <!-- Header Logo -->
-      <span class="logo">
-        <nuxt-link to="/" data-id="GoHome">
-          <template v-if="root === 'blog'">
-            <span class="stroke-black">Blog</span>
-          </template>
-          <template v-else-if="root === 'who-me-are'">
-            <span class="stroke-black">Who</span>
-            <span class="stroke-white">Me</span>
-            <span class="stroke-black">Are</span>
-          </template>
-          <template v-else-if="root === 'collection'">
-            <span class="stroke-black">Collection</span>
-            <span class="stroke-white">of</span>
-            <span class="stroke-black">Works</span>
-          </template>
-          <template v-else-if="root === 'contact'">
-            <span class="stroke-black">Contact</span>
-          </template>
-          <template v-else>
-            <span class="stroke-black">Hello</span>
-            <span class="stroke-white">Another</span>
-            <span class="stroke-black">World</span>
-          </template>
-        </nuxt-link>
-      </span>
-      <BaseTheHeaderMenu />
-    </nav>
-  </header>
+  <v-app-bar app color="white" flat>
+    <v-toolbar-title>
+      <v-btn
+        class="text-capitalize font-weight-bold blue-grey--text darken-4"
+        text
+        nuxt
+        to="/"
+      >
+        <span>Hello Another World</span>
+      </v-btn>
+    </v-toolbar-title>
+    <v-spacer></v-spacer>
+    <div>
+      <v-btn
+        class="text-capitalize font-weight-bold blue-grey--text darken-4"
+        text
+        nuxt
+        to="/blog"
+      >
+        <span>Blog</span>
+      </v-btn>
+    </div>
+    <div>
+      <v-btn
+        class="text-capitalize font-weight-bold blue-grey--text darken-4"
+        text
+        nuxt
+        to="/who-me-are"
+      >
+        <span>Who Me Are</span>
+      </v-btn>
+    </div>
+    <div>
+      <v-btn
+        class="text-capitalize font-weight-bold blue-grey--text darken-4"
+        text
+        nuxt
+        to="/collection"
+      >
+        <span>Collection of Works</span>
+      </v-btn>
+    </div>
+    <div>
+      <v-btn
+        class="text-capitalize font-weight-bold blue-grey--text darken-4"
+        text
+        nuxt
+        to="/contact"
+      >
+        <span>Contact</span>
+      </v-btn>
+    </div>
+  </v-app-bar>
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  useContext,
-  reactive,
-  computed,
-  toRefs
-} from '@nuxtjs/composition-api'
+import { defineComponent } from '@nuxtjs/composition-api'
 export default defineComponent({
-  setup() {
-    const { route } = useContext()
-    const state = reactive({
-      root: computed(() => route.value.name)
-    })
-    return {
-      ...toRefs(state)
-    }
-  }
+  setup() {}
 })
 </script>

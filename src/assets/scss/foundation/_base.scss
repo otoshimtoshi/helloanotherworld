@@ -10,22 +10,24 @@ html {
 body {
   @include font-size-base;
 
-  background: $background-main-color;
+  background: $light-mode-base-accent-color;
+  color: $light-mode-main-color;
   box-sizing: border-box;
-  color: $font-main-color;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1;
   letter-spacing: 0.03em;
 }
+.dark-mode body {
+  background: $dark-mode-base-accent-color;
+  color: $dark-mode-main-color;
+}
+
 h1 {
   @include h1;
 }
 h2 {
   @include h2;
-}
-svg {
-  fill: $font-main-color;
 }
 span {
   &.ja {
