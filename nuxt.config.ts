@@ -42,7 +42,7 @@ const config: NuxtConfig = {
   ],
   modules: ['@nuxtjs/sitemap'],
   vuetify: {
-    customVariables: ['~/assets/scss/vuetify/variables.scss'],
+    customVariables: ['@/assets/scss/vuetify/index.scss'],
     treeShake: true
   },
   sitemap: {

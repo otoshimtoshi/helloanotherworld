@@ -1,8 +1,12 @@
-<!-- Footerコンポーネント -->
 <template>
-  <footer class="footer" :style="fixed ? 'position: relative;' : ''">
-    <address>Copyright©2020 HelloAnotherWorld All Rights Reserved.</address>
-  </footer>
+  <v-footer color="white" padless>
+    <v-col class="text-center" cols="12">
+      <strong>
+        Copyright©{{ new Date().getFullYear() }} HelloAnotherWorld All Rights
+        Reserved.
+      </strong>
+    </v-col>
+  </v-footer>
 </template>
 
 <script lang="ts">

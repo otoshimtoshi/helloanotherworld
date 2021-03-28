@@ -20,6 +20,7 @@ import {
 } from '@nuxtjs/composition-api'
 
 export default defineComponent({
+  layout: 'pages',
   setup() {
     const { app } = useContext()
     const state = reactive({

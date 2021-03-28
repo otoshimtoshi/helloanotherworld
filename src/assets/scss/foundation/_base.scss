@@ -25,19 +25,9 @@ body {
 
 h1 {
   @include h1;
-
-  text-shadow: 1px 1px 2px $light-mode-main-accent-color, -1px -1px 2px $white;
-}
-.dark-mode h1 {
-  text-shadow: 1px 1px 0 $dark-mode-main-accent-color, 1px 1px 2px $white;
 }
 h2 {
   @include h2;
-
-  text-shadow: 1px 1px 2px $light-mode-main-accent-color, -1px -1px 2px $white;
-}
-.dark-mode h2 {
-  text-shadow: 1px 1px 0 $dark-mode-main-accent-color, 1px 1px 2px $white;
 }
 span {
   &.ja {
