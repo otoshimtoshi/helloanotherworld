@@ -19,7 +19,8 @@ export default defineComponent({
   setup() {
     const { app } = useContext()
     const state = reactive({
-      store: app.store.state
+      store: app.store.state,
+      colorMode: app.$colorMode
     })
 
     return {

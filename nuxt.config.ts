@@ -1,7 +1,7 @@
 import type { NuxtConfig } from '@nuxt/types'
 
 const config: NuxtConfig = {
-  ssr: false,
+  ssr: true,
   target: 'static',
   head: {
     title: 'HelloAnotherWorld',
@@ -43,7 +43,8 @@ const config: NuxtConfig = {
   modules: ['@nuxtjs/sitemap'],
   vuetify: {
     customVariables: ['@/assets/scss/vuetify/index.scss'],
-    treeShake: true
+    treeShake: true,
+    optionsPath: '@/plugins/vuetify.options'
   },
   sitemap: {
     hostname: 'https://helloanotherworld.com'

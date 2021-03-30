@@ -1,5 +1,5 @@
 <template>
-  <v-footer class="blue-grey darken-4 white--text text-center" padless>
+  <v-footer class="text-center" padless :dark="$colorMode.value === 'dark'">
     <v-col class="text-center" cols="12">
       <strong>
         Copyright©{{ new Date().getFullYear() }} HelloAnotherWorld All Rights
