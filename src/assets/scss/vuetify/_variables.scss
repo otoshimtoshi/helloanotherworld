@@ -3,3 +3,79 @@ $body-font-family: 'Homenaje', sans-serif !default;
 $font-size-root: 16px !default;
 $line-height-root: 1.5 !default;
 $border-radius-root: 4px !default;
+
+$gray0: #ecf2fa;
+$gray1: #dae2ec;
+$gray2: #bfccdb;
+$gray3: #9caec5;
+$gray4: #7c91aa;
+$gray5: #637994;
+$gray6: #526986;
+$gray7: #405772;
+$gray8: #3a4f69;
+$gray9: #2e435e;
+$white: #f3f7fc;
+$sepia: #fffaef;
+$dark: #091a28;
+$black: #04101a;
+
+$card-text-letter-spacing: 0.2;
+$card-title-letter-spacing: 0.2;
+
+.light-mode {
+  .theme--light.v-application {
+    background-color: $gray0;
+  }
+}
+.dark-mode {
+  .theme--light.v-application {
+    background-color: $black;
+  }
+  .v-application.font-weight-bold {
+    font-weight: bold;
+  }
+}
+.theme {
+  &--light {
+    &.v-app-bar.v-toolbar.v-sheet {
+      background-color: $white;
+      color: $black;
+    }
+    &.v-navigation-drawer {
+      background-color: $white;
+      color: $black;
+    }
+    &.v-btn.v-btn--has-bg {
+      background-color: $white;
+      color: $black;
+    }
+    &.v-sheet {
+      background-color: $white;
+      color: $black;
+    }
+  }
+  &--dark {
+    &.v-app-bar.v-toolbar.v-sheet {
+      background-color: $dark;
+      color: $gray0;
+    }
+    &.v-navigation-drawer {
+      background-color: $dark;
+      color: $gray0;
+    }
+    &.v-btn.v-btn--has-bg {
+      background-color: $dark;
+      color: $gray0;
+    }
+    &.v-sheet {
+      background-color: $dark;
+      color: $gray0;
+    }
+    .v-card__title {
+      font-weight: bold;
+    }
+    .v-card__subtitle {
+      font-weight: 700;
+    }
+  }
+}
