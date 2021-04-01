@@ -1,10 +1,6 @@
 <template>
   <div>
-    <v-app-bar
-      app
-      :color="$colorMode.value === 'dark' ? 'black' : 'white'"
-      :dark="$colorMode.value === 'dark'"
-    >
+    <v-app-bar app :dark="$colorMode.value === 'dark'">
       <v-toolbar-title>
         <v-btn class="text-capitalize font-weight-bold" text nuxt to="/">
           <span>Hello Another World</span>
@@ -33,6 +29,7 @@
       hide-overlay
       right
       app
+      disable-route-watcher
       :dark="$colorMode.value === 'dark'"
     >
       <v-list dense>

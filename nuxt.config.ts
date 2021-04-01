@@ -43,8 +43,7 @@ const config: NuxtConfig = {
   modules: ['@nuxtjs/sitemap'],
   vuetify: {
     customVariables: ['@/assets/scss/vuetify/index.scss'],
-    treeShake: true,
-    optionsPath: '@/plugins/vuetify.options'
+    treeShake: true
   },
   sitemap: {
     hostname: 'https://helloanotherworld.com'

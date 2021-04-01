@@ -1,11 +1,25 @@
 <template>
-  <v-row dense>
+  <v-row>
+    <v-col cols="2">
+      <v-sheet
+        rounded="lg"
+        min-height="268"
+        :dark="$colorMode.value === 'dark'"
+      >
+      </v-sheet>
+    </v-col>
     <v-col>
-      <v-card flat tile class="mx-auto" max-width="600">
-        <v-card-title>Collection of works</v-card-title>
-        <v-card-subtitle>作品集</v-card-subtitle>
-        <v-divider></v-divider>
-      </v-card>
+      <v-sheet
+        min-height="70vh"
+        rounded="lg"
+        :dark="$colorMode.value === 'dark'"
+      >
+        <v-card class="mx-auto" flat :dark="$colorMode.value === 'dark'">
+          <v-card-title>Collection of works</v-card-title>
+          <v-card-subtitle>作品集</v-card-subtitle>
+          <v-divider></v-divider>
+        </v-card>
+      </v-sheet>
     </v-col>
   </v-row>
 </template>
