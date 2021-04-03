@@ -1,6 +1,6 @@
 <template>
-  <v-row>
-    <v-col cols="12" sm="2">
+  <v-row justify="center">
+    <v-col cols="3" class="hidden-sm-and-down">
       <v-sheet
         rounded="lg"
         min-height="268"
@@ -8,7 +8,7 @@
       >
       </v-sheet>
     </v-col>
-    <v-col cols="12" sm="8">
+    <v-col md="7" sm="12">
       <v-sheet
         min-height="70vh"
         rounded="lg"
@@ -22,7 +22,7 @@
       </v-sheet>
     </v-col>
 
-    <v-col cols="12" sm="2">
+    <v-col cols="2" class="hidden-sm-and-down">
       <v-sheet
         rounded="lg"
         min-height="268"

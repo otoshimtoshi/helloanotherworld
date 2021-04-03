@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center">
-    <v-col cols="8">
+    <v-col xl="5" lg="7" md="9" sm="12">
       <v-sheet
         min-height="70vh"
         rounded="lg"

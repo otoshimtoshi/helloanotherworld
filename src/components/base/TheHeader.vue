@@ -59,7 +59,7 @@
             </v-col>
           </v-list-item>
           <v-divider></v-divider>
-          <v-list-item>
+          <v-list-item class="hidden-md-and-up">
             <v-col>
               <div v-for="(obj, index) in root" :key="index">
                 <v-btn

@@ -1,17 +1,12 @@
 <template>
   <v-row justify="center">
-    <v-col cols="8">
+    <v-col xl="5" lg="7" md="9" sm="12">
       <v-sheet
         min-height="70vh"
         rounded="lg"
         :dark="$colorMode.value === 'dark'"
       >
-        <v-card
-          class="mx-auto"
-          flat
-          :dark="$colorMode.value === 'dark'"
-          max-width="600"
-        >
+        <v-card class="mx-auto" flat :dark="$colorMode.value === 'dark'">
           <v-card-title>Contact</v-card-title>
           <v-card-subtitle>お問い合わせ</v-card-subtitle>
           <v-divider></v-divider>
