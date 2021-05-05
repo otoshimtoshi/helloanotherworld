@@ -1,31 +1,35 @@
 import { defineNuxtPlugin } from '@nuxtjs/composition-api'
-import Scrollmagic, {
+import ScrollMagic, {
   ControllerConstructorOptions,
   SceneConstructorOptions
-} from 'scrollmagic'
+} from 'ScrollMagic'
+import { TimelineMax, TweenMax } from 'gsap'
+import { ScrollMagicPluginGsap } from './vendor/ScrollMagic-plugin-gsap'
+
+ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
 
 export interface ScrollUtil {
-  simplifiedUse: (
+  SimplifiedUse: (
     setTarget: string,
     classToggleName?: string,
     cOption?: ControllerConstructorOptions,
     sOption?: SceneConstructorOptions
-  ) => Scrollmagic.Scene
-  controller: (
+  ) => ScrollMagic.Scene
+  Controller: (
     controllOption?: ControllerConstructorOptions
-  ) => Scrollmagic.Controller
-  scene: (sceneOption?: SceneConstructorOptions) => Scrollmagic.Scene
+  ) => ScrollMagic.Controller
+  Scene: (sceneOption?: SceneConstructorOptions) => ScrollMagic.Scene
 }
 
 export default defineNuxtPlugin((_, inject) => {
-  const $scrollUtil: ScrollUtil = {
-    simplifiedUse: (setTarget, classToggleName, cOption, sOption) => {
+  const $scrollmagic: ScrollUtil = {
+    SimplifiedUse: (setTarget, classToggleName, cOption, sOption) => {
       const controller = cOption
-        ? new Scrollmagic.Controller(cOption)
-        : new Scrollmagic.Controller({ globalSceneOptions: { duration: 100 } })
+        ? new ScrollMagic.Controller(cOption)
+        : new ScrollMagic.Controller({ globalSceneOptions: { duration: 100 } })
       const scene = sOption
-        ? new Scrollmagic.Scene(sOption)
-        : new Scrollmagic.Scene({ triggerElement: '.selecter' })
+        ? new ScrollMagic.Scene(sOption)
+        : new ScrollMagic.Scene({ triggerElement: '.selecter' })
       if (classToggleName) {
         return scene
           .setClassToggle(setTarget, classToggleName)
@@ -34,16 +38,16 @@ export default defineNuxtPlugin((_, inject) => {
         return scene.setClassToggle(setTarget, 'fadeIn').addTo(controller)
       }
     },
-    controller: (controllOption) => {
+    Controller: (controllOption) => {
       return controllOption
-        ? new Scrollmagic.Controller(controllOption)
-        : new Scrollmagic.Controller()
+        ? new ScrollMagic.Controller(controllOption)
+        : new ScrollMagic.Controller()
     },
-    scene: (sceneOption) => {
+    Scene: (sceneOption) => {
       return sceneOption
-        ? new Scrollmagic.Scene(sceneOption)
-        : new Scrollmagic.Scene()
+        ? new ScrollMagic.Scene(sceneOption)
+        : new ScrollMagic.Scene()
     }
   }
-  inject('scrollMagic', $scrollUtil)
+  inject('scrollmagic', $scrollmagic)
 })

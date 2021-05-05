@@ -31,6 +31,7 @@ const config: NuxtConfig = {
     typeCheck: false,
     ignoreNotFoundWarnings: true
   },
+  plugins: [{ src: '@/plugins/scroll-magic', mode: 'client' }],
   buildModules: [
     '@nuxt/typescript-build',
     '@nuxtjs/composition-api',

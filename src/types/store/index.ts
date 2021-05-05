@@ -1,5 +1,3 @@
-import { AxiosResponse } from 'axios'
-
 /** meta情報 */
 export interface MetaInfo {
   /** 各ページのid */
@@ -36,5 +34,5 @@ export interface M {
 
 /** actionsの名前と引数の型 */
 export interface A {
-  fetchMetaInfo: () => Promise<AxiosResponse<MetaInfo[]>>
+  fetchMetaInfo: () => Promise<any>
 }
