@@ -1,5 +1,10 @@
 <template>
-  <v-footer class="text-center" padless :dark="$colorMode.value === 'dark'">
+  <v-footer
+    class="text-center"
+    absolute
+    padless
+    :dark="$colorMode.value === 'dark'"
+  >
     <v-col class="text-center text-sm-body-2" cols="12">
       <strong>
         Copyright©{{ new Date().getFullYear() }} HelloAnotherWorld All Rights

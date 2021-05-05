@@ -1,5 +1,5 @@
 <template>
-  <div id="three-obj" class="canvas" />
+  <div id="three-gltf" class="canvas" />
 </template>
 
 <script lang="ts">
@@ -11,8 +11,8 @@ import {
   toRefs
 } from '@nuxtjs/composition-api'
 import * as THREE from 'three'
-import { LoadingManager } from 'three'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 export default defineComponent({
   props: {
@@ -27,14 +27,13 @@ export default defineComponent({
       scene: new THREE.Scene(),
       hemiLight: new THREE.HemisphereLight(0xffffff, 0xffffff, 0.2),
       dirLight: new THREE.DirectionalLight(0xffffff, 0.9),
-      manager: new LoadingManager(),
       mouseX: 0,
       mouseY: 0,
       rotateX: 0,
       rotateY: 0
     })
 
-    state.camera.position.set(0, 0, 100)
+    state.camera.position.set(0, 0, 8)
 
     state.hemiLight.position.set(0, 50, 0)
     state.scene.add(state.hemiLight)
@@ -46,11 +45,11 @@ export default defineComponent({
     state.dirLight.shadow.mapSize.height = 2048
     state.scene.add(state.dirLight)
 
-    const objLoader = new OBJLoader(state.manager)
+    const gltfLoader = new GLTFLoader()
     const renderer = ref<THREE.WebGLRenderer>()
 
     onMounted(() => {
-      const element: HTMLElement | null = document.getElementById('three-obj')
+      const element: HTMLElement | null = document.getElementById('three-gltf')
       renderer.value = new THREE.WebGLRenderer({
         antialias: true,
         div: element,
@@ -62,10 +61,10 @@ export default defineComponent({
       }
       renderer.value.setSize(state.width, state.height)
       renderer.value.shadowMap.enabled = true
-      objLoader.load(
+      gltfLoader.load(
         props.src,
-        (obj) => {
-          state.scene.add(obj)
+        (gltf) => {
+          state.scene.add(gltf.scene)
           document.addEventListener('mousemove', (event) => {
             state.mouseX = event.pageX
             state.mouseY = event.pageY
@@ -78,6 +77,11 @@ export default defineComponent({
           onError(err)
         }
       )
+      const controls = new OrbitControls(
+        state.camera,
+        renderer.value.domElement
+      )
+      controls.update()
       element.appendChild(renderer.value.domElement)
       animate()
     })
@@ -90,20 +94,20 @@ export default defineComponent({
     }
     function onError(err) {
       console.log(err)
-      throw new Error(`objLoader error ${err}`)
+      throw new Error(`gltfLoader error ${err}`)
     }
 
     const animate = () => {
       const targetRotX = (state.mouseX / window.innerWidth) * 360
       const targetRotY = (state.mouseY / window.innerHeight) * 360
-      state.rotateX += (targetRotX - state.rotateX) * 0.03
-      state.rotateY += (targetRotY - state.rotateY) * 0.03
+      state.rotateX += (targetRotX - state.rotateX) * 0.02
+      state.rotateY += (targetRotY - state.rotateY) * 0.02
       // ラジアンに変換する
       const radianX = (state.rotateX * Math.PI) / 180
       const radianY = (state.rotateY * Math.PI) / 180
       // 角度に応じてカメラの位置を設定
-      state.camera.position.x = 100 * Math.sin(radianX)
-      state.camera.position.y = 100 * Math.sin(radianY)
+      state.camera.position.x = 10 * Math.sin(radianX)
+      state.camera.position.y = 10 * Math.sin(radianY)
       // 原点方向を見つめる
       state.camera.lookAt(new THREE.Vector3(0, 0, 0))
       // レンダリング
