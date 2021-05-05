@@ -1,6 +1,6 @@
 <template>
   <v-footer class="text-center" padless :dark="$colorMode.value === 'dark'">
-    <v-col class="text-center" cols="12">
+    <v-col class="text-center text-sm-body-2" cols="12">
       <strong>
         Copyright©{{ new Date().getFullYear() }} HelloAnotherWorld All Rights
         Reserved.

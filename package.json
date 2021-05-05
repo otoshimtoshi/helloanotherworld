@@ -33,8 +33,10 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "core-js": "^3.9.1",
     "date-fns": "^2.19.0",
+    "gsap": "^3.6.1",
     "nuxt": "2.15.3",
     "scrollmagic": "^2.0.8",
+    "scrollmagic-plugin-gsap": "^1.0.4",
     "three": "^0.126.1",
     "vue": "^2.6.12"
   },

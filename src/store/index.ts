@@ -207,7 +207,7 @@ export const mutations: Mutations<S, M> = {
 export const actions: Actions<S, A, G, M> = {
   async fetchMetaInfo({ commit }, fetchFunc) {
     const response = await fetchFunc()
-    const metaInfo = response.data.map((item) => {
+    const metaInfo = response.data.map((item: any) => {
       return {
         id: item.id,
         title: item.title,
