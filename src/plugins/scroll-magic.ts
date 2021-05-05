@@ -2,7 +2,7 @@ import { defineNuxtPlugin } from '@nuxtjs/composition-api'
 import ScrollMagic, {
   ControllerConstructorOptions,
   SceneConstructorOptions
-} from 'ScrollMagic'
+} from 'scrollmagic'
 import { TimelineMax, TweenMax } from 'gsap'
 import { ScrollMagicPluginGsap } from './vendor/ScrollMagic-plugin-gsap'
 
