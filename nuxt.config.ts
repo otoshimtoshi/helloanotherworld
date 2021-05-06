@@ -27,10 +27,6 @@ const config: NuxtConfig = {
   build: {
     transpile: ['three']
   },
-  typescript: {
-    typeCheck: false,
-    ignoreNotFoundWarnings: true
-  },
   plugins: [{ src: '@/plugins/scroll-magic', mode: 'client' }],
   buildModules: [
     '@nuxt/typescript-build',

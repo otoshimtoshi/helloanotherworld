@@ -23,6 +23,8 @@ export default defineComponent({
   },
   setup(props) {
     const state = reactive({
+      width: 0,
+      height: 0,
       camera: new THREE.PerspectiveCamera(),
       scene: new THREE.Scene(),
       hemiLight: new THREE.HemisphereLight(0xffffff, 0xffffff, 0.2),
@@ -50,15 +52,15 @@ export default defineComponent({
 
     onMounted(() => {
       const element: HTMLElement | null = document.getElementById('three-gltf')
+      if (element === null) return
       renderer.value = new THREE.WebGLRenderer({
         antialias: true,
-        div: element,
         alpha: true
       })
-      if (element !== null) {
-        state.width = element.clientWidth
-        state.height = element.clientHeight
-      }
+
+      state.width = element.clientWidth
+      state.height = element.clientHeight
+
       renderer.value.setSize(state.width, state.height)
       renderer.value.shadowMap.enabled = true
       gltfLoader.load(
@@ -86,13 +88,13 @@ export default defineComponent({
       animate()
     })
 
-    function onProgress(xhr) {
+    function onProgress(xhr: ProgressEvent) {
       if (xhr.lengthComputable) {
         const percentComplete = (xhr.loaded / xhr.total) * 100
-        console.log('model ' + Math.round(percentComplete, 2) + '% downloaded')
+        console.log('model ' + Math.round(percentComplete) + '% downloaded')
       }
     }
-    function onError(err) {
+    function onError(err: ErrorEvent) {
       console.log(err)
       throw new Error(`gltfLoader error ${err}`)
     }
@@ -111,6 +113,7 @@ export default defineComponent({
       // 原点方向を見つめる
       state.camera.lookAt(new THREE.Vector3(0, 0, 0))
       // レンダリング
+      if (renderer.value === undefined) return
       renderer.value.render(state.scene, state.camera)
       requestAnimationFrame(animate)
     }

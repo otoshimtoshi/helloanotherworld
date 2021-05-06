@@ -11,7 +11,6 @@ import {
   toRefs
 } from '@nuxtjs/composition-api'
 import * as THREE from 'three'
-import { LoadingManager } from 'three'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 
 export default defineComponent({
@@ -23,11 +22,13 @@ export default defineComponent({
   },
   setup(props) {
     const state = reactive({
+      width: 0,
+      height: 0,
       camera: new THREE.PerspectiveCamera(),
       scene: new THREE.Scene(),
       hemiLight: new THREE.HemisphereLight(0xffffff, 0xffffff, 0.2),
       dirLight: new THREE.DirectionalLight(0xffffff, 0.9),
-      manager: new LoadingManager(),
+      manager: new THREE.LoadingManager(),
       mouseX: 0,
       mouseY: 0,
       rotateX: 0,
@@ -51,15 +52,15 @@ export default defineComponent({
 
     onMounted(() => {
       const element: HTMLElement | null = document.getElementById('three-obj')
+      if (element === null) return
       renderer.value = new THREE.WebGLRenderer({
         antialias: true,
-        div: element,
         alpha: true
       })
-      if (element !== null) {
-        state.width = element.clientWidth
-        state.height = element.clientHeight
-      }
+
+      state.width = element.clientWidth
+      state.height = element.clientHeight
+
       renderer.value.setSize(state.width, state.height)
       renderer.value.shadowMap.enabled = true
       objLoader.load(
@@ -82,13 +83,13 @@ export default defineComponent({
       animate()
     })
 
-    function onProgress(xhr) {
+    function onProgress(xhr: ProgressEvent) {
       if (xhr.lengthComputable) {
         const percentComplete = (xhr.loaded / xhr.total) * 100
-        console.log('model ' + Math.round(percentComplete, 2) + '% downloaded')
+        console.log('model ' + Math.round(percentComplete) + '% downloaded')
       }
     }
-    function onError(err) {
+    function onError(err: ErrorEvent) {
       console.log(err)
       throw new Error(`objLoader error ${err}`)
     }
@@ -96,8 +97,8 @@ export default defineComponent({
     const animate = () => {
       const targetRotX = (state.mouseX / window.innerWidth) * 360
       const targetRotY = (state.mouseY / window.innerHeight) * 360
-      state.rotateX += (targetRotX - state.rotateX) * 0.03
-      state.rotateY += (targetRotY - state.rotateY) * 0.03
+      state.rotateX += (targetRotX - state.rotateX) * 0.02
+      state.rotateY += (targetRotY - state.rotateY) * 0.02
       // ラジアンに変換する
       const radianX = (state.rotateX * Math.PI) / 180
       const radianY = (state.rotateY * Math.PI) / 180
@@ -107,6 +108,7 @@ export default defineComponent({
       // 原点方向を見つめる
       state.camera.lookAt(new THREE.Vector3(0, 0, 0))
       // レンダリング
+      if (renderer.value === undefined) return
       renderer.value.render(state.scene, state.camera)
       requestAnimationFrame(animate)
     }
