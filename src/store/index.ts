@@ -8,7 +8,7 @@ export const state = (): S => ({
   metaInfo: [
     {
       id: 'index',
-      title: 'HelloAnotherWorld',
+      title: 'helloanotherworld.com',
       meta: [
         {
           hid: 'description',
@@ -19,7 +19,7 @@ export const state = (): S => ({
         {
           hid: 'og:title',
           name: 'og:title',
-          content: 'HelloAnotherWorld'
+          content: 'helloanotherworld.com'
         },
         {
           hid: 'og:description',
@@ -31,23 +31,12 @@ export const state = (): S => ({
           hid: 'og:url',
           name: 'og:url',
           content: 'https://helloanotherworld.com'
-        },
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: 'HelloAnotherWorld'
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content:
-            'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.'
         }
       ]
     },
     {
       id: 'blog',
-      title: 'Blog - ブログ - HelloAnotherWorld',
+      title: 'Blog - helloanotherworld.com',
       meta: [
         {
           hid: 'description',
@@ -57,7 +46,7 @@ export const state = (): S => ({
         {
           hid: 'og:title',
           name: 'og:title',
-          content: 'Blog - ブログ - HelloAnotherWorld'
+          content: 'Blog - helloanotherworld.com'
         },
         {
           hid: 'og:description',
@@ -68,22 +57,12 @@ export const state = (): S => ({
           hid: 'og:url',
           name: 'og:url',
           content: 'https://helloanotherworld.com/blog'
-        },
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: 'Blog - ブログ - HelloAnotherWorld'
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: 'I´ll share something that might be helpful.'
         }
       ]
     },
     {
       id: 'collection',
-      title: 'Collection - 作品集 - HelloAnotherWorld',
+      title: 'Collection - helloanotherworld.com',
       meta: [
         {
           hid: 'description',
@@ -93,7 +72,7 @@ export const state = (): S => ({
         {
           hid: 'og:title',
           name: 'og:title',
-          content: 'Collection - 作品集 - HelloAnotherWorld'
+          content: 'Collection - helloanotherworld.com'
         },
         {
           hid: 'og:description',
@@ -104,22 +83,12 @@ export const state = (): S => ({
           hid: 'og:url',
           name: 'og:url',
           content: 'https://helloanotherworld.com/collection'
-        },
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: 'Collection - 作品集 - HelloAnotherWorld'
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: 'Previous Works.'
         }
       ]
     },
     {
       id: 'who-me-are',
-      title: 'WhoMeAre - 自己紹介 - HelloAnotherWorld',
+      title: 'WhoMeAre - helloanotherworld.com',
       meta: [
         {
           hid: 'description',
@@ -129,7 +98,7 @@ export const state = (): S => ({
         {
           hid: 'og:title',
           name: 'og:title',
-          content: 'WhoMeAre - 自己紹介 - HelloAnotherWorld'
+          content: 'WhoMeAre - helloanotherworld.com'
         },
         {
           hid: 'og:description',
@@ -140,22 +109,12 @@ export const state = (): S => ({
           hid: 'og:url',
           name: 'og:url',
           content: 'https://helloanotherworld.com/who-me-are'
-        },
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: 'WhoMeAre - 自己紹介 - HelloAnotherWorld'
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: 'Introduce myself.'
         }
       ]
     },
     {
       id: 'contact',
-      title: 'Contact - お問い合わせ - HelloAnotherWorld',
+      title: 'Contact - helloanotherworld.com',
       meta: [
         {
           hid: 'description',
@@ -165,7 +124,7 @@ export const state = (): S => ({
         {
           hid: 'og:title',
           name: 'og:title',
-          content: 'Contact - お問い合わせ - HelloAnotherWorld'
+          content: 'Contact - helloanotherworld.com'
         },
         {
           hid: 'og:description',
@@ -176,16 +135,6 @@ export const state = (): S => ({
           hid: 'og:url',
           name: 'og:url',
           content: 'https://helloanotherworld.com/contact'
-        },
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: 'Contact - お問い合わせ - HelloAnotherWorld'
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: 'Contact Us.'
         }
       ]
     }
