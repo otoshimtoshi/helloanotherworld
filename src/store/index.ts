@@ -31,6 +31,17 @@ export const state = (): S => ({
           hid: 'og:url',
           name: 'og:url',
           content: 'https://helloanotherworld.com'
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: 'helloanotherworld.com'
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content:
+            'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.'
         }
       ]
     },
@@ -57,6 +68,16 @@ export const state = (): S => ({
           hid: 'og:url',
           name: 'og:url',
           content: 'https://helloanotherworld.com/blog'
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: 'Blog - helloanotherworld.com'
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content: 'I´ll share something that might be helpful.'
         }
       ]
     },
@@ -83,6 +104,16 @@ export const state = (): S => ({
           hid: 'og:url',
           name: 'og:url',
           content: 'https://helloanotherworld.com/collection'
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: 'Collection - helloanotherworld.com'
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content: 'Previous Works.'
         }
       ]
     },
@@ -109,6 +140,16 @@ export const state = (): S => ({
           hid: 'og:url',
           name: 'og:url',
           content: 'https://helloanotherworld.com/who-me-are'
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: 'WhoMeAre - helloanotherworld.com'
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content: 'Introduce myself.'
         }
       ]
     },
@@ -135,6 +176,16 @@ export const state = (): S => ({
           hid: 'og:url',
           name: 'og:url',
           content: 'https://helloanotherworld.com/contact'
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: 'Contact - helloanotherworld.com'
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content: 'Contact Us.'
         }
       ]
     }

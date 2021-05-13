@@ -4,7 +4,7 @@ const config: NuxtConfig = {
   ssr: true,
   target: 'static',
   head: {
-    title: 'HelloAnotherWorld',
+    title: 'helloanotherworld.com',
     htmlAttrs: {
       lang: 'ja'
     },
@@ -40,7 +40,13 @@ const config: NuxtConfig = {
         content: 'helloanotherworld.com'
       },
       { hid: 'og:image', property: 'og:image', content: '/ogp.jpg' },
-      { hid: 'twitter:card', name: 'twitter:card', content: 'summary' }
+      {
+        hid: 'twitter:site',
+        name: 'twitter:site',
+        content: 'helloanotherworld.com'
+      },
+      { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+      { hid: 'twitter:image', name: 'twitter:image', content: '/ogp.jpg' }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
