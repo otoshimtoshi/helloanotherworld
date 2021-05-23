@@ -1,6 +1,6 @@
 <template>
-  <ThreeObjLoader src="/airplane.obj" />
-  <!-- <ThreeGLTFLoader src="/untitled.glb" /> -->
+  <!-- <ThreeObjLoader src="/airplane.obj" /> -->
+  <ThreeGLTFLoader src="/untitled.glb" />
 </template>
 
 <script lang="ts">
