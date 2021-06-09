@@ -1,5 +1,5 @@
 <template>
-  <div id="three-gltf" class="canvas" />
+  <div id="three-gltf" />
 </template>
 
 <script lang="ts">
@@ -7,8 +7,8 @@ import {
   defineComponent,
   reactive,
   onMounted,
-  ref,
-  toRefs
+  toRefs,
+  ref
 } from '@nuxtjs/composition-api'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -25,48 +25,58 @@ export default defineComponent({
     const state = reactive({
       width: 0,
       height: 0,
-      camera: new THREE.PerspectiveCamera(),
-      scene: new THREE.Scene(),
-      dirLight: new THREE.DirectionalLight(0xffffff),
       mouseX: 0,
       mouseY: 0,
       rotateX: 0,
-      rotateY: 0
+      rotateY: 0,
+      camera: new THREE.PerspectiveCamera(),
+      scene: new THREE.Scene(),
+      hemiLight: new THREE.HemisphereLight(0xffffff, 0x444444),
+      dirLight: new THREE.DirectionalLight(0xffffff),
+      gltfLoader: new GLTFLoader(),
+      clock: new THREE.Clock(),
+      model: new THREE.Group(),
+      mixer: new THREE.AnimationMixer(new THREE.Object3D())
     })
 
-    state.camera.position.set(0, 0, 8)
-
-    state.dirLight.position.set(0, 0, 50)
-    state.scene.add(state.dirLight)
-
-    const gltfLoader = new GLTFLoader()
     const renderer = ref<THREE.WebGLRenderer>()
 
+    const init = () => {
+      // scene
+      state.scene.background = new THREE.Color(0xa0a0a0)
+      state.scene.fog = new THREE.Fog(0xa0a0a0, 10, 50)
+      // hemiLight
+      state.hemiLight.position.set(0, 20, 0)
+      state.scene.add(state.hemiLight)
+      // dirLight
+      state.dirLight.position.set(3, 10, 10)
+      state.dirLight.castShadow = true
+      state.dirLight.shadow.camera.top = 2
+      state.dirLight.shadow.camera.bottom = -2
+      state.dirLight.shadow.camera.left = -2
+      state.dirLight.shadow.camera.right = 2
+      state.dirLight.shadow.camera.near = 0.1
+      state.dirLight.shadow.camera.far = 40
+      state.scene.add(state.dirLight)
+    }
+    init()
+
     onMounted(() => {
-      const element: HTMLElement | null = document.getElementById('three-gltf')
-      if (element === null) return
-      renderer.value = new THREE.WebGLRenderer({
-        antialias: true,
-        alpha: true
-      })
-
-      state.width = element.clientWidth
-      state.height = element.clientHeight
-
-      renderer.value.setSize(state.width, state.height)
-      renderer.value.shadowMap.enabled = true
-      gltfLoader.load(
+      state.gltfLoader.load(
         props.src,
         (gltf) => {
-          state.scene.add(gltf.scene)
-          document.addEventListener('mousemove', (event) => {
-            state.mouseX = event.pageX
-            state.mouseY = event.pageY
-          })
-          document.addEventListener('touchmove', (event) => {
-            state.mouseX = event.touches[0].pageX
-            state.mouseY = event.touches[0].pageY
-          })
+          state.model = gltf.scene
+          state.scene.add(state.model)
+          const animations = gltf.animations
+          console.log(animations)
+          state.mixer = new THREE.AnimationMixer(state.model)
+          const numAnimations = animations.length
+          for (let i = 0; i !== numAnimations; ++i) {
+            let clip = animations[i]
+            const action = state.mixer.clipAction(clip)
+            action.play()
+          }
+          animate()
         },
         (xhr) => {
           onProgress(xhr)
@@ -75,14 +85,43 @@ export default defineComponent({
           onError(err)
         }
       )
+
+      const element: HTMLElement | null = document.getElementById('three-gltf')
+      if (element === null) return
+      renderer.value = new THREE.WebGLRenderer({ antialias: true })
+      renderer.value.setPixelRatio(window.devicePixelRatio)
+      renderer.value.setSize(window.innerWidth, window.innerHeight)
+      renderer.value.outputEncoding = THREE.sRGBEncoding
+      renderer.value.shadowMap.enabled = true
+      element.appendChild(renderer.value.domElement)
+
+      // camera
+      state.camera = new THREE.PerspectiveCamera(
+        45,
+        window.innerWidth / window.innerHeight,
+        1,
+        100
+      )
+      state.camera.position.set(-1, 0, 6)
+
       const controls = new OrbitControls(
         state.camera,
         renderer.value.domElement
       )
+      controls.enablePan = false
+      controls.enableZoom = false
+      controls.target.set(1, -2, -4)
       controls.update()
-      element.appendChild(renderer.value.domElement)
-      animate()
+
+      window.addEventListener('resize', onWindowResize)
     })
+
+    function onWindowResize() {
+      if (renderer.value === undefined) return
+      state.camera.aspect = window.innerWidth / window.innerHeight
+      state.camera.updateProjectionMatrix()
+      renderer.value.setSize(window.innerWidth, window.innerHeight)
+    }
 
     function onProgress(xhr: ProgressEvent) {
       if (xhr.lengthComputable) {
@@ -96,22 +135,11 @@ export default defineComponent({
     }
 
     const animate = () => {
-      const targetRotX = (state.mouseX / window.innerWidth) * 360
-      const targetRotY = (state.mouseY / window.innerHeight) * 360
-      state.rotateX += (targetRotX - state.rotateX) * 0.02
-      state.rotateY += (targetRotY - state.rotateY) * 0.02
-      // ラジアンに変換する
-      const radianX = (state.rotateX * Math.PI) / 180
-      const radianY = (state.rotateY * Math.PI) / 180
-      // 角度に応じてカメラの位置を設定
-      state.camera.position.x = Math.sin(radianX) * 2.5
-      state.camera.position.y = Math.sin(radianY) * 2.5
-      // 原点方向を見つめる
-      state.camera.lookAt(new THREE.Vector3(0, 0, 0))
-      // レンダリング
+      requestAnimationFrame(animate)
+      const mixerUpdateDelta = state.clock.getDelta()
+      state.mixer.update(mixerUpdateDelta)
       if (renderer.value === undefined) return
       renderer.value.render(state.scene, state.camera)
-      requestAnimationFrame(animate)
     }
 
     return {
