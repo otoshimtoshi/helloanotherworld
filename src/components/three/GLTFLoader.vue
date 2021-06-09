@@ -27,8 +27,7 @@ export default defineComponent({
       height: 0,
       camera: new THREE.PerspectiveCamera(),
       scene: new THREE.Scene(),
-      hemiLight: new THREE.HemisphereLight(0xffffff, 0xffffff, 0.2),
-      dirLight: new THREE.DirectionalLight(0xffffff, 0.9),
+      dirLight: new THREE.DirectionalLight(0xffffff),
       mouseX: 0,
       mouseY: 0,
       rotateX: 0,
@@ -37,14 +36,7 @@ export default defineComponent({
 
     state.camera.position.set(0, 0, 8)
 
-    state.hemiLight.position.set(0, 50, 0)
-    state.scene.add(state.hemiLight)
-
-    state.dirLight.position.set(-10, 28, 10)
-    state.dirLight.position.multiplyScalar(10)
-    state.dirLight.castShadow = true
-    state.dirLight.shadow.mapSize.width = 2048
-    state.dirLight.shadow.mapSize.height = 2048
+    state.dirLight.position.set(0, 0, 50)
     state.scene.add(state.dirLight)
 
     const gltfLoader = new GLTFLoader()
@@ -70,6 +62,10 @@ export default defineComponent({
           document.addEventListener('mousemove', (event) => {
             state.mouseX = event.pageX
             state.mouseY = event.pageY
+          })
+          document.addEventListener('touchmove', (event) => {
+            state.mouseX = event.touches[0].pageX
+            state.mouseY = event.touches[0].pageY
           })
         },
         (xhr) => {
@@ -108,8 +104,8 @@ export default defineComponent({
       const radianX = (state.rotateX * Math.PI) / 180
       const radianY = (state.rotateY * Math.PI) / 180
       // 角度に応じてカメラの位置を設定
-      state.camera.position.x = 10 * Math.sin(radianX)
-      state.camera.position.y = 10 * Math.sin(radianY)
+      state.camera.position.x = Math.sin(radianX) * 2.5
+      state.camera.position.y = Math.sin(radianY) * 2.5
       // 原点方向を見つめる
       state.camera.lookAt(new THREE.Vector3(0, 0, 0))
       // レンダリング

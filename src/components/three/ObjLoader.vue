@@ -71,6 +71,10 @@ export default defineComponent({
             state.mouseX = event.pageX
             state.mouseY = event.pageY
           })
+          document.addEventListener('touchmove', (event) => {
+            state.mouseX = event.touches[0].pageX
+            state.mouseY = event.touches[0].pageY
+          })
         },
         (xhr) => {
           onProgress(xhr)
@@ -103,8 +107,8 @@ export default defineComponent({
       const radianX = (state.rotateX * Math.PI) / 180
       const radianY = (state.rotateY * Math.PI) / 180
       // 角度に応じてカメラの位置を設定
-      state.camera.position.x = 100 * Math.sin(radianX)
-      state.camera.position.y = 100 * Math.sin(radianY)
+      state.camera.position.x = Math.sin(radianX) * 2.5
+      state.camera.position.y = Math.sin(radianY) * 2.5
       // 原点方向を見つめる
       state.camera.lookAt(new THREE.Vector3(0, 0, 0))
       // レンダリング
