@@ -102,7 +102,7 @@ export default defineComponent({
         1,
         100
       )
-      state.camera.position.set(-1, 0, 6)
+      state.camera.position.set(-7, 3, 5)
 
       const controls = new OrbitControls(
         state.camera,
@@ -110,7 +110,7 @@ export default defineComponent({
       )
       controls.enablePan = false
       controls.enableZoom = false
-      controls.target.set(1, -2, -4)
+      controls.target.set(0, 0, 0)
       controls.update()
 
       window.addEventListener('resize', onWindowResize)
