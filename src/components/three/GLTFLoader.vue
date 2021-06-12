@@ -110,7 +110,7 @@ export default defineComponent({
       )
       controls.enablePan = false
       controls.enableZoom = false
-      controls.target.set(0, 0, 0)
+      controls.target.set(0, 1, 0)
       controls.update()
 
       window.addEventListener('resize', onWindowResize)
