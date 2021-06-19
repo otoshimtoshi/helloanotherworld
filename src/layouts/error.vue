@@ -1,16 +1,21 @@
 <template>
-  <div id="wrapper" class="wrapper">
-    <TheHeader />
-    <div class="wrapper-page">
-      <h1>
-        <span>{{ message.main }}</span>
-      </h1>
-    </div>
+  <div class="error">
+    <LayoutsTheBar position="top" />
+    <h1>{{ message.main }}</h1>
+    <LayoutsTheLinkArea :links="allLink" />
+    <LayoutsTheBar position="bottom" />
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from '@nuxtjs/composition-api'
+import {
+  computed,
+  defineComponent,
+  PropType,
+  reactive,
+  toRefs
+} from '@nuxtjs/composition-api'
+import { Links } from '@/components/layouts/TheLinkArea.vue'
 
 interface ErrorProp {
   message: string
@@ -18,6 +23,7 @@ interface ErrorProp {
 }
 
 export default defineComponent({
+  layout: 'error',
   props: {
     error: {
       type: Object as PropType<ErrorProp>,
@@ -25,6 +31,27 @@ export default defineComponent({
     }
   },
   setup: (props) => {
+    const state = reactive({
+      allLink: [
+        {
+          path: '/',
+          text: 'Top'
+        },
+        {
+          path: '/who-me-are',
+          text: 'Who Me Are'
+        },
+        {
+          path: '/collection',
+          text: 'Collection of Works'
+        },
+        {
+          path: '/contact',
+          text: 'Contact'
+        }
+      ] as Array<Links>
+    })
+
     const message = computed(() => {
       switch (props.error.statusCode) {
         case 404:
@@ -39,6 +66,7 @@ export default defineComponent({
     })
 
     return {
+      ...toRefs(state),
       message
     }
   }
@@ -46,26 +74,18 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.container {
+.error {
+  position: absolute;
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #ecf2fa;
 }
-.box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 30px;
-  &__image {
-    margin-bottom: 20px;
-  }
-  &__title {
-    font-size: 2.4rem;
-    margin-bottom: 16px;
-  }
-  &__text {
-    margin-bottom: 24px;
+.dark-mode {
+  .error {
+    background-color: #030b13;
   }
 }
 </style>

@@ -42,39 +42,3 @@
   min-width: $small;
   margin: 0 auto;
 }
-// ==========================================================================
-// font-size
-// ==========================================================================
-@mixin font-size-base {
-  font-size: $font-size-base;
-  @include mq('small', max) {
-    font-size: 16px;
-  }
-}
-@mixin logo {
-  font-size: $font-size-logo;
-  @include mq('medium', max) {
-    font-size: 40px;
-  }
-  @include mq('small', max) {
-    font-size: 35px;
-  }
-}
-@mixin h1 {
-  font-size: $font-size-h1;
-  @include mq('medium', max) {
-    font-size: 33px;
-  }
-  @include mq('small', max) {
-    font-size: 30px;
-  }
-}
-@mixin h2 {
-  font-size: $font-size-h2;
-  @include mq('medium', max) {
-    font-size: 28px;
-  }
-  @include mq('small', max) {
-    font-size: 26px;
-  }
-}

@@ -1,6 +1,5 @@
 <template>
-  <!-- <ThreeObjLoader src="/SkullHead.obj" /> -->
-  <ThreeGLTFLoader src="/logo.glb" />
+  <WebglGLTFLoader src="/logo.glb" :mode="colorMode" />
 </template>
 
 <script lang="ts">
@@ -9,7 +8,8 @@ import {
   reactive,
   useContext,
   toRefs,
-  useMeta
+  useMeta,
+  computed
 } from '@nuxtjs/composition-api'
 
 export default defineComponent({
@@ -23,8 +23,11 @@ export default defineComponent({
       meta: metaState.metaInfo?.meta
     }))
 
+    const colorMode = computed(() => app.$colorMode.preference)
+
     return {
-      ...toRefs(metaState)
+      ...toRefs(metaState),
+      colorMode
     }
   },
   // @ts-ignore

@@ -8,7 +8,8 @@ import {
   reactive,
   onMounted,
   toRefs,
-  ref
+  ref,
+  watch
 } from '@nuxtjs/composition-api'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -19,9 +20,23 @@ export default defineComponent({
     src: {
       type: String,
       default: ''
+    },
+    mode: {
+      type: String,
+      required: true
     }
   },
   setup(props) {
+    watch(
+      () => props.mode,
+      () => {
+        if (props.mode === 'dark') {
+          state.scene.background = new THREE.Color(0x091a28)
+        } else {
+          state.scene.background = new THREE.Color(0xf3f7fc)
+        }
+      }
+    )
     const state = reactive({
       width: 0,
       height: 0,
@@ -43,7 +58,11 @@ export default defineComponent({
 
     const init = () => {
       // scene
-      state.scene.background = new THREE.Color(0xa0a0a0)
+      if (props.mode === 'dark') {
+        state.scene.background = new THREE.Color(0x091a28)
+      } else {
+        state.scene.background = new THREE.Color(0xf3f7fc)
+      }
       state.scene.fog = new THREE.Fog(0xa0a0a0, 10, 50)
       // hemiLight
       state.hemiLight.position.set(0, 20, 0)

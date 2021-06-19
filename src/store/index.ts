@@ -46,42 +46,6 @@ export const state = (): S => ({
       ]
     },
     {
-      id: 'blog',
-      title: 'Blog - helloanotherworld.com',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'I´ll share something that might be helpful.'
-        },
-        {
-          hid: 'og:title',
-          name: 'og:title',
-          content: 'Blog - helloanotherworld.com'
-        },
-        {
-          hid: 'og:description',
-          name: 'og:description',
-          content: 'I´ll share something that might be helpful.'
-        },
-        {
-          hid: 'og:url',
-          name: 'og:url',
-          content: 'https://helloanotherworld.com/blog'
-        },
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: 'Blog - helloanotherworld.com'
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: 'I´ll share something that might be helpful.'
-        }
-      ]
-    },
-    {
       id: 'collection',
       title: 'Collection - helloanotherworld.com',
       meta: [

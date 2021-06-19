@@ -1,7 +1,12 @@
-<template lang="ja">
-  <div>
-    <BaseTheHeader :links="links"/>
-    <nuxt />
+<template>
+  <div class="layout-default">
+    <LayoutsTheBar position="top" />
+    <div>
+      <LayoutsTheHeader />
+      <LayoutsTheLinkArea :links="links" />
+      <nuxt />
+    </div>
+    <LayoutsTheBar position="bottom" />
   </div>
 </template>
 <script lang="ts">
@@ -12,7 +17,7 @@ import {
   toRefs,
   useContext
 } from '@nuxtjs/composition-api'
-import { Links } from '@/components/base/TheHeader.vue'
+import { Links } from '@/components/layouts/TheLinkArea.vue'
 
 export default defineComponent({
   setup() {
@@ -24,10 +29,6 @@ export default defineComponent({
         {
           path: '/',
           text: 'Top'
-        },
-        {
-          path: '/blog',
-          text: 'Blog'
         },
         {
           path: '/who-me-are',
@@ -48,9 +49,14 @@ export default defineComponent({
       return state.allLink.filter((link) => link.path !== route.value.path)
     })
 
+    const changeColor = (mode: string) => {
+      app.$colorMode.preference = mode
+    }
+
     return {
       ...toRefs(state),
-      links
+      links,
+      changeColor
     }
   }
 })

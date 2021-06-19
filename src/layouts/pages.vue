@@ -1,6 +1,6 @@
 <template lang="ja">
   <div>
-    <BaseTheHeader />
+    <LayoutsTheHeader />
     <nuxt />
   </div>
 </template>

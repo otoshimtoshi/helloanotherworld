@@ -8,8 +8,8 @@ $family-font-custom: '游ゴシック体', yugothic, '游ゴシック', 'Yu Goth
 // breakpoint
 // ==========================================================================
 $xsmall: 320px !default;
-$small: 480px !default;
-$medium: 780px !default;
+$small: 375px !default;
+$medium: 768px !default;
 $large: 1024px !default;
 $xlarge: 1240px !default;
 // ==========================================================================
@@ -46,12 +46,8 @@ $mq-breakpoints: (
 // ==========================================================================
 // font-size
 // ==========================================================================
-$font-size-base: 20px !default; // baseのフォントサイズ
-$font-size-small: 16px !default; // モバイル(480px)のフォントサイズ
-$font-size-logo: 45px !default;
-$font-size-h1: 35px !default;
-$font-size-h2: 30px !default;
-$font-size-h3: 27px !default;
+$font-size-base: 16px !default;
+$font-size-small: 12px !default;
 
 // ==========================================================================
 // Shades of grey
@@ -69,23 +65,19 @@ $gray9: #2e435e;
 $white: #f3f7fc;
 $sepia: #fffaef;
 $dark: #091a28;
-$black: #04101a;
+$black: #030b13;
 
 // ==========================================================================
-// Light Mode
+// Light Mode  .light-mode
 // ==========================================================================
-$light-mode-main-color: $black !default;
-$light-mode-base-color: $dark !default;
-$light-mode-main-accent-color: $gray3 !default;
-$light-mode-base-accent-color: $gray0 !default;
+$light-font-color: $dark !default;
+$light-background-color: $gray0 !default;
 
 // ==========================================================================
-// Dark Mode
+// Dark Mode  .dark-mode
 // ==========================================================================
-$dark-mode-main-color: $gray0 !default;
-$dark-mode-base-color: $gray3 !default;
-$dark-mode-main-accent-color: $black !default;
-$dark-mode-base-accent-color: $dark !default;
+$dark-font-color: $gray1 !default;
+$dark-background-color: $black !default;
 
 // ==========================================================================
 // cubic-bezier

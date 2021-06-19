@@ -1,20 +1,37 @@
 // -----------------------------------------------------------------
-// _base.scss
+// タグ
 // -----------------------------------------------------------------
 html {
-  @include font-size-base;
-
+  font-size: $font-size-base;
   font-family: $family-font-base;
 }
-
 body {
-  @include font-size-base;
-
-  background: $light-mode-base-accent-color;
-  color: $light-mode-main-color;
+  font-size: $font-size-base;
+  color: $light-font-color;
+  background: $light-background-color;
   box-sizing: border-box;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1;
   letter-spacing: 0.03em;
+}
+.dark-mode {
+  body {
+    color: $dark-font-color;
+    background: $dark-background-color;
+  }
+}
+
+h1 {
+  font-size: 5vw;
+}
+h2 {
+  font-size: 1vw;
+}
+
+// ==========================================================================
+// 便利クラス
+// ==========================================================================
+.line-through {
+  text-decoration-line: line-through;
 }
