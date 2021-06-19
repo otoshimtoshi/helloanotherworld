@@ -1,13 +1,8 @@
 <template lang="ja">
-  <v-app>
+  <div>
     <BaseTheHeader />
-    <v-main>
-      <v-container>
-        <nuxt />
-      </v-container>
-    </v-main>
-    <BaseThePagesFooter />
-  </v-app>
+    <nuxt />
+  </div>
 </template>
 <script lang="ts">
 import {

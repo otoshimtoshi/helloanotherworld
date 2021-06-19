@@ -70,14 +70,9 @@ const config: NuxtConfig = {
     '@nuxtjs/stylelint-module',
     '@nuxtjs/style-resources',
     '@nuxtjs/date-fns',
-    '@nuxtjs/color-mode',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/color-mode'
   ],
   modules: ['@nuxtjs/sitemap'],
-  vuetify: {
-    customVariables: ['@/assets/scss/vuetify/index.scss'],
-    treeShake: true
-  },
   sitemap: {
     hostname: 'https://helloanotherworld.com'
   }

@@ -1,27 +1,8 @@
 <template>
-  <v-row justify="center">
-    <v-col cols="3" class="hidden-sm-and-down">
-      <v-sheet
-        rounded="lg"
-        min-height="268"
-        :dark="$colorMode.value === 'dark'"
-      >
-      </v-sheet>
-    </v-col>
-    <v-col md="9" sm="12">
-      <v-sheet
-        min-height="70vh"
-        rounded="lg"
-        :dark="$colorMode.value === 'dark'"
-      >
-        <v-card class="mx-auto" flat :dark="$colorMode.value === 'dark'">
-          <v-card-title>Collection of works</v-card-title>
-          <v-card-subtitle>作品集</v-card-subtitle>
-          <v-divider></v-divider>
-        </v-card>
-      </v-sheet>
-    </v-col>
-  </v-row>
+  <div>
+    <div>Collection of works</div>
+    <div>作品集</div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -33,7 +14,6 @@ import {
   useMeta
 } from '@nuxtjs/composition-api'
 export default defineComponent({
-  layout: 'pages',
   setup() {
     const { app } = useContext()
     const state = reactive({

@@ -18,25 +18,3 @@ body {
   line-height: 1;
   letter-spacing: 0.03em;
 }
-.dark-mode body {
-  background: $dark-mode-base-accent-color;
-  color: $dark-mode-main-color;
-}
-
-h1 {
-  @include h1;
-}
-h2 {
-  @include h2;
-}
-span {
-  &.ja {
-    font-family: $family-font-custom;
-    &.ja-h2 {
-      display: block;
-      @include font-size-base;
-
-      margin-top: 1rem;
-    }
-  }
-}

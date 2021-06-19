@@ -14,11 +14,7 @@
 @import 'foundation/base';
 // animate
 @import 'foundation/animate';
-@import 'foundation/transition_animate';
 // -----------------------------------------------------------------
 // Layout
 // -----------------------------------------------------------------
-@import 'layout/pointer';
-@import 'layout/header';
-@import 'layout/footer';
-@import 'layout/markdown';
+@import 'layout/all';
