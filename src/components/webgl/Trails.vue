@@ -122,7 +122,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .trails {
   position: fixed;
-  z-index: 15;
+  z-index: 100;
   pointer-events: none;
 }
 </style>

@@ -1,0 +1,35 @@
+.who-me-are {
+  height: 100%;
+  position: fixed;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0 5vw;
+  &__title {
+    display: block;
+    letter-spacing: 0.1em;
+    text-shadow: 2px 5px 5px $gray9;
+    padding: 2vw 0;
+    text-transform: uppercase;
+  }
+  &__sub-title {
+    font-size: 2vw;
+    display: block;
+    letter-spacing: 0.2em;
+    padding: 1.5vw 0;
+    text-transform: uppercase;
+  }
+  &__body {
+    padding: 1vw 0;
+    &.en {
+      letter-spacing: 0.1em;
+    }
+  }
+}
+.dark-mode {
+  .who-me-are {
+    &__title {
+      text-shadow: 2px 5px 5px $gray3;
+    }
+  }
+}
