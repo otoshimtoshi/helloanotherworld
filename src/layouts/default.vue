@@ -3,7 +3,7 @@
     <LayoutsTheBar position="top" />
     <div>
       <LayoutsTheHeader />
-      <LayoutsTheLinkArea :links="links" />
+      <LayoutsTheLinkArea :links="links" type="index" />
       <nuxt />
     </div>
     <LayoutsTheBar position="bottom" />
@@ -49,14 +49,9 @@ export default defineComponent({
       return state.allLink.filter((link) => link.path !== route.value.path)
     })
 
-    const changeColor = (mode: string) => {
-      app.$colorMode.preference = mode
-    }
-
     return {
       ...toRefs(state),
-      links,
-      changeColor
+      links
     }
   }
 })

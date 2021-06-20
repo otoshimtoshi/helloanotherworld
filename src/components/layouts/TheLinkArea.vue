@@ -1,12 +1,17 @@
 <template>
-  <div class="the-link-area">
-    <ul
-      v-for="(link, index) in links"
-      :key="index"
-      class="the-link-area__links"
-    >
-      <li class="the-link-area__link">
-        <nuxt-link :to="link.path" class="the-link-area__link__text">
+  <div class="the-link-area" :class="type === 'index' ? '' : 'page'">
+    <ul class="the-link-area__links" :class="type === 'index' ? '' : 'page'">
+      <li
+        v-for="(link, index) in links"
+        :key="index"
+        class="the-link-area__link"
+        :class="type === 'index' ? '' : 'page'"
+      >
+        <nuxt-link
+          :to="link.path"
+          class="the-link-area__link__text"
+          :class="type === 'index' ? '' : 'page'"
+        >
           <span>{{ link.text }}</span>
         </nuxt-link>
       </li>
@@ -22,11 +27,17 @@ export type Links = {
   text: string
 }
 
+export type PageType = 'index' | 'page'
+
 export default defineComponent({
   props: {
     links: {
       type: Array as PropType<Array<Links>>,
       default: []
+    },
+    type: {
+      type: String as PropType<PageType>,
+      default: 'index'
     }
   },
   setup() {}

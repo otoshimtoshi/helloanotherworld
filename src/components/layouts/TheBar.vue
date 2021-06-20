@@ -20,10 +20,12 @@
 <script lang="ts">
 import { defineComponent, useContext, PropType } from '@nuxtjs/composition-api'
 
+export type Position = 'top' | 'bottom' | 'center' | 'left' | 'right'
+
 export default defineComponent({
   props: {
     position: {
-      type: String as PropType<'top' | 'bottom'>,
+      type: String as PropType<Position>,
       default: 'top'
     }
   },
