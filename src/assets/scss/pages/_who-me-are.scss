@@ -19,9 +19,14 @@
     letter-spacing: 0.2em;
     padding: 1.5vw 0;
     text-transform: uppercase;
+    @include mq('large', max) {
+      font-size: $font-size-base;
+      font-weight: bold;
+    }
   }
   &__body {
     padding: 1vw 0;
+    line-height: 1.2;
     &.en {
       letter-spacing: 0.1em;
     }

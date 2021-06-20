@@ -24,9 +24,21 @@ body {
 
 h1 {
   font-size: 5vw;
+  @include mq('large', max) {
+    font-size: 50px;
+  }
+  @include mq('medium', max) {
+    font-size: 40px;
+  }
+  @include mq('small', max) {
+    font-size: 30px;
+  }
 }
 h2 {
   font-size: 1vw;
+  @include mq('large', max) {
+    font-size: $font-size-base;
+  }
 }
 
 // ==========================================================================
