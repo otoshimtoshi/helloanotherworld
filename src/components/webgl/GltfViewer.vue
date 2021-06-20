@@ -1,5 +1,5 @@
 <template>
-  <div id="three-gltf" />
+  <div id="gltf" />
 </template>
 
 <script lang="ts">
@@ -38,12 +38,6 @@ export default defineComponent({
       }
     )
     const state = reactive({
-      width: 0,
-      height: 0,
-      mouseX: 0,
-      mouseY: 0,
-      rotateX: 0,
-      rotateY: 0,
       camera: new THREE.PerspectiveCamera(),
       scene: new THREE.Scene(),
       hemiLight: new THREE.HemisphereLight(0xffffff, 0x444444),
@@ -105,7 +99,7 @@ export default defineComponent({
         }
       )
 
-      const element: HTMLElement | null = document.getElementById('three-gltf')
+      const element: HTMLElement | null = document.getElementById('gltf')
       if (element === null) return
       renderer.value = new THREE.WebGLRenderer({ antialias: true })
       renderer.value.setPixelRatio(window.devicePixelRatio)

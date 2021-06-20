@@ -1,8 +1,9 @@
 <template>
-  <div class="layout-default">
+  <div class="">
     <LayoutsTheBar position="top" />
     <LayoutsTheLinkArea :links="links" type="page" />
     <div>
+      <WebglTrails :mode="colorMode" />
       <nuxt />
     </div>
     <LayoutsTheBar position="bottom" />
@@ -48,9 +49,12 @@ export default defineComponent({
       return state.allLink.filter((link) => link.path !== route.value.path)
     })
 
+    const colorMode = computed(() => app.$colorMode.preference)
+
     return {
       ...toRefs(state),
-      links
+      links,
+      colorMode
     }
   }
 })

@@ -1,5 +1,5 @@
 <template>
-  <div id="three-obj" />
+  <div id="obj" />
 </template>
 
 <script lang="ts">
@@ -51,7 +51,7 @@ export default defineComponent({
     const renderer = ref<THREE.WebGLRenderer>()
 
     onMounted(() => {
-      const element: HTMLElement | null = document.getElementById('three-obj')
+      const element: HTMLElement | null = document.getElementById('obj')
       if (element === null) return
       renderer.value = new THREE.WebGLRenderer({
         antialias: true,

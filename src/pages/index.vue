@@ -1,5 +1,5 @@
 <template>
-  <WebglGLTFLoader src="/logo.glb" :mode="colorMode" />
+  <WebglGltfViewer src="/logo.glb" :mode="colorMode" />
 </template>
 
 <script lang="ts">
