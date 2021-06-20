@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   padding: 0 5vw;
+  pointer-events: none;
   &__title {
     display: block;
     letter-spacing: 0.1em;

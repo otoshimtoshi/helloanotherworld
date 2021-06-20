@@ -2,23 +2,15 @@
   <div class="the-bar" :class="position">
     <template v-if="position === 'top'">
       <div class="the-bar__icon">
-        <div
-          v-if="$colorMode.preference === 'dark'"
-          class="haw-brightness_4"
-          @click="changeColor('light')"
-        />
-        <div
-          v-if="$colorMode.preference === 'light'"
-          class="haw-brightness_high"
-          @click="changeColor('dark')"
-        />
+        <div v-if="mode" class="haw-brightness_4" @click="changeColor('light')" />
+        <div v-if="!mode" class="haw-brightness_high" @click="changeColor('dark')" />
       </div>
     </template>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, useContext, PropType } from '@nuxtjs/composition-api'
+import { defineComponent, useContext, PropType, computed } from '@nuxtjs/composition-api'
 
 export type Position = 'top' | 'bottom' | 'center' | 'left' | 'right'
 
@@ -31,10 +23,15 @@ export default defineComponent({
   },
   setup() {
     const { app } = useContext()
+
+    const mode = computed(() => app.$colorMode.value === 'dark')
+
     const changeColor = (mode: string) => {
-      app.$colorMode.preference = mode
+      app.$colorMode.value = mode
     }
+
     return {
+      mode,
       changeColor
     }
   }

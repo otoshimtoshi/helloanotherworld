@@ -23,7 +23,7 @@ export default defineComponent({
       meta: metaState.metaInfo?.meta
     }))
 
-    const colorMode = computed(() => app.$colorMode.preference)
+    const colorMode = computed(() => app.$colorMode.value)
 
     return {
       ...toRefs(metaState),
