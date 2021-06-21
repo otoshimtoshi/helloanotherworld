@@ -61,7 +61,14 @@ const config: NuxtConfig = {
   },
   axios: {},
   build: {
-    transpile: ['three']
+    transpile: ['three'],
+    extend(config) {
+      config.module.rules.push({
+        test: /\.(glsl|vs|fs|vert|frag)$/,
+        use: ['raw-loader', 'glslify-loader'],
+        exclude: /node_modules/
+      })
+    }
   },
   plugins: [{ src: '@/plugins/scroll-magic', mode: 'client' }],
   buildModules: [

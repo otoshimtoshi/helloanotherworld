@@ -1,5 +1,8 @@
 <template>
-  <WebglGltfViewer src="/logo.glb" :mode="colorMode" />
+  <div>
+    <WebglGltfViewer src="/logo.glb" :mode="colorMode" style="position: absolute" />
+    <WebglFrame style="position: absolute" />
+  </div>
 </template>
 
 <script lang="ts">
