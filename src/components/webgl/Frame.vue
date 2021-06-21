@@ -17,8 +17,8 @@ export default defineComponent({
           value: 0
         },
         resolution: {
-          type: 'v2',
-          value: new THREE.Vector2()
+          type: 'v3',
+          value: new THREE.Vector3()
         }
       },
       camera: new THREE.PerspectiveCamera(),
@@ -44,15 +44,15 @@ export default defineComponent({
     const init = () => {
       state.geometry.setAttribute('position', new THREE.BufferAttribute(state.vertices, 3))
       state.geometry.setIndex(new THREE.BufferAttribute(state.indices, 1))
-      const line = new THREE.Line(
-        state.geometry,
-        new THREE.RawShaderMaterial({
-          uniforms: state.uniforms,
-          vertexShader: vertexShader,
-          fragmentShader: fragmentShader
-        })
-      )
-      state.scene.add(line)
+      const material = new THREE.RawShaderMaterial({
+        uniforms: state.uniforms,
+        vertexShader: vertexShader,
+        fragmentShader: fragmentShader,
+        side: THREE.DoubleSide,
+        transparent: true
+      })
+      const mesh = new THREE.Mesh(state.geometry, material)
+      state.scene.add(mesh)
     }
     init()
 
@@ -65,6 +65,8 @@ export default defineComponent({
       renderer.value.setPixelRatio(window.devicePixelRatio)
       renderer.value.setSize(window.innerWidth, window.innerHeight)
       element.appendChild(renderer.value.domElement)
+      state.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 10)
+      state.camera.position.z = 5
       animate()
       window.addEventListener('resize', onWindowResize)
     })

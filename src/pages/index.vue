@@ -1,7 +1,7 @@
 <template>
   <div>
     <WebglGltfViewer src="/logo.glb" :mode="colorMode" style="position: absolute" />
-    <WebglFrame style="position: absolute" />
+    <!-- <WebglFrame style="position: absolute" /> -->
   </div>
 </template>
 
