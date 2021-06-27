@@ -32,6 +32,7 @@ export default defineComponent({
       canvas.width = 1
       canvas.height = 32
       const context = canvas.getContext('2d')
+      if (context === null) return
       const gradient = context.createLinearGradient(0, 0, 0, 32)
       gradient.addColorStop(0.0, '#014a84')
       gradient.addColorStop(0.5, '#0561a0')
@@ -138,11 +139,8 @@ export default defineComponent({
 
     const animate = () => {
       requestAnimationFrame(animate)
-      state.mesh.material.uniforms.cameraPos.value.copy(state.camera.position)
       state.mesh.rotation.y = -performance.now() / 7500
-
-      state.mesh.material.uniforms.frame.value++
-
+      if (renderer.value === undefined) return
       renderer.value.render(state.scene, state.camera)
     }
 
