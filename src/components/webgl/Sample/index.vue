@@ -5,8 +5,8 @@
 <script lang="ts">
 import { defineComponent, reactive, onMounted, toRefs, ref } from '@nuxtjs/composition-api'
 import * as THREE from 'three'
-import fragmentShader from '@/components/glsl/frameObject.frag'
-import vertexShader from '@/components/glsl/frameObject.vert'
+import fragmentShader from './frameObject.frag'
+import vertexShader from './frameObject.vert'
 
 export default defineComponent({
   setup() {
