@@ -50,34 +50,120 @@ $font-size-base: 16px !default;
 $font-size-small: 12px !default;
 
 // ==========================================================================
-// Shades of grey
+// Shades of light
 // ==========================================================================
-$gray0: #ecf2fa;
-$gray1: #dae2ec;
-$gray2: #bfccdb;
-$gray3: #9caec5;
-$gray4: #7c91aa;
-$gray5: #637994;
-$gray6: #526986;
-$gray7: #405772;
-$gray8: #3a4f69;
-$gray9: #2e435e;
-$white: #f3f7fc;
-$sepia: #fffaef;
-$dark: #091a28;
-$black: #030b13;
-
+$light0: #e6e7e8;
+$light1: #ced0d1;
+$light2: #b5b8ba;
+$light3: #9da1a3;
+$light4: #858a8d;
+$light5: #6c7276;
+$light6: #545b5f;
+$light7: #3b4348;
+$light8: #232c31;
+$light9: #0b151b;
+$light-shade0: #0b151b;
+$light-shade2: #081015;
+$light-shade4: #060c10;
+$light-shade6: #04080a;
+$light-shade8: #020405;
+// ==========================================================================
+// Shades of yellow
+// ==========================================================================
+$yellow0: #faf5e5;
+$yellow1: #f6ebcc;
+$yellow2: #f1e1b2;
+$yellow3: #edd899;
+$yellow4: #e8ce7f;
+$yellow5: #e4c466;
+$yellow6: #dfbb4c;
+$yellow7: #dbb133;
+$yellow8: #d6a719;
+$yellow9: #d29e00;
+$yellow-shade0: #d29e00;
+$yellow-shade2: #a87e00;
+$yellow-shade4: #7e5e00;
+$yellow-shade6: #543f00;
+$yellow-shade8: #291f00;
+// ==========================================================================
+// Shades of red
+// ==========================================================================
+$red0: #ffe5e5;
+$red1: #fcc;
+$red2: #ffb2b2;
+$red3: #f99;
+$red4: #ff7f7f;
+$red5: #f66;
+$red6: #ff4c4c;
+$red7: #f33;
+$red8: #ff1919;
+$red9: #f00;
+$red-shade0: #f00;
+$red-shade2: #c00;
+$red-shade4: #900;
+$red-shade6: #600;
+$red-shade8: #320000;
+// ==========================================================================
+// Shades of blue
+// ==========================================================================
+$blue0: #e5e5ff;
+$blue1: #ccf;
+$blue2: #b2b3ff;
+$blue3: #999aff;
+$blue4: #7f81ff;
+$blue5: #6667ff;
+$blue6: #4c4eff;
+$blue7: #3335ff;
+$blue8: #191cff;
+$blue9: #0003ff;
+$blue-shade0: #0003ff;
+$blue-shade2: #0002cc;
+$blue-shade4: #000199;
+$blue-shade6: #000166;
+$blue-shade8: #000032;
+// ==========================================================================
+// Shades of green
+// ==========================================================================
+$green0: #e5ffe6;
+$green1: #ccffce;
+$green2: #b2ffb6;
+$green3: #99ff9e;
+$green4: #7fff86;
+$green5: #66ff6e;
+$green6: #4cff56;
+$green7: #33ff3e;
+$green8: #19ff26;
+$green9: #00ff0e;
+$green-shade0: #00ff0e;
+$green-shade2: #00cc0b;
+$green-shade4: #009908;
+$green-shade6: #006605;
+$green-shade8: #003202;
 // ==========================================================================
 // Light Mode  .light-mode
 // ==========================================================================
-$light-font-color: $dark !default;
-$light-background-color: $gray0 !default;
-
+$light-font-color: $light9 !default;
+$light-text-shadow: $light4 !default;
 // ==========================================================================
-// Dark Mode  .dark-mode
+// yellow Mode  .yellow-mode
 // ==========================================================================
-$dark-font-color: $gray1 !default;
-$dark-background-color: $black !default;
+$yellow-font-color: $yellow-shade6 !default;
+$yellow-text-shadow: $yellow4 !default;
+// ==========================================================================
+// red Mode  .red-mode
+// ==========================================================================
+$red-font-color: $red-shade6 !default;
+$red-text-shadow: $red4 !default;
+// ==========================================================================
+// blue Mode  .blue-mode
+// ==========================================================================
+$blue-font-color: $blue-shade6 !default;
+$blue-text-shadow: $blue4 !default;
+// ==========================================================================
+// green Mode  .green-mode
+// ==========================================================================
+$green-font-color: $green-shade6 !default;
+$green-text-shadow: $green4 !default;
 
 // ==========================================================================
 // cubic-bezier

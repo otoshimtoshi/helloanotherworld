@@ -1,24 +1,46 @@
 .the-bar {
-  background-color: $light-background-color;
+  background: $light0;
   z-index: 12;
   position: fixed;
-  height: 7vh;
+  height: 20px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   &__icon {
+    display: flex;
+    flex-wrap: nowrap;
     padding: 0 20px;
+    .color {
+      width: 10px;
+      height: 10px;
+      background: $light0;
+      margin: 0 5px;
+      cursor: pointer;
+      &:last-child {
+        margin-right: unset;
+      }
+      &.light {
+        background-color: $light9;
+      }
+      &.yellow {
+        background-color: $yellow9;
+      }
+      &.red {
+        background-color: $red9;
+      }
+      &.blue {
+        background-color: $blue9;
+      }
+      &.green {
+        background-color: $green9;
+      }
+    }
   }
   &.top {
     top: 0;
   }
   &.bottom {
     bottom: 0;
-  }
-}
-.dark-mode {
-  .the-bar {
-    background-color: $dark-background-color;
   }
 }

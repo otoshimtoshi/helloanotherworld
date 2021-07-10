@@ -1,22 +1,14 @@
 <template>
   <div class="layout-default">
     <LayoutsTheBar position="top" />
-    <div>
-      <LayoutsTheHeader />
-      <LayoutsTheLinkArea :links="links" type="index" />
-      <nuxt />
-    </div>
+    <LayoutsTheHeader />
+    <LayoutsTheLinkArea :links="links" type="index" />
+    <nuxt />
     <LayoutsTheBar position="bottom" />
   </div>
 </template>
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  reactive,
-  toRefs,
-  useContext
-} from '@nuxtjs/composition-api'
+import { computed, defineComponent, reactive, toRefs, useContext } from '@nuxtjs/composition-api'
 import { Links } from '@/components/layouts/TheLinkArea.vue'
 
 export default defineComponent({

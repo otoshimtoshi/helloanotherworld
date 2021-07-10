@@ -9,7 +9,7 @@
   &__title {
     display: block;
     letter-spacing: 0.1em;
-    text-shadow: 2px 5px 5px $gray9;
+    text-shadow: 2px 5px 5px $light-text-shadow;
     padding: 2vw 0;
     text-transform: uppercase;
   }
@@ -32,10 +32,31 @@
     }
   }
 }
-.dark-mode {
+.yellow-mode {
   .who-me-are {
     &__title {
-      text-shadow: 2px 5px 5px $gray3;
+      text-shadow: 2px 5px 5px $yellow-text-shadow;
+    }
+  }
+}
+.red-mode {
+  .who-me-are {
+    &__title {
+      text-shadow: 2px 5px 5px $red-text-shadow;
+    }
+  }
+}
+.blue-mode {
+  .who-me-are {
+    &__title {
+      text-shadow: 2px 5px 5px $blue-text-shadow;
+    }
+  }
+}
+.green-mode {
+  .who-me-are {
+    &__title {
+      text-shadow: 2px 5px 5px $green-text-shadow;
     }
   }
 }

@@ -57,11 +57,38 @@
     }
   }
 }
-.dark-mode {
+.yellow-mode {
   .the-link-area {
     &__link {
       &__text {
-        color: $dark-font-color;
+        color: $yellow-font-color;
+      }
+    }
+  }
+}
+.red-mode {
+  .the-link-area {
+    &__link {
+      &__text {
+        color: $red-font-color;
+      }
+    }
+  }
+}
+.blue-mode {
+  .the-link-area {
+    &__link {
+      &__text {
+        color: $blue-font-color;
+      }
+    }
+  }
+}
+.green-mode {
+  .the-link-area {
+    &__link {
+      &__text {
+        color: $green-font-color;
       }
     }
   }

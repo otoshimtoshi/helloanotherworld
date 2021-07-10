@@ -1,13 +1,5 @@
 .layout-default {
   display: flex;
-  background-color: $light-background-color;
+  background-color: $light0;
   z-index: 10;
-}
-.dark-mode {
-  .layout-default {
-    background-color: $dark-background-color;
-    &__bar {
-      background-color: $dark-background-color;
-    }
-  }
 }

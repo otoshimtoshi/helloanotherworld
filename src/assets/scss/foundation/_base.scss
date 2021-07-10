@@ -8,17 +8,32 @@ html {
 body {
   font-size: $font-size-base;
   color: $light-font-color;
-  background: $light-background-color;
+  background: $light0;
   box-sizing: border-box;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1;
   letter-spacing: 0.03em;
+  transition: 0.3s;
 }
-.dark-mode {
+.yellow-mode {
   body {
-    color: $dark-font-color;
-    background: $dark-background-color;
+    color: $yellow-font-color;
+  }
+}
+.red-mode {
+  body {
+    color: $red-font-color;
+  }
+}
+.blue-mode {
+  body {
+    color: $blue-font-color;
+  }
+}
+.green-mode {
+  body {
+    color: $green-font-color;
   }
 }
 

@@ -15,7 +15,7 @@
   &__title {
     font-weight: 100;
     letter-spacing: 0.3em;
-    text-shadow: 2px 5px 5px $gray9;
+    text-shadow: 2px 5px 5px $light-text-shadow;
   }
   &__sub-title {
     letter-spacing: 0.2em;
@@ -28,10 +28,31 @@
     }
   }
 }
-.dark-mode {
+.yellow-mode {
   .the-header {
     &__title {
-      text-shadow: 2px 5px 5px $gray3;
+      text-shadow: 2px 5px 5px $yellow-text-shadow;
+    }
+  }
+}
+.red-mode {
+  .the-header {
+    &__title {
+      text-shadow: 2px 5px 5px $red-text-shadow;
+    }
+  }
+}
+.blue-mode {
+  .the-header {
+    &__title {
+      text-shadow: 2px 5px 5px $blue-text-shadow;
+    }
+  }
+}
+.green-mode {
+  .the-header {
+    &__title {
+      text-shadow: 2px 5px 5px $green-text-shadow;
     }
   }
 }

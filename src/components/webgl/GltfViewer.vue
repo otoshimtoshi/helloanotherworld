@@ -3,14 +3,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  reactive,
-  onMounted,
-  toRefs,
-  ref,
-  watch
-} from '@nuxtjs/composition-api'
+import { defineComponent, reactive, onMounted, toRefs, ref } from '@nuxtjs/composition-api'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
@@ -20,23 +13,9 @@ export default defineComponent({
     src: {
       type: String,
       default: ''
-    },
-    mode: {
-      type: String,
-      required: true
     }
   },
   setup(props) {
-    watch(
-      () => props.mode,
-      () => {
-        if (props.mode === 'dark') {
-          state.scene.background = new THREE.Color(0x091a28)
-        } else {
-          state.scene.background = new THREE.Color(0xf3f7fc)
-        }
-      }
-    )
     const state = reactive({
       camera: new THREE.PerspectiveCamera(),
       scene: new THREE.Scene(),
@@ -52,11 +31,7 @@ export default defineComponent({
 
     const init = () => {
       // scene
-      if (props.mode === 'dark') {
-        state.scene.background = new THREE.Color(0x091a28)
-      } else {
-        state.scene.background = new THREE.Color(0xf3f7fc)
-      }
+      state.scene.background = new THREE.Color(0xf3f7fc)
       state.scene.fog = new THREE.Fog(0xa0a0a0, 10, 50)
       // hemiLight
       state.hemiLight.position.set(0, 20, 0)
@@ -109,18 +84,10 @@ export default defineComponent({
       element.appendChild(renderer.value.domElement)
 
       // camera
-      state.camera = new THREE.PerspectiveCamera(
-        45,
-        window.innerWidth / window.innerHeight,
-        1,
-        100
-      )
+      state.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 100)
       state.camera.position.set(-7, 3, 5)
 
-      const controls = new OrbitControls(
-        state.camera,
-        renderer.value.domElement
-      )
+      const controls = new OrbitControls(state.camera, renderer.value.domElement)
       controls.enablePan = false
       controls.enableZoom = false
       controls.target.set(0, 1, 0)
