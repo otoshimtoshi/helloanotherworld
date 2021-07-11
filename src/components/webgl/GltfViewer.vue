@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, onMounted, toRefs, ref } from '@nuxtjs/composition-api'
+import { defineComponent, reactive, onMounted, toRefs, ref, watch } from '@nuxtjs/composition-api'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
@@ -13,6 +13,10 @@ export default defineComponent({
     src: {
       type: String,
       default: ''
+    },
+    mode: {
+      type: String,
+      default: 'light'
     }
   },
   setup(props) {
@@ -29,9 +33,23 @@ export default defineComponent({
 
     const renderer = ref<THREE.WebGLRenderer>()
 
+    const setBackGroundColor = () => {
+      // if (props.mode === 'light') {
+      state.scene.background = new THREE.Color(0xe6e7e8)
+      // } else if (props.mode === 'yellow') {
+      //   state.scene.background = new THREE.Color(0xfaf5e5)
+      // } else if (props.mode === 'red') {
+      //   state.scene.background = new THREE.Color(0xffe5e5)
+      // } else if (props.mode === 'blue') {
+      //   state.scene.background = new THREE.Color(0xe5e5ff)
+      // } else if (props.mode === 'green') {
+      //   state.scene.background = new THREE.Color(0xe5ffe6)
+      // }
+    }
+
     const init = () => {
       // scene
-      state.scene.background = new THREE.Color(0xf3f7fc)
+      setBackGroundColor()
       state.scene.fog = new THREE.Fog(0xa0a0a0, 10, 50)
       // hemiLight
       state.hemiLight.position.set(0, 20, 0)
@@ -78,7 +96,7 @@ export default defineComponent({
       if (element === null) return
       renderer.value = new THREE.WebGLRenderer({ antialias: true })
       renderer.value.setPixelRatio(window.devicePixelRatio)
-      renderer.value.setSize(window.innerWidth, window.innerHeight)
+      renderer.value.setSize(window.innerWidth - 44, window.innerHeight - 44)
       renderer.value.outputEncoding = THREE.sRGBEncoding
       renderer.value.shadowMap.enabled = true
       element.appendChild(renderer.value.domElement)
@@ -100,7 +118,7 @@ export default defineComponent({
       if (renderer.value === undefined) return
       state.camera.aspect = window.innerWidth / window.innerHeight
       state.camera.updateProjectionMatrix()
-      renderer.value.setSize(window.innerWidth, window.innerHeight)
+      renderer.value.setSize(window.innerWidth - 44, window.innerHeight - 44)
     }
 
     function onProgress(xhr: ProgressEvent) {
@@ -121,6 +139,13 @@ export default defineComponent({
       if (renderer.value === undefined) return
       renderer.value.render(state.scene, state.camera)
     }
+
+    watch(
+      () => props.mode,
+      () => {
+        setBackGroundColor()
+      }
+    )
 
     return {
       ...toRefs(state),

@@ -1,12 +1,9 @@
 <template>
-  <div class="">
+  <div class="layout-pages">
     <LayoutsTheBar position="top" />
-    <LayoutsTheLinkArea :links="links" type="page" />
-    <div>
-      <WebglTrails :mode="colorMode" />
+    <div class="main">
       <nuxt />
     </div>
-    <LayoutsTheBar position="bottom" />
   </div>
 </template>
 <script lang="ts">
@@ -25,8 +22,8 @@ export default defineComponent({
           text: 'Top'
         },
         {
-          path: '/who-me-are',
-          text: 'Who Me Are'
+          path: '/who-i-am',
+          text: 'Who I Am'
         },
         {
           path: '/collection',

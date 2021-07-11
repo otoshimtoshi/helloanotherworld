@@ -1,12 +1,18 @@
 <template>
   <div>
-    <WebglGltfViewer src="/logo.glb" />
-    <!-- <WebglCloud /> -->
+    <WebglGltfViewer src="/logo.glb" :mode="colorMode" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, useContext, toRefs, useMeta } from '@nuxtjs/composition-api'
+import {
+  defineComponent,
+  reactive,
+  useContext,
+  toRefs,
+  useMeta,
+  computed
+} from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup() {
@@ -19,8 +25,11 @@ export default defineComponent({
       meta: metaState.metaInfo?.meta
     }))
 
+    const colorMode = computed(() => app.$colorMode.preference)
+
     return {
-      ...toRefs(metaState)
+      ...toRefs(metaState),
+      colorMode
     }
   },
   // @ts-ignore

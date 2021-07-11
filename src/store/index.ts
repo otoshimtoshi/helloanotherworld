@@ -82,8 +82,8 @@ export const state = (): S => ({
       ]
     },
     {
-      id: 'who-me-are',
-      title: 'WhoMeAre - helloanotherworld.com',
+      id: 'who-i-am',
+      title: 'WhoIAm - helloanotherworld.com',
       meta: [
         {
           hid: 'description',
@@ -93,7 +93,7 @@ export const state = (): S => ({
         {
           hid: 'og:title',
           name: 'og:title',
-          content: 'WhoMeAre - helloanotherworld.com'
+          content: 'WhoIAm - helloanotherworld.com'
         },
         {
           hid: 'og:description',
@@ -103,12 +103,12 @@ export const state = (): S => ({
         {
           hid: 'og:url',
           name: 'og:url',
-          content: 'https://helloanotherworld.com/who-me-are'
+          content: 'https://helloanotherworld.com/who-i-am'
         },
         {
           hid: 'twitter:title',
           name: 'twitter:title',
-          content: 'WhoMeAre - helloanotherworld.com'
+          content: 'WhoIAm - helloanotherworld.com'
         },
         {
           hid: 'twitter:description',

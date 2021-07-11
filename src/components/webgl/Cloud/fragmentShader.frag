@@ -1,12 +1,17 @@
 precision highp float;
 precision highp sampler3D;
+
 uniform mat4 modelViewMatrix;
 uniform mat4 projectionMatrix;
+
 in vec3 vOrigin;
 in vec3 vDirection;
+
 out vec4 color;
+
 uniform vec3 base;
 uniform sampler3D map;
+
 uniform float threshold;
 uniform float range;
 uniform float opacity;

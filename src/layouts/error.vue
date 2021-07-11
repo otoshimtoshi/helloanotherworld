@@ -8,13 +8,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  PropType,
-  reactive,
-  toRefs
-} from '@nuxtjs/composition-api'
+import { computed, defineComponent, PropType, reactive, toRefs } from '@nuxtjs/composition-api'
 import { Links } from '@/components/layouts/TheLinkArea.vue'
 
 interface ErrorProp {
@@ -38,8 +32,8 @@ export default defineComponent({
           text: 'Top'
         },
         {
-          path: '/who-me-are',
-          text: 'Who Me Are'
+          path: '/who-i-am',
+          text: 'Who I Am'
         },
         {
           path: '/collection',

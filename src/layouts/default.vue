@@ -3,7 +3,9 @@
     <LayoutsTheBar position="top" />
     <LayoutsTheHeader />
     <LayoutsTheLinkArea :links="links" type="index" />
-    <nuxt />
+    <div class="main">
+      <nuxt />
+    </div>
     <LayoutsTheBar position="bottom" />
   </div>
 </template>
@@ -23,8 +25,8 @@ export default defineComponent({
           text: 'Top'
         },
         {
-          path: '/who-me-are',
-          text: 'Who Me Are'
+          path: '/who-i-am',
+          text: 'Who I Am'
         },
         {
           path: '/collection',

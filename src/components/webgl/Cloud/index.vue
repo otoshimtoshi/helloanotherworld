@@ -15,6 +15,9 @@ export default defineComponent({
   setup() {
     isWebGLAvailable()
     const state = reactive({
+      width: 0,
+      height: 0,
+      clock: new THREE.Clock(),
       scene: new THREE.Scene(),
       camera: new THREE.PerspectiveCamera(),
       texture: new THREE.DataTexture3D(new Uint8Array(1), 1, 1, 1),
@@ -27,24 +30,24 @@ export default defineComponent({
     init()
 
     /** 空 */
-    const createSky = () => {
-      const canvas = document.createElement('canvas')
-      canvas.width = 1
-      canvas.height = 32
-      const context = canvas.getContext('2d')
-      if (context === null) return
-      const gradient = context.createLinearGradient(0, 0, 0, 32)
-      gradient.addColorStop(0.0, '#014a84')
-      gradient.addColorStop(0.5, '#0561a0')
-      gradient.addColorStop(1.0, '#437ab6')
-      context.fillStyle = gradient
-      context.fillRect(0, 0, 1, 32)
-      const sky = new THREE.Mesh(
-        new THREE.SphereGeometry(10),
-        new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(canvas), side: THREE.BackSide })
-      )
-      state.scene.add(sky)
-    }
+    // const createSky = () => {
+    //   const canvas = document.createElement('canvas')
+    //   canvas.width = 1
+    //   canvas.height = 32
+    //   const context = canvas.getContext('2d')
+    //   if (context === null) return
+    //   const gradient = context.createLinearGradient(0, 0, 0, 32)
+    //   gradient.addColorStop(0.0, '#014a84')
+    //   gradient.addColorStop(0.5, '#0561a0')
+    //   gradient.addColorStop(1.0, '#437ab6')
+    //   context.fillStyle = gradient
+    //   context.fillRect(0, 0, 1, 32)
+    //   const sky = new THREE.Mesh(
+    //     new THREE.SphereGeometry(10),
+    //     new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(canvas), side: THREE.BackSide })
+    //   )
+    //   state.scene.add(sky)
+    // }
 
     /** Texture */
     const createTexture = () => {
@@ -104,23 +107,22 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      createSky()
+      // createSky()
       createTexture()
       createMaterial()
       const element: HTMLElement | null = document.getElementById('cloud')
       if (element === null) return
-      renderer.value = new THREE.WebGLRenderer()
+      state.width = element.offsetWidth
+      state.height = element.offsetHeight
+      renderer.value = new THREE.WebGLRenderer({
+        alpha: true
+      })
       renderer.value.setPixelRatio(window.devicePixelRatio)
-      renderer.value.setSize(window.innerWidth, window.innerHeight)
+      renderer.value.setSize(state.width, state.height)
       element.appendChild(renderer.value.domElement)
 
       // camera
-      state.camera = new THREE.PerspectiveCamera(
-        60,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        100
-      )
+      state.camera = new THREE.PerspectiveCamera(60, state.width / state.height, 0.1, 100)
       state.camera.position.set(0, 0, 1.5)
       const controls = new OrbitControls(state.camera, renderer.value.domElement)
       controls.enablePan = false
@@ -131,15 +133,19 @@ export default defineComponent({
     })
 
     function onWindowResize() {
-      state.camera.aspect = window.innerWidth / window.innerHeight
+      state.camera.aspect = state.width / state.height
       state.camera.updateProjectionMatrix()
       if (renderer.value === undefined) return
-      renderer.value.setSize(window.innerWidth, window.innerHeight)
+      renderer.value.setSize(state.width, state.height)
     }
 
     const animate = () => {
       requestAnimationFrame(animate)
-      state.mesh.rotation.y = -performance.now() / 7500
+      // @ts-ignore
+      state.mesh.material.uniforms.cameraPos.value.copy(state.camera.position)
+      // state.mesh.rotation.y = -performance.now() / 7500
+      const elapsedTime = state.clock.getElapsedTime()
+      state.mesh.rotation.y = elapsedTime * 0.05
       if (renderer.value === undefined) return
       renderer.value.render(state.scene, state.camera)
     }
@@ -152,9 +158,9 @@ export default defineComponent({
 })
 </script>
 <style lang="scss" scoped>
-.trails {
-  position: fixed;
-  z-index: 100;
-  pointer-events: none;
+#cloud {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
 }
 </style>

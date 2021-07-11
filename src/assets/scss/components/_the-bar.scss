@@ -1,12 +1,13 @@
 .the-bar {
   background: $light0;
-  z-index: 12;
-  position: fixed;
-  height: 20px;
+  z-index: 5;
+  position: absolute;
+  height: 16px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  margin-top: 5px;
   &__icon {
     display: flex;
     flex-wrap: nowrap;
@@ -21,19 +22,22 @@
         margin-right: unset;
       }
       &.light {
-        background-color: $light9;
+        background-color: $light-font-color;
       }
       &.yellow {
-        background-color: $yellow4;
+        background-color: $yellow-font-color;
       }
       &.red {
-        background-color: $red4;
+        background-color: $red-font-color;
       }
       &.blue {
-        background-color: $blue4;
+        background-color: $blue-font-color;
       }
       &.green {
-        background-color: $green4;
+        background-color: $green-font-color;
+      }
+      &.is-active {
+        height: 15px;
       }
     }
   }
