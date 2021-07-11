@@ -27,7 +27,7 @@ export default defineComponent({
   setup() {
     const { app } = useContext()
     const changeColor = (mode: string) => {
-      app.$colorMode.value = mode
+      app.$colorMode.preference = mode
     }
 
     return {
