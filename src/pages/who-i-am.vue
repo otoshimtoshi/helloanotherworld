@@ -4,7 +4,7 @@
       <div>
         <h1 class="who-i-am__title">Who i am</h1>
       </div>
-      <div><WebglCloud /></div>
+      <div></div>
     </div>
     <div class="grid">
       <div class="who-i-am__body en column-2-3">

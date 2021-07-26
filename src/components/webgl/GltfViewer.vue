@@ -17,9 +17,13 @@ export default defineComponent({
     mode: {
       type: String,
       default: 'light'
+    },
+    loadPercent: {
+      type: Number,
+      default: 0
     }
   },
-  setup(props) {
+  setup(props, { emit }) {
     const state = reactive({
       camera: new THREE.PerspectiveCamera(),
       scene: new THREE.Scene(),
@@ -124,6 +128,7 @@ export default defineComponent({
     function onProgress(xhr: ProgressEvent) {
       if (xhr.lengthComputable) {
         const percentComplete = (xhr.loaded / xhr.total) * 100
+        emit('update:load-percent', Math.round(percentComplete))
         console.log('model ' + Math.round(percentComplete) + '% downloaded')
       }
     }

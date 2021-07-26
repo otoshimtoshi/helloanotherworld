@@ -23,6 +23,7 @@ module.exports = {
     'vue/html-self-closing': 'off',
     'no-empty-function': 'off',
     '@typescript-eslint/no-empty-function': 'off',
-    '@typescript-eslint/ban-ts-comment': 'off'
+    '@typescript-eslint/ban-ts-comment': 'off',
+    'vue/require-explicit-emits': ['off']
   }
 }

@@ -30,24 +30,24 @@ export default defineComponent({
     init()
 
     /** 空 */
-    // const createSky = () => {
-    //   const canvas = document.createElement('canvas')
-    //   canvas.width = 1
-    //   canvas.height = 32
-    //   const context = canvas.getContext('2d')
-    //   if (context === null) return
-    //   const gradient = context.createLinearGradient(0, 0, 0, 32)
-    //   gradient.addColorStop(0.0, '#014a84')
-    //   gradient.addColorStop(0.5, '#0561a0')
-    //   gradient.addColorStop(1.0, '#437ab6')
-    //   context.fillStyle = gradient
-    //   context.fillRect(0, 0, 1, 32)
-    //   const sky = new THREE.Mesh(
-    //     new THREE.SphereGeometry(10),
-    //     new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(canvas), side: THREE.BackSide })
-    //   )
-    //   state.scene.add(sky)
-    // }
+    const createSky = () => {
+      const canvas = document.createElement('canvas')
+      canvas.width = 1
+      canvas.height = 32
+      const context = canvas.getContext('2d')
+      if (context === null) return
+      const gradient = context.createLinearGradient(0, 0, 0, 32)
+      gradient.addColorStop(0.0, '#014a84')
+      gradient.addColorStop(0.5, '#0561a0')
+      gradient.addColorStop(1.0, '#437ab6')
+      context.fillStyle = gradient
+      context.fillRect(0, 0, 1, 32)
+      const sky = new THREE.Mesh(
+        new THREE.SphereGeometry(10),
+        new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(canvas), side: THREE.BackSide })
+      )
+      state.scene.add(sky)
+    }
 
     /** Texture */
     const createTexture = () => {
@@ -107,7 +107,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      // createSky()
+      createSky()
       createTexture()
       createMaterial()
       const element: HTMLElement | null = document.getElementById('cloud')
@@ -143,7 +143,6 @@ export default defineComponent({
       requestAnimationFrame(animate)
       // @ts-ignore
       state.mesh.material.uniforms.cameraPos.value.copy(state.camera.position)
-      // state.mesh.rotation.y = -performance.now() / 7500
       const elapsedTime = state.clock.getElapsedTime()
       state.mesh.rotation.y = elapsedTime * 0.05
       if (renderer.value === undefined) return
