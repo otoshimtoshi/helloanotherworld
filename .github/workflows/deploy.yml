@@ -21,4 +21,4 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: rsync deploy
-        run: rsync -auzrv -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022" --delete ./dist/* ${{ secrets.PRIVATE_USER_HOST }}:/home/otoshi/helloanotherworld.com/public_html/test/ --exclude .htaccess
+        run: rsync -auzrv -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022" --delete ./dist/* ${{ secrets.PRIVATE_USER_HOST }}:/home/otoshi/helloanotherworld.com/public_html/ --exclude .htaccess
