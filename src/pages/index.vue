@@ -17,12 +17,13 @@
       <div class="main">
         <WebglGltfViewer
           :load-percent="loadPercent"
-          src="/logo.glb"
+          src="/logo2.glb"
           :mode="colorMode"
           @update:load-percent="updatePercent"
         />
       </div>
     </div>
+    <Pointer />
   </div>
 </template>
 
