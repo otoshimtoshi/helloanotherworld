@@ -8,6 +8,7 @@
   align-items: center;
   text-align: center;
   z-index: 20;
+  animation: fadeIn 3s;
   &.page {
     top: 7vh;
     bottom: unset;

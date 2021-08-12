@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-show="!loading" class="loading">
+    <div v-if="!loading" class="loading">
       <span class="horizontal-line" />
       <span class="vertical-line" />
       <div class="box">
@@ -10,7 +10,7 @@
         <div class="loading-dot"></div>
       </div>
     </div>
-    <div v-show="loading">
+    <div v-if="loading">
       <LayoutsTheBar v-if="loading" position="top" />
       <LayoutsTheHeader />
       <LayoutsTheLinkArea :links="links" type="index" />
@@ -22,7 +22,6 @@
           @update:load-percent="updatePercent"
         />
       </div>
-      <LayoutsTheBar position="bottom" />
     </div>
   </div>
 </template>
