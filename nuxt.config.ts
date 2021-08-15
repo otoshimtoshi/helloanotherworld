@@ -95,6 +95,7 @@ const config: NuxtConfig = {
       description:
         'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.',
       lang: 'ja',
+      theme_color: '#0b151b',
       useWebmanifestExtension: false
     }
   }

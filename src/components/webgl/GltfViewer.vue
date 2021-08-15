@@ -78,7 +78,6 @@ export default defineComponent({
           state.model = gltf.scene
           state.scene.add(state.model)
           const animations = gltf.animations
-          console.log(animations)
           state.mixer = new THREE.AnimationMixer(state.model)
           const numAnimations = animations.length
           for (let i = 0; i !== numAnimations; ++i) {
