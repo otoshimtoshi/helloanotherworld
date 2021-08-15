@@ -77,7 +77,8 @@ const config: NuxtConfig = {
     '@nuxtjs/stylelint-module',
     '@nuxtjs/style-resources',
     '@nuxtjs/date-fns',
-    '@nuxtjs/color-mode'
+    '@nuxtjs/color-mode',
+    '@nuxtjs/pwa'
   ],
   modules: ['@nuxtjs/sitemap'],
   sitemap: {
