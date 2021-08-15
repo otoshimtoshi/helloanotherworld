@@ -39,14 +39,14 @@ const config: NuxtConfig = {
         property: 'og:site_name',
         content: 'helloanotherworld.com'
       },
-      { hid: 'og:image', property: 'og:image', content: '/ogp.jpg' },
+      { hid: 'og:image', property: 'og:image', content: '/ogp.png' },
       {
         hid: 'twitter:site',
         name: 'twitter:site',
         content: 'helloanotherworld.com'
       },
       { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
-      { hid: 'twitter:image', name: 'twitter:image', content: '/ogp.jpg' }
+      { hid: 'twitter:image', name: 'twitter:image', content: '/ogp.png' }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
@@ -83,6 +83,9 @@ const config: NuxtConfig = {
   modules: ['@nuxtjs/sitemap'],
   sitemap: {
     hostname: 'https://helloanotherworld.com'
+  },
+  pwa: {
+    icon: {}
   }
 }
 
