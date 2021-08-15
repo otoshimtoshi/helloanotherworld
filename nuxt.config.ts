@@ -85,7 +85,18 @@ const config: NuxtConfig = {
     hostname: 'https://helloanotherworld.com'
   },
   pwa: {
-    icon: {}
+    icon: {},
+    manifest: {
+      name: 'helloanotherworld',
+      short_name: 'helloanotherworld',
+      icons: [],
+      start_url: 'https://helloanotherworld.com',
+      display: 'standalone',
+      description:
+        'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.',
+      lang: 'ja',
+      useWebmanifestExtension: false
+    }
   }
 }
 
