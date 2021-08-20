@@ -33,7 +33,6 @@ export default defineComponent({
     const setMousePosition = (e: MouseEvent) => {
       state.mouseX = e.clientX
       state.mouseY = e.clientY
-      console.log('setMousePosition')
     }
 
     onMounted(() => {

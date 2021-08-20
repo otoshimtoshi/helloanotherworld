@@ -48,7 +48,7 @@ const config: NuxtConfig = {
       { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
       { hid: 'twitter:image', name: 'twitter:image', content: '/ogp.png' }
     ],
-    link: [{ rel: 'preload', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   loading: { color: '#111111' },
   css: ['@/assets/scss/main.scss'],
