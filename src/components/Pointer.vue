@@ -10,9 +10,9 @@ import {
   computed,
   defineComponent,
   onMounted,
+  onUnmounted,
   reactive,
-  toRefs,
-  ref
+  toRefs
 } from '@nuxtjs/composition-api'
 
 export default defineComponent({
@@ -30,38 +30,17 @@ export default defineComponent({
       return 'transform: translate3d(' + state.mouseX + 'px, ' + state.mouseY + 'px, ' + '0px)'
     })
 
-    /** 各種フラグの初期化 */
-    const initilize = () => {
-      state.isOver = false
-      state.isHome = false
-      state.isMore = false
+    const setMousePosition = (e: MouseEvent) => {
+      state.mouseX = e.clientX
+      state.mouseY = e.clientY
     }
 
-    /** aタグ情報を格納 */
-    const aTagEventElement = ref<any>() // eslint-disable-line
-
-    /**
-     * DOMのレンダリング後aタグを全て取得し取得タグのmousemove,mouseover,mouseoutイベント発火時
-     * マウス座標を取得、ポインター座標へ取得座標を反映
-     */
     onMounted(() => {
-      window.addEventListener('mousemove', (e) => {
-        state.mouseX = e.clientX
-        state.mouseY = e.clientY
-      })
-      if (!aTagEventElement.value) {
-        aTagEventElement.value = document.querySelectorAll('a')
-      }
-      for (let i = 0; i < aTagEventElement.value.length; i++) {
-        //マウスホバー時
-        aTagEventElement.value[i].addEventListener('mouseover', () => {
-          state.isOver = true
-        })
-        //マウスホバー解除時
-        aTagEventElement.value[i].addEventListener('mouseout', () => {
-          initilize()
-        })
-      }
+      window.addEventListener('mousemove', setMousePosition)
+    })
+
+    onUnmounted(() => {
+      window.removeEventListener('mousemove', setMousePosition)
     })
 
     return {

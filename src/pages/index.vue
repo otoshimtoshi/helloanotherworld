@@ -1,27 +1,16 @@
 <template>
   <div>
-    <div v-if="!loading" class="loading">
-      <span class="horizontal-line" />
-      <span class="vertical-line" />
-      <div class="box">
-        <div class="loading-dot"></div>
-        <div class="loading-dot"></div>
-        <div class="loading-dot"></div>
-        <div class="loading-dot"></div>
-      </div>
-    </div>
-    <div v-if="loading">
-      <LayoutsTheBar v-if="loading" position="top" />
-      <LayoutsTheHeader />
-      <LayoutsTheLinkArea :links="links" type="index" />
-      <div class="main">
-        <WebglGltfViewer
-          :load-percent="loadPercent"
-          src="/logo2.glb"
-          :mode="colorMode"
-          @update:load-percent="updatePercent"
-        />
-      </div>
+    <CommonsDotLoading v-show="!loading" />
+    <LayoutsTheBar v-if="loading" position="top" animation />
+    <LayoutsTheHeader />
+    <LayoutsTheLinkArea :links="links" type="index" />
+    <div class="main">
+      <WebglGltfViewer
+        :load-percent="loadPercent"
+        src="/logo2.glb"
+        :mode="colorMode"
+        @update:load-percent="updatePercent"
+      />
     </div>
     <Pointer />
   </div>

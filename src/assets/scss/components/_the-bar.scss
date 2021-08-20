@@ -7,7 +7,6 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  animation: fadeIn 3s;
   &__icon {
     display: flex;
     flex-wrap: nowrap;
@@ -50,5 +49,8 @@
   }
   &.bottom {
     bottom: 0;
+  }
+  &.animation {
+    animation: fadeIn 3s;
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="the-bar" :class="position">
+  <div class="the-bar" :class="{ position, animation }">
     <template v-if="position === 'top'">
       <div class="the-bar__icon">
         <span
@@ -42,7 +42,8 @@ export default defineComponent({
     position: {
       type: String as PropType<Position>,
       default: 'top'
-    }
+    },
+    animation: Boolean
   },
   setup() {
     const { app } = useContext()

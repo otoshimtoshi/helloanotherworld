@@ -48,7 +48,7 @@
     "@nuxtjs/color-mode": "^2.0.5",
     "@nuxtjs/date-fns": "^1.4.3",
     "@nuxtjs/pwa": "^3.3.5",
-    "@nuxtjs/style-resources": "^1.0.0",
+    "@nuxtjs/style-resources": "^1.2.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/scrollmagic": "^2.0.1",
     "@types/three": "^0.126.1",

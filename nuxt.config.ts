@@ -55,10 +55,6 @@ const config: NuxtConfig = {
   components: true,
   env: {},
   srcDir: 'src/',
-  styleResources: {
-    sass: [],
-    scss: []
-  },
   axios: {},
   build: {
     transpile: ['three'],
@@ -80,6 +76,12 @@ const config: NuxtConfig = {
     '@nuxtjs/color-mode',
     '@nuxtjs/pwa'
   ],
+  styleResources: {
+    scss: [
+      '@/assets/scss/foundation/_initial-variables.scss',
+      '@/assets/scss/foundation/_mixin-utils.scs'
+    ]
+  },
   modules: ['@nuxtjs/sitemap'],
   sitemap: {
     hostname: 'https://helloanotherworld.com'
