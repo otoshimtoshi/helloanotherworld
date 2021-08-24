@@ -4,9 +4,25 @@ const config: NuxtConfig = {
   ssr: true,
   target: 'static',
   head: {
-    title: 'helloanotherworld.com',
     htmlAttrs: {
       lang: 'ja'
+    },
+    title: 'helloanotherworld.com',
+    script: [
+      { src: 'https://www.googletagmanager.com/gtag/js?id=G-M81ETYC1VY', async: true },
+      {
+        hid: 'gtag',
+        type: 'text/javascript',
+        innerHTML: `window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+
+                    gtag('config', 'G-M81ETYC1VY');`
+      }
+    ],
+    __dangerouslyDisableSanitizersByTagID: {
+      clarity: ['innerHTML'],
+      gtag: ['innerHTML']
     },
     meta: [
       { charset: 'utf-8' },
