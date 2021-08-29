@@ -9,11 +9,11 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { ImprovedNoise } from 'three/examples/jsm/math/ImprovedNoise'
 import fragmentShader from './fragmentShader.frag'
 import vertexShader from './vertexShader.vert'
-// import { isWebGLAvailable } from '@/composable/use-webgl2-available'
+import { isWebGL2Available } from '@/composable/webgl2-available'
 
 export default defineComponent({
   setup() {
-    // isWebGLAvailable()
+    isWebGL2Available()
     const state = reactive({
       width: 0,
       height: 0,
