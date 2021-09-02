@@ -3,10 +3,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, onMounted, toRefs, ref, watch } from '@nuxtjs/composition-api'
+import {
+  defineComponent,
+  reactive,
+  onMounted,
+  toRefs,
+  ref,
+  watch
+} from '@nuxtjs/composition-api'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import Ground from '@/composable/ground'
 
 export default defineComponent({
   props: {
@@ -32,7 +40,8 @@ export default defineComponent({
       gltfLoader: new GLTFLoader(),
       clock: new THREE.Clock(),
       model: new THREE.Group(),
-      mixer: new THREE.AnimationMixer(new THREE.Object3D())
+      mixer: new THREE.AnimationMixer(new THREE.Object3D()),
+      ground: new Ground()
     })
 
     const renderer = ref<THREE.WebGLRenderer>()
@@ -67,7 +76,10 @@ export default defineComponent({
       state.dirLight.shadow.camera.right = 2
       state.dirLight.shadow.camera.near = 0.1
       state.dirLight.shadow.camera.far = 40
+
       state.scene.add(state.dirLight)
+
+      state.scene.add(state.ground.obj)
     }
     init()
 
@@ -105,10 +117,18 @@ export default defineComponent({
       element.appendChild(renderer.value.domElement)
 
       // camera
-      state.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 100)
-      state.camera.position.set(-7, 3, 5)
+      state.camera = new THREE.PerspectiveCamera(
+        45,
+        window.innerWidth / window.innerHeight,
+        1,
+        1000
+      )
+      state.camera.position.set(-5, 5, -5)
 
-      const controls = new OrbitControls(state.camera, renderer.value.domElement)
+      const controls = new OrbitControls(
+        state.camera,
+        renderer.value.domElement
+      )
       controls.enablePan = false
       controls.enableZoom = false
       controls.target.set(0, 1, 0)
@@ -140,6 +160,7 @@ export default defineComponent({
       requestAnimationFrame(animate)
       const mixerUpdateDelta = state.clock.getDelta()
       state.mixer.update(mixerUpdateDelta)
+      state.ground.render(mixerUpdateDelta)
       if (renderer.value === undefined) return
       renderer.value.render(state.scene, state.camera)
     }
