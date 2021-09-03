@@ -6,12 +6,10 @@ varying vec3 vPosition;
 
 const float duration = 2.0;
 
-#pragma glslify: convertHsvToRgb = require(glsl-util/convertHsvToRgb);
-
 void main() {
   float now = clamp(time / duration, 0.0, 1.0);
   float opacity = (1.0 - length(vPosition.xy / vec2(512.0))) * now;
   vec3 v = normalize(vPosition);
-  vec3 rgb = convertHsvToRgb(vec3(0.5 + (v.x + v.y + v.x) / 40.0 + time * 0.1, 0.4, 1.0));
+  vec3 rgb = vec3(1, 1, 1);
   gl_FragColor = vec4(rgb, opacity);
 }
