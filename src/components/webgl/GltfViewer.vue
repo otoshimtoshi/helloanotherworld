@@ -46,23 +46,11 @@ export default defineComponent({
 
     const renderer = ref<THREE.WebGLRenderer>()
 
-    const setBackGroundColor = () => {
-      // if (props.mode === 'light') {
-      state.scene.background = new THREE.Color(0xe6e7e8)
-      // } else if (props.mode === 'yellow') {
-      //   state.scene.background = new THREE.Color(0xfaf5e5)
-      // } else if (props.mode === 'red') {
-      //   state.scene.background = new THREE.Color(0xffe5e5)
-      // } else if (props.mode === 'blue') {
-      //   state.scene.background = new THREE.Color(0xe5e5ff)
-      // } else if (props.mode === 'green') {
-      //   state.scene.background = new THREE.Color(0xe5ffe6)
-      // }
-    }
+    const setBackGroundColor = () => {}
 
     const init = () => {
       // scene
-      setBackGroundColor()
+      state.scene.background = new THREE.Color(0xe6e7e8)
       state.scene.fog = new THREE.Fog(0xa0a0a0, 10, 50)
       // hemiLight
       state.hemiLight.position.set(0, 20, 0)
