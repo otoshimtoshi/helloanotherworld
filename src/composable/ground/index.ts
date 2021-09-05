@@ -1,11 +1,13 @@
-import * as THREE from 'three'
+import { Mesh, IUniform, PlaneBufferGeometry, RawShaderMaterial } from 'three'
 import { $MathEx } from '@/scripts/utils/math-ex'
 import groundFrag from './glsl/ground.frag'
 import groundVert from './glsl/ground.vert'
 
 export default class Ground {
-  uniforms: { [uniform: string]: THREE.IUniform }
-  obj: THREE.Mesh
+  /** glsl変数 uniform */
+  uniforms: { [uniform: string]: IUniform }
+  /** Mesh */
+  obj: Mesh
 
   constructor() {
     this.uniforms = {
@@ -29,10 +31,10 @@ export default class Ground {
   /**
    * @returns THREE.Mesh in PlaneBufferGeometry and RawShaderMaterial
    */
-  createObj(): THREE.Mesh {
-    return new THREE.Mesh(
-      new THREE.PlaneBufferGeometry(256, 256, 128, 128),
-      new THREE.RawShaderMaterial({
+  createObj(): Mesh {
+    return new Mesh(
+      new PlaneBufferGeometry(256, 256, 128, 128),
+      new RawShaderMaterial({
         uniforms: this.uniforms,
         vertexShader: groundVert,
         fragmentShader: groundFrag,

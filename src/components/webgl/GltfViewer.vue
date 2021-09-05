@@ -9,7 +9,8 @@ import {
   onMounted,
   toRefs,
   ref,
-  watch
+  watch,
+  onUnmounted
 } from '@nuxtjs/composition-api'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -41,32 +42,63 @@ export default defineComponent({
       clock: new THREE.Clock(),
       model: new THREE.Group(),
       mixer: new THREE.AnimationMixer(new THREE.Object3D()),
-      ground: new Ground()
+      ground: new Ground(),
+      myReq: 0
     })
 
     const renderer = ref<THREE.WebGLRenderer>()
 
-    const setBackGroundColor = () => {}
+    const setBackGroundColor = () => {
+      switch (props.mode) {
+        case 'light': {
+          state.ground.updateColor(0, 0, 0)
+          state.scene.remove(state.hemiLight)
+          state.hemiLight = new THREE.HemisphereLight(0xffffff, 0x999999)
+          state.scene.add(state.hemiLight)
+          break
+        }
+        case 'yellow': {
+          state.ground.updateColor(0.823, 0.619, 0)
+          state.scene.remove(state.hemiLight)
+          state.hemiLight = new THREE.HemisphereLight(0xffffff, 0xd29e00)
+          state.scene.add(state.hemiLight)
+          break
+        }
+        case 'red': {
+          state.ground.updateColor(1, 0.498, 0.498)
+          state.scene.remove(state.hemiLight)
+          state.hemiLight = new THREE.HemisphereLight(0xffffff, 0xff1919)
+          state.scene.add(state.hemiLight)
+          break
+        }
+        case 'blue': {
+          state.ground.updateColor(0.498, 0.505, 1)
+          state.scene.remove(state.hemiLight)
+          state.hemiLight = new THREE.HemisphereLight(0xffffff, 0x0003ff)
+          state.scene.add(state.hemiLight)
+          break
+        }
+        case 'green': {
+          state.ground.updateColor(0, 0.8, 0.043)
+          state.scene.remove(state.hemiLight)
+          state.hemiLight = new THREE.HemisphereLight(0xffffff, 0x00ff0e)
+          state.scene.add(state.hemiLight)
+          break
+        }
+        default: {
+          break
+        }
+      }
+    }
 
     const init = () => {
       // scene
       state.scene.background = new THREE.Color(0xe6e7e8)
-      state.scene.fog = new THREE.Fog(0xa0a0a0, 10, 50)
       // hemiLight
-      state.hemiLight.position.set(0, 20, 0)
       state.scene.add(state.hemiLight)
       // dirLight
-      state.dirLight.position.set(3, 10, 10)
-      state.dirLight.castShadow = true
-      state.dirLight.shadow.camera.top = 2
-      state.dirLight.shadow.camera.bottom = -2
-      state.dirLight.shadow.camera.left = -2
-      state.dirLight.shadow.camera.right = 2
-      state.dirLight.shadow.camera.near = 0.1
-      state.dirLight.shadow.camera.far = 40
-
       state.scene.add(state.dirLight)
-
+      setBackGroundColor()
       state.scene.add(state.ground.obj)
     }
     init()
@@ -145,7 +177,7 @@ export default defineComponent({
     }
 
     const animate = () => {
-      requestAnimationFrame(animate)
+      state.myReq = requestAnimationFrame(animate)
       const mixerUpdateDelta = state.clock.getDelta()
       state.mixer.update(mixerUpdateDelta)
       state.ground.render(mixerUpdateDelta)
@@ -159,6 +191,10 @@ export default defineComponent({
         setBackGroundColor()
       }
     )
+
+    onUnmounted(() => {
+      cancelAnimationFrame(state.myReq)
+    })
 
     return {
       ...toRefs(state),
