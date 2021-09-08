@@ -51,7 +51,7 @@ export default defineComponent({
     const setBackGroundColor = () => {
       switch (props.mode) {
         case 'light': {
-          state.ground.updateColor(0, 0, 0)
+          state.ground.updateColor(1, 1, 1)
           state.scene.remove(state.hemiLight)
           state.hemiLight = new THREE.HemisphereLight(0xffffff, 0x999999)
           state.scene.add(state.hemiLight)
