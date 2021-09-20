@@ -38,22 +38,19 @@ body {
 }
 
 h1 {
-  font-size: 5vw;
+  font-size: 50px;
   @include mq('large', max) {
-    font-size: 50px;
+    font-size: 40px;
   }
   @include mq('medium', max) {
-    font-size: 40px;
+    font-size: 30px;
   }
   @include mq('small', max) {
     font-size: 24px;
   }
 }
 h2 {
-  font-size: 1vw;
-  @include mq('large', max) {
-    font-size: $font-size-base;
-  }
+  font-size: 20px;
 }
 
 // ==========================================================================
@@ -61,4 +58,13 @@ h2 {
 // ==========================================================================
 .line-through {
   text-decoration-line: line-through;
+}
+.text-align-center {
+  text-align: center;
+}
+.text-align-left {
+  text-align: left;
+}
+.text-align-right {
+  text-align: right;
 }

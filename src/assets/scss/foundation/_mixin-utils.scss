@@ -4,8 +4,11 @@
 @mixin font-base {
   font-family: $family-font-base;
 }
-@mixin font-custom {
-  font-family: $family-font-custom;
+@mixin font-ja-custom {
+  font-family: $family-font-ja-custom;
+}
+@mixin font-en-custom {
+  font-family: $family-font-en-custom;
 }
 // ==========================================================================
 // width

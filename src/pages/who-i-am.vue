@@ -1,25 +1,21 @@
 <template>
-  <div class="who-i-am">
-    <div class="grid">
+  <div class="pages">
+    <div class="inner">
       <div>
-        <h1 class="who-i-am__title">Who i am</h1>
+        <h1 class="title">Who i am</h1>
       </div>
-      <div></div>
-    </div>
-    <div class="grid">
-      <div class="who-i-am__body en column-2-3">
-        Hi! My name is Masatoshi Otoshi.<br />I'm a front-end developer based in
-        Tokyo.<br />Please contact me via DM on SNS.
+      <div class="content">
+        <div>Hi! My name is Masatoshi Otoshi.</div>
+        <div>I'm a front-end developer based in Tokyo.</div>
+        <div>Please contact me via DM on SNS.</div>
       </div>
-    </div>
-    <div class="grid">
       <div>
-        <h2 class="who-i-am__sub-title column-2-3">自己紹介</h2>
+        <h2 class="sub-title">自己紹介</h2>
       </div>
-    </div>
-    <div class="grid">
-      <div class="who-i-am__body ja column-2-3">
-        落司 聖稔(おとし まさとし)<br />東京でフロントエンドディベロッパーとして活動しています。<br />GithubやTwitterでご連絡ください。
+      <div class="content">
+        <div>落司 聖稔(おとし まさとし)</div>
+        <div>東京でフロントエンドディベロッパーとして活動しています。</div>
+        <div>GithubやTwitterでご連絡ください。</div>
       </div>
     </div>
   </div>

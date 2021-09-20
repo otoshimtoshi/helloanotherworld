@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Homenaje&family=Noto+Serif+JP&display=swap');
 // -----------------------------------------------------------------
 // Foundation
 // -----------------------------------------------------------------
@@ -15,7 +14,7 @@
 // -----------------------------------------------------------------
 // pages
 // -----------------------------------------------------------------
-@import 'pages/all';
+@import 'pages/pages';
 .page-enter,
 .page-leave-to {
   opacity: 0;

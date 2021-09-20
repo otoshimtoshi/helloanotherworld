@@ -9,7 +9,10 @@ const config: NuxtConfig = {
     },
     title: 'helloanotherworld.com',
     script: [
-      { src: 'https://www.googletagmanager.com/gtag/js?id=G-M81ETYC1VY', async: true },
+      {
+        src: 'https://www.googletagmanager.com/gtag/js?id=G-M81ETYC1VY',
+        async: true
+      },
       {
         hid: 'gtag',
         type: 'text/javascript',
@@ -95,7 +98,7 @@ const config: NuxtConfig = {
   styleResources: {
     scss: [
       '@/assets/scss/foundation/_initial-variables.scss',
-      '@/assets/scss/foundation/_mixin-utils.scs'
+      '@/assets/scss/foundation/_mixin-utils.scss'
     ]
   },
   modules: ['@nuxtjs/sitemap'],

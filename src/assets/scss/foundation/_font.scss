@@ -2,10 +2,27 @@
 // 日本語font
 // ==========================================================================
 @font-face {
-  font-family: 'Koruri light';
+  font-family: 'Koruri';
   font-style: normal;
   font-weight: 400;
   src: url(./font/Koruri-Regular.ttf);
+}
+// ==========================================================================
+// 英文 font
+// ==========================================================================
+@font-face {
+  font-family: 'Homenaje';
+  font-style: normal;
+  font-weight: 400;
+  src: url(./font/Homenaje-Regular.ttf);
+}
+// ==========================================================================
+// 見出 英文font
+// ==========================================================================
+@font-face {
+  font-family: 'StickNoBills';
+  font-style: normal;
+  src: url(./font/StickNoBills-Medium.ttf);
 }
 // ==========================================================================
 // family-font

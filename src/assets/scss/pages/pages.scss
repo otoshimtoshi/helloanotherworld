@@ -1,0 +1,32 @@
+.pages {
+  width: 100%;
+  height: calc(100vh - 40px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .inner {
+    width: 90%;
+    margin-bottom: 100px;
+  }
+  .content {
+    margin-bottom: 24px;
+    div {
+      &:nth-child(n) {
+        margin-bottom: 2px;
+      }
+      &:last-child {
+        margin-bottom: unset;
+      }
+    }
+  }
+  .title {
+    @include font-en-custom;
+
+    margin-bottom: 18px;
+  }
+  .sub-title {
+    @include font-ja-custom;
+
+    margin-bottom: 12px;
+  }
+}
