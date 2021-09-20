@@ -117,7 +117,6 @@ export default defineComponent({
             const action = state.mixer.clipAction(clip)
             action.play()
           }
-          animate()
         },
         (xhr) => {
           onProgress(xhr)
@@ -144,7 +143,7 @@ export default defineComponent({
         1000
       )
       state.camera.position.set(-5, 5, -5)
-
+      animate()
       const controls = new OrbitControls(
         state.camera,
         renderer.value.domElement
@@ -177,6 +176,7 @@ export default defineComponent({
     }
 
     const animate = () => {
+      cancelAnimationFrame(state.myReq)
       state.myReq = requestAnimationFrame(animate)
       const mixerUpdateDelta = state.clock.getDelta()
       state.mixer.update(mixerUpdateDelta)

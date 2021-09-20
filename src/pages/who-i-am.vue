@@ -8,8 +8,8 @@
     </div>
     <div class="grid">
       <div class="who-i-am__body en column-2-3">
-        Hi! My name is Masatoshi Otoshi.<br />I'm a front-end developer based in Tokyo.<br />Please
-        contact me via DM on SNS.
+        Hi! My name is Masatoshi Otoshi.<br />I'm a front-end developer based in
+        Tokyo.<br />Please contact me via DM on SNS.
       </div>
     </div>
     <div class="grid">
@@ -26,7 +26,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, useContext, reactive, toRefs, useMeta } from '@nuxtjs/composition-api'
+import {
+  defineComponent,
+  useContext,
+  reactive,
+  toRefs,
+  useMeta
+} from '@nuxtjs/composition-api'
 export default defineComponent({
   layout: 'pages',
   setup() {
