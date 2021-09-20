@@ -4,10 +4,17 @@
     <div class="main">
       <nuxt />
     </div>
+    <Pointer />
   </div>
 </template>
 <script lang="ts">
-import { computed, defineComponent, reactive, toRefs, useContext } from '@nuxtjs/composition-api'
+import {
+  computed,
+  defineComponent,
+  reactive,
+  toRefs,
+  useContext
+} from '@nuxtjs/composition-api'
 import { Links } from '@/components/layouts/TheLinkArea.vue'
 
 export default defineComponent({

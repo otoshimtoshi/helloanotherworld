@@ -1,6 +1,7 @@
 <template>
   <div class="layout-default">
     <nuxt />
+    <Pointer />
   </div>
 </template>
 <script lang="ts">

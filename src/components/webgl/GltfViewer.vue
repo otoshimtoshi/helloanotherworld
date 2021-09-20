@@ -12,7 +12,19 @@ import {
   watch,
   onUnmounted
 } from '@nuxtjs/composition-api'
-import * as THREE from 'three'
+import {
+  PerspectiveCamera,
+  Scene,
+  HemisphereLight,
+  DirectionalLight,
+  Clock,
+  Group,
+  AnimationMixer,
+  Object3D,
+  WebGLRenderer,
+  Color,
+  sRGBEncoding
+} from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import Ground from '@/composable/ground'
@@ -34,54 +46,54 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const state = reactive({
-      camera: new THREE.PerspectiveCamera(),
-      scene: new THREE.Scene(),
-      hemiLight: new THREE.HemisphereLight(0xffffff, 0x444444),
-      dirLight: new THREE.DirectionalLight(0xffffff),
+      camera: new PerspectiveCamera(),
+      scene: new Scene(),
+      hemiLight: new HemisphereLight(0xffffff, 0x444444),
+      dirLight: new DirectionalLight(0xffffff),
       gltfLoader: new GLTFLoader(),
-      clock: new THREE.Clock(),
-      model: new THREE.Group(),
-      mixer: new THREE.AnimationMixer(new THREE.Object3D()),
+      clock: new Clock(),
+      model: new Group(),
+      mixer: new AnimationMixer(new Object3D()),
       ground: new Ground(),
       myReq: 0
     })
 
-    const renderer = ref<THREE.WebGLRenderer>()
+    const renderer = ref<WebGLRenderer>()
 
     const setBackGroundColor = () => {
       switch (props.mode) {
         case 'light': {
           state.ground.updateColor(1, 1, 1)
           state.scene.remove(state.hemiLight)
-          state.hemiLight = new THREE.HemisphereLight(0xffffff, 0x999999)
+          state.hemiLight = new HemisphereLight(0xffffff, 0x999999)
           state.scene.add(state.hemiLight)
           break
         }
         case 'yellow': {
           state.ground.updateColor(0.823, 0.619, 0)
           state.scene.remove(state.hemiLight)
-          state.hemiLight = new THREE.HemisphereLight(0xffffff, 0xd29e00)
+          state.hemiLight = new HemisphereLight(0xffffff, 0xd29e00)
           state.scene.add(state.hemiLight)
           break
         }
         case 'red': {
           state.ground.updateColor(1, 0.498, 0.498)
           state.scene.remove(state.hemiLight)
-          state.hemiLight = new THREE.HemisphereLight(0xffffff, 0xff1919)
+          state.hemiLight = new HemisphereLight(0xffffff, 0xff1919)
           state.scene.add(state.hemiLight)
           break
         }
         case 'blue': {
           state.ground.updateColor(0.498, 0.505, 1)
           state.scene.remove(state.hemiLight)
-          state.hemiLight = new THREE.HemisphereLight(0xffffff, 0x0003ff)
+          state.hemiLight = new HemisphereLight(0xffffff, 0x0003ff)
           state.scene.add(state.hemiLight)
           break
         }
         case 'green': {
           state.ground.updateColor(0, 0.8, 0.043)
           state.scene.remove(state.hemiLight)
-          state.hemiLight = new THREE.HemisphereLight(0xffffff, 0x00ff0e)
+          state.hemiLight = new HemisphereLight(0xffffff, 0x00ff0e)
           state.scene.add(state.hemiLight)
           break
         }
@@ -93,7 +105,7 @@ export default defineComponent({
 
     const init = () => {
       // scene
-      state.scene.background = new THREE.Color(0xe6e7e8)
+      state.scene.background = new Color(0xe6e7e8)
       // hemiLight
       state.scene.add(state.hemiLight)
       // dirLight
@@ -110,7 +122,7 @@ export default defineComponent({
           state.model = gltf.scene
           state.scene.add(state.model)
           const animations = gltf.animations
-          state.mixer = new THREE.AnimationMixer(state.model)
+          state.mixer = new AnimationMixer(state.model)
           const numAnimations = animations.length
           for (let i = 0; i !== numAnimations; ++i) {
             let clip = animations[i]
@@ -128,15 +140,15 @@ export default defineComponent({
 
       const element: HTMLElement | null = document.getElementById('gltf')
       if (element === null) return
-      renderer.value = new THREE.WebGLRenderer({ antialias: true })
+      renderer.value = new WebGLRenderer({ antialias: true })
       renderer.value.setPixelRatio(window.devicePixelRatio)
       renderer.value.setSize(window.innerWidth - 44, window.innerHeight - 44)
-      renderer.value.outputEncoding = THREE.sRGBEncoding
+      renderer.value.outputEncoding = sRGBEncoding
       renderer.value.shadowMap.enabled = true
       element.appendChild(renderer.value.domElement)
 
       // camera
-      state.camera = new THREE.PerspectiveCamera(
+      state.camera = new PerspectiveCamera(
         45,
         window.innerWidth / window.innerHeight,
         1,

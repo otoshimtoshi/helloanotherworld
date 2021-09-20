@@ -27,7 +27,7 @@ export default class Fog {
         value: null
       }
     }
-    this.num = 200
+    this.num = 1
     this.obj = null
   }
   /**

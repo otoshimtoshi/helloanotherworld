@@ -4,11 +4,18 @@
     <h1>{{ message.main }}</h1>
     <LayoutsTheLinkArea :links="allLink" />
     <LayoutsTheBar position="bottom" />
+    <Pointer />
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType, reactive, toRefs } from '@nuxtjs/composition-api'
+import {
+  computed,
+  defineComponent,
+  PropType,
+  reactive,
+  toRefs
+} from '@nuxtjs/composition-api'
 import { Links } from '@/components/layouts/TheLinkArea.vue'
 
 interface ErrorProp {

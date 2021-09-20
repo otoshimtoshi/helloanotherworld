@@ -12,7 +12,6 @@
         @update:load-percent="updatePercent"
       />
     </div>
-    <Pointer />
   </div>
 </template>
 
