@@ -1,4 +1,4 @@
-.layout-default {
+.layout {
   display: flex;
   background-color: $light0;
   z-index: 10;
@@ -11,75 +11,21 @@
 }
 
 .yellow-mode {
-  .layout-default {
-    .horizontal-line {
-      &::before {
-        border-bottom: 2px solid $yellow-font-color;
-      }
-      &::after {
-        border-bottom: 2px solid $yellow-font-color;
-      }
-    }
-    .vertical-line {
-      &::before {
-        border-left: 2px solid $yellow-font-color;
-      }
-      &::after {
-        border-left: 2px solid $yellow-font-color;
-      }
-    }
-    .loading-dot {
-      background: $yellow-font-color;
-    }
+  .layout {
     .main {
       border: 2px solid $yellow-font-color;
     }
   }
 }
 .red-mode {
-  .layout-default {
-    .horizontal-line {
-      &::before {
-        border-bottom: 2px solid $red-font-color;
-      }
-      &::after {
-        border-bottom: 2px solid $red-font-color;
-      }
-    }
-    .vertical-line {
-      &::before {
-        border-left: 2px solid $red-font-color;
-      }
-      &::after {
-        border-left: 2px solid $red-font-color;
-      }
-    }
-    .loading-dot {
-      background: $red-font-color;
-    }
+  .layout {
     .main {
       border: 2px solid $red-font-color;
     }
   }
 }
 .blue-mode {
-  .layout-default {
-    .horizontal-line {
-      &::before {
-        border-bottom: 2px solid $blue-font-color;
-      }
-      &::after {
-        border-bottom: 2px solid $blue-font-color;
-      }
-    }
-    .vertical-line {
-      &::before {
-        border-left: 2px solid $blue-font-color;
-      }
-      &::after {
-        border-left: 2px solid $blue-font-color;
-      }
-    }
+  .layout {
     .loading-dot {
       background: $blue-font-color;
     }
@@ -89,26 +35,7 @@
   }
 }
 .green-mode {
-  .layout-default {
-    .horizontal-line {
-      &::before {
-        border-bottom: 2px solid $green-font-color;
-      }
-      &::after {
-        border-bottom: 2px solid $green-font-color;
-      }
-    }
-    .vertical-line {
-      &::before {
-        border-left: 2px solid $green-font-color;
-      }
-      &::after {
-        border-left: 2px solid $green-font-color;
-      }
-    }
-    .loading-dot {
-      background: $green-font-color;
-    }
+  .layout {
     .main {
       border: 2px solid $green-font-color;
     }

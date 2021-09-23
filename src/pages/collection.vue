@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div class="main">
     <div>Collection of works</div>
     <div>作品集</div>
+    <Pointer />
   </div>
 </template>
 
@@ -14,7 +15,6 @@ import {
   useMeta
 } from '@nuxtjs/composition-api'
 export default defineComponent({
-  layout: 'pages',
   setup() {
     const { app } = useContext()
     const state = reactive({

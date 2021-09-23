@@ -1,16 +1,21 @@
 <template>
-  <div class="error">
-    <LayoutsTheBar position="top" />
-    <h1>{{ message.main }}</h1>
-    <LayoutsTheLinkArea :links="allLink" />
-    <LayoutsTheBar position="bottom" />
-    <Pointer />
+  <div class="layout">
+    <div class="main">
+      <div v-if="error.statusCode === 404">
+        <h1>ERROR 404</h1>
+        <h2>Page Can Not Be Found!</h2>
+      </div>
+      <div v-else>
+        <h1>An Error Has Occurred!</h1>
+      </div>
+      <LayoutsTheLinkArea :links="allLink" />
+      <Pointer />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import {
-  computed,
   defineComponent,
   PropType,
   reactive,
@@ -31,7 +36,7 @@ export default defineComponent({
       required: true
     }
   },
-  setup: (props) => {
+  setup: () => {
     const state = reactive({
       allLink: [
         {
@@ -53,22 +58,8 @@ export default defineComponent({
       ] as Array<Links>
     })
 
-    const message = computed(() => {
-      switch (props.error.statusCode) {
-        case 404:
-          return {
-            main: 'Page Can Not Be Found!'
-          }
-        default:
-          return {
-            main: 'An Error Has Occurred!'
-          }
-      }
-    })
-
     return {
-      ...toRefs(state),
-      message
+      ...toRefs(state)
     }
   }
 })

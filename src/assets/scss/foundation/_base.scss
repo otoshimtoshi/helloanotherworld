@@ -6,6 +6,8 @@ html {
   font-family: $family-font-base;
 }
 body {
+  width: 100vw;
+  height: 100vh;
   font-size: $font-size-base;
   color: $light-font-color;
   background: $light0;
