@@ -142,7 +142,10 @@ export default defineComponent({
       if (element === null) return
       renderer.value = new WebGLRenderer({ antialias: true })
       renderer.value.setPixelRatio(window.devicePixelRatio)
-      renderer.value.setSize(window.innerWidth - 44, window.innerHeight - 44)
+      renderer.value.setSize(
+        document.body.clientWidth,
+        document.body.clientHeight
+      )
       renderer.value.outputEncoding = sRGBEncoding
       renderer.value.shadowMap.enabled = true
       element.appendChild(renderer.value.domElement)
@@ -150,7 +153,7 @@ export default defineComponent({
       // camera
       state.camera = new PerspectiveCamera(
         45,
-        window.innerWidth / window.innerHeight,
+        document.body.clientWidth / document.body.clientHeight,
         1,
         1000
       )
@@ -170,9 +173,13 @@ export default defineComponent({
 
     function onWindowResize() {
       if (renderer.value === undefined) return
-      state.camera.aspect = window.innerWidth / window.innerHeight
+      state.camera.aspect =
+        document.body.clientWidth / document.body.clientHeight
       state.camera.updateProjectionMatrix()
-      renderer.value.setSize(window.innerWidth - 44, window.innerHeight - 44)
+      renderer.value.setSize(
+        document.body.clientWidth,
+        document.body.clientHeight
+      )
     }
 
     function onProgress(xhr: ProgressEvent) {

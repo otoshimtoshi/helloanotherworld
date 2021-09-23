@@ -1,43 +1,5 @@
 .layout {
-  display: flex;
+  width: 100%;
+  height: auto;
   background-color: $light0;
-  z-index: 10;
-  .main {
-    margin: 20px;
-    z-index: 15;
-    border: 2px solid $light-font-color;
-    animation: fadeIn 3s;
-  }
-}
-
-.yellow-mode {
-  .layout {
-    .main {
-      border: 2px solid $yellow-font-color;
-    }
-  }
-}
-.red-mode {
-  .layout {
-    .main {
-      border: 2px solid $red-font-color;
-    }
-  }
-}
-.blue-mode {
-  .layout {
-    .loading-dot {
-      background: $blue-font-color;
-    }
-    .main {
-      border: 2px solid $blue-font-color;
-    }
-  }
-}
-.green-mode {
-  .layout {
-    .main {
-      border: 2px solid $green-font-color;
-    }
-  }
 }

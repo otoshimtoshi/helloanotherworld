@@ -200,3 +200,26 @@ $easeInOutSine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
 $easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045);
 $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 $easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+// ==========================================================================
+// root color
+// ==========================================================================
+:root {
+  --color: #0b151b;
+  --text-shadow: #858a8d;
+}
+.yellow-mode {
+  --color: #d29e00;
+  --text-shadow: #543f00;
+}
+.red-mode {
+  --color: #ff7f7f;
+  --text-shadow: #600;
+}
+.blue-mode {
+  --color: #7f81ff;
+  --text-shadow: #000166;
+}
+.green-mode {
+  --color: #00cc0b;
+  --text-shadow: #006605;
+}

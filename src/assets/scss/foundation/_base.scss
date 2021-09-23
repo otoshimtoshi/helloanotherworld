@@ -9,7 +9,7 @@ body {
   width: 100vw;
   height: 100vh;
   font-size: $font-size-base;
-  color: $light-font-color;
+  color: var(--color);
   background: $light0;
   box-sizing: border-box;
   word-wrap: break-word;
@@ -17,26 +17,6 @@ body {
   line-height: 1;
   letter-spacing: 0.03em;
   transition: 0.3s;
-}
-.yellow-mode {
-  body {
-    color: $yellow-font-color;
-  }
-}
-.red-mode {
-  body {
-    color: $red-font-color;
-  }
-}
-.blue-mode {
-  body {
-    color: $blue-font-color;
-  }
-}
-.green-mode {
-  body {
-    color: $green-font-color;
-  }
 }
 
 h1 {

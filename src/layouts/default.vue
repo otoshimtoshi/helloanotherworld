@@ -1,5 +1,6 @@
 <template>
   <div class="layout">
+    <LayoutsTheBar position="top" animation />
     <nuxt />
   </div>
 </template>
