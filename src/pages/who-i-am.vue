@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LayoutsTheBar position="top" />
+    <LayoutsHeader position="top" />
     <div class="main">
       <div class="pages">
         <div class="inner">

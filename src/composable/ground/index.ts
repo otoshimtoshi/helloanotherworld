@@ -25,21 +25,21 @@ export default class Ground {
       }
     }
     this.obj = this.createObj()
-    this.obj.position.set(0, -10, 0)
-    this.obj.rotation.set($MathEx.radians(95), 0, 10)
+    this.obj.position.set(0, 0, 0)
+    this.obj.rotation.set($MathEx.radians(70), 0, 0)
   }
   /**
    * @returns THREE.Mesh in PlaneBufferGeometry and RawShaderMaterial
    */
   createObj(): Mesh {
     return new Mesh(
-      new PlaneBufferGeometry(256, 256, 128, 128),
+      new PlaneBufferGeometry(1024, 1024, 128, 128),
       new RawShaderMaterial({
         uniforms: this.uniforms,
         vertexShader: groundVert,
         fragmentShader: groundFrag,
-        transparent: true,
-        wireframe: true
+        transparent: true
+        // wireframe: true
       })
     )
   }

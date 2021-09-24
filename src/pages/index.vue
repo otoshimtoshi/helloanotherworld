@@ -1,30 +1,22 @@
 <template>
-  <div>
-    <main>
-      <div class="top">
-        <div class="top__inner">
-          <h1>
-            <span class="top__title">Hello Another World</span>
-          </h1>
-          <h2>
-            <span class="top__sub-title line-through">designer</span>
-            <span class="top__sub-title">|</span>
-            <span class="top__sub-title">developer</span>
-            <span class="top__sub-title">|</span>
-            <span class="top__sub-title line-through">derector</span>
-          </h2>
-        </div>
+  <main>
+    <div class="top">
+      <div class="top__inner">
+        <h1>
+          <span class="top__title">Hello Another World</span>
+        </h1>
+        <h2>
+          <span class="top__sub-title line-through">designer</span>
+          <span class="top__sub-title">|</span>
+          <span class="top__sub-title">developer</span>
+          <span class="top__sub-title">|</span>
+          <span class="top__sub-title line-through">derector</span>
+        </h2>
       </div>
-      <LayoutsTheLinkArea :links="links" type="index" />
-      <WebglGltfViewer
-        :load-percent="loadPercent"
-        src="/logo2.glb"
-        :mode="colorMode"
-        @update:load-percent="updatePercent"
-      />
-    </main>
+    </div>
+    <LayoutsTheLinkArea :links="links" type="index" />
     <Pointer />
-  </div>
+  </main>
 </template>
 
 <script lang="ts">
@@ -42,8 +34,6 @@ export default defineComponent({
   setup() {
     const { app, route } = useContext()
     const state = reactive({
-      main: (null as unknown) as HTMLDivElement,
-      loadPercent: 0,
       metaInfo: app.store.getters.getMetaInfo('index'),
       allLink: [
         {
@@ -69,20 +59,12 @@ export default defineComponent({
       meta: state.metaInfo?.meta
     }))
 
-    const colorMode = computed(() => app.$colorMode.preference)
-
-    const updatePercent = (num: number) => {
-      state.loadPercent = num
-    }
-
     const links = computed(() => {
       return state.allLink.filter((link) => link.path !== route.value.path)
     })
 
     return {
       ...toRefs(state),
-      colorMode,
-      updatePercent,
       links
     }
   },
@@ -90,3 +72,37 @@ export default defineComponent({
   head() {}
 })
 </script>
+<style lang="scss" scoped>
+.top {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  pointer-events: none;
+  z-index: 20;
+  animation: fadeIn 3s;
+  &__inner {
+    width: 100%;
+    height: auto;
+  }
+  &__title {
+    font-weight: 100;
+    letter-spacing: 0.3em;
+    text-shadow: 2px 5px 5px var(--text-shadow);
+    font-family: $family-font-en-custom;
+  }
+  &__sub-title {
+    letter-spacing: 0.2em;
+    padding: 0 3vw;
+    text-transform: uppercase;
+    font-size: 1vw;
+    @include mq('large', max) {
+      font-size: 14px;
+      padding: 0 2vw;
+    }
+  }
+}
+</style>

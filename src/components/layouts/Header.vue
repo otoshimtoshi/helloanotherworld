@@ -1,7 +1,7 @@
 <template>
-  <div class="the-bar" :class="{ position, animation }">
+  <header :class="{ position, animation }">
     <template v-if="position === 'top'">
-      <div class="the-bar__icon">
+      <div class="icon">
         <span
           class="color light"
           :class="$colorMode.preference === 'light' ? 'is-active' : ''"
@@ -29,7 +29,7 @@
         />
       </div>
     </template>
-  </div>
+  </header>
 </template>
 
 <script lang="ts">
