@@ -25,5 +25,6 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     'vue/require-explicit-emits': ['off']
-  }
+  },
+  ignorePattern: ['node_modules/', 'dist/', 'public/', '.nuxt']
 }

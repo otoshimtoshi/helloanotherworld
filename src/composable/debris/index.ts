@@ -1,18 +1,20 @@
-import { Mesh, IUniform, PlaneBufferGeometry, RawShaderMaterial } from 'three'
-import { $MathEx } from '@/scripts/utils/math-ex'
-import groundFrag from './glsl/ground.frag'
-import groundVert from './glsl/ground.vert'
+import { Mesh, IUniform, OctahedronGeometry, RawShaderMaterial } from 'three'
+import debrisFrag from './glsl/debris.frag'
+import debrisVert from './glsl/debris.vert'
 
-export default class Ground {
+export default class Debris {
   /** glsl変数 uniform */
   uniforms: { [uniform: string]: IUniform }
   /** Mesh */
   obj: Mesh
 
-  constructor() {
+  constructor(x: number, y: number, z: number) {
     this.uniforms = {
       time: {
         value: 0
+      },
+      rotate: {
+        value: Math.random() * 10
       },
       rColor: {
         value: 0
@@ -25,21 +27,20 @@ export default class Ground {
       }
     }
     this.obj = this.createObj()
-    this.obj.position.set(0, 0, 0)
-    this.obj.rotation.set($MathEx.radians(70), 0, 0)
+    this.obj.position.set(x, y, z)
   }
   /**
-   * @returns THREE.Mesh in PlaneBufferGeometry and RawShaderMaterial
+   * @returns THREE.Mesh in BoxGeometry and RawShaderMaterial
    */
   createObj(): Mesh {
     return new Mesh(
-      new PlaneBufferGeometry(1024, 1024, 128, 128),
+      new OctahedronGeometry(5, 0),
       new RawShaderMaterial({
         uniforms: this.uniforms,
-        vertexShader: groundVert,
-        fragmentShader: groundFrag,
-        transparent: true
-        // wireframe: true
+        vertexShader: debrisVert,
+        fragmentShader: debrisFrag,
+        transparent: true,
+        wireframe: true
       })
     )
   }

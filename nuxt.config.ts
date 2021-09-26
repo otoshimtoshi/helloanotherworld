@@ -83,6 +83,18 @@ const config: NuxtConfig = {
         use: ['raw-loader', 'glslify-loader'],
         exclude: /node_modules/
       })
+    },
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+        minSize: 30000,
+        maxSize: 1000000,
+        minChunks: 3,
+        maxAsyncRequests: 5,
+        maxInitialRequests: 3,
+        name: true,
+        automaticNameDelimiter: '-'
+      }
     }
   },
   plugins: [{ src: '@/plugins/scroll-magic', mode: 'client' }],
