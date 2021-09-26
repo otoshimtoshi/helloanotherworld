@@ -92,7 +92,7 @@ export default defineComponent({
     font-weight: 100;
     letter-spacing: 0.3em;
     text-shadow: 2px 5px 5px var(--text-shadow);
-    font-family: $family-font-en-custom;
+    font-size: 0;
   }
   &__sub-title {
     letter-spacing: 0.2em;

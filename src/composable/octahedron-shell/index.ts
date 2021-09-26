@@ -1,9 +1,14 @@
-import { Mesh, IUniform, PlaneGeometry, RawShaderMaterial } from 'three'
-import { $MathEx } from '@/scripts/utils/math-ex'
-import groundFrag from './glsl/ground.frag'
-import groundVert from './glsl/ground.vert'
+import {
+  Mesh,
+  IUniform,
+  OctahedronGeometry,
+  DoubleSide,
+  RawShaderMaterial
+} from 'three'
+import octahedronShellFrag from './glsl/octahedron-shell.frag'
+import octahedronShellVert from './glsl/octahedron-shell.vert'
 
-export default class Ground {
+export default class OctahedronShell {
   /** glsl変数 uniform */
   uniforms: { [uniform: string]: IUniform }
   /** Mesh */
@@ -25,21 +30,19 @@ export default class Ground {
       }
     }
     this.obj = this.createObj()
-    this.obj.position.set(0, -150, 0)
-    this.obj.rotation.set($MathEx.radians(-90), 0, 0)
+    this.obj.position.set(0, 0, -1000)
   }
-  /**
-   * @returns THREE.Mesh in PlaneBufferGeometry and RawShaderMaterial
-   */
-  createObj(): Mesh {
+  createObj() {
+    const geometry = new OctahedronGeometry(150, 20)
     return new Mesh(
-      new PlaneGeometry(1024, 1024, 32, 32),
+      geometry,
       new RawShaderMaterial({
         uniforms: this.uniforms,
-        vertexShader: groundVert,
-        fragmentShader: groundFrag,
+        vertexShader: octahedronShellVert,
+        fragmentShader: octahedronShellFrag,
         transparent: true,
-        wireframe: true
+        side: DoubleSide,
+        depthWrite: false
       })
     )
   }
@@ -49,7 +52,6 @@ export default class Ground {
   render(time: number): void {
     this.uniforms.time.value += time
   }
-
   /**
    *
    */

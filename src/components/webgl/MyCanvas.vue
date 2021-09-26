@@ -1,5 +1,5 @@
 <template>
-  <div id="mycanvas" />
+  <canvas ref="canvas" />
 </template>
 
 <script lang="ts">
@@ -9,22 +9,22 @@ import {
   onMounted,
   toRefs,
   ref,
-  watch,
-  onUnmounted
+  watch
 } from '@nuxtjs/composition-api'
 import {
   PerspectiveCamera,
   Scene,
-  HemisphereLight,
-  DirectionalLight,
   Clock,
   Group,
   WebGLRenderer,
   Color,
-  sRGBEncoding
+  FontLoader,
+  TextGeometry
 } from 'three'
 import Ground from '@/composable/ground'
-// import Debris from '@/composable/debris'
+// import Octahedron from '@/composable/octahedron'
+// import OctahedronShell from '@/composable/octahedron-shell'
+import TextWire from '@/composable/text-wire'
 
 export default defineComponent({
   props: {
@@ -35,23 +35,15 @@ export default defineComponent({
   },
   setup(props) {
     const state = reactive({
+      canvas: null as HTMLCanvasElement | null,
       camera: new PerspectiveCamera(),
       scene: new Scene(),
-      hemiLight: new HemisphereLight(0xffffff, 0x444444),
-      dirLight: new DirectionalLight(0xffffff),
       clock: new Clock(),
       ground: new Ground(),
-      // debris: [
-      // new Debris(-40, 50, 10),
-      // new Debris(-30, 80, 20),
-      // new Debris(-20, 30, 30),
-      // new Debris(-50, 70, 50),
-      // new Debris(0, 50, 20),
-      // new Debris(50, 60, 30),
-      // new Debris(40, 60, 40),
-      // new Debris(-30, 40, 60)
-      // ],
-      myReq: 0
+      // octahedron: new Octahedron(),
+      // octahedronShell: new OctahedronShell(),
+      fontLoader: new FontLoader(),
+      fontUniform: null as any
     })
 
     const renderer = ref<WebGLRenderer>()
@@ -60,52 +52,32 @@ export default defineComponent({
       switch (props.mode) {
         case 'light': {
           state.ground.updateColor(0, 0, 0)
-          // for (let i = 0; i < state.debris.length; i++) {
-          //   state.debris[i].updateColor(0, 0, 0)
-          // }
-          state.scene.remove(state.hemiLight)
-          state.hemiLight = new HemisphereLight(0xffffff, 0x999999)
-          state.scene.add(state.hemiLight)
+          // state.octahedron.updateColor(0, 0, 0)
+          // state.octahedronShell.updateColor(0, 0, 0)
           break
         }
         case 'yellow': {
           state.ground.updateColor(0.823, 0.619, 0)
-          // for (let i = 0; i < state.debris.length; i++) {
-          //   state.debris[i].updateColor(0.823, 0.619, 0)
-          // }
-          state.scene.remove(state.hemiLight)
-          state.hemiLight = new HemisphereLight(0xffffff, 0xd29e00)
-          state.scene.add(state.hemiLight)
+          // state.octahedron.updateColor(0.823, 0.619, 0)
+          // state.octahedronShell.updateColor(0.823, 0.619, 0)
           break
         }
         case 'red': {
           state.ground.updateColor(1, 0.498, 0.498)
-          // for (let i = 0; i < state.debris.length; i++) {
-          //   state.debris[i].updateColor(1, 0.498, 0.498)
-          // }
-          state.scene.remove(state.hemiLight)
-          state.hemiLight = new HemisphereLight(0xffffff, 0xff1919)
-          state.scene.add(state.hemiLight)
+          // state.octahedron.updateColor(1, 0.498, 0.498)
+          // state.octahedronShell.updateColor(1, 0.498, 0.498)
           break
         }
         case 'blue': {
           state.ground.updateColor(0.498, 0.505, 1)
-          // for (let i = 0; i < state.debris.length; i++) {
-          //   state.debris[i].updateColor(0.498, 0.505, 1)
-          // }
-          state.scene.remove(state.hemiLight)
-          state.hemiLight = new HemisphereLight(0xffffff, 0x0003ff)
-          state.scene.add(state.hemiLight)
+          // state.octahedron.updateColor(0.498, 0.505, 1)
+          // state.octahedronShell.updateColor(0.498, 0.505, 1)
           break
         }
         case 'green': {
           state.ground.updateColor(0, 0.8, 0.043)
-          // for (let i = 0; i < state.debris.length; i++) {
-          //   state.debris[i].updateColor(0, 0.8, 0.043)
-          // }
-          state.scene.remove(state.hemiLight)
-          state.hemiLight = new HemisphereLight(0xffffff, 0x00ff0e)
-          state.scene.add(state.hemiLight)
+          // state.octahedron.updateColor(0, 0.8, 0.043)
+          // state.octahedronShell.updateColor(0, 0.8, 0.043)
           break
         }
         default: {
@@ -115,39 +87,48 @@ export default defineComponent({
     }
 
     const init = () => {
-      // scene
       state.scene.background = new Color(0xe6e7e8)
-      // hemiLight
-      state.scene.add(state.hemiLight)
-      // dirLight
-      state.scene.add(state.dirLight)
       setBackGroundColor()
       state.scene.add(state.ground.obj)
-      // for (var i = 0; i < state.debris.length; i++) {
-      //   state.scene.add(state.debris[i].obj)
-      // }
+      // state.scene.add(state.octahedron.obj)
+      // state.scene.add(state.octahedronShell.obj)
     }
     init()
 
     onMounted(() => {
-      const element: HTMLElement | null = document.getElementById('mycanvas')
-      if (element === null) return
-      renderer.value = new WebGLRenderer({ antialias: true })
+      if (state.canvas === null) return
+      renderer.value = new WebGLRenderer({
+        antialias: true,
+        canvas: state.canvas
+      })
       renderer.value.setPixelRatio(window.devicePixelRatio)
       renderer.value.setSize(window.innerWidth, window.innerHeight)
-      renderer.value.outputEncoding = sRGBEncoding
-      renderer.value.shadowMap.enabled = true
-      element.appendChild(renderer.value.domElement)
 
       // camera
       state.camera = new PerspectiveCamera(
-        50,
+        45,
         window.innerWidth / window.innerHeight,
-        0.1,
-        1000
+        1,
+        10000
       )
-      state.camera.position.set(0, 50, 100)
-      animate()
+
+      state.fontLoader.load('./Homenaje_Regular.json', (font) => {
+        const geometry = new TextGeometry('Hello  Another  World', {
+          font: font,
+          size: 50,
+          height: 4,
+          curveSegments: 2,
+          bevelEnabled: true,
+          bevelThickness: 1,
+          bevelSize: 1,
+          bevelOffset: 0,
+          bevelSegments: 1
+        })
+        const mesh = new TextWire(geometry)
+        state.fontUniform = mesh
+        state.scene.add(mesh.obj)
+        animate()
+      })
 
       window.addEventListener('resize', onWindowResize)
     })
@@ -160,13 +141,12 @@ export default defineComponent({
     }
 
     const animate = () => {
-      cancelAnimationFrame(state.myReq)
-      state.myReq = requestAnimationFrame(animate)
+      requestAnimationFrame(animate)
       const mixerUpdateDelta = state.clock.getDelta()
       state.ground.render(mixerUpdateDelta)
-      // for (var i = 0; i < state.debris.length; i++) {
-      //   state.debris[i].render(mixerUpdateDelta)
-      // }
+      // state.octahedron.render(mixerUpdateDelta)
+      // state.octahedronShell.render(mixerUpdateDelta)
+      state.fontUniform.render(mixerUpdateDelta)
       if (renderer.value === undefined) return
       renderer.value.render(state.scene, state.camera)
     }
@@ -177,10 +157,6 @@ export default defineComponent({
         setBackGroundColor()
       }
     )
-
-    onUnmounted(() => {
-      cancelAnimationFrame(state.myReq)
-    })
 
     return {
       ...toRefs(state),

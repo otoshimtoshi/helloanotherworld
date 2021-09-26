@@ -78,6 +78,8 @@
     "stylelint-config-standard": "^21.0.0",
     "glsl-util": "git://github.com/ykob/glsl-util.git",
     "glsl-matrix": "git://github.com/ykob/glsl-matrix.git",
+    "easing-js": "git://github.com/danro/easing-js.git",
+    "glsl-force": "git://github.com/ykob/glsl-force.git",
     "typescript": "^4.2.3",
     "vue-eslint-parser": "^7.6.0"
   }
