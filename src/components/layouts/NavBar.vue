@@ -8,11 +8,11 @@
         :class="type === 'index' ? '' : 'page'"
       >
         <nuxt-link
-          :to="link.path"
+          :to="`${link.path}/`"
           class="link__text en"
           :class="[
             type === 'index' ? '' : 'page',
-            link.path === currentRoutePath ? 'line-through' : ''
+            `${link.path}/` === currentRoutePath ? 'line-through' : ''
           ]"
         >
           <span>{{ link.text }}</span>

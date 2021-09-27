@@ -71,6 +71,9 @@ const config: NuxtConfig = {
   },
   loading: { color: '#111111' },
   css: ['@/assets/scss/main.scss'],
+  router: {
+    trailingSlash: true
+  },
   components: true,
   env: {},
   srcDir: 'src/',

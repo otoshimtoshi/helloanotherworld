@@ -1,25 +1,21 @@
 <template>
-  <main>
-    <div v-if="error.statusCode === 404">
-      <h1>ERROR 404</h1>
-      <h2>Page Can Not Be Found!</h2>
-    </div>
-    <div v-else>
-      <h1>An Error Has Occurred!</h1>
-    </div>
-    <LayoutsNavBar :links="allLink" />
+  <main class="pages">
+    <LayoutsNavBar />
+    <section class="inner">
+      <div v-if="error.statusCode === 404">
+        <h1>ERROR 404</h1>
+        <h2>Page Can Not Be Found!</h2>
+      </div>
+      <div v-else>
+        <h1>An Error Has Occurred!</h1>
+      </div>
+    </section>
     <Pointer />
   </main>
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  PropType,
-  reactive,
-  toRefs
-} from '@nuxtjs/composition-api'
-import { Links } from '@/components/layouts/NavBar.vue'
+import { defineComponent, PropType } from '@nuxtjs/composition-api'
 
 interface ErrorProp {
   message: string
@@ -34,32 +30,7 @@ export default defineComponent({
       required: true
     }
   },
-  setup: () => {
-    const state = reactive({
-      allLink: [
-        {
-          path: '/',
-          text: 'Top'
-        },
-        {
-          path: '/who-i-am',
-          text: 'Who I Am'
-        },
-        {
-          path: '/collection',
-          text: 'Collection of Works'
-        },
-        {
-          path: '/contact',
-          text: 'Contact'
-        }
-      ] as Array<Links>
-    })
-
-    return {
-      ...toRefs(state)
-    }
-  }
+  setup: () => {}
 })
 </script>
 
