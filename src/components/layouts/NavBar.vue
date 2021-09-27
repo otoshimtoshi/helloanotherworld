@@ -10,7 +10,10 @@
         <nuxt-link
           :to="link.path"
           class="link__text en"
-          :class="type === 'index' ? '' : 'page'"
+          :class="[
+            type === 'index' ? '' : 'page',
+            link.path === currentRoutePath ? 'line-through' : ''
+          ]"
         >
           <span>{{ link.text }}</span>
         </nuxt-link>
@@ -20,7 +23,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from '@nuxtjs/composition-api'
+import {
+  computed,
+  defineComponent,
+  PropType,
+  reactive,
+  toRefs,
+  useContext
+} from '@nuxtjs/composition-api'
 
 export type Links = {
   path: string
@@ -31,15 +41,36 @@ export type PageType = 'index' | 'page'
 
 export default defineComponent({
   props: {
-    links: {
-      type: Array as PropType<Array<Links>>,
-      default: []
-    },
     type: {
       type: String as PropType<PageType>,
       default: 'index'
     }
   },
-  setup() {}
+  setup() {
+    const { route } = useContext()
+    const state = reactive({
+      links: [
+        {
+          path: '/who-i-am',
+          text: 'Who I Am'
+        },
+        {
+          path: '/collection',
+          text: 'Collection'
+        },
+        {
+          path: '/contact',
+          text: 'Contact'
+        }
+      ] as Array<Links>
+    })
+
+    const currentRoutePath = computed(() => route.value.path)
+
+    return {
+      ...toRefs(state),
+      currentRoutePath
+    }
+  }
 })
 </script>

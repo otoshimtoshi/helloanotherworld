@@ -1,6 +1,6 @@
 <template>
   <main class="pages">
-    <LayoutsNavBar :links="links" type="page" />
+    <LayoutsNavBar type="page" />
     <section class="inner">
       <div>
         <h1 class="title en">Collection of works</h1>
@@ -17,34 +17,14 @@ import {
   useContext,
   reactive,
   toRefs,
-  useMeta,
-  computed
+  useMeta
 } from '@nuxtjs/composition-api'
-import { Links } from '@/components/layouts/NavBar.vue'
 
 export default defineComponent({
   setup() {
-    const { app, route } = useContext()
+    const { app } = useContext()
     const state = reactive({
-      metaInfo: app.store.getters.getMetaInfo('collection'),
-      allLink: [
-        {
-          path: '/',
-          text: 'Top'
-        },
-        {
-          path: '/who-i-am',
-          text: 'Who I Am'
-        },
-        {
-          path: '/collection',
-          text: 'Collection of Works'
-        },
-        {
-          path: '/contact',
-          text: 'Contact'
-        }
-      ] as Array<Links>
+      metaInfo: app.store.getters.getMetaInfo('collection')
     })
 
     useMeta(() => ({
@@ -52,13 +32,8 @@ export default defineComponent({
       meta: state.metaInfo?.meta
     }))
 
-    const links = computed(() => {
-      return state.allLink.filter((link) => link.path !== route.value.path)
-    })
-
     return {
-      ...toRefs(state),
-      links
+      ...toRefs(state)
     }
   },
   // @ts-ignore

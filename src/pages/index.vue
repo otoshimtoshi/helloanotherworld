@@ -14,7 +14,7 @@
         </h2>
       </div>
     </div>
-    <LayoutsNavBar :links="links" type="index" />
+    <LayoutsNavBar type="index" />
     <Pointer />
   </main>
 </template>
@@ -25,47 +25,22 @@ import {
   reactive,
   useContext,
   toRefs,
-  useMeta,
-  computed
+  useMeta
 } from '@nuxtjs/composition-api'
-import { Links } from '@/components/layouts/NavBar.vue'
 
 export default defineComponent({
   setup() {
-    const { app, route } = useContext()
+    const { app } = useContext()
     const state = reactive({
-      metaInfo: app.store.getters.getMetaInfo('index'),
-      allLink: [
-        {
-          path: '/',
-          text: 'Top'
-        },
-        {
-          path: '/who-i-am',
-          text: 'Who I Am'
-        },
-        {
-          path: '/collection',
-          text: 'Collection of Works'
-        },
-        {
-          path: '/contact',
-          text: 'Contact'
-        }
-      ] as Array<Links>
+      metaInfo: app.store.getters.getMetaInfo('index')
     })
     useMeta(() => ({
       title: state.metaInfo?.title,
       meta: state.metaInfo?.meta
     }))
 
-    const links = computed(() => {
-      return state.allLink.filter((link) => link.path !== route.value.path)
-    })
-
     return {
-      ...toRefs(state),
-      links
+      ...toRefs(state)
     }
   },
   // @ts-ignore

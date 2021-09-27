@@ -110,6 +110,7 @@ a {
 // ==========================================================================
 .line-through {
   text-decoration-line: line-through;
+  pointer-events: none;
 }
 .text-align-center {
   text-align: center;
