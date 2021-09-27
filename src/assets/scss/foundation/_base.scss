@@ -49,6 +49,7 @@ canvas {
   height: 100%;
 }
 a {
+  color: var(--color);
   position: relative;
   transition: 0.2s $easeOutCubic;
   &::after {
