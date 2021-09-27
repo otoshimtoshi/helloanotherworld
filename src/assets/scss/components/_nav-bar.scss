@@ -1,4 +1,4 @@
-.the-link-area {
+nav {
   position: fixed;
   width: 100%;
   height: auto;
@@ -13,7 +13,7 @@
     top: 7vh;
     bottom: unset;
   }
-  &__links {
+  .links {
     width: 100%;
     height: auto;
     padding: 2vw 0;
@@ -25,7 +25,7 @@
       justify-content: flex-end;
     }
   }
-  &__link {
+  .link {
     height: auto;
     padding: 0 3vw;
     transition: transform 0.2s linear;
@@ -45,7 +45,7 @@
         }
       }
     }
-    &__text {
+    .link__text {
       font-weight: 600;
       color: var(--color);
       display: inline-block;

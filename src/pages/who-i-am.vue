@@ -1,6 +1,6 @@
 <template>
   <main class="pages">
-    <LayoutsTheLinkArea :links="links" type="page" />
+    <LayoutsNavBar :links="links" type="page" />
     <section class="inner">
       <div>
         <h1 class="title">Who i am</h1>
@@ -19,8 +19,16 @@
         <div>落司 聖稔(おとし まさとし)</div>
         <div>東京でフロントエンドディベロッパーとして活動しています。</div>
         <div>
-          <span class="en">Github</span>や<span class="en">Twitter</span
-          >でご連絡ください。
+          <span class="en">
+            <a href="https://github.com/otoshimtoshi" target="_blank">Github</a>
+          </span>
+          <span>や</span>
+          <span class="en">
+            <a href="https://twitter.com/otoshimtoshi" target="_blank"
+              >Twitter</a
+            >
+          </span>
+          <span>でご連絡ください。</span>
         </div>
       </div>
     </section>
@@ -37,7 +45,7 @@ import {
   useMeta,
   computed
 } from '@nuxtjs/composition-api'
-import { Links } from '@/components/layouts/TheLinkArea.vue'
+import { Links } from '@/components/layouts/NavBar.vue'
 
 export default defineComponent({
   setup() {

@@ -36,16 +36,66 @@ h2 {
   font-family: $family-font-en-custom;
   font-size: 20px;
 }
-
-.en {
-  letter-spacing: 1.4px;
+main {
+  width: 100%;
+  height: auto;
+}
+section {
+  margin-bottom: 24px;
 }
 canvas {
   position: absolute;
   width: 100%;
   height: 100%;
 }
-
+a {
+  position: relative;
+  transition: 0.2s $easeOutCubic;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    width: 50%;
+    height: 1px;
+    background-color: var(--color);
+    transform: translateX(-200%);
+    transition: 0.2s $easeOutCubic;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    width: 50%;
+    height: 1px;
+    background-color: transparent;
+    transform: translateX(-200%);
+    border-left: 3px solid transparent;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    transition: 0.2s $easeOutCubic;
+  }
+  &:hover {
+    transition: 0.2s $easeOutCubic;
+    &::after {
+      transition: 0.2s $easeOutCubic;
+      transform: translateX(-100%);
+    }
+    &::before {
+      transform: translateX(160%);
+      border-left: 3px solid var(--color);
+      transition: 0.8s $easeOutCubic;
+    }
+  }
+}
+// ==========================================================================
+// 共通
+// ==========================================================================
+.en {
+  letter-spacing: 1.4px;
+}
+.inner {
+  width: 90%;
+}
 // ==========================================================================
 // 便利クラス
 // ==========================================================================

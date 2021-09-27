@@ -14,7 +14,7 @@
         </h2>
       </div>
     </div>
-    <LayoutsTheLinkArea :links="links" type="index" />
+    <LayoutsNavBar :links="links" type="index" />
     <Pointer />
   </main>
 </template>
@@ -28,7 +28,7 @@ import {
   useMeta,
   computed
 } from '@nuxtjs/composition-api'
-import { Links } from '@/components/layouts/TheLinkArea.vue'
+import { Links } from '@/components/layouts/NavBar.vue'
 
 export default defineComponent({
   setup() {

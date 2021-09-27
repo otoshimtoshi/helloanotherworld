@@ -7,7 +7,7 @@
     <div v-else>
       <h1>An Error Has Occurred!</h1>
     </div>
-    <LayoutsTheLinkArea :links="allLink" />
+    <LayoutsNavBar :links="allLink" />
     <Pointer />
   </main>
 </template>
@@ -19,7 +19,7 @@ import {
   reactive,
   toRefs
 } from '@nuxtjs/composition-api'
-import { Links } from '@/components/layouts/TheLinkArea.vue'
+import { Links } from '@/components/layouts/NavBar.vue'
 
 interface ErrorProp {
   message: string

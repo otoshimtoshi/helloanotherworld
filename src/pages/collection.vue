@@ -1,8 +1,12 @@
 <template>
-  <main>
-    <div>Collection of works</div>
-    <div>作品集</div>
-    <LayoutsTheLinkArea :links="links" type="page" />
+  <main class="pages">
+    <LayoutsNavBar :links="links" type="page" />
+    <section class="inner">
+      <div>
+        <h1 class="title en">Collection of works</h1>
+        <h2 class="sub-title">作品集</h2>
+      </div>
+    </section>
     <Pointer />
   </main>
 </template>
@@ -16,7 +20,7 @@ import {
   useMeta,
   computed
 } from '@nuxtjs/composition-api'
-import { Links } from '@/components/layouts/TheLinkArea.vue'
+import { Links } from '@/components/layouts/NavBar.vue'
 
 export default defineComponent({
   setup() {
