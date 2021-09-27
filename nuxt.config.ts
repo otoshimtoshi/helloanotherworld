@@ -92,8 +92,7 @@ const config: NuxtConfig = {
         minChunks: 3,
         maxAsyncRequests: 5,
         maxInitialRequests: 3,
-        name: true,
-        automaticNameDelimiter: '-'
+        name: true
       }
     }
   },

@@ -4,7 +4,7 @@ import {
   BufferAttribute,
   TextGeometry,
   RawShaderMaterial,
-  DoubleSide
+  BufferGeometry
 } from 'three'
 import textWireFrag from './glsl/text-wire.frag'
 import textWireVert from './glsl/text-wire.vert'
@@ -42,12 +42,16 @@ export default class TextWire {
       },
       bColor: {
         value: 0
+      },
+      opacity: {
+        value: 1
       }
     }
-    this.obj = this.createObj(geometry)
-    this.obj.position.set(-200, -200, 0)
+    const geo = geometry.center()
+    this.obj = this.createObj(geo)
+    this.obj.position.set(0, -200, 0)
   }
-  createObj(geometry: TextGeometry) {
+  createObj(geometry: BufferGeometry) {
     const positions = geometry.attributes.position.array
     const faceNormalsBase = []
     const centersBase = []
@@ -99,5 +103,11 @@ export default class TextWire {
     this.uniforms.rColor.value = r
     this.uniforms.gColor.value = g
     this.uniforms.bColor.value = b
+  }
+  /**
+   *
+   */
+  updateOpacity(opacity: number): void {
+    this.uniforms.opacity.value = opacity
   }
 }

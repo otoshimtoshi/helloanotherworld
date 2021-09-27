@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <LayoutsHeader position="top" animation />
-    <WebglMyCanvas :mode="colorMode" />
+    <WebglMyCanvas :mode="colorMode" :render-text="renderText" />
     <nuxt />
   </div>
 </template>
@@ -16,7 +16,7 @@ import {
 
 export default defineComponent({
   setup() {
-    const { app } = useContext()
+    const { app, route } = useContext()
     const colorMode = computed(() => app.$colorMode.preference)
 
     const setWindowSize = () => {
@@ -25,6 +25,23 @@ export default defineComponent({
       document.body.setAttribute('width', `${innerWidth}px`)
       document.body.setAttribute('height', `${innerHeight}px`)
     }
+
+    const currentRouteName = computed(() => route.value.name)
+
+    const renderText = computed(() => {
+      switch (currentRouteName.value) {
+        case 'index':
+          return 'Hello  Another World'
+        case 'who-i-am':
+          return 'Who  I  Am'
+        case 'collection':
+          return 'Collection  Of  Works'
+        case 'contact':
+          return 'Contact'
+        default:
+          return ''
+      }
+    })
 
     onMounted(() => {
       setWindowSize()
@@ -36,7 +53,9 @@ export default defineComponent({
     })
 
     return {
-      colorMode
+      colorMode,
+      currentRouteName,
+      renderText
     }
   }
 })

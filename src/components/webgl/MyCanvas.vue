@@ -32,6 +32,10 @@ export default defineComponent({
     mode: {
       type: String,
       default: 'light'
+    },
+    renderText: {
+      type: String,
+      required: true
     }
   },
   setup(props) {
@@ -44,7 +48,7 @@ export default defineComponent({
       // octahedron: new Octahedron(),
       // octahedronShell: new OctahedronShell(),
       fontLoader: new FontLoader(),
-      fontUniform: null as any
+      fontUniform: undefined as TextWire | undefined
     })
 
     const renderer = ref<WebGLRenderer>()
@@ -53,35 +57,45 @@ export default defineComponent({
       switch (props.mode) {
         case 'light': {
           state.ground.updateColor(0, 0, 0)
-          state.fontUniform.updateColor(0, 0, 0)
+          if (state.fontUniform) {
+            state.fontUniform.updateColor(0, 0, 0)
+          }
           // state.octahedron.updateColor(0, 0, 0)
           // state.octahedronShell.updateColor(0, 0, 0)
           break
         }
         case 'yellow': {
           state.ground.updateColor(0.823, 0.619, 0)
-          state.fontUniform.updateColor(0.823, 0.619, 0)
+          if (state.fontUniform) {
+            state.fontUniform.updateColor(0.823, 0.619, 0)
+          }
           // state.octahedron.updateColor(0.823, 0.619, 0)
           // state.octahedronShell.updateColor(0.823, 0.619, 0)
           break
         }
         case 'red': {
           state.ground.updateColor(1, 0.498, 0.498)
-          state.fontUniform.updateColor(1, 0.498, 0.498)
+          if (state.fontUniform) {
+            state.fontUniform.updateColor(1, 0.498, 0.498)
+          }
           // state.octahedron.updateColor(1, 0.498, 0.498)
           // state.octahedronShell.updateColor(1, 0.498, 0.498)
           break
         }
         case 'blue': {
           state.ground.updateColor(0.498, 0.505, 1)
-          state.fontUniform.updateColor(0.498, 0.505, 1)
+          if (state.fontUniform) {
+            state.fontUniform.updateColor(0.498, 0.505, 1)
+          }
           // state.octahedron.updateColor(0.498, 0.505, 1)
           // state.octahedronShell.updateColor(0.498, 0.505, 1)
           break
         }
         case 'green': {
           state.ground.updateColor(0, 0.8, 0.043)
-          state.fontUniform.updateColor(0, 0.8, 0.043)
+          if (state.fontUniform) {
+            state.fontUniform.updateColor(0, 0.8, 0.043)
+          }
           // state.octahedron.updateColor(0, 0.8, 0.043)
           // state.octahedronShell.updateColor(0, 0.8, 0.043)
           break
@@ -114,11 +128,11 @@ export default defineComponent({
         45,
         window.innerWidth / window.innerHeight,
         1,
-        10000
+        15000
       )
 
       state.fontLoader.load('./Homenaje_Regular.json', (font) => {
-        const geometry = new TextGeometry('Hello Another World', {
+        const geometry = new TextGeometry(props.renderText, {
           font: font,
           size: 40,
           height: 8,
@@ -155,7 +169,9 @@ export default defineComponent({
       // state.octahedronShell.render(delta)
       const rot = elapsed * 360 * 0.02
       const radian = (rot * Math.PI) / 180
-      state.fontUniform.render(delta)
+      if (state.fontUniform) {
+        state.fontUniform.render(delta)
+      }
       state.camera.position.x = Math.sin(radian) * 1000
       state.camera.position.z = Math.cos(radian) * 1000
       state.camera.lookAt(new Vector3(0, 0, 0))
@@ -167,6 +183,37 @@ export default defineComponent({
       () => props.mode,
       () => {
         setBackGroundColor()
+      }
+    )
+
+    watch(
+      () => props.renderText,
+      () => {
+        if (state.fontUniform) {
+          state.scene.remove(state.fontUniform.obj)
+          state.fontLoader.load('./Homenaje_Regular.json', (font) => {
+            const geometry = new TextGeometry(props.renderText, {
+              font: font,
+              size: 40,
+              height: 8,
+              curveSegments: 1,
+              bevelEnabled: true,
+              bevelThickness: 1,
+              bevelSize: 1,
+              bevelOffset: 0,
+              bevelSegments: 1
+            })
+            const mesh = new TextWire(geometry)
+            state.fontUniform = mesh
+            state.scene.add(mesh.obj)
+            setBackGroundColor()
+            if (props.renderText !== 'Hello  Another World') {
+              state.fontUniform.updateOpacity(0.09)
+            } else {
+              state.fontUniform.updateOpacity(1)
+            }
+          })
+        }
       }
     )
 

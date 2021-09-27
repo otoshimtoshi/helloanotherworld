@@ -22,6 +22,7 @@
           </div>
         </div>
       </div>
+      <LayoutsTheLinkArea :links="links" type="page" />
       <Pointer />
     </div>
   </div>
@@ -33,14 +34,34 @@ import {
   useContext,
   reactive,
   toRefs,
-  useMeta
+  useMeta,
+  computed
 } from '@nuxtjs/composition-api'
+import { Links } from '@/components/layouts/TheLinkArea.vue'
 
 export default defineComponent({
   setup() {
-    const { app } = useContext()
+    const { app, route } = useContext()
     const state = reactive({
-      metaInfo: app.store.getters.getMetaInfo('who-i-am')
+      metaInfo: app.store.getters.getMetaInfo('who-i-am'),
+      allLink: [
+        {
+          path: '/',
+          text: 'Top'
+        },
+        {
+          path: '/who-i-am',
+          text: 'Who I Am'
+        },
+        {
+          path: '/collection',
+          text: 'Collection of Works'
+        },
+        {
+          path: '/contact',
+          text: 'Contact'
+        }
+      ] as Array<Links>
     })
 
     useMeta(() => ({
@@ -48,8 +69,13 @@ export default defineComponent({
       meta: state.metaInfo?.meta
     }))
 
+    const links = computed(() => {
+      return state.allLink.filter((link) => link.path !== route.value.path)
+    })
+
     return {
-      ...toRefs(state)
+      ...toRefs(state),
+      links
     }
   },
   // @ts-ignore
