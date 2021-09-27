@@ -131,7 +131,7 @@ export default defineComponent({
         15000
       )
 
-      state.fontLoader.load('./Homenaje_Regular.json', (font) => {
+      state.fontLoader.load('/Homenaje_Regular.json', (font) => {
         const geometry = new TextGeometry(props.renderText, {
           font: font,
           size: 40,
@@ -196,7 +196,7 @@ export default defineComponent({
       () => {
         if (state.fontUniform) {
           state.scene.remove(state.fontUniform.obj)
-          state.fontLoader.load('./Homenaje_Regular.json', (font) => {
+          state.fontLoader.load('/Homenaje_Regular.json', (font) => {
             const geometry = new TextGeometry(props.renderText, {
               font: font,
               size: 40,
