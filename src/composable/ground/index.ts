@@ -25,7 +25,7 @@ export default class Ground {
       }
     }
     this.obj = this.createObj()
-    this.obj.position.set(0, -200, -300)
+    this.obj.position.set(0, -350, 0)
     this.obj.rotation.set($MathEx.radians(-90), 0, 0)
   }
   /**
@@ -33,7 +33,7 @@ export default class Ground {
    */
   createObj(): Mesh {
     return new Mesh(
-      new PlaneGeometry(1024, 1024, 32, 32),
+      new PlaneGeometry(2048, 2048, 32, 32),
       new RawShaderMaterial({
         uniforms: this.uniforms,
         vertexShader: groundVert,

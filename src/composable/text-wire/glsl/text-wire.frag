@@ -11,5 +11,5 @@ const float delayAll = 1.0;
 void main() {
   float now = clamp((time - delayAll) / duration, 0.0, 1.0);
   vec3 rgb = vec3(rColor, gColor, bColor);
-  gl_FragColor = vec4(rgb, 1.0 * (time * 0.1) * now);
+  gl_FragColor = vec4(rgb, 1.0 * (time * 0.1) * now*0.9);
 }

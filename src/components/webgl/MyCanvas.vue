@@ -19,7 +19,8 @@ import {
   WebGLRenderer,
   Color,
   FontLoader,
-  TextGeometry
+  TextGeometry,
+  Vector3
 } from 'three'
 import Ground from '@/composable/ground'
 // import Octahedron from '@/composable/octahedron'
@@ -52,30 +53,35 @@ export default defineComponent({
       switch (props.mode) {
         case 'light': {
           state.ground.updateColor(0, 0, 0)
+          state.fontUniform.updateColor(0, 0, 0)
           // state.octahedron.updateColor(0, 0, 0)
           // state.octahedronShell.updateColor(0, 0, 0)
           break
         }
         case 'yellow': {
           state.ground.updateColor(0.823, 0.619, 0)
+          state.fontUniform.updateColor(0.823, 0.619, 0)
           // state.octahedron.updateColor(0.823, 0.619, 0)
           // state.octahedronShell.updateColor(0.823, 0.619, 0)
           break
         }
         case 'red': {
           state.ground.updateColor(1, 0.498, 0.498)
+          state.fontUniform.updateColor(1, 0.498, 0.498)
           // state.octahedron.updateColor(1, 0.498, 0.498)
           // state.octahedronShell.updateColor(1, 0.498, 0.498)
           break
         }
         case 'blue': {
           state.ground.updateColor(0.498, 0.505, 1)
+          state.fontUniform.updateColor(0.498, 0.505, 1)
           // state.octahedron.updateColor(0.498, 0.505, 1)
           // state.octahedronShell.updateColor(0.498, 0.505, 1)
           break
         }
         case 'green': {
           state.ground.updateColor(0, 0.8, 0.043)
+          state.fontUniform.updateColor(0, 0.8, 0.043)
           // state.octahedron.updateColor(0, 0.8, 0.043)
           // state.octahedronShell.updateColor(0, 0.8, 0.043)
           break
@@ -88,7 +94,6 @@ export default defineComponent({
 
     const init = () => {
       state.scene.background = new Color(0xe6e7e8)
-      setBackGroundColor()
       state.scene.add(state.ground.obj)
       // state.scene.add(state.octahedron.obj)
       // state.scene.add(state.octahedronShell.obj)
@@ -115,9 +120,9 @@ export default defineComponent({
       state.fontLoader.load('./Homenaje_Regular.json', (font) => {
         const geometry = new TextGeometry('Hello Another World', {
           font: font,
-          size: 35,
-          height: 4,
-          curveSegments: 2,
+          size: 40,
+          height: 8,
+          curveSegments: 1,
           bevelEnabled: true,
           bevelThickness: 1,
           bevelSize: 1,
@@ -127,6 +132,7 @@ export default defineComponent({
         const mesh = new TextWire(geometry)
         state.fontUniform = mesh
         state.scene.add(mesh.obj)
+        setBackGroundColor()
         animate()
       })
 
@@ -142,11 +148,17 @@ export default defineComponent({
 
     const animate = () => {
       requestAnimationFrame(animate)
-      const mixerUpdateDelta = state.clock.getDelta()
-      state.ground.render(mixerUpdateDelta)
-      // state.octahedron.render(mixerUpdateDelta)
-      // state.octahedronShell.render(mixerUpdateDelta)
-      state.fontUniform.render(mixerUpdateDelta)
+      const delta = state.clock.getDelta()
+      state.ground.render(delta)
+      const elapsed = state.clock.getElapsedTime()
+      // state.octahedron.render(delta)
+      // state.octahedronShell.render(delta)
+      const rot = elapsed * 360 * 0.02
+      const radian = (rot * Math.PI) / 180
+      state.fontUniform.render(delta)
+      state.camera.position.x = Math.sin(radian) * 1000
+      state.camera.position.z = Math.cos(radian) * 1000
+      state.camera.lookAt(new Vector3(0, 0, 0))
       if (renderer.value === undefined) return
       renderer.value.render(state.scene, state.camera)
     }

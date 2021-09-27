@@ -45,7 +45,7 @@ export default class TextWire {
       }
     }
     this.obj = this.createObj(geometry)
-    this.obj.position.set(-160, -200, -850)
+    this.obj.position.set(-200, -200, 0)
   }
   createObj(geometry: TextGeometry) {
     const positions = geometry.attributes.position.array
@@ -81,8 +81,8 @@ export default class TextWire {
         vertexShader: textWireVert,
         fragmentShader: textWireFrag,
         transparent: true,
-        wireframe: true,
-        side: DoubleSide
+        wireframe: true
+        // side: DoubleSide
       })
     )
   }
