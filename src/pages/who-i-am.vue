@@ -3,18 +3,11 @@
     <LayoutsNavBar :links="links" type="page" />
     <section class="inner">
       <div>
-        <h1 class="title">Who i am</h1>
-      </div>
-      <div class="content en">
-        <div>Hi! My name is Masatoshi Otoshi.</div>
-        <div>I'm a front-end developer based in Tokyo.</div>
-        <div>Please contact me via DM on SNS.</div>
+        <h1 class="title en">Who i am</h1>
+        <h2 class="sub-title">自己紹介</h2>
       </div>
     </section>
     <section class="inner">
-      <div>
-        <h2 class="sub-title">自己紹介</h2>
-      </div>
       <div class="content">
         <div>落司 聖稔(おとし まさとし)</div>
         <div>東京でフロントエンドディベロッパーとして活動しています。</div>

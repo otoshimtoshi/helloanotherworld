@@ -9,7 +9,7 @@
       >
         <nuxt-link
           :to="link.path"
-          class="link__text"
+          class="link__text en"
           :class="type === 'index' ? '' : 'page'"
         >
           <span>{{ link.text }}</span>

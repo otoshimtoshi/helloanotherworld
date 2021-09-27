@@ -1,6 +1,11 @@
 <template>
-  <header :class="{ position, animation }">
-    <template v-if="position === 'top'">
+  <header :class="{ animation }">
+    <div class="inner">
+      <div>
+        <nuxt-link to="/" class="en">
+          <span> Hello Another World</span>
+        </nuxt-link>
+      </div>
       <div class="icon">
         <span
           class="color light"
@@ -28,21 +33,15 @@
           @click="changeColor('green')"
         />
       </div>
-    </template>
+    </div>
   </header>
 </template>
 
 <script lang="ts">
 import { defineComponent, useContext, PropType } from '@nuxtjs/composition-api'
 
-export type Position = 'top' | 'bottom' | 'center' | 'left' | 'right'
-
 export default defineComponent({
   props: {
-    position: {
-      type: String as PropType<Position>,
-      default: 'top'
-    },
     animation: Boolean
   },
   setup() {

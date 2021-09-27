@@ -6,11 +6,11 @@
           <span class="top__title">Hello Another World</span>
         </h1>
         <h2>
-          <span class="top__sub-title line-through">designer</span>
+          <span class="top__sub-title">designer</span>
           <span class="top__sub-title">|</span>
           <span class="top__sub-title">developer</span>
           <span class="top__sub-title">|</span>
-          <span class="top__sub-title line-through">derector</span>
+          <span class="top__sub-title">derector</span>
         </h2>
       </div>
     </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <LayoutsHeader position="top" animation />
+    <LayoutsHeader animation />
     <WebglMyCanvas :mode="colorMode" :render-text="renderText" />
     <nuxt />
     <LayoutsFooter />
