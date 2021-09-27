@@ -45,7 +45,7 @@ export default class TextWire {
       }
     }
     this.obj = this.createObj(geometry)
-    this.obj.position.set(-240, -200, -800)
+    this.obj.position.set(-160, -200, -850)
   }
   createObj(geometry: TextGeometry) {
     const positions = geometry.attributes.position.array

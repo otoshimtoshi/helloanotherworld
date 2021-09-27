@@ -7,8 +7,8 @@ uniform float bColor;
 
 varying vec3 vPosition;
 
-const float duration = 8.0;
-const float delay = 4.0;
+const float duration = 4.0;
+const float delay = 2.0;
 
 void main() {
   float now = clamp((time - delay) / duration, 0.0, 1.0);

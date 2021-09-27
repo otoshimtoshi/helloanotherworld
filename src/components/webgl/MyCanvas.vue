@@ -113,9 +113,9 @@ export default defineComponent({
       )
 
       state.fontLoader.load('./Homenaje_Regular.json', (font) => {
-        const geometry = new TextGeometry('Hello  Another  World', {
+        const geometry = new TextGeometry('Hello Another World', {
           font: font,
-          size: 50,
+          size: 35,
           height: 4,
           curveSegments: 2,
           bevelEnabled: true,

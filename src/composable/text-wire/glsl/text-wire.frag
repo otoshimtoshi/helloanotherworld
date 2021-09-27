@@ -5,8 +5,6 @@ uniform float rColor;
 uniform float gColor;
 uniform float bColor;
 
-varying vec3 vPosition;
-
 const float duration = 2.0;
 const float delayAll = 1.0;
 

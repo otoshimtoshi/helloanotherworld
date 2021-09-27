@@ -8,10 +8,8 @@ uniform mat4 modelViewMatrix;
 uniform mat4 projectionMatrix;
 uniform float time;
 
-varying vec3 vPosition;
-
-const float duration = 2.0;
-const float delayAll = 1.0;
+const float duration = 1.0;
+const float delayAll = 0.5;
 
 #pragma glslify: ease = require(glsl-easings/exponential-out)
 #pragma glslify: calcTranslateMat4 = require(glsl-matrix/calcTranslateMat4);
@@ -30,6 +28,5 @@ void main() {
   vec3 updatePositionSelf = (rotateMatSelf * vec4(position - center, 1.0)).xyz * (1.0 - now) + position
     + normalize(position) * noise ;
   vec4 updatePosition = rotateMat * translateMat * vec4(updatePositionSelf, 1.0);
-  vPosition = updatePosition.xyz;
   gl_Position = projectionMatrix * modelViewMatrix * updatePosition;
 }
