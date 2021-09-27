@@ -1,31 +1,31 @@
 <template>
-  <div>
-    <LayoutsHeader position="top" />
-    <div class="main">
-      <div class="pages">
-        <div class="inner">
-          <div>
-            <h1 class="title">Who i am</h1>
-          </div>
-          <div class="content">
-            <div>Hi! My name is Masatoshi Otoshi.</div>
-            <div>I'm a front-end developer based in Tokyo.</div>
-            <div>Please contact me via DM on SNS.</div>
-          </div>
-          <div>
-            <h2 class="sub-title">自己紹介</h2>
-          </div>
-          <div class="content">
-            <div>落司 聖稔(おとし まさとし)</div>
-            <div>東京でフロントエンドディベロッパーとして活動しています。</div>
-            <div>GithubやTwitterでご連絡ください。</div>
-          </div>
+  <main class="pages">
+    <LayoutsTheLinkArea :links="links" type="page" />
+    <section class="inner">
+      <div>
+        <h1 class="title">Who i am</h1>
+      </div>
+      <div class="content en">
+        <div>Hi! My name is Masatoshi Otoshi.</div>
+        <div>I'm a front-end developer based in Tokyo.</div>
+        <div>Please contact me via DM on SNS.</div>
+      </div>
+    </section>
+    <section class="inner">
+      <div>
+        <h2 class="sub-title">自己紹介</h2>
+      </div>
+      <div class="content">
+        <div>落司 聖稔(おとし まさとし)</div>
+        <div>東京でフロントエンドディベロッパーとして活動しています。</div>
+        <div>
+          <span class="en">Github</span>や<span class="en">Twitter</span
+          >でご連絡ください。
         </div>
       </div>
-      <LayoutsTheLinkArea :links="links" type="page" />
-      <Pointer />
-    </div>
-  </div>
+    </section>
+    <Pointer />
+  </main>
 </template>
 
 <script lang="ts">

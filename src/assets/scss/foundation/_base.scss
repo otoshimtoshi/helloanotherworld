@@ -26,10 +26,10 @@ h1 {
     font-size: 40px;
   }
   @include mq('medium', max) {
-    font-size: 30px;
+    font-size: 35px;
   }
   @include mq('small', max) {
-    font-size: 24px;
+    font-size: 30px;
   }
 }
 h2 {
@@ -37,6 +37,9 @@ h2 {
   font-size: 20px;
 }
 
+.en {
+  letter-spacing: 1.4px;
+}
 canvas {
   position: absolute;
   width: 100%;

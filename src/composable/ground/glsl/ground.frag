@@ -14,5 +14,5 @@ void main() {
   float now = clamp((time - delay) / duration, 0.0, 1.0);
   float opacity = (1.0 - length(vPosition.xy / vec2(1024.0))) * 0.6 * now;
   vec3 rgb = vec3(rColor, gColor, bColor);
-  gl_FragColor = vec4(rgb, opacity);
+  gl_FragColor = vec4(rgb, opacity * 0.2);
 }

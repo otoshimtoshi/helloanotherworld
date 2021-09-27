@@ -145,6 +145,11 @@ export default defineComponent({
         })
         const mesh = new TextWire(geometry)
         state.fontUniform = mesh
+        if (props.renderText !== 'Hello  Another World') {
+          state.fontUniform.updateOpacity(0.09)
+        } else {
+          state.fontUniform.updateOpacity(1)
+        }
         state.scene.add(mesh.obj)
         setBackGroundColor()
         animate()

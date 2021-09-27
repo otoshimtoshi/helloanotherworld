@@ -3,6 +3,7 @@
     <LayoutsHeader position="top" animation />
     <WebglMyCanvas :mode="colorMode" :render-text="renderText" />
     <nuxt />
+    <LayoutsFooter />
   </div>
 </template>
 <script lang="ts">

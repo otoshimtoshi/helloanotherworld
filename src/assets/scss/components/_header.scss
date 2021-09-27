@@ -1,7 +1,7 @@
 header {
   z-index: 5;
   position: absolute;
-  height: 20px;
+  height: 30px;
   width: 100%;
   display: flex;
   align-items: flex-end;
@@ -10,12 +10,13 @@ header {
     display: flex;
     flex-wrap: nowrap;
     padding: 0 20px;
-    height: 15px;
-    align-items: flex-start;
+    align-items: center;
     .color {
       width: 10px;
       height: 10px;
       background: $light0;
+      border-radius: 50%;
+      border: 1px solid $light4;
       margin: 0 5px;
       cursor: pointer;
       transition: 0.2s $easeOutCubic;
@@ -38,7 +39,9 @@ header {
         background-color: $green-font-color;
       }
       &.is-active {
+        width: 15px;
         height: 15px;
+        border: double $light4;
         transition: 0.2s $easeInCubic;
       }
     }

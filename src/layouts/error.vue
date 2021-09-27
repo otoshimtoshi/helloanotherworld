@@ -1,17 +1,15 @@
 <template>
-  <div class="layout">
-    <div class="main">
-      <div v-if="error.statusCode === 404">
-        <h1>ERROR 404</h1>
-        <h2>Page Can Not Be Found!</h2>
-      </div>
-      <div v-else>
-        <h1>An Error Has Occurred!</h1>
-      </div>
-      <LayoutsTheLinkArea :links="allLink" />
-      <Pointer />
+  <main>
+    <div v-if="error.statusCode === 404">
+      <h1>ERROR 404</h1>
+      <h2>Page Can Not Be Found!</h2>
     </div>
-  </div>
+    <div v-else>
+      <h1>An Error Has Occurred!</h1>
+    </div>
+    <LayoutsTheLinkArea :links="allLink" />
+    <Pointer />
+  </main>
 </template>
 
 <script lang="ts">

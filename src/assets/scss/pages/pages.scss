@@ -1,16 +1,22 @@
+main {
+  width: 100%;
+  height: auto;
+}
+section {
+  margin-bottom: 24px;
+}
 .pages {
   width: 100%;
-  height: calc(100vh - 40px);
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
   .inner {
     width: 90%;
-    margin-bottom: 100px;
   }
   .content {
-    margin-bottom: 24px;
     div {
       &:nth-child(n) {
         margin-bottom: 2px;

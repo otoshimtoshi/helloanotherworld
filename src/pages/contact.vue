@@ -1,10 +1,10 @@
 <template>
-  <div class="main">
+  <main>
     <div>Contact</div>
     <div>お問い合わせ</div>
     <LayoutsTheLinkArea :links="links" type="page" />
     <Pointer />
-  </div>
+  </main>
 </template>
 
 <script lang="ts">

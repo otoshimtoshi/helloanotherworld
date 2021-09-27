@@ -87,6 +87,7 @@ export default defineComponent({
   &__inner {
     width: 100%;
     height: auto;
+    margin-top: 30px;
   }
   &__title {
     font-weight: 100;
