@@ -9,7 +9,7 @@
       >
         <nuxt-link
           :to="`${link.path}/`"
-          class="link__text en"
+          class="link__text"
           :class="[
             type === 'index' ? '' : 'page',
             `${link.path}/` === currentRoutePath ? 'line-through' : ''

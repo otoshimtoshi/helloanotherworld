@@ -1,6 +1,7 @@
 <template>
   <div class="layout">
     <LayoutsHeader animation />
+    <LayoutsNavBar :type="navBarType" />
     <WebglMyCanvas :mode="colorMode" :render-text="renderText" />
     <nuxt />
     <LayoutsFooter />
@@ -29,6 +30,14 @@ export default defineComponent({
 
     const currentRouteName = computed(() => route.value.name)
 
+    const navBarType = computed(() => {
+      if (route.value.name === 'index') {
+        return 'index'
+      } else {
+        return 'page'
+      }
+    })
+
     const renderText = computed(() => {
       switch (currentRouteName.value) {
         case 'index':
@@ -56,7 +65,8 @@ export default defineComponent({
     return {
       colorMode,
       currentRouteName,
-      renderText
+      renderText,
+      navBarType
     }
   }
 })

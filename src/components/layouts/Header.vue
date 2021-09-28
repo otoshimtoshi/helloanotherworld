@@ -2,8 +2,8 @@
   <header :class="{ animation }">
     <div class="inner">
       <div>
-        <nuxt-link to="/" class="en">
-          <span> Hello Another World</span>
+        <nuxt-link to="/">
+          <span>Hello Another World</span>
         </nuxt-link>
       </div>
       <div class="icon">

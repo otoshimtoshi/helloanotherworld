@@ -1,6 +1,5 @@
 <template>
   <main class="pages">
-    <LayoutsNavBar type="page" />
     <section class="inner">
       <div>
         <h1 class="title en">Contact</h1>

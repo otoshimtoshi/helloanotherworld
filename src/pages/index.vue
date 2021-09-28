@@ -14,7 +14,6 @@
         </h2>
       </div>
     </div>
-    <LayoutsNavBar type="index" />
     <Pointer />
   </main>
 </template>

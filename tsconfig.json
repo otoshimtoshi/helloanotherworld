@@ -21,7 +21,7 @@
       "@/*": ["src/*"],
       "~/*": ["./*"]
     },
-    "types": ["@types/node", "@nuxt/types", "@nuxtjs/date-fns", "@nuxtjs/color-mode"]
+    "types": ["@types/node", "@nuxt/types", "@nuxtjs/color-mode"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

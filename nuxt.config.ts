@@ -99,13 +99,12 @@ const config: NuxtConfig = {
       }
     }
   },
-  plugins: [{ src: '@/plugins/scroll-magic', mode: 'client' }],
+  plugins: [],
   buildModules: [
     '@nuxt/typescript-build',
     '@nuxtjs/composition-api',
     '@nuxtjs/stylelint-module',
     '@nuxtjs/style-resources',
-    '@nuxtjs/date-fns',
     '@nuxtjs/color-mode',
     '@nuxtjs/pwa'
   ],
