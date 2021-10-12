@@ -9,6 +9,12 @@
     <section class="inner">
       <div class="content">
         <div>落司 聖稔(おとし まさとし)</div>
+        <div>
+          <a href="https://jam-company.co.jp/" target="_blank" rel="nofollow"
+            >株式会社<span class="en">JAM</span></a
+          >
+          <span>に勤めています。</span>
+        </div>
         <div>東京でフロントエンドディベロッパーとして活動しています。</div>
         <div>
           <span class="en">
@@ -20,7 +26,16 @@
               >Twitter</a
             >
           </span>
-          <span>でご連絡ください。</span>
+          <span>もしくは、</span>
+          <span>
+            <a
+              href="https://jam-company.co.jp/contact_com/"
+              target="_blank"
+              rel="nofollow"
+              >株式会社<span class="en">JAM</span>お問合せより</a
+            >
+          </span>
+          <span>ご連絡ください。</span>
         </div>
       </div>
     </section>

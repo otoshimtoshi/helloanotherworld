@@ -12,7 +12,8 @@
   .content {
     div {
       &:nth-child(n) {
-        margin-bottom: 2px;
+        margin-bottom: 4px;
+        line-height: 20px;
       }
       &:last-child {
         margin-bottom: unset;

@@ -196,6 +196,7 @@ export default defineComponent({
       () => {
         if (state.fontUniform) {
           state.scene.remove(state.fontUniform.obj)
+          state.clock = new Clock()
           state.fontLoader.load('/Homenaje_Regular.json', (font) => {
             const geometry = new TextGeometry(props.renderText, {
               font: font,
