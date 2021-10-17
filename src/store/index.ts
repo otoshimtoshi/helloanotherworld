@@ -46,43 +46,7 @@ export const state = (): S => ({
       ]
     },
     {
-      id: 'collection',
-      title: 'Collection - helloanotherworld.com',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'Previous Works.'
-        },
-        {
-          hid: 'og:title',
-          name: 'og:title',
-          content: 'Collection - helloanotherworld.com'
-        },
-        {
-          hid: 'og:description',
-          name: 'og:description',
-          content: 'Previous Works.'
-        },
-        {
-          hid: 'og:url',
-          name: 'og:url',
-          content: 'https://helloanotherworld.com/collection'
-        },
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: 'Collection - helloanotherworld.com'
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: 'Previous Works.'
-        }
-      ]
-    },
-    {
-      id: 'who-i-am',
+      id: 'who_i_am',
       title: 'WhoIAm - helloanotherworld.com',
       meta: [
         {
@@ -103,7 +67,7 @@ export const state = (): S => ({
         {
           hid: 'og:url',
           name: 'og:url',
-          content: 'https://helloanotherworld.com/who-i-am'
+          content: 'https://helloanotherworld.com/who_i_am'
         },
         {
           hid: 'twitter:title',
@@ -114,6 +78,78 @@ export const state = (): S => ({
           hid: 'twitter:description',
           name: 'twitter:description',
           content: 'Introduce myself.'
+        }
+      ]
+    },
+    {
+      id: 'collection',
+      title: 'Collection - helloanotherworld.com',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'My collections.'
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: 'Collection - helloanotherworld.com'
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: 'My collections.'
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          content: 'https://helloanotherworld.com/collection'
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: 'Collection - helloanotherworld.com'
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content: 'My collections.'
+        }
+      ]
+    },
+    {
+      id: 'obj_loader',
+      title: 'Collection - ObjLoader',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Keyword Three.js,ObjLoader'
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: 'Collection - ObjLoader'
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: 'Keyword Three.js,ObjLoader'
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          content: 'https://helloanotherworld.com/collection/obj_loader/'
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: 'Collection - ObjLoader'
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content: 'Keyword Three.js,ObjLoader'
         }
       ]
     },
@@ -153,18 +189,35 @@ export const state = (): S => ({
         }
       ]
     }
+  ],
+  collectionInfo: [
+    {
+      id: 'obj_loader',
+      title: 'ObjLoader',
+      created_date: '2021.10.13',
+      updated_date: '',
+      description: '.objファイルの表示用コンポーネント',
+      pcSrc: '',
+      spSrc: ''
+    }
   ]
 })
 
 export const getters: Getters<S, G> = {
   getMetaInfo(state) {
-    return (id) => state.metaInfo.find((page) => page.id === id)
+    return (id) => state.metaInfo.find((info) => info.id === id)
+  },
+  getCollectionInfo(state) {
+    return (id) => state.collectionInfo.find((info) => info.id === id)
   }
 }
 
 export const mutations: Mutations<S, M> = {
   setMetaInfo(state, id) {
     state.metaInfo = id
+  },
+  setCollectionInfo(state, id) {
+    state.collectionInfo = id
   }
 }
 
@@ -179,5 +232,18 @@ export const actions: Actions<S, A, G, M> = {
       }
     })
     commit('setMetaInfo', metaInfo)
+  },
+  async fetchCollectionInfo({ commit }, fetchFunc) {
+    const response = await fetchFunc()
+    const collectionInfo = response.data.map((item: any) => {
+      return {
+        id: item.id,
+        title: item.title,
+        created_date: item.created_date,
+        updated_date: item.updated_date,
+        description: item.description
+      }
+    })
+    commit('setCollectionInfo', collectionInfo)
   }
 }

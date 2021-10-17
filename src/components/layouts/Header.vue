@@ -6,7 +6,7 @@
           <span>Hello Another World</span>
         </nuxt-link>
       </div>
-      <div class="icon">
+      <div v-if="!colorUnShow" class="icon">
         <span
           class="color light"
           :class="$colorMode.preference === 'light' ? 'is-active' : ''"
@@ -42,7 +42,8 @@ import { defineComponent, useContext, PropType } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {
-    animation: Boolean
+    animation: Boolean,
+    colorUnShow: Boolean
   },
   setup() {
     const { app } = useContext()

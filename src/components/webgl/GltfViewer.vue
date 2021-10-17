@@ -105,7 +105,7 @@ export default defineComponent({
 
     const init = () => {
       // scene
-      state.scene.background = new Color(0xe6e7e8)
+      state.scene.background = new Color(0x000000)
       // hemiLight
       state.scene.add(state.hemiLight)
       // dirLight

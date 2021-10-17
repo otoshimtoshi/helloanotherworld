@@ -42,10 +42,10 @@ export default defineComponent({
       switch (currentRouteName.value) {
         case 'index':
           return 'Hello  Another World'
-        case 'who-i-am':
+        case 'who_i_am':
           return 'Who  I  Am'
         case 'collection':
-          return 'Collection  Of  Works'
+          return 'Collection'
         case 'contact':
           return 'Contact'
         default:

@@ -51,7 +51,7 @@ export default defineComponent({
     const state = reactive({
       links: [
         {
-          path: '/who-i-am',
+          path: '/who_i_am',
           text: 'Who I Am'
         },
         {

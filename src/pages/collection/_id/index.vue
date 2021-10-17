@@ -1,26 +1,40 @@
 <template>
-  <main>{{ id }}</main>
+  <main class="pages">
+    <template v-if="id === 'obj_loader'">
+      <WebglGltfViewer src="/hamburger.glb" />
+    </template>
+    <template v-else>Not Found</template>
+  </main>
 </template>
 <script lang="ts">
 import {
   computed,
   defineComponent,
   onMounted,
-  reactive,
-  toRefs,
-  useContext
+  useContext,
+  useMeta
 } from '@nuxtjs/composition-api'
 export default defineComponent({
+  layout: 'collection',
   setup() {
     const { app, params } = useContext()
-    const state = reactive({})
 
     const id = computed(() => params.value.id)
 
+    const metaInfo = computed(() =>
+      app.store.getters.getMetaInfo(params.value.id)
+    )
+
+    useMeta(() => ({
+      title: metaInfo.value?.title,
+      meta: metaInfo.value?.meta
+    }))
+
     return {
-      ...toRefs(state),
       id
     }
-  }
+  },
+  // @ts-ignore
+  head() {}
 })
 </script>

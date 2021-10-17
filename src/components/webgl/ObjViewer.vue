@@ -1,5 +1,5 @@
 <template>
-  <div id="obj" />
+  <canvas ref="canvas" />
 </template>
 
 <script lang="ts">
@@ -22,12 +22,10 @@ export default defineComponent({
   },
   setup(props) {
     const state = reactive({
-      width: 0,
-      height: 0,
+      canvas: null as HTMLCanvasElement | null,
       camera: new THREE.PerspectiveCamera(),
       scene: new THREE.Scene(),
       hemiLight: new THREE.HemisphereLight(0xffffff, 0xffffff, 0.2),
-      dirLight: new THREE.DirectionalLight(0xffffff, 0.9),
       manager: new THREE.LoadingManager(),
       mouseX: 0,
       mouseY: 0,
@@ -35,34 +33,25 @@ export default defineComponent({
       rotateY: 0
     })
 
-    state.camera.position.set(0, 0, 100)
+    state.camera.position.set(2, 2, 5)
 
-    state.hemiLight.position.set(0, 50, 0)
+    state.hemiLight.position.set(0, 5, 0)
     state.scene.add(state.hemiLight)
-
-    state.dirLight.position.set(-10, 28, 10)
-    state.dirLight.position.multiplyScalar(10)
-    state.dirLight.castShadow = true
-    state.dirLight.shadow.mapSize.width = 2048
-    state.dirLight.shadow.mapSize.height = 2048
-    state.scene.add(state.dirLight)
 
     const objLoader = new OBJLoader(state.manager)
     const renderer = ref<THREE.WebGLRenderer>()
 
     onMounted(() => {
-      const element: HTMLElement | null = document.getElementById('obj')
-      if (element === null) return
+      if (state.canvas === null) return
       renderer.value = new THREE.WebGLRenderer({
         antialias: true,
-        alpha: true
+        alpha: true,
+        canvas: state.canvas
       })
 
-      state.width = element.clientWidth
-      state.height = element.clientHeight
+      renderer.value.setPixelRatio(window.devicePixelRatio)
+      renderer.value.setSize(window.innerWidth, window.innerHeight)
 
-      renderer.value.setSize(state.width, state.height)
-      renderer.value.shadowMap.enabled = true
       objLoader.load(
         props.src,
         (obj) => {
@@ -83,9 +72,16 @@ export default defineComponent({
           onError(err)
         }
       )
-      element.appendChild(renderer.value.domElement)
       animate()
+      window.addEventListener('resize', onWindowResize)
     })
+
+    function onWindowResize() {
+      if (renderer.value === undefined) return
+      state.camera.aspect = window.innerWidth / window.innerHeight
+      state.camera.updateProjectionMatrix()
+      renderer.value.setSize(window.innerWidth, window.innerHeight)
+    }
 
     function onProgress(xhr: ProgressEvent) {
       if (xhr.lengthComputable) {

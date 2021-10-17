@@ -2,20 +2,20 @@
   <main class="pages">
     <section class="inner">
       <div>
-        <h1 class="title en">Collection of works</h1>
+        <h1 class="title en">Collection</h1>
         <h2 class="sub-title">作品集</h2>
       </div>
       <ul class="articles">
         <li
           class="article__item"
-          v-for="(article, index) in articlesData"
+          v-for="(article, index) in articles"
           :key="index"
         >
-          <article :id="`article${index}`">
+          <article :id="`article${index}`" @click="onClickArticle(article.id)">
             <div class="article__images">
               <div
                 class="article__image pc"
-                :style="`background-image:url(${article.src})`"
+                :style="`background-image:url(${article.pcSrc})`"
               >
                 <div class="article__image__label">
                   <span>S</span>
@@ -31,7 +31,7 @@
               </div>
               <div
                 class="article__image sp"
-                :style="`background-image:url(${article.src})`"
+                :style="`background-image:url(${article.spSrc})`"
               >
                 <div class="article__image__label">
                   <span>S</span>
@@ -47,8 +47,8 @@
               </div>
             </div>
             <div>
-              <div>{{ article.title }}</div>
-              <div>{{ article.url }}</div>
+              <h3>{{ article.title }}</h3>
+              <div>{{ article.description }}</div>
             </div>
           </article>
         </li>
@@ -71,20 +71,14 @@ import {
 
 export default defineComponent({
   setup() {
-    const { app } = useContext()
+    const { app, route } = useContext()
     const state = reactive({
       metaInfo: app.store.getters.getMetaInfo('collection'),
       sectionStyles: {
         width: 0,
         height: 0
-      },
-      articles: [
-        // {
-        //   src: '',
-        //   title: 'タイトル1',
-        //   url: 'URL1'
-        // }
-      ]
+      }
+      // articles: app.store.state.collectionInfo
     })
 
     useMeta(() => ({
@@ -92,17 +86,9 @@ export default defineComponent({
       meta: state.metaInfo?.meta
     }))
 
-    const articlesData = computed(() => {
-      return state.articles.map((article) => {
-        return {
-          // src: article.src,
-          // title: article.title,
-          // url: article.url,
-          // width: state.sectionStyles.width,
-          // height: state.sectionStyles.height
-        }
-      })
-    })
+    const onClickArticle = (id: string) => {
+      app.router.push(`/collection/${id}/`)
+    }
 
     onMounted(() => {
       onWindowResize()
@@ -116,7 +102,7 @@ export default defineComponent({
 
     return {
       ...toRefs(state),
-      articlesData
+      onClickArticle
     }
   },
   // @ts-ignore
@@ -136,6 +122,7 @@ img {
     margin-bottom: 40px;
     article {
       width: 100%;
+      cursor: pointer;
       .article__images {
         display: flex;
         justify-content: space-between;

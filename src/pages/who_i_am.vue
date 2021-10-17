@@ -2,7 +2,7 @@
   <main class="pages">
     <section class="inner">
       <div>
-        <h1 class="title en">Who i am</h1>
+        <h1 class="title en">Who I Am</h1>
         <h2 class="sub-title">自己紹介</h2>
       </div>
     </section>
@@ -56,7 +56,7 @@ export default defineComponent({
   setup() {
     const { app } = useContext()
     const state = reactive({
-      metaInfo: app.store.getters.getMetaInfo('who-i-am')
+      metaInfo: app.store.getters.getMetaInfo('who_i_am')
     })
 
     useMeta(() => ({

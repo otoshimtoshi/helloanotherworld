@@ -7,4 +7,22 @@ footer {
   font-size: 10px;
   display: flex;
   justify-content: center;
+  .collection {
+    .title {
+      font-family: $family-font-en-custom;
+      font-size: 60px;
+      margin-bottom: 8px;
+    }
+    .description {
+      font-size: $font-size-base;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+    .content {
+      display: grid;
+      grid-template-columns: 55px 1fr;
+      font-size: $font-size-base;
+      margin-bottom: 6px;
+    }
+  }
 }
