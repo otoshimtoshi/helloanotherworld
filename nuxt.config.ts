@@ -61,18 +61,22 @@ const config: NuxtConfig = {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: 'https://helloanotherworld.com/ogp.png'
+        content: '/ogp.png'
       },
       {
         hid: 'twitter:site',
         name: 'twitter:site',
         content: 'helloanotherworld.com'
       },
-      { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+      {
+        hid: 'twitter:card',
+        name: 'twitter:card',
+        content: 'summary_large_image'
+      },
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: 'https://helloanotherworld.com/ogp.png'
+        content: '/ogp.png'
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
