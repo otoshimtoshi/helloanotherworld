@@ -1,7 +1,7 @@
 <template>
   <main class="pages">
-    <template v-if="id === 'obj_loader'">
-      <WebglGltfViewer src="/hamburger.glb" />
+    <template v-if="id === 'museum'">
+      <CollectionMuseum src="/museum_in_room.glb" />
     </template>
     <template v-else>Not Found</template>
   </main>

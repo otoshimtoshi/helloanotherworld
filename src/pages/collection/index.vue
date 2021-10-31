@@ -77,8 +77,8 @@ export default defineComponent({
       sectionStyles: {
         width: 0,
         height: 0
-      }
-      // articles: app.store.state.collectionInfo
+      },
+      articles: app.store.state.collectionInfo
     })
 
     useMeta(() => ({

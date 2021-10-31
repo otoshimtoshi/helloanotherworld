@@ -118,38 +118,38 @@ export const state = (): S => ({
       ]
     },
     {
-      id: 'obj_loader',
-      title: 'Collection - ObjLoader',
+      id: 'museum',
+      title: 'Collection - Museum',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'Keyword Three.js,ObjLoader'
+          content: 'Keyword Three.js,Museum'
         },
         {
           hid: 'og:title',
           name: 'og:title',
-          content: 'Collection - ObjLoader'
+          content: 'Collection - Museum'
         },
         {
           hid: 'og:description',
           name: 'og:description',
-          content: 'Keyword Three.js,ObjLoader'
+          content: 'Keyword Three.js,Museum'
         },
         {
           hid: 'og:url',
           name: 'og:url',
-          content: 'https://helloanotherworld.com/collection/obj_loader/'
+          content: 'https://helloanotherworld.com/collection/museum/'
         },
         {
           hid: 'twitter:title',
           name: 'twitter:title',
-          content: 'Collection - ObjLoader'
+          content: 'Collection - Museum'
         },
         {
           hid: 'twitter:description',
           name: 'twitter:description',
-          content: 'Keyword Three.js,ObjLoader'
+          content: 'Keyword Three.js,Museum'
         }
       ]
     },
@@ -191,15 +191,15 @@ export const state = (): S => ({
     }
   ],
   collectionInfo: [
-    {
-      id: 'obj_loader',
-      title: 'ObjLoader',
-      created_date: '2021.10.13',
-      updated_date: '',
-      description: '.objファイルの表示用コンポーネント',
-      pcSrc: '',
-      spSrc: ''
-    }
+    // {
+    //   id: 'museum',
+    //   title: '美術館',
+    //   created_date: '2021.10.31',
+    //   updated_date: '',
+    //   description: '美術館',
+    //   pcSrc: '',
+    //   spSrc: ''
+    // }
   ]
 })
 
