@@ -33,15 +33,9 @@ export const state = (): S => ({
           content: 'https://helloanotherworld.com'
         },
         {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: 'helloanotherworld.com'
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content:
-            'Front-end developer portfolio. I´ll do what I want to do. Interested in JS frameworks (Vue, React), 3D modeling, machine learning, CityGML, etc.'
+          hid: 'og:image',
+          name: 'og:image',
+          content: 'https://helloanotherworld.com/ogp.png'
         }
       ]
     },
@@ -70,14 +64,9 @@ export const state = (): S => ({
           content: 'https://helloanotherworld.com/who_i_am'
         },
         {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: 'WhoIAm - helloanotherworld.com'
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: 'Introduce myself.'
+          hid: 'og:image',
+          name: 'og:image',
+          content: 'https://helloanotherworld.com/ogp.png'
         }
       ]
     },
@@ -106,50 +95,9 @@ export const state = (): S => ({
           content: 'https://helloanotherworld.com/collection'
         },
         {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: 'Collection - helloanotherworld.com'
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: 'My collections.'
-        }
-      ]
-    },
-    {
-      id: 'museum',
-      title: 'Collection - Museum',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'Keyword Three.js,Museum'
-        },
-        {
-          hid: 'og:title',
-          name: 'og:title',
-          content: 'Collection - Museum'
-        },
-        {
-          hid: 'og:description',
-          name: 'og:description',
-          content: 'Keyword Three.js,Museum'
-        },
-        {
-          hid: 'og:url',
-          name: 'og:url',
-          content: 'https://helloanotherworld.com/collection/museum/'
-        },
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: 'Collection - Museum'
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: 'Keyword Three.js,Museum'
+          hid: 'og:image',
+          name: 'og:image',
+          content: 'https://helloanotherworld.com/ogp.png'
         }
       ]
     },
@@ -178,27 +126,53 @@ export const state = (): S => ({
           content: 'https://helloanotherworld.com/contact'
         },
         {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: 'Contact - helloanotherworld.com'
+          hid: 'og:image',
+          name: 'og:image',
+          content: 'https://helloanotherworld.com/ogp.png'
+        }
+      ]
+    },
+    {
+      id: 'office',
+      title: 'Collection - Office',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Keyword Three.js,Office'
         },
         {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: 'Contact Us.'
+          hid: 'og:title',
+          name: 'og:title',
+          content: 'Collection - Office'
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: 'Keyword Three.js,Office'
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          content: 'https://helloanotherworld.com/collection/office/'
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: 'https://helloanotherworld.com/ogp.png'
         }
       ]
     }
   ],
   collectionInfo: [
     // {
-    //   id: 'museum',
-    //   title: '美術館',
-    //   created_date: '2021.10.31',
+    //   id: 'office',
+    //   title: 'office',
+    //   created_date: '2022.01.02',
     //   updated_date: '',
-    //   description: '美術館',
-    //   pcSrc: '',
-    //   spSrc: ''
+    //   description: '',
+    //   pcSrc: require('@/assets/collection/office/collection_office_iPad.png'),
+    //   spSrc: require('@/assets/collection/office/collection_office_iPhone.png')
     // }
   ]
 })

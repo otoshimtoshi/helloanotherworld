@@ -13,10 +13,11 @@
         >
           <article :id="`article${index}`" @click="onClickArticle(article.id)">
             <div class="article__images">
-              <div
-                class="article__image pc"
-                :style="`background-image:url(${article.pcSrc})`"
-              >
+              <div class="article__image pc">
+                <div
+                  class="article__image__bg"
+                  :style="`background-image:url(${article.pcSrc})`"
+                />
                 <div class="article__image__label">
                   <span>S</span>
                   <span>H</span>
@@ -29,10 +30,11 @@
                   <span>S</span>
                 </div>
               </div>
-              <div
-                class="article__image sp"
-                :style="`background-image:url(${article.spSrc})`"
-              >
+              <div class="article__image sp">
+                <div
+                  class="article__image__bg"
+                  :style="`background-image:url(${article.spSrc})`"
+                />
                 <div class="article__image__label">
                   <span>S</span>
                   <span>H</span>
@@ -133,15 +135,26 @@ img {
           width: 100%;
           display: block;
           position: relative;
-          vertical-align: top;
+          // vertical-align: top;
           background-color: var(--color);
-          z-index: 1;
+          // z-index: 1;
           &::before {
             content: '';
             display: block;
             padding-top: 70%;
             width: 100%;
             height: auto;
+          }
+          .article__image__bg {
+            transition-property: opacity;
+            transition-delay: 0s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-repeat: no-repeat;
+            background-size: cover;
           }
           .article__image__label {
             opacity: 0;
@@ -175,6 +188,7 @@ img {
           span {
             transform: scale(1);
             transform-origin: bottom left;
+            text-shadow: 1px 2px 2px var(--text-shadow);
             &:nth-of-type(1) {
               transition-delay: 0;
             }
@@ -208,10 +222,17 @@ img {
           max-width: 815px;
           margin-right: 16px;
           width: 70%;
+          @include mq('medium', max) {
+            width: 100%;
+            margin-right: 0;
+          }
         }
         .sp {
           flex: 1;
           max-width: 375px;
+          @include mq('medium', max) {
+            display: none;
+          }
         }
       }
     }

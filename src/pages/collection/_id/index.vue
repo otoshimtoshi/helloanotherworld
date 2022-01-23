@@ -1,7 +1,7 @@
 <template>
   <main class="pages">
-    <template v-if="id === 'museum'">
-      <CollectionMuseum src="/museum_in_room.glb" />
+    <template v-if="id === 'office'">
+      <CollectionOffice src="/office.glb" />
     </template>
     <template v-else>Not Found</template>
   </main>
