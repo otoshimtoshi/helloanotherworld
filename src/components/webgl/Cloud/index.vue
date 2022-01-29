@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, onMounted, toRefs, ref } from '@nuxtjs/composition-api'
+import { defineComponent, reactive, onMounted, toRefs, ref } from '#imports'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { ImprovedNoise } from 'three/examples/jsm/math/ImprovedNoise'
@@ -44,7 +44,10 @@ export default defineComponent({
       context.fillRect(0, 0, 1, 32)
       const sky = new THREE.Mesh(
         new THREE.SphereGeometry(10),
-        new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(canvas), side: THREE.BackSide })
+        new THREE.MeshBasicMaterial({
+          map: new THREE.CanvasTexture(canvas),
+          side: THREE.BackSide
+        })
       )
       state.scene.add(sky)
     }
@@ -70,7 +73,15 @@ export default defineComponent({
                 .divideScalar(size)
                 .length()
             data[i] =
-              (128 + 128 * perlin.noise((x * scale) / 1.5, y * scale, (z * scale) / 1.5)) * d * d
+              (128 +
+                128 *
+                  perlin.noise(
+                    (x * scale) / 1.5,
+                    y * scale,
+                    (z * scale) / 1.5
+                  )) *
+              d *
+              d
             i++
           }
         }
@@ -122,9 +133,17 @@ export default defineComponent({
       element.appendChild(renderer.value.domElement)
 
       // camera
-      state.camera = new THREE.PerspectiveCamera(60, state.width / state.height, 0.1, 100)
+      state.camera = new THREE.PerspectiveCamera(
+        60,
+        state.width / state.height,
+        0.1,
+        100
+      )
       state.camera.position.set(0, 0, 1.5)
-      const controls = new OrbitControls(state.camera, renderer.value.domElement)
+      const controls = new OrbitControls(
+        state.camera,
+        renderer.value.domElement
+      )
       controls.enablePan = false
       controls.enableZoom = false
 

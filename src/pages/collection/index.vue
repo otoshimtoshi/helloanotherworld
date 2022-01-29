@@ -69,7 +69,7 @@ import {
   useMeta,
   onMounted,
   computed
-} from '@nuxtjs/composition-api'
+} from '#imports'
 
 export default defineComponent({
   setup() {

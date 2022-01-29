@@ -14,7 +14,7 @@ import {
   onMounted,
   onUnmounted,
   useContext
-} from '@nuxtjs/composition-api'
+} from '#imports'
 
 export default defineComponent({
   setup() {

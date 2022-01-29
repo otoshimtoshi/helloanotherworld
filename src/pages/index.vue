@@ -19,17 +19,12 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  reactive,
-  useContext,
-  toRefs,
-  useMeta
-} from '@nuxtjs/composition-api'
+import { defineComponent, reactive, toRefs, useMeta } from '#imports'
+import { useNuxtApp } from '#app'
 
 export default defineComponent({
   setup() {
-    const { app } = useContext()
+    const { app } = useNuxtApp()
     const state = reactive({
       metaInfo: app.store.getters.getMetaInfo('index')
     })
@@ -58,18 +53,18 @@ export default defineComponent({
   pointer-events: none;
   z-index: 20;
   animation: fadeIn 3s;
-  &__inner {
+  .top__inner {
     width: 100%;
     height: auto;
     margin-top: 30px;
   }
-  &__title {
+  .top__title {
     font-weight: 100;
     letter-spacing: 0.3em;
     text-shadow: 2px 5px 5px var(--text-shadow);
     font-size: 0;
   }
-  &__sub-title {
+  .top__sub-title {
     letter-spacing: 0.2em;
     padding: 0 3vw;
     text-transform: uppercase;

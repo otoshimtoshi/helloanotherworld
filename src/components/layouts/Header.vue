@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, useContext, PropType } from '@nuxtjs/composition-api'
+import { defineComponent, useContext, PropType } from '#imports'
 
 export default defineComponent({
   props: {

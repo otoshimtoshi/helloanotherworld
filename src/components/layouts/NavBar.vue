@@ -30,7 +30,7 @@ import {
   reactive,
   toRefs,
   useContext
-} from '@nuxtjs/composition-api'
+} from '#imports'
 
 export type Links = {
   path: string

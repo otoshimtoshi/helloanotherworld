@@ -13,7 +13,7 @@ import {
   onMounted,
   useContext,
   useMeta
-} from '@nuxtjs/composition-api'
+} from '#imports'
 export default defineComponent({
   layout: 'collection',
   setup() {

@@ -10,7 +10,7 @@ import {
   toRefs,
   ref,
   watch
-} from '@nuxtjs/composition-api'
+} from '#imports'
 import {
   PerspectiveCamera,
   Scene,

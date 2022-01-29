@@ -1,4 +1,4 @@
-import { onMounted } from '@nuxtjs/composition-api'
+import { onMounted } from '#imports'
 import { WEBGL } from 'three/examples/jsm/WebGL'
 
 export const isWebGL2Available = (): void => {

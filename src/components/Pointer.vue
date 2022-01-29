@@ -1,7 +1,15 @@
 <template>
   <div class="pointer">
-    <div class="pointer_outer" :class="{ pointer_isover: isOver }" :style="transformPosition"></div>
-    <div class="pointer_inner" :class="{ pointer_isover: isOver }" :style="transformPosition"></div>
+    <div
+      class="pointer_outer"
+      :class="{ pointer_isover: isOver }"
+      :style="transformPosition"
+    ></div>
+    <div
+      class="pointer_inner"
+      :class="{ pointer_isover: isOver }"
+      :style="transformPosition"
+    ></div>
   </div>
 </template>
 
@@ -13,7 +21,7 @@ import {
   onUnmounted,
   reactive,
   toRefs
-} from '@nuxtjs/composition-api'
+} from '#imports'
 
 export default defineComponent({
   setup() {
@@ -27,7 +35,14 @@ export default defineComponent({
 
     /** マウス表示位置制御 */
     const transformPosition = computed(() => {
-      return 'transform: translate3d(' + state.mouseX + 'px, ' + state.mouseY + 'px, ' + '0px)'
+      return (
+        'transform: translate3d(' +
+        state.mouseX +
+        'px, ' +
+        state.mouseY +
+        'px, ' +
+        '0px)'
+      )
     })
 
     const setMousePosition = (e: MouseEvent) => {

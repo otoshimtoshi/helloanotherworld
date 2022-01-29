@@ -3,13 +3,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  reactive,
-  onMounted,
-  ref,
-  toRefs
-} from '@nuxtjs/composition-api'
+import { defineComponent, reactive, onMounted, ref, toRefs } from '#imports'
 import * as THREE from 'three'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 

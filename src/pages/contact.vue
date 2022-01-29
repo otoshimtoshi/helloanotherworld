@@ -25,7 +25,7 @@ import {
   reactive,
   toRefs,
   useMeta
-} from '@nuxtjs/composition-api'
+} from '#imports'
 
 export default defineComponent({
   setup() {

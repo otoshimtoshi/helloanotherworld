@@ -11,7 +11,7 @@ import {
   ref,
   watch,
   onUnmounted
-} from '@nuxtjs/composition-api'
+} from '#imports'
 import {
   PerspectiveCamera,
   Scene,
