@@ -1,7 +1,7 @@
 import { defineNuxtConfig } from '@nuxt/bridge'
 
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: true,
   target: 'static',
   head: {
     htmlAttrs: {

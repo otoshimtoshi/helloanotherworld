@@ -1,42 +1,20 @@
 {
   "name": "helloanotherworld",
   "description": "Nuxt.js of three.js",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "nuxi dev",
     "generate": "nuxi generate",
-    "generate-analyze": "nuxi generate --analyze",
     "preview-dev": "nuxi preview",
-    "preview": "nuxi preview",
-    "lint:pre": "prettier -c .",
-    "lint:ts": "eslint --ext .ts,.js,.vue --ignore-path .",
-    "lint:style": "stylelint **/*.{vue,css,scss,sass} --ignore-path ."
-  },
-  "lint-staged": {
-    "*": "prettier -c",
-    "*.{js,ts,vue}": "eslint",
-    "*.{vue,css,scss,sass}": "stylelint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "preview": "nuxi preview"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.13.10",
-    "@nuxt/components": "^2.1.4",
-    "@nuxt/typescript-runtime": "2.1.0",
     "@nuxtjs/sitemap": "^2.4.0",
-    "@vue/composition-api": "^1.4.5",
-    "core-js": "^3.9.1",
     "nuxt-edge": "latest",
-    "three": "^0.126.1",
-    "vue": "^2.6.12"
+    "three": "^0.126.1"
   },
   "devDependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.13.12",
     "@nuxt/bridge": "npm:@nuxt/bridge-edge@^3.0.0-27389502.88da719",
     "@nuxt/types": "^2.15.3",
     "@nuxtjs/color-mode": "^2.0.5",
@@ -44,14 +22,10 @@
     "@nuxtjs/style-resources": "^1.2.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/three": "^0.126.1",
-    "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
     "css-loader": "^5.2.6",
     "easing-js": "git://github.com/danro/easing-js.git",
     "eslint": "^7.22.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-vue": "^7.8.0",
     "gl-matrix": "^3.3.0",
     "glsl-easings": "^1.0.0",
     "glsl-force": "git://github.com/ykob/glsl-force.git",
@@ -61,10 +35,7 @@
     "glsl-util": "git://github.com/ykob/glsl-util.git",
     "glslify-import-loader": "^0.1.2",
     "glslify-loader": "^2.0.0",
-    "husky": "^5.2.0",
-    "lint-staged": "^10.5.4",
     "node-sass": "^5.0.0",
-    "npm-check-updates": "^11.3.0",
     "prettier": "^2.2.1",
     "raw-loader": "^4.0.2",
     "sass-loader": "^10.1.1",
