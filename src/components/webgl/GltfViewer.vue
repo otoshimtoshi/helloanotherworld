@@ -27,7 +27,7 @@ import {
 } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import Ground from '@/composable/ground'
+import Ground from '~~/src/scripts/webgl/ground'
 
 export default defineComponent({
   props: {

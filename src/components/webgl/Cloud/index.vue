@@ -9,7 +9,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { ImprovedNoise } from 'three/examples/jsm/math/ImprovedNoise'
 import fragmentShader from './fragmentShader.frag'
 import vertexShader from './vertexShader.vert'
-import { isWebGL2Available } from '@/composable/webgl2-available'
+import { isWebGL2Available } from '~~/src/scripts/webgl/webgl2-available'
 
 export default defineComponent({
   setup() {
