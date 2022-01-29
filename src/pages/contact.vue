@@ -23,7 +23,7 @@ import { useNuxt2Meta } from '#app'
 import { useMetaInfo } from '~~/src/composable/useMetaInfo'
 
 const { getMetaInfo } = useMetaInfo()
-const metaInfo = getMetaInfo('collecontactction')
+const metaInfo = getMetaInfo('contact')
 
 useNuxt2Meta(() => ({
   title: metaInfo?.title,
