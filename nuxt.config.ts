@@ -1,6 +1,6 @@
-import type { NuxtConfig } from '@nuxt/types'
+import { defineNuxtConfig } from '@nuxt/bridge'
 
-const config: NuxtConfig = {
+export default defineNuxtConfig({
   ssr: true,
   target: 'static',
   head: {
@@ -113,8 +113,6 @@ const config: NuxtConfig = {
   },
   plugins: [],
   buildModules: [
-    '@nuxt/typescript-build',
-    '@nuxtjs/composition-api',
     '@nuxtjs/stylelint-module',
     '@nuxtjs/style-resources',
     '@nuxtjs/color-mode',
@@ -145,6 +143,4 @@ const config: NuxtConfig = {
       useWebmanifestExtension: false
     }
   }
-}
-
-export default config
+})
