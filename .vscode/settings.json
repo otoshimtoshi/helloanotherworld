@@ -42,25 +42,15 @@
     "vue-html",
     "html"
   ],
-  "vetur.format.enable": false,
-  "vetur.completion.scaffoldSnippetSources": {
-    "user": "🗒️",
-    "workspace": "💼",
-    "vetur": ""
-  },
-  "default formatters": [],
-
   // ===
   // HTML
   // ===
 
   "html.format.enable": false,
-  "vetur.validation.template": false,
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
     "vue-html": "html"
   },
-  "vetur.completion.tagCasing": "initial",
 
   // ===
   // JS(ON)
@@ -68,7 +58,6 @@
 
   "javascript.format.enable": false,
   "json.format.enable": false,
-  "vetur.validation.script": false,
 
   // ===
   // CSS
@@ -76,6 +65,5 @@
 
   "stylelint.enable": true,
   "css.validate": false,
-  "scss.validate": false,
-  "vetur.validation.style": false
+  "scss.validate": false
 }
