@@ -2,17 +2,8 @@
   "script": {
     "scope": "vue",
     "prefix": "script:type",
-    "body": [
-      "<script lang=\"ts\">",
-      "import { defineComponent } from '#imports'",
-      "export default defineComponent({",
-      "\t${0}",
-      "setup(){},",
-      "head(){}",
-      "})",
-      "</script>"
-    ],
-    "description": "<script lang=\"ts\">"
+    "body": ["<script setup lang=\"ts\">", "</script>"],
+    "description": "<script setup lang=\"ts\">"
   },
   "template": {
     "scope": "vue",
