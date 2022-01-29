@@ -1,17 +1,17 @@
 <template>
-  <nav :class="type === 'index' ? '' : 'page'">
-    <ul class="links" :class="type === 'index' ? '' : 'page'">
+  <nav :class="path === 'index' ? '' : 'page'">
+    <ul class="links" :class="path === 'index' ? '' : 'page'">
       <li
         v-for="(link, index) in links"
         :key="index"
         class="link"
-        :class="type === 'index' ? '' : 'page'"
+        :class="path === 'index' ? '' : 'page'"
       >
         <nuxt-link
           :to="`${link.path}/`"
           class="link__text"
           :class="[
-            type === 'index' ? '' : 'page',
+            path === 'index' ? '' : 'page',
             `${link.path}/` === currentRoutePath ? 'line-through' : ''
           ]"
         >
@@ -22,16 +22,7 @@
   </nav>
 </template>
 
-<script lang="ts">
-import {
-  computed,
-  defineComponent,
-  PropType,
-  reactive,
-  toRefs,
-  useContext
-} from '#imports'
-
+<script setup lang="ts">
 export type Links = {
   path: string
   text: string
@@ -39,38 +30,21 @@ export type Links = {
 
 export type PageType = 'index' | 'page'
 
-export default defineComponent({
-  props: {
-    type: {
-      type: String as PropType<PageType>,
-      default: 'index'
-    }
+const { path } = useRoute()
+const links = reactive<Array<Links>>([
+  {
+    path: '/who_i_am',
+    text: 'Who I Am'
   },
-  setup() {
-    const { route } = useContext()
-    const state = reactive({
-      links: [
-        {
-          path: '/who_i_am',
-          text: 'Who I Am'
-        },
-        {
-          path: '/collection',
-          text: 'Collection'
-        },
-        {
-          path: '/contact',
-          text: 'Contact'
-        }
-      ] as Array<Links>
-    })
-
-    const currentRoutePath = computed(() => route.value.path)
-
-    return {
-      ...toRefs(state),
-      currentRoutePath
-    }
+  {
+    path: '/collection',
+    text: 'Collection'
+  },
+  {
+    path: '/contact',
+    text: 'Contact'
   }
-})
+])
+
+const currentRoutePath = computed(() => path)
 </script>

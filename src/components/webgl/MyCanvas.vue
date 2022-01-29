@@ -33,7 +33,7 @@ export default defineComponent({
     },
     renderText: {
       type: String,
-      required: true
+      default: 'Hello Another World'
     }
   },
   setup(props) {
@@ -116,7 +116,7 @@ export default defineComponent({
       )
 
       state.fontLoader.load('/Homenaje_Regular.json', (font) => {
-        const geometry = new TextGeometry(props.renderText, {
+        const geometry = new TextGeometry('Hello Another World', {
           font: font,
           size: 40,
           height: 8,
@@ -129,7 +129,7 @@ export default defineComponent({
         })
         const mesh = new TextWire(geometry)
         state.fontUniform = mesh
-        if (props.renderText !== 'Hello  Another World') {
+        if (props.renderText !== 'Hello Another World') {
           state.fontUniform.updateOpacity(0.09)
         } else {
           state.fontUniform.updateOpacity(1)

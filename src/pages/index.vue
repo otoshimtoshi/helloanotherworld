@@ -18,29 +18,19 @@
   </main>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive, toRefs, useMeta } from '#imports'
-import { useNuxtApp } from '#app'
+<script setup lang="ts">
+import { useNuxt2Meta } from '#app'
+import { useMetaInfo } from '~~/src/composable/useMetaInfo'
 
-export default defineComponent({
-  setup() {
-    const { app } = useNuxtApp()
-    const state = reactive({
-      metaInfo: app.store.getters.getMetaInfo('index')
-    })
-    useMeta(() => ({
-      title: state.metaInfo?.title,
-      meta: state.metaInfo?.meta
-    }))
+const { getMetaInfo } = useMetaInfo()
+const metaInfo = getMetaInfo('index')
 
-    return {
-      ...toRefs(state)
-    }
-  },
-  // @ts-ignore
-  head() {}
-})
+useNuxt2Meta(() => ({
+  title: metaInfo?.title,
+  meta: metaInfo?.meta
+}))
 </script>
+
 <style lang="scss" scoped>
 .top {
   position: fixed;

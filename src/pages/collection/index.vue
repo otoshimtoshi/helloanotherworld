@@ -8,7 +8,7 @@
       <ul class="articles">
         <li
           class="article__item"
-          v-for="(article, index) in articles"
+          v-for="(article, index) in collectionInfo"
           :key="index"
         >
           <article :id="`article${index}`" @click="onClickArticle(article.id)">
@@ -60,56 +60,24 @@
   </main>
 </template>
 
-<script lang="ts">
-import {
-  defineComponent,
-  useContext,
-  reactive,
-  toRefs,
-  useMeta,
-  onMounted,
-  computed
-} from '#imports'
+<script setup lang="ts">
+import { useNuxt2Meta } from '#app'
+import { useMetaInfo } from '~~/src/composable/useMetaInfo'
+import { useCollectionInfo } from '~~/src/composable/useCollectionInfo'
 
-export default defineComponent({
-  setup() {
-    const { app, route } = useContext()
-    const state = reactive({
-      metaInfo: app.store.getters.getMetaInfo('collection'),
-      sectionStyles: {
-        width: 0,
-        height: 0
-      },
-      articles: app.store.state.collectionInfo
-    })
+const { getMetaInfo } = useMetaInfo()
+const { collectionInfo } = useCollectionInfo()
+const router = useRouter()
+const metaInfo = getMetaInfo('collection')
 
-    useMeta(() => ({
-      title: state.metaInfo?.title,
-      meta: state.metaInfo?.meta
-    }))
+useNuxt2Meta(() => ({
+  title: metaInfo?.title,
+  meta: metaInfo?.meta
+}))
 
-    const onClickArticle = (id: string) => {
-      app.router.push(`/collection/${id}/`)
-    }
-
-    onMounted(() => {
-      onWindowResize()
-      window.addEventListener('resize', onWindowResize)
-    })
-
-    const onWindowResize = () => {
-      state.sectionStyles.width = document.body.clientWidth
-      state.sectionStyles.height = document.body.clientHeight
-    }
-
-    return {
-      ...toRefs(state),
-      onClickArticle
-    }
-  },
-  // @ts-ignore
-  head() {}
-})
+const onClickArticle = (id: string) => {
+  router.push(`/collection/${id}/`)
+}
 </script>
 <style lang="scss" scoped>
 img {

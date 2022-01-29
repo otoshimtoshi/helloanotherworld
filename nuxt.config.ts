@@ -1,7 +1,7 @@
 import { defineNuxtConfig } from '@nuxt/bridge'
 
 export default defineNuxtConfig({
-  ssr: true,
+  ssr: false,
   target: 'static',
   head: {
     htmlAttrs: {
@@ -61,22 +61,12 @@ export default defineNuxtConfig({
       {
         hid: 'og:image',
         property: 'og:image',
-        content: '/ogp.png'
-      },
-      {
-        hid: 'twitter:site',
-        name: 'twitter:site',
-        content: 'helloanotherworld.com'
+        content: 'https://helloanotherworld.com/ogp.png'
       },
       {
         hid: 'twitter:card',
         name: 'twitter:card',
         content: 'summary_large_image'
-      },
-      {
-        hid: 'twitter:image',
-        name: 'twitter:image',
-        content: '/ogp.png'
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
@@ -92,6 +82,7 @@ export default defineNuxtConfig({
   axios: {},
   build: {
     transpile: ['three'],
+    // @ts-ignore
     extend(config) {
       config.module.rules.push({
         test: /\.(glsl|vs|fs|vert|frag)$/,
@@ -101,13 +92,7 @@ export default defineNuxtConfig({
     },
     optimization: {
       splitChunks: {
-        chunks: 'all',
-        minSize: 30000,
-        maxSize: 1000000,
-        minChunks: 3,
-        maxAsyncRequests: 5,
-        maxInitialRequests: 3,
-        name: true
+        chunks: 'all'
       }
     }
   },

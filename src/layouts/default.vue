@@ -2,72 +2,51 @@
   <div class="layout">
     <LayoutsHeader animation />
     <LayoutsNavBar :type="navBarType" />
-    <WebglMyCanvas :mode="colorMode" :render-text="renderText" />
+    <WebglMyCanvas :render-text="renderText" />
     <nuxt />
     <LayoutsFooter />
   </div>
 </template>
-<script lang="ts">
-import {
-  computed,
-  defineComponent,
-  onMounted,
-  onUnmounted,
-  useContext
-} from '#imports'
 
-export default defineComponent({
-  setup() {
-    const { app, route } = useContext()
-    const colorMode = computed(() => app.$colorMode.preference)
+<script setup lang="ts">
+const { path } = useRoute()
 
-    const setWindowSize = () => {
-      const innerHeight = window.innerHeight
-      const innerWidth = window.innerWidth
-      document.body.setAttribute('width', `${innerWidth}px`)
-      document.body.setAttribute('height', `${innerHeight}px`)
-    }
+const setWindowSize = () => {
+  const innerHeight = window.innerHeight
+  const innerWidth = window.innerWidth
+  document.body.setAttribute('width', `${innerWidth}px`)
+  document.body.setAttribute('height', `${innerHeight}px`)
+}
 
-    const currentRouteName = computed(() => route.value.name)
-
-    const navBarType = computed(() => {
-      if (route.value.name === 'index') {
-        return 'index'
-      } else {
-        return 'page'
-      }
-    })
-
-    const renderText = computed(() => {
-      switch (currentRouteName.value) {
-        case 'index':
-          return 'Hello  Another World'
-        case 'who_i_am':
-          return 'Who  I  Am'
-        case 'collection':
-          return 'Collection'
-        case 'contact':
-          return 'Contact'
-        default:
-          return ''
-      }
-    })
-
-    onMounted(() => {
-      setWindowSize()
-      window.addEventListener('resize', setWindowSize)
-    })
-
-    onUnmounted(() => {
-      window.removeEventListener('resize', setWindowSize)
-    })
-
-    return {
-      colorMode,
-      currentRouteName,
-      renderText,
-      navBarType
-    }
+const navBarType = computed(() => {
+  if (path === 'index') {
+    return 'index'
+  } else {
+    return 'page'
   }
+})
+
+const renderText = computed(() => {
+  switch (path) {
+    case 'index':
+      return 'Hello  Another World'
+    case 'who_i_am':
+      return 'Who  I  Am'
+    case 'collection':
+      return 'Collection'
+    case 'contact':
+      return 'Contact'
+    default:
+      return ''
+  }
+})
+
+onMounted(() => {
+  setWindowSize()
+  window.addEventListener('resize', setWindowSize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', setWindowSize)
 })
 </script>
