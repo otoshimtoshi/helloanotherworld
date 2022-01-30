@@ -27,7 +27,7 @@ header {
       border: 1px solid $light4;
       margin: 0 5px;
       cursor: pointer;
-      transition: 0.2s $easeOutCubic;
+      transition: 0.2s $ease-out-cubic;
       &:last-child {
         margin-right: unset;
       }
@@ -50,7 +50,7 @@ header {
         width: 15px;
         height: 15px;
         border: double $light4;
-        transition: 0.2s $easeInCubic;
+        transition: 0.2s $ease-in-cubic;
       }
     }
   }

@@ -9,6 +9,7 @@
   position: relative;
   max-width: 1300px;
   margin: 0 auto;
+
   .content {
     div {
       &:nth-child(n) {
@@ -20,14 +21,14 @@
       }
     }
   }
+
   .title {
     @include font-en-custom;
-
     margin-bottom: 18px;
   }
+
   .sub-title {
     @include font-ja-custom;
-
     margin-bottom: 12px;
   }
 }

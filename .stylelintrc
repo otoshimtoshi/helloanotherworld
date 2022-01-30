@@ -1,5 +1,5 @@
 {
-  "extends": ["stylelint-config-standard-scss"],
+  "extends": ["stylelint-config-recommended", "stylelint-config-standard-scss"],
   "overrides": [
     {
       "files": ["**/*.vue"],
@@ -8,6 +8,14 @@
   ],
   "rules": {
     "string-quotes": "single",
+    "rule-empty-line-before": [
+      "always-multi-line",
+      {
+        "ignore": ["after-comment", "first-nested", "inside-block"]
+      }
+    ],
+    "at-rule-empty-line-before": null,
+    "declaration-empty-line-before": "never",
     "at-rule-no-unknown": [
       true,
       {

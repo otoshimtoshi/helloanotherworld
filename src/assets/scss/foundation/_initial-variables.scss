@@ -4,6 +4,7 @@
 $family-font-base: 'Homenaje', sans-serif !default;
 $family-font-ja-custom: 'Koruri', sans-serif !default;
 $family-font-en-custom: 'StickNoBills', sans-serif !default;
+
 // ==========================================================================
 // breakpoint
 // ==========================================================================
@@ -12,6 +13,7 @@ $small: 375px !default;
 $medium: 768px !default;
 $large: 1024px !default;
 $xlarge: 1240px !default;
+
 // ==========================================================================
 // @media screen
 // 使い方
@@ -19,7 +21,6 @@ $xlarge: 1240px !default;
 // @include mq('medium', max) {}
 // [ Output ]
 // @media screen and (max-width: medium) {}
-//
 // [ Input ]
 // @include mq('medium', max) {
 //   @include mq('small', min, true) {}
@@ -27,15 +28,19 @@ $xlarge: 1240px !default;
 // [ Output ]
 // @media screen and (max-width: medium) and (min-width: $small) {}
 // ==========================================================================
+
 @mixin mq($breakpoint: medium, $rule: min, $subtraction: false) {
   $breakpoint: map_get($mq-breakpoints, $breakpoint);
+
   @if $rule == max and $subtraction {
     $breakpoint: $breakpoint - 1;
   }
+
   @media screen and (#{$rule}-width: $breakpoint) {
     @content;
   }
 }
+
 $mq-breakpoints: (
   'xsmall': $xsmall,
   'small': $small,
@@ -43,6 +48,7 @@ $mq-breakpoints: (
   'large': $large,
   'xlarge': $xlarge
 );
+
 // ==========================================================================
 // font-size
 // ==========================================================================
@@ -67,6 +73,7 @@ $light-shade2: #081015;
 $light-shade4: #060c10;
 $light-shade6: #04080a;
 $light-shade8: #020405;
+
 // ==========================================================================
 // Shades of yellow
 // ==========================================================================
@@ -85,6 +92,7 @@ $yellow-shade2: #a87e00;
 $yellow-shade4: #7e5e00;
 $yellow-shade6: #543f00;
 $yellow-shade8: #291f00;
+
 // ==========================================================================
 // Shades of red
 // ==========================================================================
@@ -103,6 +111,7 @@ $red-shade2: #c00;
 $red-shade4: #900;
 $red-shade6: #600;
 $red-shade8: #320000;
+
 // ==========================================================================
 // Shades of blue
 // ==========================================================================
@@ -121,6 +130,7 @@ $blue-shade2: #0002cc;
 $blue-shade4: #000199;
 $blue-shade6: #000166;
 $blue-shade8: #000032;
+
 // ==========================================================================
 // Shades of green
 // ==========================================================================
@@ -139,26 +149,31 @@ $green-shade2: #00cc0b;
 $green-shade4: #009908;
 $green-shade6: #006605;
 $green-shade8: #003202;
+
 // ==========================================================================
 // Light Mode  .light-mode
 // ==========================================================================
 $light-font-color: $light9 !default;
 $light-text-shadow: $light4 !default;
+
 // ==========================================================================
 // yellow Mode  .yellow-mode
 // ==========================================================================
 $yellow-font-color: $yellow9 !default;
 $yellow-text-shadow: $yellow-shade6 !default;
+
 // ==========================================================================
 // red Mode  .red-mode
 // ==========================================================================
 $red-font-color: $red4 !default;
 $red-text-shadow: $red-shade6 !default;
+
 // ==========================================================================
 // blue Mode  .blue-mode
 // ==========================================================================
 $blue-font-color: $blue4 !default;
 $blue-text-shadow: $blue-shade6 !default;
+
 // ==========================================================================
 // green Mode  .green-mode
 // ==========================================================================
@@ -169,37 +184,10 @@ $green-text-shadow: $green-shade6 !default;
 // cubic-bezier
 // ==========================================================================
 // Cubic
-$easeInCubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-$easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
-$easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
-// Circ
-$easeInCirc: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-$easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
-$easeInOutCirc: cubic-bezier(0.785, 0.135, 0.15, 0.86);
-// Expo
-$easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
-$easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
-$easeInOutExpo: cubic-bezier(1, 0, 0, 1);
-// Quad
-$easeInQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
-$easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-$easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
-// Quart
-$easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
-$easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
-$easeInOutQuart: cubic-bezier(0.77, 0, 0.175, 1);
-// Quint
-$easeInQuint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-$easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
-$easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
-// Sine
-$easeInSine: cubic-bezier(0.47, 0, 0.745, 0.715);
-$easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
-$easeInOutSine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-// Back
-$easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045);
-$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-$easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+$ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+$ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+
 // ==========================================================================
 // root color
 // ==========================================================================
@@ -207,18 +195,22 @@ $easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   --color: #0b151b;
   --text-shadow: #858a8d;
 }
+
 .yellow-mode {
   --color: #d29e00;
   --text-shadow: #543f00;
 }
+
 .red-mode {
   --color: #ff7f7f;
   --text-shadow: #600;
 }
+
 .blue-mode {
   --color: #7f81ff;
   --text-shadow: #000166;
 }
+
 .green-mode {
   --color: #00cc0b;
   --text-shadow: #006605;

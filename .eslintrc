@@ -3,7 +3,7 @@
     "NodeJS": true,
     "$fetch": true
   },
-  "extends": ["@nuxtjs/eslint-config-typescript", "plugin:import/typescript"],
+  "extends": ["@nuxtjs/eslint-config-typescript"],
   "rules": {},
   "ignorePattern": ["node_modules/", ".output/", "public/", ".nuxt"]
 }
