@@ -100,7 +100,6 @@ export default defineNuxtConfig({
   buildModules: [
     '@nuxtjs/stylelint-module',
     '@nuxtjs/style-resources',
-    '@nuxtjs/color-mode',
     '@nuxtjs/pwa'
   ],
   styleResources: {
