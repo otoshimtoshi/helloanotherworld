@@ -28,7 +28,6 @@ $xlarge: 1240px !default;
 // [ Output ]
 // @media screen and (max-width: medium) and (min-width: $small) {}
 // ==========================================================================
-
 @mixin mq($breakpoint: medium, $rule: min, $subtraction: false) {
   $breakpoint: map_get($mq-breakpoints, $breakpoint);
 
