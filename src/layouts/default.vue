@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-const { path } = useRoute()
+const route = useRoute()
 
 const setWindowSize = () => {
   const innerHeight = window.innerHeight
@@ -19,7 +19,7 @@ const setWindowSize = () => {
 }
 
 const navBarType = computed(() => {
-  if (path === 'index') {
+  if (route.name === 'index') {
     return 'index'
   } else {
     return 'page'
@@ -27,7 +27,7 @@ const navBarType = computed(() => {
 })
 
 const renderText = computed(() => {
-  switch (path) {
+  switch (route.name) {
     case 'index':
       return 'Hello  Another World'
     case 'who_i_am':

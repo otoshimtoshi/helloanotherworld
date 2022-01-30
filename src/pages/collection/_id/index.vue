@@ -1,6 +1,6 @@
 <template>
   <main class="pages">
-    <template v-if="id === 'office'">
+    <template v-if="params.id === 'office'">
       <CollectionOffice src="/office.glb" />
     </template>
     <template v-else>Not Found</template>
@@ -13,8 +13,8 @@ import { useMetaInfo } from '~~/src/composable/useMetaInfo'
 
 const { getMetaInfo } = useMetaInfo()
 const metaInfo = getMetaInfo('who_i_am')
+
 const { params } = useRoute()
-const id = computed(() => params.value)
 
 useNuxt2Meta(() => ({
   title: metaInfo?.title,
