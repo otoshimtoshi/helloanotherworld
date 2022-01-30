@@ -5,9 +5,7 @@ import { CollectionInfo } from './types'
  * Collection用のstate
  */
 export const useCollectionInfo = () => {
-  /**
-   *
-   */
+  /** collection情報 */
   const collections = ref<CollectionInfo[]>([
     {
       id: 'office',

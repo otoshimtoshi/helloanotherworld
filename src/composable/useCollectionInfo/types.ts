@@ -1,4 +1,4 @@
-/** コレクション詳細情報 */
+/** コレクション情報 */
 export type CollectionInfo = {
   /** ID */
   id: string

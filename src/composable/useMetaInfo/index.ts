@@ -1,7 +1,11 @@
 import { ref } from '#imports'
 import { MetaInfo } from './types'
 
+/**
+ * metaタグ用のstate
+ */
 export const useMetaInfo = () => {
+  /** metaタグ情報 */
   const metaInfo = ref<MetaInfo[]>([
     {
       id: 'index',
@@ -162,6 +166,11 @@ export const useMetaInfo = () => {
     }
   ])
 
+  /**
+   * ページのmeta情報
+   * @param id ページのPath
+   * @returns MetaInfo
+   */
   const getMetaInfo = (id: string) =>
     metaInfo.value.find((info) => info.id === id)
 
