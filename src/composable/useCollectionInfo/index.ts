@@ -1,24 +1,35 @@
 import { ref } from '#imports'
 import { CollectionInfo } from './types'
 
+/**
+ * Collection用のstate
+ */
 export const useCollectionInfo = () => {
-  const collectionInfo = ref<CollectionInfo[]>([
-    // {
-    //   id: 'office',
-    //   title: 'office',
-    //   created_date: '2022.01.02',
-    //   updated_date: '',
-    //   description: '',
-    //   pcSrc: require('@/assets/collection/office/collection_office_iPad.png'),
-    //   spSrc: require('@/assets/collection/office/collection_office_iPhone.png')
-    // }
+  /**
+   *
+   */
+  const collections = ref<CollectionInfo[]>([
+    {
+      id: 'office',
+      title: 'office',
+      created_date: '2022.01.02',
+      updated_date: '',
+      description: '',
+      pcSrc: require('@/assets/collection/office/collection_office_iPad.png'),
+      spSrc: require('@/assets/collection/office/collection_office_iPhone.png')
+    }
   ])
 
+  /**
+   * 配列から該当するIDの情報を取得
+   * @param id string
+   * @returns CollectionInfo
+   */
   const getCollectionInfo = (id: string) =>
-    collectionInfo.value.find((info) => info.id === id)
+    collections.value.find((info) => info.id === id)
 
   return {
-    collectionInfo: readonly(collectionInfo),
+    collectionInfo: readonly(collections),
     getCollectionInfo
   }
 }

@@ -1,15 +1,7 @@
 <template>
   <div class="pointer">
-    <div
-      class="pointer_outer"
-      :class="{ pointer_isover: isOver }"
-      :style="transformPosition"
-    ></div>
-    <div
-      class="pointer_inner"
-      :class="{ pointer_isover: isOver }"
-      :style="transformPosition"
-    ></div>
+    <div class="pointer-outer" :style="transformPosition"></div>
+    <div class="pointer-inner" :style="transformPosition"></div>
   </div>
 </template>
 

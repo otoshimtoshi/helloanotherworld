@@ -7,18 +7,18 @@
       </div>
       <ul class="articles">
         <li
-          class="article__item"
+          class="article-item"
           v-for="(article, index) in collectionInfo"
           :key="index"
         >
           <article :id="`article${index}`" @click="onClickArticle(article.id)">
-            <div class="article__images">
-              <div class="article__image pc">
+            <div class="article-images">
+              <div class="article-image pc">
                 <div
-                  class="article__image__bg"
+                  class="article-image-bg"
                   :style="`background-image:url(${article.pcSrc})`"
                 />
-                <div class="article__image__label">
+                <div class="article-image-label">
                   <span>S</span>
                   <span>H</span>
                   <span>O</span>
@@ -30,12 +30,12 @@
                   <span>S</span>
                 </div>
               </div>
-              <div class="article__image sp">
+              <div class="article-image sp">
                 <div
-                  class="article__image__bg"
+                  class="article-image-bg"
                   :style="`background-image:url(${article.spSrc})`"
                 />
-                <div class="article__image__label">
+                <div class="article-image-label">
                   <span>S</span>
                   <span>H</span>
                   <span>O</span>
@@ -84,28 +84,29 @@ img {
   width: 100%;
   height: auto;
 }
+
 .articles {
   display: flex;
   flex-wrap: wrap;
-  .article__item {
+
+  .article-item {
     width: 100%;
     margin-bottom: 40px;
     article {
       width: 100%;
       cursor: pointer;
-      .article__images {
+
+      .article-images {
         display: flex;
         justify-content: space-between;
         margin-bottom: 10px;
         opacity: 1;
-        transition: 0.2s $easeOutCubic;
-        .article__image {
+        transition: 0.2s $ease-out-cubic;
+        .article-image {
           width: 100%;
           display: block;
           position: relative;
-          // vertical-align: top;
           background-color: var(--color);
-          // z-index: 1;
           &::before {
             content: '';
             display: block;
@@ -113,7 +114,7 @@ img {
             width: 100%;
             height: auto;
           }
-          .article__image__bg {
+          .article-image-bg {
             transition-property: opacity;
             transition-delay: 0s;
             position: absolute;
@@ -124,7 +125,7 @@ img {
             background-repeat: no-repeat;
             background-size: cover;
           }
-          .article__image__label {
+          .article-image-label {
             opacity: 0;
             width: 100%;
             height: 100%;
@@ -137,7 +138,7 @@ img {
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: 0.2s $easeOutCubic;
+            transition: 0.2s $ease-out-cubic;
             z-index: 10;
           }
           span {
@@ -148,10 +149,10 @@ img {
         }
         &:hover {
           opacity: 0.5;
-          transition: 0.2s $easeOutCubic;
-          .article__image__label {
+          transition: 0.2s $ease-out-cubic;
+          .article-image-label {
             opacity: 1;
-            transition: 0.2s $easeOutCubic;
+            transition: 0.2s $ease-out-cubic;
           }
           span {
             transform: scale(1);

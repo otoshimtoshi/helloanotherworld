@@ -1,16 +1,16 @@
 <template>
   <main>
     <div class="top">
-      <div class="top__inner">
+      <div class="top-inner">
         <h1>
-          <span class="top__title">Hello Another World</span>
+          <span class="top-title">Hello Another World</span>
         </h1>
         <h2>
-          <span class="top__sub-title">designer</span>
-          <span class="top__sub-title">|</span>
-          <span class="top__sub-title">developer</span>
-          <span class="top__sub-title">|</span>
-          <span class="top__sub-title">derector</span>
+          <span class="top-sub-title">designer</span>
+          <span class="top-sub-title">|</span>
+          <span class="top-sub-title">developer</span>
+          <span class="top-sub-title">|</span>
+          <span class="top-sub-title">derector</span>
         </h2>
       </div>
     </div>
@@ -43,18 +43,18 @@ useNuxt2Meta(() => ({
   pointer-events: none;
   z-index: 20;
   animation: fadeIn 3s;
-  .top__inner {
+  .top-inner {
     width: 100%;
     height: auto;
     margin-top: 30px;
   }
-  .top__title {
+  .top-title {
     font-weight: 100;
     letter-spacing: 0.3em;
     text-shadow: 2px 5px 5px var(--text-shadow);
     font-size: 0;
   }
-  .top__sub-title {
+  .top-sub-title {
     letter-spacing: 0.2em;
     padding: 0 3vw;
     text-transform: uppercase;

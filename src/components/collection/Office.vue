@@ -16,13 +16,11 @@ import {
   PerspectiveCamera,
   Scene,
   DirectionalLight,
-  DirectionalLightHelper,
   Clock,
   Group,
   WebGLRenderer,
-  Object3D,
   Color,
-  GammaEncoding,
+  LinearEncoding,
   PCFSoftShadowMap
 } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -52,13 +50,6 @@ export default defineComponent({
     const init = () => {
       state.scene.background = new Color(0x000000)
       state.directionalLight.position.set(0, 20, 0)
-      // state.directionalLight.castShadow = true
-      // state.directionalLight.shadow.camera.right = 20
-      // state.directionalLight.shadow.camera.left = -20
-      // state.directionalLight.shadow.camera.top = -20
-      // state.directionalLight.shadow.camera.bottom = 20
-      // state.directionalLight.shadow.mapSize.set(1024, 1024)
-      // state.scene.add(new DirectionalLightHelper(state.directionalLight))
       state.scene.add(state.directionalLight)
     }
     init()
@@ -68,12 +59,6 @@ export default defineComponent({
         props.src,
         (gltf) => {
           state.model = gltf.scene
-          // state.model.traverse((object: any) => {
-          //   if (object.isMesh) {
-          //     object.receiveShadow = true
-          //     object.castShadow = true
-          //   }
-          // })
           state.scene.add(state.model)
         },
         (xhr) => {
@@ -90,7 +75,7 @@ export default defineComponent({
       renderer.value.setPixelRatio(window.devicePixelRatio)
       renderer.value.setSize(window.innerWidth, window.innerHeight)
       renderer.value.physicallyCorrectLights = true
-      renderer.value.outputEncoding = GammaEncoding
+      renderer.value.outputEncoding = LinearEncoding
       renderer.value.shadowMap.enabled = true
       renderer.value.shadowMap.type = PCFSoftShadowMap
       element.appendChild(renderer.value.domElement)
