@@ -15,8 +15,8 @@ export const useCollectionInfo = () => {
       created_date: '2022.01.02',
       updated_date: '',
       description: '',
-      pcSrc: require('@/assets/collection/office/collection_office_iPad.png'),
-      spSrc: require('@/assets/collection/office/collection_office_iPhone.png')
+      pcSrc: require('~~/src/assets/collection/office/collection_office_iPad.png'),
+      spSrc: require('~~/src/assets/collection/office/collection_office_iPhone.png')
     }
   ])
 
