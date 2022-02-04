@@ -2,10 +2,10 @@ import {
   Mesh,
   IUniform,
   BufferAttribute,
-  TextGeometry,
   RawShaderMaterial,
   BufferGeometry
 } from 'three'
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
 import textWireFrag from './glsl/text-wire.frag'
 import textWireVert from './glsl/text-wire.vert'
 

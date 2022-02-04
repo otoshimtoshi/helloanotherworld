@@ -1,0 +1,9 @@
+{
+  "globals": {
+    "NodeJS": true,
+    "$fetch": true
+  },
+  "extends": ["@nuxtjs/eslint-config-typescript"],
+  "rules": {},
+  "ignorePattern": ["node_modules/", ".output/", "public/", ".nuxt"]
+}

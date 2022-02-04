@@ -1,18 +1,18 @@
 <template>
-  <nav :class="type === 'index' ? '' : 'page'">
-    <ul class="links" :class="type === 'index' ? '' : 'page'">
+  <nav :class="route.name === 'index' ? '' : 'page'">
+    <ul class="links" :class="route.name === 'index' ? '' : 'page'">
       <li
         v-for="(link, index) in links"
         :key="index"
         class="link"
-        :class="type === 'index' ? '' : 'page'"
+        :class="route.name === 'index' ? '' : 'page'"
       >
         <nuxt-link
-          :to="`${link.path}/`"
-          class="link__text"
+          :to="link.path"
+          class="link-text"
           :class="[
-            type === 'index' ? '' : 'page',
-            `${link.path}/` === currentRoutePath ? 'line-through' : ''
+            route.name === 'index' ? '' : 'page',
+            link.path === route.path ? 'line-through' : ''
           ]"
         >
           <span>{{ link.text }}</span>
@@ -22,55 +22,25 @@
   </nav>
 </template>
 
-<script lang="ts">
-import {
-  computed,
-  defineComponent,
-  PropType,
-  reactive,
-  toRefs,
-  useContext
-} from '@nuxtjs/composition-api'
-
-export type Links = {
+<script setup lang="ts">
+type Links = {
   path: string
   text: string
 }
 
-export type PageType = 'index' | 'page'
-
-export default defineComponent({
-  props: {
-    type: {
-      type: String as PropType<PageType>,
-      default: 'index'
-    }
+const route = useRoute()
+const links = reactive<Array<Links>>([
+  {
+    path: '/who_i_am/',
+    text: 'Who I Am'
   },
-  setup() {
-    const { route } = useContext()
-    const state = reactive({
-      links: [
-        {
-          path: '/who_i_am',
-          text: 'Who I Am'
-        },
-        {
-          path: '/collection',
-          text: 'Collection'
-        },
-        {
-          path: '/contact',
-          text: 'Contact'
-        }
-      ] as Array<Links>
-    })
-
-    const currentRoutePath = computed(() => route.value.path)
-
-    return {
-      ...toRefs(state),
-      currentRoutePath
-    }
+  {
+    path: '/collection/',
+    text: 'Collection'
+  },
+  {
+    path: '/contact/',
+    text: 'Contact'
   }
-})
+])
 </script>
