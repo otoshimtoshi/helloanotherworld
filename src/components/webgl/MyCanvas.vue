@@ -4,18 +4,9 @@
 
 <script lang="ts">
 import {
-  defineComponent,
-  reactive,
-  onMounted,
-  toRefs,
-  ref,
-  watch
-} from '#imports'
-import {
   PerspectiveCamera,
   Scene,
   Clock,
-  Group,
   WebGLRenderer,
   Color,
   Vector3

@@ -63,10 +63,11 @@
 <script setup lang="ts">
 import { useNuxt2Meta } from '#app'
 import { useMetaInfo } from '~~/src/composable/useMetaInfo'
-import { useCollectionInfo } from '~~/src/composable/useCollectionInfo'
+// import { useCollectionInfo } from '~~/src/composable/useCollectionInfo'
 
 const { getMetaInfo } = useMetaInfo()
-const { collectionInfo } = useCollectionInfo()
+// const { collectionInfo } = useCollectionInfo()
+const collectionInfo = []
 const router = useRouter()
 const metaInfo = getMetaInfo('collection')
 

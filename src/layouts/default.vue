@@ -2,13 +2,16 @@
   <div class="layout">
     <LayoutsHeader animation />
     <LayoutsNavBar :type="navBarType" />
-    <WebglMyCanvas :render-text="renderText" />
+    <WebglMyCanvas :mode="colorMode" :render-text="renderText" />
     <nuxt />
     <LayoutsFooter />
   </div>
 </template>
 
 <script setup lang="ts">
+import { useColorMode } from '~~/src/composable/useColorMode'
+
+const { colorMode } = useColorMode()
 const route = useRoute()
 
 const setWindowSize = () => {

@@ -1,8 +1,6 @@
-import { ref } from '#imports'
-
 export const useColorMode = () => {
   /** カラーモード */
-  const colorMode = ref<string>('light')
+  const colorMode = useState('colorMode', () => 'light')
   /** light-mode */
   const className = computed(() => colorMode.value + '-mode')
 
@@ -42,31 +40,18 @@ export const useColorMode = () => {
     window.localStorage.setItem('color-mode', colorMode.value)
   }
 
-  /** リアクティブなModeを設定 */
-  const setMode = (mode: string) => {
-    colorMode.value = mode
-  }
-
-  /**
-   * リアクティブなModeを返却
-   * @returns string
-   */
-  const getMode = () => {
-    return colorMode
-  }
-
   /**
    * カラーモード変更
    * @returns void
    */
   const changeMode = (mode: string) => {
     removeClass()
-    setMode(mode)
+    colorMode.value = mode
     addClass()
   }
 
   return {
-    getMode,
+    colorMode: readonly(colorMode),
     changeMode
   }
 }

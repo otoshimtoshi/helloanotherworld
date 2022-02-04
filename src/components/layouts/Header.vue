@@ -9,27 +9,27 @@
       <div class="icon">
         <span
           class="color light"
-          :class="currentMode === 'light' ? 'is-active' : ''"
+          :class="colorMode === 'light' ? 'is-active' : ''"
           @click="changeColor('light')"
         />
         <span
           class="color yellow"
-          :class="currentMode === 'yellow' ? 'is-active' : ''"
+          :class="colorMode === 'yellow' ? 'is-active' : ''"
           @click="changeColor('yellow')"
         />
         <span
           class="color red"
-          :class="currentMode === 'red' ? 'is-active' : ''"
+          :class="colorMode === 'red' ? 'is-active' : ''"
           @click="changeColor('red')"
         />
         <span
           class="color blue"
-          :class="currentMode === 'blue' ? 'is-active' : ''"
+          :class="colorMode === 'blue' ? 'is-active' : ''"
           @click="changeColor('blue')"
         />
         <span
           class="color green"
-          :class="currentMode === 'green' ? 'is-active' : ''"
+          :class="colorMode === 'green' ? 'is-active' : ''"
           @click="changeColor('green')"
         />
       </div>
@@ -40,8 +40,7 @@
 <script setup lang="ts">
 import { useColorMode } from '~~/src/composable/useColorMode'
 
-const { getMode, changeMode } = useColorMode()
-const currentMode = getMode()
+const { colorMode, changeMode } = useColorMode()
 const changeColor = (mode: string) => {
   changeMode(mode)
 }
