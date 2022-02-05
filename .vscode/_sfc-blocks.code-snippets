@@ -1,19 +1,28 @@
 {
   "script": {
     "scope": "vue",
-    "prefix": "<script:type",
-    "body": ["<script setup lang=\"ts\">", "</script>"],
-    "description": "<script setup lang=\"ts\">"
+    "prefix": "script:type",
+    "body": [
+      "<script lang=\"ts\">",
+      "import { defineComponent } from '@nuxtjs/composition-api'",
+      "export default defineComponent({",
+      "\t${0}",
+      "setup(){},",
+      "head(){}",
+      "})",
+      "</script>"
+    ],
+    "description": "<script lang=\"ts\">"
   },
   "template": {
     "scope": "vue",
-    "prefix": "<template",
+    "prefix": "template",
     "body": ["<template>", "\t${0}", "</template>"],
     "description": "<template>"
   },
   "style": {
     "scope": "vue",
-    "prefix": "<style",
+    "prefix": "style",
     "body": ["<style lang=\"scss\" scoped>", "${0}", "</style>"],
     "description": "<style lang=\"scss\" module>"
   }

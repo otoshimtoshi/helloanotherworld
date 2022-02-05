@@ -1,6 +1,6 @@
-import { defineNuxtConfig } from '@nuxt/bridge'
+import type { NuxtConfig } from '@nuxt/types'
 
-export default defineNuxtConfig({
+const config: NuxtConfig = {
   ssr: true,
   target: 'static',
   head: {
@@ -61,12 +61,22 @@ export default defineNuxtConfig({
       {
         hid: 'og:image',
         property: 'og:image',
-        content: 'https://helloanotherworld.com/ogp.png'
+        content: '/ogp.png'
+      },
+      {
+        hid: 'twitter:site',
+        name: 'twitter:site',
+        content: 'helloanotherworld.com'
       },
       {
         hid: 'twitter:card',
         name: 'twitter:card',
         content: 'summary_large_image'
+      },
+      {
+        hid: 'twitter:image',
+        name: 'twitter:image',
+        content: '/ogp.png'
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
@@ -82,7 +92,6 @@ export default defineNuxtConfig({
   axios: {},
   build: {
     transpile: ['three'],
-    // @ts-ignore
     extend(config) {
       config.module.rules.push({
         test: /\.(glsl|vs|fs|vert|frag)$/,
@@ -92,14 +101,23 @@ export default defineNuxtConfig({
     },
     optimization: {
       splitChunks: {
-        chunks: 'all'
+        chunks: 'all',
+        minSize: 30000,
+        maxSize: 1000000,
+        minChunks: 3,
+        maxAsyncRequests: 5,
+        maxInitialRequests: 3,
+        name: true
       }
     }
   },
   plugins: [],
   buildModules: [
+    '@nuxt/typescript-build',
+    '@nuxtjs/composition-api',
     '@nuxtjs/stylelint-module',
     '@nuxtjs/style-resources',
+    '@nuxtjs/color-mode',
     '@nuxtjs/pwa'
   ],
   styleResources: {
@@ -127,4 +145,6 @@ export default defineNuxtConfig({
       useWebmanifestExtension: false
     }
   }
-})
+}
+
+export default config

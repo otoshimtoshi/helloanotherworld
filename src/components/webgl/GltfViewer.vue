@@ -11,7 +11,7 @@ import {
   ref,
   watch,
   onUnmounted
-} from '#imports'
+} from '@nuxtjs/composition-api'
 import {
   PerspectiveCamera,
   Scene,
@@ -27,7 +27,7 @@ import {
 } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import Ground from '~~/src/scripts/webgl/ground'
+import Ground from '@/composable/ground'
 
 export default defineComponent({
   props: {

@@ -4,4 +4,3 @@ dist
 package-lock.json
 .npmrc
 sw.*
-.output

@@ -1,18 +1,18 @@
 <template>
-  <nav :class="route.name === 'index' ? '' : 'page'">
-    <ul class="links" :class="route.name === 'index' ? '' : 'page'">
+  <nav :class="type === 'index' ? '' : 'page'">
+    <ul class="links" :class="type === 'index' ? '' : 'page'">
       <li
         v-for="(link, index) in links"
         :key="index"
         class="link"
-        :class="route.name === 'index' ? '' : 'page'"
+        :class="type === 'index' ? '' : 'page'"
       >
         <nuxt-link
-          :to="link.path"
-          class="link-text"
+          :to="`${link.path}/`"
+          class="link__text"
           :class="[
-            route.name === 'index' ? '' : 'page',
-            link.path === route.path ? 'line-through' : ''
+            type === 'index' ? '' : 'page',
+            `${link.path}/` === currentRoutePath ? 'line-through' : ''
           ]"
         >
           <span>{{ link.text }}</span>
@@ -22,25 +22,55 @@
   </nav>
 </template>
 
-<script setup lang="ts">
-type Links = {
+<script lang="ts">
+import {
+  computed,
+  defineComponent,
+  PropType,
+  reactive,
+  toRefs,
+  useContext
+} from '@nuxtjs/composition-api'
+
+export type Links = {
   path: string
   text: string
 }
 
-const route = useRoute()
-const links = reactive<Array<Links>>([
-  {
-    path: '/who_i_am/',
-    text: 'Who I Am'
+export type PageType = 'index' | 'page'
+
+export default defineComponent({
+  props: {
+    type: {
+      type: String as PropType<PageType>,
+      default: 'index'
+    }
   },
-  {
-    path: '/collection/',
-    text: 'Collection'
-  },
-  {
-    path: '/contact/',
-    text: 'Contact'
+  setup() {
+    const { route } = useContext()
+    const state = reactive({
+      links: [
+        {
+          path: '/who_i_am',
+          text: 'Who I Am'
+        },
+        {
+          path: '/collection',
+          text: 'Collection'
+        },
+        {
+          path: '/contact',
+          text: 'Contact'
+        }
+      ] as Array<Links>
+    })
+
+    const currentRoutePath = computed(() => route.value.path)
+
+    return {
+      ...toRefs(state),
+      currentRoutePath
+    }
   }
-])
+})
 </script>

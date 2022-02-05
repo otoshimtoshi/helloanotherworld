@@ -1,3 +1,6 @@
+//*************************************************
+// ThePointer.vue
+//*************************************************
 .pointer {
   transform: translate(-10px, -10px);
   position: fixed;
@@ -5,11 +8,12 @@
   left: -4px;
   z-index: 1000;
   pointer-events: none;
+  // mix-blend-mode: exclusion;
   @include mq('medium', max) {
     display: none;
   }
-  .pointer-outer {
-    transition: all 0.5s $ease-out-cubic;
+  .pointer_outer {
+    transition: all 0.5s $easeOutCubic;
     position: absolute;
     width: 30px;
     height: 30px;
@@ -18,8 +22,9 @@
     border-radius: 50%;
     pointer-events: none;
     border: 1px solid var(--color);
+    // mix-blend-mode: exclusion;
   }
-  .pointer-inner {
+  .pointer_inner {
     position: absolute;
     width: 10px;
     height: 10px;
@@ -28,8 +33,9 @@
     border-radius: 50%;
     pointer-events: none;
     background: var(--color);
+    // mix-blend-mode: exclusion;
   }
-  .pointer-isover {
+  .pointer_isover {
     width: 50px;
     height: 50px;
     top: -18px;
@@ -46,6 +52,7 @@
     transform: translate(-50%, -50%);
     display: block;
     position: absolute;
+    // color: $light-mode-main-color;
     top: 50%;
     left: 50%;
     white-space: nowrap;

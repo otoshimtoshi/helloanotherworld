@@ -7,18 +7,18 @@
       </div>
       <ul class="articles">
         <li
-          class="article-item"
-          v-for="(article, index) in collectionInfo"
+          class="article__item"
+          v-for="(article, index) in articles"
           :key="index"
         >
           <article :id="`article${index}`" @click="onClickArticle(article.id)">
-            <div class="article-images">
-              <div class="article-image pc">
+            <div class="article__images">
+              <div class="article__image pc">
                 <div
-                  class="article-image-bg"
+                  class="article__image__bg"
                   :style="`background-image:url(${article.pcSrc})`"
                 />
-                <div class="article-image-label">
+                <div class="article__image__label">
                   <span>S</span>
                   <span>H</span>
                   <span>O</span>
@@ -30,12 +30,12 @@
                   <span>S</span>
                 </div>
               </div>
-              <div class="article-image sp">
+              <div class="article__image sp">
                 <div
-                  class="article-image-bg"
+                  class="article__image__bg"
                   :style="`background-image:url(${article.spSrc})`"
                 />
-                <div class="article-image-label">
+                <div class="article__image__label">
                   <span>S</span>
                   <span>H</span>
                   <span>O</span>
@@ -60,23 +60,182 @@
   </main>
 </template>
 
-<script setup lang="ts">
-import { useNuxt2Meta } from '#app'
-import { useMetaInfo } from '~~/src/composable/useMetaInfo'
-// import { useCollectionInfo } from '~~/src/composable/useCollectionInfo'
+<script lang="ts">
+import {
+  defineComponent,
+  useContext,
+  reactive,
+  toRefs,
+  useMeta,
+  onMounted,
+  computed
+} from '@nuxtjs/composition-api'
 
-const { getMetaInfo } = useMetaInfo()
-// const { collectionInfo } = useCollectionInfo()
-const collectionInfo = []
-const router = useRouter()
-const metaInfo = getMetaInfo('collection')
+export default defineComponent({
+  setup() {
+    const { app, route } = useContext()
+    const state = reactive({
+      metaInfo: app.store.getters.getMetaInfo('collection'),
+      sectionStyles: {
+        width: 0,
+        height: 0
+      },
+      articles: app.store.state.collectionInfo
+    })
 
-useNuxt2Meta(() => ({
-  title: metaInfo?.title,
-  meta: metaInfo?.meta
-}))
+    useMeta(() => ({
+      title: state.metaInfo?.title,
+      meta: state.metaInfo?.meta
+    }))
 
-const onClickArticle = (id: string) => {
-  router.push(`/collection/${id}/`)
-}
+    const onClickArticle = (id: string) => {
+      app.router.push(`/collection/${id}/`)
+    }
+
+    onMounted(() => {
+      onWindowResize()
+      window.addEventListener('resize', onWindowResize)
+    })
+
+    const onWindowResize = () => {
+      state.sectionStyles.width = document.body.clientWidth
+      state.sectionStyles.height = document.body.clientHeight
+    }
+
+    return {
+      ...toRefs(state),
+      onClickArticle
+    }
+  },
+  // @ts-ignore
+  head() {}
+})
 </script>
+<style lang="scss" scoped>
+img {
+  width: 100%;
+  height: auto;
+}
+.articles {
+  display: flex;
+  flex-wrap: wrap;
+  .article__item {
+    width: 100%;
+    margin-bottom: 40px;
+    article {
+      width: 100%;
+      cursor: pointer;
+      .article__images {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        opacity: 1;
+        transition: 0.2s $easeOutCubic;
+        .article__image {
+          width: 100%;
+          display: block;
+          position: relative;
+          // vertical-align: top;
+          background-color: var(--color);
+          // z-index: 1;
+          &::before {
+            content: '';
+            display: block;
+            padding-top: 70%;
+            width: 100%;
+            height: auto;
+          }
+          .article__image__bg {
+            transition-property: opacity;
+            transition-delay: 0s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+          .article__image__label {
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: var(--color);
+            border: 5px solid var(--color);
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s $easeOutCubic;
+            z-index: 10;
+          }
+          span {
+            transform: scale(0.01);
+            transition-duration: 0.4s;
+            transform-origin: bottom left;
+          }
+        }
+        &:hover {
+          opacity: 0.5;
+          transition: 0.2s $easeOutCubic;
+          .article__image__label {
+            opacity: 1;
+            transition: 0.2s $easeOutCubic;
+          }
+          span {
+            transform: scale(1);
+            transform-origin: bottom left;
+            text-shadow: 1px 2px 2px var(--text-shadow);
+            &:nth-of-type(1) {
+              transition-delay: 0;
+            }
+            &:nth-of-type(2) {
+              transition-delay: 0.04s;
+            }
+            &:nth-of-type(3) {
+              transition-delay: 0.08s;
+            }
+            &:nth-of-type(4) {
+              transition-delay: 0.12s;
+            }
+            &:nth-of-type(5) {
+              transition-delay: 0.16s;
+            }
+            &:nth-of-type(6) {
+              transition-delay: 0.2s;
+            }
+            &:nth-of-type(7) {
+              transition-delay: 0.24s;
+            }
+            &:nth-of-type(8) {
+              transition-delay: 0.28s;
+            }
+            &:nth-of-type(9) {
+              transition-delay: 0.32s;
+            }
+          }
+        }
+        .pc {
+          max-width: 815px;
+          margin-right: 16px;
+          width: 70%;
+          @include mq('medium', max) {
+            width: 100%;
+            margin-right: 0;
+          }
+        }
+        .sp {
+          flex: 1;
+          max-width: 375px;
+          @include mq('medium', max) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+</style>

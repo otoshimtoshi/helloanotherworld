@@ -18,15 +18,32 @@
   </main>
 </template>
 
-<script setup lang="ts">
-import { useNuxt2Meta } from '#app'
-import { useMetaInfo } from '~~/src/composable/useMetaInfo'
+<script lang="ts">
+import {
+  defineComponent,
+  useContext,
+  reactive,
+  toRefs,
+  useMeta
+} from '@nuxtjs/composition-api'
 
-const { getMetaInfo } = useMetaInfo()
-const metaInfo = getMetaInfo('contact')
+export default defineComponent({
+  setup() {
+    const { app } = useContext()
+    const state = reactive({
+      metaInfo: app.store.getters.getMetaInfo('contact')
+    })
 
-useNuxt2Meta(() => ({
-  title: metaInfo?.title,
-  meta: metaInfo?.meta
-}))
+    useMeta(() => ({
+      title: state.metaInfo?.title,
+      meta: state.metaInfo?.meta
+    }))
+
+    return {
+      ...toRefs(state)
+    }
+  },
+  // @ts-ignore
+  head() {}
+})
 </script>
