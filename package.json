@@ -20,7 +20,7 @@
     "three": "^0.137.5"
   },
   "devDependencies": {
-    "@nuxt/bridge": "npm:@nuxt/bridge-edge@^3.0.0-27398184.5d7f99b",
+    "@nuxt/bridge": "npm:@nuxt/bridge-edge@^3.0.0-27398533.8edd481",
     "@nuxt/types": "^2.15.8",
     "@nuxtjs/eslint-config": "^8.0.0",
     "@nuxtjs/eslint-config-typescript": "^8.0.0",
