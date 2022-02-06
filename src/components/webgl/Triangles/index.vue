@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, onMounted, toRefs, ref } from '@nuxtjs/composition-api'
+import { defineComponent, reactive, onMounted, toRefs, ref } from '#imports'
 import * as THREE from 'three'
 import fragmentShader from './fragmentShader.frag'
 import vertexShader from './vertexShader.vert'
@@ -92,7 +92,12 @@ export default defineComponent({
       element.appendChild(renderer.value.domElement)
 
       // camera
-      state.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 10)
+      state.camera = new THREE.PerspectiveCamera(
+        50,
+        window.innerWidth / window.innerHeight,
+        1,
+        10
+      )
       state.camera.position.set(0, 0, 0)
       state.camera.position.z = 2
 

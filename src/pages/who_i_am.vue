@@ -43,32 +43,15 @@
   </main>
 </template>
 
-<script lang="ts">
-import {
-  defineComponent,
-  useContext,
-  reactive,
-  toRefs,
-  useMeta
-} from '@nuxtjs/composition-api'
+<script setup lang="ts">
+import { useNuxt2Meta } from '#app'
+import { useMetaInfo } from '~~/src/composable/useMetaInfo'
 
-export default defineComponent({
-  setup() {
-    const { app } = useContext()
-    const state = reactive({
-      metaInfo: app.store.getters.getMetaInfo('who_i_am')
-    })
+const { getMetaInfo } = useMetaInfo()
+const metaInfo = getMetaInfo('who_i_am')
 
-    useMeta(() => ({
-      title: state.metaInfo?.title,
-      meta: state.metaInfo?.meta
-    }))
-
-    return {
-      ...toRefs(state)
-    }
-  },
-  // @ts-ignore
-  head() {}
-})
+useNuxt2Meta(() => ({
+  title: metaInfo?.title,
+  meta: metaInfo?.meta
+}))
 </script>

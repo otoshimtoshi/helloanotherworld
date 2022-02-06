@@ -11,7 +11,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent } from '#imports'
 
 export default defineComponent({
   setup() {}
@@ -27,6 +27,7 @@ export default defineComponent({
   background-color: $light0;
   z-index: 200;
 }
+
 .horizontal-line {
   z-index: 16;
   &::before {
@@ -37,7 +38,7 @@ export default defineComponent({
     width: 0;
     transform: translateX(100%);
     border-bottom: 2px solid $light-font-color;
-    animation: horizontal_anim 1s linear forwards;
+    animation: horizontal-anim 1s linear forwards;
   }
   &::after {
     content: '';
@@ -47,9 +48,10 @@ export default defineComponent({
     width: 0;
     transform: translateX(-100%);
     border-bottom: 2px solid $light-font-color;
-    animation: horizontal_anim 1s linear forwards;
+    animation: horizontal-anim 1s linear forwards;
   }
 }
+
 .vertical-line {
   z-index: 16;
   &::before {
@@ -60,7 +62,7 @@ export default defineComponent({
     height: 0;
     transform: translateY(0);
     border-left: 2px solid $light-font-color;
-    animation: vertical_anim 1s linear forwards;
+    animation: vertical-anim 1s linear forwards;
   }
   &::after {
     content: '';
@@ -70,9 +72,10 @@ export default defineComponent({
     height: 0;
     transform: translateY(0);
     border-left: 2px solid $light-font-color;
-    animation: vertical_anim 1s linear forwards;
+    animation: vertical-anim 1s linear forwards;
   }
 }
+
 .box {
   position: fixed;
   top: 50%;
@@ -80,6 +83,7 @@ export default defineComponent({
   margin: -14px 0 0 -42px;
   padding: 10px;
 }
+
 .loading-dot {
   float: left;
   width: 8px;
@@ -102,7 +106,8 @@ export default defineComponent({
     animation-delay: 0.3s;
   }
 }
-@keyframes horizontal_anim {
+
+@keyframes horizontal-anim {
   0% {
     width: 0%;
   }
@@ -110,7 +115,8 @@ export default defineComponent({
     width: 100%;
   }
 }
-@keyframes vertical_anim {
+
+@keyframes vertical-anim {
   0% {
     height: 0%;
   }
@@ -118,6 +124,7 @@ export default defineComponent({
     height: 100%;
   }
 }
+
 @keyframes loadingfade {
   0% {
     opacity: 0;
@@ -127,98 +134,6 @@ export default defineComponent({
   }
   100% {
     opacity: 0;
-  }
-}
-.yellow-mode {
-  .layout-default {
-    .horizontal-line {
-      &::before {
-        border-bottom: 2px solid $yellow-font-color;
-      }
-      &::after {
-        border-bottom: 2px solid $yellow-font-color;
-      }
-    }
-    .vertical-line {
-      &::before {
-        border-left: 2px solid $yellow-font-color;
-      }
-      &::after {
-        border-left: 2px solid $yellow-font-color;
-      }
-    }
-    .loading-dot {
-      background: $yellow-font-color;
-    }
-  }
-}
-.red-mode {
-  .layout-default {
-    .horizontal-line {
-      &::before {
-        border-bottom: 2px solid $red-font-color;
-      }
-      &::after {
-        border-bottom: 2px solid $red-font-color;
-      }
-    }
-    .vertical-line {
-      &::before {
-        border-left: 2px solid $red-font-color;
-      }
-      &::after {
-        border-left: 2px solid $red-font-color;
-      }
-    }
-    .loading-dot {
-      background: $red-font-color;
-    }
-  }
-}
-.blue-mode {
-  .layout-default {
-    .horizontal-line {
-      &::before {
-        border-bottom: 2px solid $blue-font-color;
-      }
-      &::after {
-        border-bottom: 2px solid $blue-font-color;
-      }
-    }
-    .vertical-line {
-      &::before {
-        border-left: 2px solid $blue-font-color;
-      }
-      &::after {
-        border-left: 2px solid $blue-font-color;
-      }
-    }
-    .loading-dot {
-      background: $blue-font-color;
-    }
-  }
-}
-.green-mode {
-  .layout-default {
-    .horizontal-line {
-      &::before {
-        border-bottom: 2px solid $green-font-color;
-      }
-      &::after {
-        border-bottom: 2px solid $green-font-color;
-      }
-    }
-    .vertical-line {
-      &::before {
-        border-left: 2px solid $green-font-color;
-      }
-      &::after {
-        border-left: 2px solid $green-font-color;
-      }
-    }
-    .loading-dot {
-      background: $green-font-color;
-    }
   }
 }
 </style>
